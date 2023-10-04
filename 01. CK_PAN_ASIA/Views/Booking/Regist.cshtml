@@ -1,0 +1,508 @@
+﻿@{
+    ViewBag.Title = "Booking";
+    ViewBag.Sub = "Regist";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@section Container {
+    <input type="hidden" id="View_SCH_NO" value="@ViewBag.SCH_NO" />
+    <input type="hidden" id="View_SEQ" value="@ViewBag.SEQ" />
+    @*<input type="hidden" id="View_SCH_NO" value="SL2212061547270027" />
+    <input type="hidden" id="View_SEQ" value="4" />*@
+    <input type="hidden" id="View_BKG_NO" value="@ViewBag.BKG_NO" />
+
+    <div class="container">
+        <div class="sub_visual" id="Schedule">
+            <div class="inner">
+                @{
+                    if (ViewBag.BKG_NO != null)
+                    {
+                        <h4 class="subtitle" id="Booking_Title">부킹수정</h4>
+                    }
+                    else
+                    {
+                        <h4 class="subtitle" id="Booking_Title">부킹등록</h4>
+                    }
+                }
+            </div>
+        </div>
+        <div class="sub_cover" id="SubCover">
+            <div class="fixed_in type2">
+                <div class="bk-box">
+                    <div class="bk-inner">
+                        <h5 class="bk-title">스케줄 정보</h5>
+                        <div class="bk-sch" id="SCH_Result_AREA">
+                            @*<div class="bk-sch">
+                                    <div class="bk-sch__box">
+                                        <div class="bk-sch__line">
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">서비스</div>
+                                                <div class="bk-sch__cont">FCL</div>
+                                            </div>
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">VSL</div>
+                                                <div class="bk-sch__cont">DJSC PANCON VICTORY PANCON VICTORY</div>
+                                            </div>
+                                        </div>
+                                        <div class="bk-sch__line">
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">VOY</div>
+                                                <div class="bk-sch__cont">18E....</div>
+                                            </div>
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">Liner</div>
+                                                <div class="bk-sch__cont">고려해운</div>
+                                            </div>
+                                        </div>
+                                        <div class="bk-sch__line">
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">ETD</div>
+                                                <div class="bk-sch__cont">2022-11-07</div>
+                                            </div>
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">ETA</div>
+                                                <div class="bk-sch__cont">2022-12-05</div>
+                                            </div>
+                                        </div>
+                                        <div class="bk-sch__line">
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">POL</div>
+                                                <div class="bk-sch__cont">Incheon, Korea</div>
+                                            </div>
+                                            <div class="bk-sch__inner">
+                                                <div class="bk-sch__title">POD</div>
+                                                <div class="bk-sch__cont">Los Angeles, U.S.A</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bk-sch__box type2">
+                                        <div class="bk-sch__inner">
+                                            <div class="bk-sch__title">담당자</div>
+                                            <div class="bk-sch__cont">
+                                                <textarea>서울 : 허명재 대리
+                                                          | Tel. 02-7722-501
+                                                          | Fax. 02-779-6800</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="bk-sch__inner">
+                                            <div class="bk-sch__title">반입지</div>
+                                            <div class="bk-sch__cont">
+                                                <textarea>
+                                                          CFS : 페어허브물류㈜
+                                                          경상남도 창원시 진해구 신항8로 321 / 장치장코드 : 03077099
+                                                          부산본부세관 TEL : 055-548-8722 / FAX : 055-548-8739 /
+                                                          부산본부세관 TEL : 055-548-8722 / FAX : 055-548-8739 /
+                                                          부산본부세관 TEL : 055-548-8722 / FAX : 055-548-8739 /
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="bk-sch__inner">
+                                            <div class="bk-sch__title">비고</div>
+                                            <div class="bk-sch__cont">
+                                                <textarea></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- FCL 일때만 -->
+                <div class="bk-box" id="IS_FCL" style="display:none">
+                    <div class="bk-inner">
+                        <h5 class="bk-title">화물정보</h5>
+                        <div class="bk-cargo">
+                            <div class="bk-cargo__box">
+                                <div class="bk-cargo__inner">
+                                    <div class="bk-cargo__select">
+                                        <select id="Select_FCL_CntrType">
+                                            <option value="">CNTR TYPE</option>
+                                            <option value="D">DRY</option>
+                                            <option value="O">OPEN TOP</option>
+                                            <option value="F">FLAT RACK</option>
+                                            <option value="R">REEFER</option>
+                                        </select>
+                                    </div>
+                                    <div class="bk-cargo__input">
+                                        <select id="Select_FCL_CntrSize">
+                                            <option value="">CNTR SIZE</option>
+                                            <option value="20">20</option>
+                                            <option value="40">40</option>
+                                            <option value="40HC">40HC</option>
+                                        </select>
+                                    </div>
+                                    <div class="bk-cargo__select">
+                                        <input type="text" placeholder="갯수" id="Input_FCL_CntrCount" maxlength="9" />
+                                    </div>
+                                    <div class="bk-cargo__btn">
+                                        <button type="button" class="btns add_cargo" id="btn_FCL_AddCargo">화물추가</button>
+                                    </div>
+                                </div>
+                                <div class="bk-cargo__inner">
+                                    <div class="bk-cargo__list" id="FCL_Cntr_Area">
+                                        @*<div class="bk-cargo__cont">
+                                                <div class="bk-cargo__num"><p><span></span></p></div>
+                                                <div class="bk-cargo__desc">
+                                                    <p><span>Cntr type</span> | <span>Size</span> | <span>개수</span></p>
+                                                </div>
+                                                <button type="button" class="btns cargo_del"></button>
+                                            </div>
+                                            <div class="bk-cargo__cont">
+                                                <div class="bk-cargo__num"><p><span></span></p></div>
+                                                <div class="bk-cargo__desc">
+                                                    <p><span>Cntr type</span> | <span>Size</span> | <span>개수</span></p>
+                                                </div>
+                                                <button type="button" class="btns cargo_del"></button>
+                                            </div>
+                                            <div class="bk-cargo__cont">
+                                                <div class="bk-cargo__num"><p><span></span></p></div>
+                                                <div class="bk-cargo__desc">
+                                                    <p><span>Cntr type</span> | <span>Size</span> | <span>개수</span></p>
+                                                </div>
+                                                <button type="button" class="btns cargo_del"></button>
+                                            </div>
+                                            <div class="bk-cargo__cont">
+                                                <div class="bk-cargo__num"><p><span></span></p></div>
+                                                <div class="bk-cargo__desc">
+                                                    <p><span>Cntr type</span> | <span>Size</span> | <span>개수</span></p>
+                                                </div>
+                                                <button type="button" class="btns cargo_del"></button>
+                                            </div>
+                                            <div class="bk-cargo__cont">
+                                                <div class="bk-cargo__num"><p><span></span></p></div>
+                                                <div class="bk-cargo__desc">
+                                                    <p><span>Cntr type</span> | <span>Size</span> | <span>개수</span></p>
+                                                </div>
+                                                <button type="button" class="btns cargo_del"></button>
+                                            </div>
+                                            <div class="bk-cargo__cont">
+                                                <div class="bk-cargo__num"><p><span></span></p></div>
+                                                <div class="bk-cargo__desc">
+                                                    <p><span>Cntr type</span> | <span>Size</span> | <span>개수</span></p>
+                                                </div>
+                                                <button type="button" class="btns cargo_del"></button>
+                                            </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bk-cargo__box">
+                                <div class="bk-cargo__inner pc">
+                                    <div class="bk-cargo__arr">
+                                        <img src="~/Images/icn_arrow6.png" />
+                                    </div>
+                                </div>
+                                <div class="bk-cargo__inner">
+                                    <div class="bk-cargo__alert">
+                                        <p>예상 견적가</p>
+                                        <button type="button" class="btns welcome_link" id="FCL_welcome_link">웰컴매니저 1day 신속 견적 신청</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FCL 일때만 -->
+                <!-- LCL/ELVIS에 운임가격이 없을 때-->
+                <div class="bk-box" id="IS_LCL_PRICE_N" style="display:none">
+                    <div class="bk-inner">
+                        <h5 class="bk-title">화물정보</h5>
+                        <p class="bk-cargo2__alert">안내된 운임은 선적일 환율과 실제 화물의 CBM에 따라 달라질 수 있습니다.</p>
+                        <div class="bk-cargo2">
+                            <div class="bk-cargo2__box">
+                                <div class="bk-cargo2__inner">
+                                    <div class="bk-cargo2__input">
+                                        <input type="number" id="input_LCL_N_CBM" min="0" max="9" step="1" value="0" readonly />
+                                        <div class="cbm-btns">
+                                            <button type="button" class="bk-cargo2__btn cbm-up"></button>
+                                            <button type="button" class="bk-cargo2__btn cbm-down"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bk-cargo2__box">
+                                <div class="bk-cargo2__inner pc">
+                                    <div class="bk-cargo__arr">
+                                        <img src="~/Images/icn_arrow6.png" />
+                                    </div>
+                                </div>
+                                <div class="bk-cargo2__inner">
+                                    <div class="bk-cargo2__cont">
+                                        <p>예상 견적가</p>
+                                    </div>
+                                    <div class="bk-cargo2__cont">
+                                        <h6 class="bk-cont2__title">해상운임+SURCHARGE 합계</h6>
+                                        <div class="bk-cont2__charge">
+                                            <div class="bk-cont2__input">
+                                                <p>USD</p>
+                                                <p class="sep_inq no_fc">별도문의</p>
+                                            </div>
+                                            <p>+</p>
+                                        </div>
+                                    </div>
+                                    <div class="bk-cargo2__cont">
+                                        <h6 class="bk-cont2__title">국내 LOCAL CHARGE 합계</h6>
+                                        <div class="bk-cont2__charge">
+                                            <div class="bk-cont2__input">
+                                                <p>KRW</p>
+                                                <p class="sep_inq no_fc">별도문의</p>
+                                            </div>
+                                            <p>=</p>
+                                        </div>
+                                    </div>
+                                    <div class="bk-cargo2__cont">
+                                        <h6 class="bk-cont2__title">1번+2번 운임의 원화 합계</h6>
+                                        <div class="bk-cont2__charge">
+                                            <button type="button" class="btns welcome_link" id="LCL_welcome_link">웰컴매니저 1day 신속 견적 신청</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- LCL/ELVIS에 운임가격이 없을 때-->
+                <!-- LCL/ELVIS에 운임가격이 있을 때-->
+                <div class="bk-box" id="IS_LCL_PRICE_Y" style="display:none">
+                    <div class="bk-inner">
+                        <h5 class="bk-title">화물정보</h5>
+                        <p class="bk-cargo2__alert">안내된 운임은 선적일 환율과 실제 화물의 CBM에 따라 달라질 수 있습니다.</p>
+                        <div class="bk-cargo2">
+                            <div class="bk-cargo2__box">
+                                <div class="bk-cargo2__inner">
+                                    <div class="bk-cargo2__input">
+                                        <input type="number" id="input_LCL_Y_CBM" min="0" max="9" step="1" value="0" maxlength="10" readonly />
+                                        <div class="cbm-btns">
+                                            <button type="button" class="bk-cargo2__btn cbm-up"></button>
+                                            <button type="button" class="bk-cargo2__btn cbm-down"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bk-cargo2__box">
+                                <div class="bk-cargo2__inner pc">
+                                    <div class="bk-cargo__arr">
+                                        <img src="~/Images/icn_arrow6.png" />
+                                    </div>
+                                </div>
+                                <div class="bk-cargo2__inner">
+                                    <div class="bk-cargo2__cont">
+                                        <p>예상 견적가</p>
+                                    </div>
+                                    <div class="bk-cargo2__cont">
+                                        <h6 class="bk-cont2__title">해상운임+SURCHARGE 합계</h6>
+                                        <div class="bk-cont2__charge">
+                                            <div class="bk-cont2__input">
+                                                <p>USD</p>
+                                                <p class="sep_inq" id="LCL_PRICE_USD">0</p>
+                                            </div>
+                                            <p>+</p>
+                                        </div>
+                                    </div>
+                                    <div class="bk-cargo2__cont">
+                                        <h6 class="bk-cont2__title">국내 LOCAL CHARGE 합계</h6>
+                                        <div class="bk-cont2__charge">
+                                            <div class="bk-cont2__input">
+                                                <p>KRW</p>
+                                                <p class="sep_inq" id="LCL_PRICE_KRW">0</p>
+                                            </div>
+                                            <p>=</p>
+                                        </div>
+                                    </div>
+                                    <div class="bk-cargo2__cont">
+                                        <h6 class="bk-cont2__title">1번+2번 운임의 원화 합계</h6>
+                                        <div class="bk-cont2__charge">
+                                            <div class="bk-cont2__input">
+                                                <p>KRW</p>
+                                                <p class="sep_inq" id="LCL_PRICE_TOTAL">0</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- LCL/ELVIS에 운임가격이 있을 때-->
+
+                <div class="bk-box two">
+                    <div class="bk-inner">
+                        <h5 class="bk-title">선적서류 첨부하기</h5>
+                        <div class="bk-file">
+                            <label for="bk_file_upload" class="btns file_upload">선적 서류 찾기</label>
+                            <input type="file" id="bk_file_upload" class="btns upload_btn" multiple="multiple" />
+                            <div class="bk-file__head">
+                                <div class="bk-file__title">구분</div>
+                                <div class="bk-file__title">파일명</div>
+                            </div>
+                            <div class="bk-file__body" id="BK_FileList">
+                                <!-- editable 넣으면 이미 넣은 파일 처럼 보여짐.-->
+                                @*<div class="bk-file__cont editable">
+                                        <div class="bk-file__select">
+                                            <select>
+                                                <option>C/I, P/L</option>
+                                                <option>원산지 증명서</option>
+                                                <option>수출 면장</option>
+                                                <option>수출 계약서</option>
+                                                <option>기타</option>
+                                            </select>
+                                        </div>
+                                        <div class="bk-file__nm">
+                                            <p><span>파일명</span></p>
+                                        </div>
+                                        <button type="button" class="btns file_del"></button>
+                                    </div>
+                                    <div class="bk-file__cont fixed">
+                                        <div class="bk-file__select">
+                                            <select>
+                                                <option>C/I, P/L</option>
+                                                <option>원산지 증명서</option>
+                                                <option>수출 면장</option>
+                                                <option>수출 계약서</option>
+                                                <option>기타</option>
+                                            </select>
+                                        </div>
+                                        <div class="bk-file__nm">
+                                            <p><span>파일명</span></p>
+                                        </div>
+                                    </div>*@
+                                @*<div class="bk-file__cont">
+                                        <div class="bk-file__select">
+                                            <select>
+                                                <option>C/I, P/L</option>
+                                                <option>원산지 증명서</option>
+                                                <option>수출 면장</option>
+                                                <option>수출 계약서</option>
+                                                <option>기타</option>
+                                            </select>
+                                        </div>
+                                        <div class="bk-file__nm">
+                                            <p><span>파일명</span></p>
+                                        </div>
+                                        <button type="button" class="btns file_del"></button>
+                                    </div>
+                                    <div class="bk-file__cont">
+                                        <div class="bk-file__select">
+                                            <select>
+                                                <option>C/I, P/L</option>
+                                                <option>원산지 증명서</option>
+                                                <option>수출 면장</option>
+                                                <option>수출 계약서</option>
+                                                <option>기타</option>
+                                            </select>
+                                        </div>
+                                        <div class="bk-file__nm">
+                                            <p><span>파일명</span></p>
+                                        </div>
+                                        <button type="button" class="btns file_del"></button>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bk-inner">
+                        <h5 class="bk-title">화물정보 및 요청사항</h5>
+                        <div class="bk-request">
+                            <textarea placeholder="첨부하실 선적 서류가 없으실 경우 &#13;&#10;&#13;&#10;선적하실 화물의 포장 수량, CBM, GROSS WEIGHT 정보를 &#13;&#10;&#13;&#10;입력하여 아래 부킹 버튼을 눌러 주세요." id="input_bk_Remark"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-btn">
+                    <input type="hidden" value="@ViewBag.BKG_NO" />
+                    <button type="button" class="btns booking_req" name="booking_request">부킹 요청</button>
+                    <button type="button" class="btns booking_cancel" name="booking_cancel" style="display:none">취소</button>
+                    <button type="button" class="btns booking_list" name="booking_list" style="display:none">목록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="Layer_Booking_HistoryBack">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <div class="alert_cont">
+                        <div class="inner2">
+                            담당자에게 문의하세요.
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1" id="btn_Booking_HistoryBack">확인</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="Booking_Confirm">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <div class="alert_cont">
+                        <div class="inner2">
+                            부킹 요청을 하시겠습니까?
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="Booking_Confirm_confirm">확인</button>
+                        <button type="button" class="btns radius cr2 loginChk" id="Booking_Confirm_cancel">취소</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="layer_Delete_BkgPkg">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <div class="alert_cont">
+                        <div class="inner2">
+                            화물 정보를 삭제 하시겠습니까?
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1" id="Delete_BkgPkg_Confirm">확인</button>
+                        <button type="button" class="btns radius cr2" id="Delete_BkgPkg_Cancel">취소</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="layer_zone alert_type" id="BkgList_Confirm">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner2">
+                            부킹 취소를 하시겠습니까?
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="BkgList_Confirm_confirm">확인</button>
+                        <button type="button" class="btns radius cr2 loginChk" id="BkgList_Confirm_cencel">취소</button>
+                    </div>
+                    <!-- //btn_w -->
+                    @*<button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#alert01');"><span class="blind">닫기</span></button>*@
+                </article>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/Booking/Regist.js")
+}

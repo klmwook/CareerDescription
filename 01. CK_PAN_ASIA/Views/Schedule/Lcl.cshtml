@@ -1,0 +1,1233 @@
+﻿@{
+    ViewBag.Title = "Schedule";
+    ViewBag.Sub = "Sea";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $("#header").addClass("sub");
+        $('.lnb > li.schMgt').addClass('on');
+        $('.lnb > li.schMgt .sub_depth li:nth-child(1) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual" id="Schedule">
+            <div class="inner">
+                <h4 class="subtitle">LCL 스케줄</h4>
+            </div>
+        </div>
+        <div class="sub_cover" id="SubCover">
+            <div class="fixed_in type2">
+                <div class="search_bar">
+                    <!-- TWKIM 20230120 담당자 요청으로 Bound 삭제 -->
+                    <div class="col w10" style="display:none">
+                        <p>Bound</p>
+                    </div>
+                    <div class="col w5" style="display:none">
+                        <div class="int_box border-animation">
+                            <select class="select border-animation__inner" id="select_LCL_Bound">
+                                <option value="">All</option>
+                                <option value="1">Asia</option>
+                                <option value="4">China</option>
+                                <option value="2">Japan</option>
+                                <option value="3">Europe & Medsea</option>
+                                <option value="5">Mideast</option>
+                                <option value="6">USA & Canada</option>
+                                <option value="7">Latin</option>
+                                <option value="8">Oceania & South Africa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col w5">
+                        @*<div class="int_box cal_date border-animation">*@
+                        <div class="int_box border-animation">
+                            <input type="text" value="" class="date border-animation__inner" id="input_LCL_ETD" autocomplete="off" maxlength="10" disabled="disabled" readonly />
+                            <button type="button" class="btns icon calendar"><span class="blind">달력</span></button>
+                        </div>
+                    </div>
+                    <div class="col w1">
+                        <div class="int_box border-animation" id="AC_LCLDeparture_Width">
+                            <input type="text" value="" placeholder="클릭하여 출발지를 선택하세요." id="input_LCL_Departure" autocomplete="off" class="border-animation__inner" data-index="Schedule_SEA1" maxlength="30" />
+                            <input type="hidden" class="input_hidden" value="" id="input_LCL_POL" />
+                            <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                            <button type="button" class="btns icon down" onclick="selectPopOpen('#select_LCL_pop01')"><span class="blind">펼침</span></button>
+                            <div class="select_pop" id="select_LCL_pop01">
+                                <h3 class="title03">주요 출발지 선택 (추가 PORT도 영문 색인 가능)</h3>
+                                <div class="select_location">
+                                    <div class="scrollbar_tbl2">
+                                        <table class="tbl_option pc" id="quick_LCL_POLCD">
+                                            <tbody>
+                                                <tr>
+                                                    <th>한국</th>
+                                                    <td><button type="button" value="BUSAN, KOREA;KRPUS"><span>부산</span></button></td>
+                                                    <td><button type="button" value="INCHEON,KOREA;KRINC"><span>인천</span></button></td>
+                                                    <td><button type="button" value="PYEONGTAEK, KOREA;KRPTK"><span>평택</span></button></td>
+                                                    <td><button type="button" value="DONGHAE, KOREA;KRTGH"><span>동해</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="4">동남아</th>
+                                                    <td><button type="button" value="KEELUNG,TAIWAN;TWKEL"><span>기륭</span></button></td>
+                                                    <td><button type="button" value="KAOHSIUNG, TAIWAN;TWKHH"><span>까오슝</span></button></td>
+                                                    <td><button type="button" value="DA NANG, VIETNAM;VNDAD"><span>다낭</span></button></td>
+                                                    <td><button type="button" value="LAEM CHABANG, THAILAND;THLCH"><span>람차방</span></button></td>
+                                                    <td><button type="button" value="MANILA, PHILIPPINES;PHMNL"><span>마닐라</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="BANGKOK, THAILAND;THBKK"><span>방콕</span></button></td>
+                                                    <td><button type="button" value="SEMARANG, JAVA;IDSRG"><span>세마랑</span></button></td>
+                                                    <td><button type="button" value="SURABAYA, INDONESIA;IDSUB"><span>수라바야</span></button></td>
+                                                    <td><button type="button" value="SIHANOUKVILLE, CAMBODIA;KHSIH"><span>시아누크빌</span></button></td>
+                                                    <td><button type="button" value="SINGAPORE;SGSIN"><span>싱가폴</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="JAKARTA, INDONESIA;IDJKT"><span>자카르타</span></button></td>
+                                                    <td><button type="button" value="TAICHUNG, TAIWAN;TWTXG"><span>타이중</span></button></td>
+                                                    <td><button type="button" value="PENANG (GEORGETOWN), MALAYSIA;MYPEN"><span>페낭</span></button></td>
+                                                    <td><button type="button" value="WESTPORT/PORT KLANG, MALAYSIA;MYWSP"><span>포트켈랑</span></button></td>
+                                                    <td><button type="button" value="HAIPHONG, VIETNAM;VNHPH"><span>하이퐁</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HO CHI MINH CITY, VIETNAM;VNSGN"><span>호치민</span></button></td>
+                                                    <td><button type="button" value="HONG KONG;HKHKG"><span>홍콩</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">서남아</th>
+                                                    <td><button type="button" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA"><span>나바샤바</span></button></td>
+                                                    <td><button type="button" value="NEW DELHI, INDIA;INICD"><span>뉴델리</span></button></td>
+                                                    <td><button type="button" value="CHENNAI (EX MADRAS), INDIA;INMAA"><span>첸나이</span></button></td>
+                                                    <td><button type="button" value="CHITTAGONG, BANGLADESH;BDCGP"><span>치타공</span></button></td>
+                                                    <td><button type="button" value="KARACHI, PAKISTAN;PKKHI"><span>카라치</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="COLOMBO, SRI LANKA;LKCMB"><span>콜롬보</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">중국</th>
+                                                    <td><button type="button" value="NANJING, CHINA;CNNKG"><span>남경</span></button></td>
+                                                    <td><button type="button" value="NINGBO, CHINA;CNNGB"><span>닝보</span></button></td>
+                                                    <td><button type="button" value="DALI, CHINA;CNDLC"><span>대련</span></button></td>
+                                                    <td><button type="button" value="SHANGHAI, CHINA;CNSHA"><span>상해</span></button></td>
+                                                    <td><button type="button" value="XIAMEN, CHINA;CNXMN"><span>샤먼</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="XINGANG, CHINA;CNXGG"><span>신강</span></button></td>
+                                                    <td><button type="button" value="YANTAI, CHINA;CNYNT"><span>연태</span></button></td>
+                                                    <td><button type="button" value="WEIHAI, CHINA;CNWEI"><span>위해</span></button></td>
+                                                    <td><button type="button" value="QINGDAO, CHINA;CNTAO"><span>청도</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>러시아</th>
+                                                    <td><button type="button" value="VLADIVOSTOK, RUSSIA;RUVVO"><span>블라디보스톡</span></button></td>
+                                                    <td><button type="button" value="SHEREMETYEVO APT/MOSCOW, RUSSIA;RUSVO"><span>모스크바</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="6">일본</th>
+                                                    <td><button type="button" value="TOKYO, JAPAN;JPTYO"><span>도쿄</span></button></td>
+                                                    <td><button type="button" value="YOKOHAMA, JAPAN;JPYOK"><span>요코하마</span></button></td>
+                                                    <td><button type="button" value="OSAKA, JAPAN;JPOSA"><span>오사카</span></button></td>
+                                                    <td><button type="button" value="KOBE, JAPAN;JPUKB"><span>고베</span></button></td>
+                                                    <td><button type="button" value="NAGOYA, AICHI;JPNGO"><span>나고야</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="KANAZAWA, JAPAN;JPKNZ"><span>가나자와</span></button></td>
+                                                    <td><button type="button" value="KUMAMOTO, JAPAN;JPKMJ"><span>구마모토</span></button></td>
+                                                    <td><button type="button" value="NAOETSU, JAPAN;JPNAO"><span>나오에스</span></button></td>
+                                                    <td><button type="button" value="NAGASAKI, JAPAN;JPNGS"><span>나가사키</span></button></td>
+                                                    <td><button type="button" value="NIIGATA, JAPAN;JPKIJ"><span>니가타</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="TOMAKOMAI, JAPAN;JPTMK"><span>도마코마이</span></button></td>
+                                                    <td><button type="button" value="TOYAMA, JAPAN;JPTOY"><span>도야마</span></button></td>
+                                                    <td><button type="button" value="MATSUYAMA, JAPAN;JPMYJ"><span>마쓰야마</span></button></td>
+                                                    <td><button type="button" value="MIZUSHIMA, JAPAN;JPMIZ"><span>미즈시마</span></button></td>
+                                                    <td><button type="button" value="MOJI/KITAKYUSHU, JAPAN;JPMOJ"><span>모지</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="SAKATA, JAPAN;JPSKT"><span>사카타</span></button></td>
+                                                    <td><button type="button" value="SENDAI, MIYAGI;JPSDJ"><span>센다이</span></button></td>
+                                                    <td><button type="button" value="TSURUGA, JAPAN;JPTRG"><span>스루가</span></button></td>
+                                                    <td><button type="button" value="SHIMONOSEKI, JAPAN;JPSHS"><span>시모노세키</span></button></td>
+                                                    <td><button type="button" value="SHIMIZU, JAPAN;JPSMZ"><span>시미즈</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="AKITA, JAPAN;JPAXT"><span>아키타</span></button></td>
+                                                    <td><button type="button" value="IMABARI, JAPAN;JPIMB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="CHIBA, JAPAN;JPCHB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="TAKAMATSU, JAPAN;JPTAK"><span>타카마스</span></button></td>
+                                                    <td><button type="button" value="HAKATA/FUKUOKA, JAPAN;JPHKT"><span>하카타</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="FUKUYAMA, HIROSHIMA;JPFKY"><span>후쿠야마</span></button></td>
+                                                    <td><button type="button" value="HIROSHIMA, JAPAN;JPHIJ"><span>히로시마</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">북미</th>
+                                                    <td><button type="button" value="NEW YORK, U.S.A.;USNYC"><span>뉴욕</span></button></td>
+                                                    <td><button type="button" value="LOS ANGELES, U.S.A.;USLAX"><span>로스앤젤레스</span></button></td>
+                                                    <td><button type="button" value="SEATTLE, U.S.A.;USSEA"><span>시애틀</span></button></td>
+                                                    <td><button type="button" value="OAKLAND, U.S.A.;USOAK"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VANCOUVER, CANADA;CAVAN"><span>밴쿠버</span></button></td>
+                                                    <td><button type="button" value="MONTREAL, CANADA;CAMTR"><span>몬트리올</span></button></td>
+                                                    <td><button type="button" value="TORONTO, CANADA;CATOR"><span>토론토</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="3">중남미</th>
+                                                    <td><button type="button" value="GUAYAQUIL, ECUADOR;ECGYE"><span>과야퀼</span></button></td>
+                                                    <td><button type="button" value="GUATEMALA CITY;GTGUA"><span>과테말라</span></button></td>
+                                                    <td><button type="button" value="LAZARO CARDENAS, MEXICO;MXLZC"><span>라자로칼데라스</span></button></td>
+                                                    <td><button type="button" value="MANZANILLO, MEXICO;MXZLO"><span>만자닐로</span></button></td>
+                                                    <td><button type="button" value="MONTEVIDEO, URUGUAY;UYMVD"><span>몬테비데오</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="VALPARAISO, CHILE;CLVAP"><span>발파라이소</span></button></td>
+                                                    <td><button type="button" value="BUENAVENTURA, COLOMBIA;COBUN"><span>부에나벤투라</span></button></td>
+                                                    <td><button type="button" value="BUENOS AIRES, ARGENTINA;ARBUE"><span>부에노아에레스</span></button></td>
+                                                    <td><button type="button" value="SAN SALVADOR, EL SALVADOR;SVSAL"><span>산살바도르</span></button></td>
+                                                    <td><button type="button" value="SAN JOSE, COSTA RICA;CRSJO"><span>산조세</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SANTO DOMINGO, DOMINICAN REPUBLIC;DOSDQ"><span>산토도밍고</span></button></td>
+                                                    <td><button type="button" value="SANTOS, BRAZIL;BRSSZ"><span>산토스</span></button></td>
+                                                    <td><button type="button" value="IQUIQUE, CHILE;CLIQQ"><span>이키케</span></button></td>
+                                                    <td><button type="button" value="CALLAO, PERU;PECLL"><span>칼라오</span></button></td>
+                                                    <td><button type="button" value="COLON FREE ZONE, PANAMA;PACFZ"><span>콜론프리존</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">유럽</th>
+                                                    <td><button type="button" value="GDANSK, POLAND;PLGDN"><span>그단스크</span></button></td>
+                                                    <td><button type="button" value="ROTTERDAM, NETHERLANDS;NLRTM"><span>로테르담</span></button></td>
+                                                    <td><button type="button" value="LE HAVRE, FRANCE;FRLEH"><span>르하브르</span></button></td>
+                                                    <td><button type="button" value="RIGA, LATVIA;LVRIX"><span>리가</span></button></td>
+                                                    <td><button type="button" value="VARNA, BULGARIA;BGVAR"><span>바르나</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="ANTWERPEN, BELGIUM;BEANR"><span>엔트워프</span></button></td>
+                                                    <td><button type="button" value="KOPER, SLOVENIA;SIKOP"><span>코퍼</span></button></td>
+                                                    <td><button type="button" value="CONSTANTA, ROMANIA;ROCND"><span>콘스탄차</span></button></td>
+                                                    <td><button type="button" value="FELIXSTOWE, UNITED KINGDOM;GBFXT"><span>펠릭스토우</span></button></td>
+                                                    <td><button type="button" value="HAMBURG, GERMANY;DEHAM"><span>함부르그 </span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">지중해</th>
+                                                    <td><button type="button" value="BARCELONA, SPAIN;ESBCN"><span>바르셀로나</span></button></td>
+                                                    <td><button type="button" value="VALENCIA, SPAIN;ESVLC"><span>발렌시아</span></button></td>
+                                                    <td><button type="button" value="ASHDOD, ISRAEL;ILASH"><span>아슈도드</span></button></td>
+                                                    <td><button type="button" value="AMBARLI, TURKEY;TRAMB"><span>암발리</span></button></td>
+                                                    <td><button type="button" value="GENOA, ITALY;ITGOA"><span>제노아</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HAYDARPASA, TURKEY;TRHAY"><span>하이다르파샤</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">중동</th>
+                                                    <td><button type="button" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA"><span>두바이<br class="pc" />(제벨 알리)</span></button></td>
+                                                    <td><button type="button" value="AD DAMMAM, SAUDI ARABIA;SADMM"><span>담맘</span></button></td>
+                                                    <td><button type="button" value="BAHRAIN;BHBAH"><span>바레인</span></button></td>
+                                                    <td><button type="button" value="BANDAR ABBAS, IRAN;IRBND"><span>반다르 아바스</span></button></td>
+                                                    <td><button type="button" value="SOHAR, OMAN;OMSOH"><span>소하르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="AQABA, JORDAN;JOAQB"><span>아카바</span></button></td>
+                                                    <td><button type="button" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY"><span>알렉산드리아</span></button></td>
+                                                    <td><button type="button" value="JEDDAH, SAUDI ARABIA;SAJED"><span>제다</span></button></td>
+                                                    <td><button type="button" value="KUWAIT;KWKWI"><span>쿠웨이트</span></button></td>
+                                                    <td><button type="button" value="HAMAD;QAHMD"><span>하마드</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>오세아니아</th>
+                                                    <td><button type="button" value="SYDNEY, AUSTRALIA;AUSYD"><span>시드니</span></button></td>
+                                                    <td><button type="button" value="MELBOURNE, AUSTRALIA;AUMEL"><span>멜버른</span></button></td>
+                                                    <td><button type="button" value="BRISBANE, AUSTRALIA;AUBNE"><span>브리즈번</span></button></td>
+                                                    <td><button type="button" value="AUCKLAND, NEW ZEALAND;NZAKL"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>아프리카</th>
+                                                    <td><button type="button" value="DURBAN, SOUTH AFRICA;ZADUR"><span>더반</span></button></td>
+                                                    <td><button type="button" value="JOHANNESBURG, SOUTH AFRICA;ZAJNB"><span>요하네스버그</span></button></td>
+                                                    <td><button type="button" value="CAPE TOWN, SOUTH AFRICA;ZACPT"><span>케이프타운</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="tbl_option mo" id="quick_LCL_POLCD2">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="5">한국</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="BUSAN, KOREA;KRPUS"><span>부산</span></button></td>
+                                                    <td><button type="button" value="INCHEON,KOREA;KRINC"><span>인천</span></button></td>
+                                                    <td><button type="button" value="PYEONGTAEK, KOREA;KRPTK"><span>평택</span></button></td>
+                                                    <td><button type="button" value="DONGHAE, KOREA;KRTGH"><span>동해</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">동남아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="KEELUNG,TAIWAN;TWKEL"><span>기륭</span></button></td>
+                                                    <td><button type="button" value="KAOHSIUNG, TAIWAN;TWKHH"><span>까오슝</span></button></td>
+                                                    <td><button type="button" value="DA NANG, VIETNAM;VNDAD"><span>다낭</span></button></td>
+                                                    <td><button type="button" value="LAEM CHABANG, THAILAND;THLCH"><span>람차방</span></button></td>
+                                                    <td><button type="button" value="MANILA, PHILIPPINES;PHMNL"><span>마닐라</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="BANGKOK, THAILAND;THBKK"><span>방콕</span></button></td>
+                                                    <td><button type="button" value="SEMARANG, JAVA;IDSRG"><span>세마랑</span></button></td>
+                                                    <td><button type="button" value="SURABAYA, INDONESIA;IDSUB"><span>수라바야</span></button></td>
+                                                    <td><button type="button" value="SIHANOUKVILLE, CAMBODIA;KHSIH"><span>시아누크빌</span></button></td>
+                                                    <td><button type="button" value="SINGAPORE;SGSIN"><span>싱가폴</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="JAKARTA, INDONESIA;IDJKT"><span>자카르타</span></button></td>
+                                                    <td><button type="button" value="TAICHUNG, TAIWAN;TWTXG"><span>타이중</span></button></td>
+                                                    <td><button type="button" value="PENANG (GEORGETOWN), MALAYSIA;MYPEN"><span>페낭</span></button></td>
+                                                    <td><button type="button" value="WESTPORT/PORT KLANG, MALAYSIA;MYWSP"><span>포트켈랑</span></button></td>
+                                                    <td><button type="button" value="HAIPHONG, VIETNAM;VNHPH"><span>하이퐁</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HO CHI MINH CITY, VIETNAM;VNSGN"><span>호치민</span></button></td>
+                                                    <td><button type="button" value="HONG KONG;HKHKG"><span>홍콩</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">서남아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA"><span>나바샤바</span></button></td>
+                                                    <td><button type="button" value="NEW DELHI, INDIA;INICD"><span>뉴델리</span></button></td>
+                                                    <td><button type="button" value="CHENNAI (EX MADRAS), INDIA;INMAA"><span>첸나이</span></button></td>
+                                                    <td><button type="button" value="CHITTAGONG, BANGLADESH;BDCGP"><span>치타공</span></button></td>
+                                                    <td><button type="button" value="KARACHI, PAKISTAN;PKKHI"><span>카라치</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="COLOMBO, SRI LANKA;LKCMB"><span>콜롬보</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">중국</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="NANJING, CHINA;CNNKG"><span>남경</span></button></td>
+                                                    <td><button type="button" value="NINGBO, CHINA;CNNGB"><span>닝보</span></button></td>
+                                                    <td><button type="button" value="DALI, CHINA;CNDLC"><span>대련</span></button></td>
+                                                    <td><button type="button" value="SHANGHAI, CHINA;CNSHA"><span>상해</span></button></td>
+                                                    <td><button type="button" value="XIAMEN, CHINA;CNXMN"><span>샤먼</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="XINGANG, CHINA;CNXGG"><span>신강</span></button></td>
+                                                    <td><button type="button" value="YANTAI, CHINA;CNYNT"><span>연태</span></button></td>
+                                                    <td><button type="button" value="WEIHAI, CHINA;CNWEI"><span>위해</span></button></td>
+                                                    <td><button type="button" value="QINGDAO, CHINA;CNTAO"><span>청도</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">러시아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VLADIVOSTOK, RUSSIA;RUVVO"><span>블라디보스톡</span></button></td>
+                                                    <td><button type="button" value="SHEREMETYEVO APT/MOSCOW, RUSSIA;RUSVO"><span>모스크바</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">일본</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="TOKYO, JAPAN;JPTYO"><span>도쿄</span></button></td>
+                                                    <td><button type="button" value="YOKOHAMA, JAPAN;JPYOK"><span>요코하마</span></button></td>
+                                                    <td><button type="button" value="OSAKA, JAPAN;JPOSA"><span>오사카</span></button></td>
+                                                    <td><button type="button" value="KOBE, JAPAN;JPUKB"><span>고베</span></button></td>
+                                                    <td><button type="button" value="NAGOYA, AICHI;JPNGO"><span>나고야</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="KANAZAWA, JAPAN;JPKNZ"><span>가나자와</span></button></td>
+                                                    <td><button type="button" value="KUMAMOTO, JAPAN;JPKMJ"><span>구마모토</span></button></td>
+                                                    <td><button type="button" value="NAOETSU, JAPAN;JPNAO"><span>나오에스</span></button></td>
+                                                    <td><button type="button" value="NAGASAKI, JAPAN;JPNGS"><span>나가사키</span></button></td>
+                                                    <td><button type="button" value="NIIGATA, JAPAN;JPKIJ"><span>니가타</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="TOMAKOMAI, JAPAN;JPTMK"><span>도마코마이</span></button></td>
+                                                    <td><button type="button" value="TOYAMA, JAPAN;JPTOY"><span>도야마</span></button></td>
+                                                    <td><button type="button" value="MATSUYAMA, JAPAN;JPMYJ"><span>마쓰야마</span></button></td>
+                                                    <td><button type="button" value="MIZUSHIMA, JAPAN;JPMIZ"><span>미즈시마</span></button></td>
+                                                    <td><button type="button" value="MOJI/KITAKYUSHU, JAPAN;JPMOJ"><span>모지</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SAKATA, JAPAN;JPSKT"><span>사카타</span></button></td>
+                                                    <td><button type="button" value="SENDAI, MIYAGI;JPSDJ"><span>센다이</span></button></td>
+                                                    <td><button type="button" value="TSURUGA, JAPAN;JPTRG"><span>스루가</span></button></td>
+                                                    <td><button type="button" value="SHIMONOSEKI, JAPAN;JPSHS"><span>시모노세키</span></button></td>
+                                                    <td><button type="button" value="SHIMIZU, JAPAN;JPSMZ"><span>시미즈</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="AKITA, JAPAN;JPAXT"><span>아키타</span></button></td>
+                                                    <td><button type="button" value="IMABARI, JAPAN;JPIMB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="CHIBA, JAPAN;JPCHB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="TAKAMATSU, JAPAN;JPTAK"><span>타카마스</span></button></td>
+                                                    <td><button type="button" value="HAKATA/FUKUOKA, JAPAN;JPHKT"><span>하카타</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="FUKUYAMA, HIROSHIMA;JPFKY"><span>후쿠야마</span></button></td>
+                                                    <td><button type="button" value="HIROSHIMA, JAPAN;JPHIJ"><span>히로시마</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">북미</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="NEW YORK, U.S.A.;USNYC"><span>뉴욕</span></button></td>
+                                                    <td><button type="button" value="LOS ANGELES, U.S.A.;USLAX"><span>로스앤젤레스</span></button></td>
+                                                    <td><button type="button" value="SEATTLE, U.S.A.;USSEA"><span>시애틀</span></button></td>
+                                                    <td><button type="button" value="OAKLAND, U.S.A.;USOAK"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VANCOUVER, CANADA;CAVAN"><span>밴쿠버</span></button></td>
+                                                    <td><button type="button" value="MONTREAL, CANADA;CAMTR"><span>몬트리올</span></button></td>
+                                                    <td><button type="button" value="TORONTO, CANADA;CATOR"><span>토론토</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">중남미</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="GUAYAQUIL, ECUADOR;ECGYE"><span>과야퀼</span></button></td>
+                                                    <td><button type="button" value="GUATEMALA CITY;GTGUA"><span>과테말라</span></button></td>
+                                                    <td><button type="button" value="LAZARO CARDENAS, MEXICO;MXLZC"><span>라자로칼데라스</span></button></td>
+                                                    <td><button type="button" value="MANZANILLO, MEXICO;MXZLO"><span>만자닐로</span></button></td>
+                                                    <td><button type="button" value="MONTEVIDEO, URUGUAY;UYMVD"><span>몬테비데오</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VALPARAISO, CHILE;CLVAP"><span>발파라이소</span></button></td>
+                                                    <td><button type="button" value="BUENAVENTURA, COLOMBIA;COBUN"><span>부에나벤투라</span></button></td>
+                                                    <td><button type="button" value="BUENOS AIRES, ARGENTINA;ARBUE"><span>부에노아에레스</span></button></td>
+                                                    <td><button type="button" value="SAN SALVADOR, EL SALVADOR;SVSAL"><span>산살바도르</span></button></td>
+                                                    <td><button type="button" value="SAN JOSE, COSTA RICA;CRSJO"><span>산조세</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SANTO DOMINGO, DOMINICAN REPUBLIC;DOSDQ"><span>산토도밍고</span></button></td>
+                                                    <td><button type="button" value="SANTOS, BRAZIL;BRSSZ"><span>산토스</span></button></td>
+                                                    <td><button type="button" value="IQUIQUE, CHILE;CLIQQ"><span>이키케</span></button></td>
+                                                    <td><button type="button" value="CALLAO, PERU;PECLL"><span>칼라오</span></button></td>
+                                                    <td><button type="button" value="COLON FREE ZONE, PANAMA;PACFZ"><span>콜론프리존</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">유럽</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="GDANSK, POLAND;PLGDN"><span>그단스크</span></button></td>
+                                                    <td><button type="button" value="ROTTERDAM, NETHERLANDS;NLRTM"><span>로테르담</span></button></td>
+                                                    <td><button type="button" value="LE HAVRE, FRANCE;FRLEH"><span>르하브르</span></button></td>
+                                                    <td><button type="button" value="RIGA, LATVIA;LVRIX"><span>리가</span></button></td>
+                                                    <td><button type="button" value="VARNA, BULGARIA;BGVAR"><span>바르나</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="ANTWERPEN, BELGIUM;BEANR"><span>엔트워프</span></button></td>
+                                                    <td><button type="button" value="KOPER, SLOVENIA;SIKOP"><span>코퍼</span></button></td>
+                                                    <td><button type="button" value="CONSTANTA, ROMANIA;ROCND"><span>콘스탄차</span></button></td>
+                                                    <td><button type="button" value="FELIXSTOWE, UNITED KINGDOM;GBFXT"><span>펠릭스토우</span></button></td>
+                                                    <td><button type="button" value="HAMBURG, GERMANY;DEHAM"><span>함부르그 </span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">지중해</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="BARCELONA, SPAIN;ESBCN"><span>바르셀로나</span></button></td>
+                                                    <td><button type="button" value="VALENCIA, SPAIN;ESVLC"><span>발렌시아</span></button></td>
+                                                    <td><button type="button" value="ASHDOD, ISRAEL;ILASH"><span>아슈도드</span></button></td>
+                                                    <td><button type="button" value="AMBARLI, TURKEY;TRAMB"><span>암발리</span></button></td>
+                                                    <td><button type="button" value="GENOA, ITALY;ITGOA"><span>제노아</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HAYDARPASA, TURKEY;TRHAY"><span>하이다르파샤</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">중동</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA"><span>두바이<br class="pc" />(제벨 알리)</span></button></td>
+                                                    <td><button type="button" value="AD DAMMAM, SAUDI ARABIA;SADMM"><span>담맘</span></button></td>
+                                                    <td><button type="button" value="BAHRAIN;BHBAH"><span>바레인</span></button></td>
+                                                    <td><button type="button" value="BANDAR ABBAS, IRAN;IRBND"><span>반다르 아바스</span></button></td>
+                                                    <td><button type="button" value="SOHAR, OMAN;OMSOH"><span>소하르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="AQABA, JORDAN;JOAQB"><span>아카바</span></button></td>
+                                                    <td><button type="button" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY"><span>알렉산드리아</span></button></td>
+                                                    <td><button type="button" value="JEDDAH, SAUDI ARABIA;SAJED"><span>제다</span></button></td>
+                                                    <td><button type="button" value="KUWAIT;KWKWI"><span>쿠웨이트</span></button></td>
+                                                    <td><button type="button" value="HAMAD;QAHMD"><span>하마드</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">오세아니아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SYDNEY, AUSTRALIA;AUSYD"><span>시드니</span></button></td>
+                                                    <td><button type="button" value="MELBOURNE, AUSTRALIA;AUMEL"><span>멜버른</span></button></td>
+                                                    <td><button type="button" value="BRISBANE, AUSTRALIA;AUBNE"><span>브리즈번</span></button></td>
+                                                    <td><button type="button" value="AUCKLAND, NEW ZEALAND;NZAKL"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">아프리카</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="DURBAN, SOUTH AFRICA;ZADUR"><span>더반</span></button></td>
+                                                    <td><button type="button" value="JOHANNESBURG, SOUTH AFRICA;ZAJNB"><span>요하네스버그</span></button></td>
+                                                    <td><button type="button" value="CAPE TOWN, SOUTH AFRICA;ZACPT"><span>케이프타운</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button type="button" class="btns icon close" onclick="selectPopClose('#select_LCL_pop01');"><span class="blind">닫기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w1">
+                        <div class="int_box border-animation" id="AC_LCLArrival_Width">
+                            <input type="text" value="" placeholder="클릭하여 도착지를 선택하세요." id="input_LCL_Arrival" class="border-animation__inner" autocomplete="off" data-index="Schedule_SEA2" maxlength="30" />
+                            <input type="hidden" class="input_hidden" value="" id="input_LCL_POD" />
+                            <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                            <button type="button" class="btns icon down" onclick="selectPopOpen('#select_LCL_pop02')"><span class="blind">펼침</span></button>
+                            <div class="select_pop" id="select_LCL_pop02">
+                                <h3 class="title03">주요 도착지 선택 (추가 PORT도 영문 색인 가능)</h3>
+                                <div class="select_location">
+                                    <div class="scrollbar_tbl2">
+                                        <table class="tbl_option pc" id="quick_LCL_PODCD">
+                                            <tbody>
+                                                <tr>
+                                                    <th>한국</th>
+                                                    <td><button type="button" value="BUSAN, KOREA;KRPUS"><span>부산</span></button></td>
+                                                    <td><button type="button" value="INCHEON,KOREA;KRINC"><span>인천</span></button></td>
+                                                    <td><button type="button" value="PYEONGTAEK, KOREA;KRPTK"><span>평택</span></button></td>
+                                                    <td><button type="button" value="DONGHAE, KOREA;KRTGH"><span>동해</span></button></td>
+                                                    <td></td>
+                                                </tr>
+
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="4">동남아</th>
+                                                    <td><button type="button" value="KEELUNG,TAIWAN;TWKEL"><span>기륭</span></button></td>
+                                                    <td><button type="button" value="KAOHSIUNG, TAIWAN;TWKHH"><span>까오슝</span></button></td>
+                                                    <td><button type="button" value="DA NANG, VIETNAM;VNDAD"><span>다낭</span></button></td>
+                                                    <td><button type="button" value="LAEM CHABANG, THAILAND;THLCH"><span>람차방</span></button></td>
+                                                    <td><button type="button" value="MANILA, PHILIPPINES;PHMNL"><span>마닐라</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="BANGKOK, THAILAND;THBKK"><span>방콕</span></button></td>
+                                                    <td><button type="button" value="SEMARANG, JAVA;IDSRG"><span>세마랑</span></button></td>
+                                                    <td><button type="button" value="SURABAYA, INDONESIA;IDSUB"><span>수라바야</span></button></td>
+                                                    <td><button type="button" value="SIHANOUKVILLE, CAMBODIA;KHSIH"><span>시아누크빌</span></button></td>
+                                                    <td><button type="button" value="SINGAPORE;SGSIN"><span>싱가폴</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="JAKARTA, INDONESIA;IDJKT"><span>자카르타</span></button></td>
+                                                    <td><button type="button" value="TAICHUNG, TAIWAN;TWTXG"><span>타이중</span></button></td>
+                                                    <td><button type="button" value="PENANG (GEORGETOWN), MALAYSIA;MYPEN"><span>페낭</span></button></td>
+                                                    <td><button type="button" value="WESTPORT/PORT KLANG, MALAYSIA;MYWSP"><span>포트켈랑</span></button></td>
+                                                    <td><button type="button" value="HAIPHONG, VIETNAM;VNHPH"><span>하이퐁</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HO CHI MINH CITY, VIETNAM;VNSGN"><span>호치민</span></button></td>
+                                                    <td><button type="button" value="HONG KONG;HKHKG"><span>홍콩</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">서남아</th>
+                                                    <td><button type="button" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA"><span>나바샤바</span></button></td>
+                                                    <td><button type="button" value="NEW DELHI, INDIA;INICD"><span>뉴델리</span></button></td>
+                                                    <td><button type="button" value="CHENNAI (EX MADRAS), INDIA;INMAA"><span>첸나이</span></button></td>
+                                                    <td><button type="button" value="CHITTAGONG, BANGLADESH;BDCGP"><span>치타공</span></button></td>
+                                                    <td><button type="button" value="KARACHI, PAKISTAN;PKKHI"><span>카라치</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="COLOMBO, SRI LANKA;LKCMB"><span>콜롬보</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">중국</th>
+                                                    <td><button type="button" value="NANJING, CHINA;CNNKG"><span>남경</span></button></td>
+                                                    <td><button type="button" value="NINGBO, CHINA;CNNGB"><span>닝보</span></button></td>
+                                                    <td><button type="button" value="DALI, CHINA;CNDLC"><span>대련</span></button></td>
+                                                    <td><button type="button" value="SHANGHAI, CHINA;CNSHA"><span>상해</span></button></td>
+                                                    <td><button type="button" value="XIAMEN, CHINA;CNXMN"><span>샤먼</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="XINGANG, CHINA;CNXGG"><span>신강</span></button></td>
+                                                    <td><button type="button" value="YANTAI, CHINA;CNYNT"><span>연태</span></button></td>
+                                                    <td><button type="button" value="WEIHAI, CHINA;CNWEI"><span>위해</span></button></td>
+                                                    <td><button type="button" value="QINGDAO, CHINA;CNTAO"><span>청도</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>러시아</th>
+                                                    <td><button type="button" value="VLADIVOSTOK, RUSSIA;RUVVO"><span>블라디보스톡</span></button></td>
+                                                    <td><button type="button" value="SHEREMETYEVO APT/MOSCOW, RUSSIA;RUSVO"><span>모스크바</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="6">일본</th>
+                                                    <td><button type="button" value="TOKYO, JAPAN;JPTYO"><span>도쿄</span></button></td>
+                                                    <td><button type="button" value="YOKOHAMA, JAPAN;JPYOK"><span>요코하마</span></button></td>
+                                                    <td><button type="button" value="OSAKA, JAPAN;JPOSA"><span>오사카</span></button></td>
+                                                    <td><button type="button" value="KOBE, JAPAN;JPUKB"><span>고베</span></button></td>
+                                                    <td><button type="button" value="NAGOYA, AICHI;JPNGO"><span>나고야</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="KANAZAWA, JAPAN;JPKNZ"><span>가나자와</span></button></td>
+                                                    <td><button type="button" value="KUMAMOTO, JAPAN;JPKMJ"><span>구마모토</span></button></td>
+                                                    <td><button type="button" value="NAOETSU, JAPAN;JPNAO"><span>나오에스</span></button></td>
+                                                    <td><button type="button" value="NAGASAKI, JAPAN;JPNGS"><span>나가사키</span></button></td>
+                                                    <td><button type="button" value="NIIGATA, JAPAN;JPKIJ"><span>니가타</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="TOMAKOMAI, JAPAN;JPTMK"><span>도마코마이</span></button></td>
+                                                    <td><button type="button" value="TOYAMA, JAPAN;JPTOY"><span>도야마</span></button></td>
+                                                    <td><button type="button" value="MATSUYAMA, JAPAN;JPMYJ"><span>마쓰야마</span></button></td>
+                                                    <td><button type="button" value="MIZUSHIMA, JAPAN;JPMIZ"><span>미즈시마</span></button></td>
+                                                    <td><button type="button" value="MOJI/KITAKYUSHU, JAPAN;JPMOJ"><span>모지</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="SAKATA, JAPAN;JPSKT"><span>사카타</span></button></td>
+                                                    <td><button type="button" value="SENDAI, MIYAGI;JPSDJ"><span>센다이</span></button></td>
+                                                    <td><button type="button" value="TSURUGA, JAPAN;JPTRG"><span>스루가</span></button></td>
+                                                    <td><button type="button" value="SHIMONOSEKI, JAPAN;JPSHS"><span>시모노세키</span></button></td>
+                                                    <td><button type="button" value="SHIMIZU, JAPAN;JPSMZ"><span>시미즈</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="AKITA, JAPAN;JPAXT"><span>아키타</span></button></td>
+                                                    <td><button type="button" value="IMABARI, JAPAN;JPIMB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="CHIBA, JAPAN;JPCHB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="TAKAMATSU, JAPAN;JPTAK"><span>타카마스</span></button></td>
+                                                    <td><button type="button" value="HAKATA/FUKUOKA, JAPAN;JPHKT"><span>하카타</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="FUKUYAMA, HIROSHIMA;JPFKY"><span>후쿠야마</span></button></td>
+                                                    <td><button type="button" value="HIROSHIMA, JAPAN;JPHIJ"><span>히로시마</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">북미</th>
+                                                    <td><button type="button" value="NEW YORK, U.S.A.;USNYC"><span>뉴욕</span></button></td>
+                                                    <td><button type="button" value="LOS ANGELES, U.S.A.;USLAX"><span>로스앤젤레스</span></button></td>
+                                                    <td><button type="button" value="SEATTLE, U.S.A.;USSEA"><span>시애틀</span></button></td>
+                                                    <td><button type="button" value="OAKLAND, U.S.A.;USOAK"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VANCOUVER, CANADA;CAVAN"><span>밴쿠버</span></button></td>
+                                                    <td><button type="button" value="MONTREAL, CANADA;CAMTR"><span>몬트리올</span></button></td>
+                                                    <td><button type="button" value="TORONTO, CANADA;CATOR"><span>토론토</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="3">중남미</th>
+                                                    <td><button type="button" value="GUAYAQUIL, ECUADOR;ECGYE"><span>과야퀼</span></button></td>
+                                                    <td><button type="button" value="GUATEMALA CITY;GTGUA"><span>과테말라</span></button></td>
+                                                    <td><button type="button" value="LAZARO CARDENAS, MEXICO;MXLZC"><span>라자로칼데라스</span></button></td>
+                                                    <td><button type="button" value="MANZANILLO, MEXICO;MXZLO"><span>만자닐로</span></button></td>
+                                                    <td><button type="button" value="MONTEVIDEO, URUGUAY;UYMVD"><span>몬테비데오</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <td><button type="button" value="VALPARAISO, CHILE;CLVAP"><span>발파라이소</span></button></td>
+                                                    <td><button type="button" value="BUENAVENTURA, COLOMBIA;COBUN"><span>부에나벤투라</span></button></td>
+                                                    <td><button type="button" value="BUENOS AIRES, ARGENTINA;ARBUE"><span>부에노아에레스</span></button></td>
+                                                    <td><button type="button" value="SAN SALVADOR, EL SALVADOR;SVSAL"><span>산살바도르</span></button></td>
+                                                    <td><button type="button" value="SAN JOSE, COSTA RICA;CRSJO"><span>산조세</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SANTO DOMINGO, DOMINICAN REPUBLIC;DOSDQ"><span>산토도밍고</span></button></td>
+                                                    <td><button type="button" value="SANTOS, BRAZIL;BRSSZ"><span>산토스</span></button></td>
+                                                    <td><button type="button" value="IQUIQUE, CHILE;CLIQQ"><span>이키케</span></button></td>
+                                                    <td><button type="button" value="CALLAO, PERU;PECLL"><span>칼라오</span></button></td>
+                                                    <td><button type="button" value="COLON FREE ZONE, PANAMA;PACFZ"><span>콜론프리존</span></button></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">유럽</th>
+                                                    <td><button type="button" value="GDANSK, POLAND;PLGDN"><span>그단스크</span></button></td>
+                                                    <td><button type="button" value="ROTTERDAM, NETHERLANDS;NLRTM"><span>로테르담</span></button></td>
+                                                    <td><button type="button" value="LE HAVRE, FRANCE;FRLEH"><span>르하브르</span></button></td>
+                                                    <td><button type="button" value="RIGA, LATVIA;LVRIX"><span>리가</span></button></td>
+                                                    <td><button type="button" value="VARNA, BULGARIA;BGVAR"><span>바르나</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="ANTWERPEN, BELGIUM;BEANR"><span>엔트워프</span></button></td>
+                                                    <td><button type="button" value="KOPER, SLOVENIA;SIKOP"><span>코퍼</span></button></td>
+                                                    <td><button type="button" value="CONSTANTA, ROMANIA;ROCND"><span>콘스탄차</span></button></td>
+                                                    <td><button type="button" value="FELIXSTOWE, UNITED KINGDOM;GBFXT"><span>펠릭스토우</span></button></td>
+                                                    <td><button type="button" value="HAMBURG, GERMANY;DEHAM"><span>함부르그 </span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">지중해</th>
+                                                    <td><button type="button" value="BARCELONA, SPAIN;ESBCN"><span>바르셀로나</span></button></td>
+                                                    <td><button type="button" value="VALENCIA, SPAIN;ESVLC"><span>발렌시아</span></button></td>
+                                                    <td><button type="button" value="ASHDOD, ISRAEL;ILASH"><span>아슈도드</span></button></td>
+                                                    <td><button type="button" value="AMBARLI, TURKEY;TRAMB"><span>암발리</span></button></td>
+                                                    <td><button type="button" value="GENOA, ITALY;ITGOA"><span>제노아</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HAYDARPASA, TURKEY;TRHAY"><span>하이다르파샤</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">중동</th>
+                                                    <td><button type="button" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA"><span>두바이<br class="pc" />(제벨 알리)</span></button></td>
+                                                    <td><button type="button" value="AD DAMMAM, SAUDI ARABIA;SADMM"><span>담맘</span></button></td>
+                                                    <td><button type="button" value="BAHRAIN;BHBAH"><span>바레인</span></button></td>
+                                                    <td><button type="button" value="BANDAR ABBAS, IRAN;IRBND"><span>반다르 아바스</span></button></td>
+                                                    <td><button type="button" value="SOHAR, OMAN;OMSOH"><span>소하르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="AQABA, JORDAN;JOAQB"><span>아카바</span></button></td>
+                                                    <td><button type="button" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY"><span>알렉산드리아</span></button></td>
+                                                    <td><button type="button" value="JEDDAH, SAUDI ARABIA;SAJED"><span>제다</span></button></td>
+                                                    <td><button type="button" value="KUWAIT;KWKWI"><span>쿠웨이트</span></button></td>
+                                                    <td><button type="button" value="HAMAD;QAHMD"><span>하마드</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>오세아니아</th>
+                                                    <td><button type="button" value="SYDNEY, AUSTRALIA;AUSYD"><span>시드니</span></button></td>
+                                                    <td><button type="button" value="MELBOURNE, AUSTRALIA;AUMEL"><span>멜버른</span></button></td>
+                                                    <td><button type="button" value="BRISBANE, AUSTRALIA;AUBNE"><span>브리즈번</span></button></td>
+                                                    <td><button type="button" value="AUCKLAND, NEW ZEALAND;NZAKL"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>아프리카</th>
+                                                    <td><button type="button" value="DURBAN, SOUTH AFRICA;ZADUR"><span>더반</span></button></td>
+                                                    <td><button type="button" value="JOHANNESBURG, SOUTH AFRICA;ZAJNB"><span>요하네스버그</span></button></td>
+                                                    <td><button type="button" value="CAPE TOWN, SOUTH AFRICA;ZACPT"><span>케이프타운</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="tbl_option mo" id="quick_LCL_PODCD2">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="5">한국</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="BUSAN, KOREA;KRPUS"><span>부산</span></button></td>
+                                                    <td><button type="button" value="INCHEON,KOREA;KRINC"><span>인천</span></button></td>
+                                                    <td><button type="button" value="PYEONGTAEK, KOREA;KRPTK"><span>평택</span></button></td>
+                                                    <td><button type="button" value="DONGHAE, KOREA;KRTGH"><span>동해</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">동남아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="KEELUNG,TAIWAN;TWKEL"><span>기륭</span></button></td>
+                                                    <td><button type="button" value="KAOHSIUNG, TAIWAN;TWKHH"><span>까오슝</span></button></td>
+                                                    <td><button type="button" value="DA NANG, VIETNAM;VNDAD"><span>다낭</span></button></td>
+                                                    <td><button type="button" value="LAEM CHABANG, THAILAND;THLCH"><span>람차방</span></button></td>
+                                                    <td><button type="button" value="MANILA, PHILIPPINES;PHMNL"><span>마닐라</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="BANGKOK, THAILAND;THBKK"><span>방콕</span></button></td>
+                                                    <td><button type="button" value="SEMARANG, JAVA;IDSRG"><span>세마랑</span></button></td>
+                                                    <td><button type="button" value="SURABAYA, INDONESIA;IDSUB"><span>수라바야</span></button></td>
+                                                    <td><button type="button" value="SIHANOUKVILLE, CAMBODIA;KHSIH"><span>시아누크빌</span></button></td>
+                                                    <td><button type="button" value="SINGAPORE;SGSIN"><span>싱가폴</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="JAKARTA, INDONESIA;IDJKT"><span>자카르타</span></button></td>
+                                                    <td><button type="button" value="TAICHUNG, TAIWAN;TWTXG"><span>타이중</span></button></td>
+                                                    <td><button type="button" value="PENANG (GEORGETOWN), MALAYSIA;MYPEN"><span>페낭</span></button></td>
+                                                    <td><button type="button" value="WESTPORT/PORT KLANG, MALAYSIA;MYWSP"><span>포트켈랑</span></button></td>
+                                                    <td><button type="button" value="HAIPHONG, VIETNAM;VNHPH"><span>하이퐁</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HO CHI MINH CITY, VIETNAM;VNSGN"><span>호치민</span></button></td>
+                                                    <td><button type="button" value="HONG KONG;HKHKG"><span>홍콩</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">서남아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA"><span>나바샤바</span></button></td>
+                                                    <td><button type="button" value="NEW DELHI, INDIA;INICD"><span>뉴델리</span></button></td>
+                                                    <td><button type="button" value="CHENNAI (EX MADRAS), INDIA;INMAA"><span>첸나이</span></button></td>
+                                                    <td><button type="button" value="CHITTAGONG, BANGLADESH;BDCGP"><span>치타공</span></button></td>
+                                                    <td><button type="button" value="KARACHI, PAKISTAN;PKKHI"><span>카라치</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="COLOMBO, SRI LANKA;LKCMB"><span>콜롬보</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">중국</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="NANJING, CHINA;CNNKG"><span>남경</span></button></td>
+                                                    <td><button type="button" value="NINGBO, CHINA;CNNGB"><span>닝보</span></button></td>
+                                                    <td><button type="button" value="DALI, CHINA;CNDLC"><span>대련</span></button></td>
+                                                    <td><button type="button" value="SHANGHAI, CHINA;CNSHA"><span>상해</span></button></td>
+                                                    <td><button type="button" value="XIAMEN, CHINA;CNXMN"><span>샤먼</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="XINGANG, CHINA;CNXGG"><span>신강</span></button></td>
+                                                    <td><button type="button" value="YANTAI, CHINA;CNYNT"><span>연태</span></button></td>
+                                                    <td><button type="button" value="WEIHAI, CHINA;CNWEI"><span>위해</span></button></td>
+                                                    <td><button type="button" value="QINGDAO, CHINA;CNTAO"><span>청도</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">러시아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VLADIVOSTOK, RUSSIA;RUVVO"><span>블라디보스톡</span></button></td>
+                                                    <td><button type="button" value="SHEREMETYEVO APT/MOSCOW, RUSSIA;RUSVO"><span>모스크바</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">일본</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="TOKYO, JAPAN;JPTYO"><span>도쿄</span></button></td>
+                                                    <td><button type="button" value="YOKOHAMA, JAPAN;JPYOK"><span>요코하마</span></button></td>
+                                                    <td><button type="button" value="OSAKA, JAPAN;JPOSA"><span>오사카</span></button></td>
+                                                    <td><button type="button" value="KOBE, JAPAN;JPUKB"><span>고베</span></button></td>
+                                                    <td><button type="button" value="NAGOYA, AICHI;JPNGO"><span>나고야</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="KANAZAWA, JAPAN;JPKNZ"><span>가나자와</span></button></td>
+                                                    <td><button type="button" value="KUMAMOTO, JAPAN;JPKMJ"><span>구마모토</span></button></td>
+                                                    <td><button type="button" value="NAOETSU, JAPAN;JPNAO"><span>나오에스</span></button></td>
+                                                    <td><button type="button" value="NAGASAKI, JAPAN;JPNGS"><span>나가사키</span></button></td>
+                                                    <td><button type="button" value="NIIGATA, JAPAN;JPKIJ"><span>니가타</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="TOMAKOMAI, JAPAN;JPTMK"><span>도마코마이</span></button></td>
+                                                    <td><button type="button" value="TOYAMA, JAPAN;JPTOY"><span>도야마</span></button></td>
+                                                    <td><button type="button" value="MATSUYAMA, JAPAN;JPMYJ"><span>마쓰야마</span></button></td>
+                                                    <td><button type="button" value="MIZUSHIMA, JAPAN;JPMIZ"><span>미즈시마</span></button></td>
+                                                    <td><button type="button" value="MOJI/KITAKYUSHU, JAPAN;JPMOJ"><span>모지</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SAKATA, JAPAN;JPSKT"><span>사카타</span></button></td>
+                                                    <td><button type="button" value="SENDAI, MIYAGI;JPSDJ"><span>센다이</span></button></td>
+                                                    <td><button type="button" value="TSURUGA, JAPAN;JPTRG"><span>스루가</span></button></td>
+                                                    <td><button type="button" value="SHIMONOSEKI, JAPAN;JPSHS"><span>시모노세키</span></button></td>
+                                                    <td><button type="button" value="SHIMIZU, JAPAN;JPSMZ"><span>시미즈</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="AKITA, JAPAN;JPAXT"><span>아키타</span></button></td>
+                                                    <td><button type="button" value="IMABARI, JAPAN;JPIMB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="CHIBA, JAPAN;JPCHB"><span>이마바리</span></button></td>
+                                                    <td><button type="button" value="TAKAMATSU, JAPAN;JPTAK"><span>타카마스</span></button></td>
+                                                    <td><button type="button" value="HAKATA/FUKUOKA, JAPAN;JPHKT"><span>하카타</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="FUKUYAMA, HIROSHIMA;JPFKY"><span>후쿠야마</span></button></td>
+                                                    <td><button type="button" value="HIROSHIMA, JAPAN;JPHIJ"><span>히로시마</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">북미</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="NEW YORK, U.S.A.;USNYC"><span>뉴욕</span></button></td>
+                                                    <td><button type="button" value="LOS ANGELES, U.S.A.;USLAX"><span>로스앤젤레스</span></button></td>
+                                                    <td><button type="button" value="SEATTLE, U.S.A.;USSEA"><span>시애틀</span></button></td>
+                                                    <td><button type="button" value="OAKLAND, U.S.A.;USOAK"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VANCOUVER, CANADA;CAVAN"><span>밴쿠버</span></button></td>
+                                                    <td><button type="button" value="MONTREAL, CANADA;CAMTR"><span>몬트리올</span></button></td>
+                                                    <td><button type="button" value="TORONTO, CANADA;CATOR"><span>토론토</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">중남미</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="GUAYAQUIL, ECUADOR;ECGYE"><span>과야퀼</span></button></td>
+                                                    <td><button type="button" value="GUATEMALA CITY;GTGUA"><span>과테말라</span></button></td>
+                                                    <td><button type="button" value="LAZARO CARDENAS, MEXICO;MXLZC"><span>라자로칼데라스</span></button></td>
+                                                    <td><button type="button" value="MANZANILLO, MEXICO;MXZLO"><span>만자닐로</span></button></td>
+                                                    <td><button type="button" value="MONTEVIDEO, URUGUAY;UYMVD"><span>몬테비데오</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="VALPARAISO, CHILE;CLVAP"><span>발파라이소</span></button></td>
+                                                    <td><button type="button" value="BUENAVENTURA, COLOMBIA;COBUN"><span>부에나벤투라</span></button></td>
+                                                    <td><button type="button" value="BUENOS AIRES, ARGENTINA;ARBUE"><span>부에노아에레스</span></button></td>
+                                                    <td><button type="button" value="SAN SALVADOR, EL SALVADOR;SVSAL"><span>산살바도르</span></button></td>
+                                                    <td><button type="button" value="SAN JOSE, COSTA RICA;CRSJO"><span>산조세</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SANTO DOMINGO, DOMINICAN REPUBLIC;DOSDQ"><span>산토도밍고</span></button></td>
+                                                    <td><button type="button" value="SANTOS, BRAZIL;BRSSZ"><span>산토스</span></button></td>
+                                                    <td><button type="button" value="IQUIQUE, CHILE;CLIQQ"><span>이키케</span></button></td>
+                                                    <td><button type="button" value="CALLAO, PERU;PECLL"><span>칼라오</span></button></td>
+                                                    <td><button type="button" value="COLON FREE ZONE, PANAMA;PACFZ"><span>콜론프리존</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">유럽</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="GDANSK, POLAND;PLGDN"><span>그단스크</span></button></td>
+                                                    <td><button type="button" value="ROTTERDAM, NETHERLANDS;NLRTM"><span>로테르담</span></button></td>
+                                                    <td><button type="button" value="LE HAVRE, FRANCE;FRLEH"><span>르하브르</span></button></td>
+                                                    <td><button type="button" value="RIGA, LATVIA;LVRIX"><span>리가</span></button></td>
+                                                    <td><button type="button" value="VARNA, BULGARIA;BGVAR"><span>바르나</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="ANTWERPEN, BELGIUM;BEANR"><span>엔트워프</span></button></td>
+                                                    <td><button type="button" value="KOPER, SLOVENIA;SIKOP"><span>코퍼</span></button></td>
+                                                    <td><button type="button" value="CONSTANTA, ROMANIA;ROCND"><span>콘스탄차</span></button></td>
+                                                    <td><button type="button" value="FELIXSTOWE, UNITED KINGDOM;GBFXT"><span>펠릭스토우</span></button></td>
+                                                    <td><button type="button" value="HAMBURG, GERMANY;DEHAM"><span>함부르그 </span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">지중해</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="BARCELONA, SPAIN;ESBCN"><span>바르셀로나</span></button></td>
+                                                    <td><button type="button" value="VALENCIA, SPAIN;ESVLC"><span>발렌시아</span></button></td>
+                                                    <td><button type="button" value="ASHDOD, ISRAEL;ILASH"><span>아슈도드</span></button></td>
+                                                    <td><button type="button" value="AMBARLI, TURKEY;TRAMB"><span>암발리</span></button></td>
+                                                    <td><button type="button" value="GENOA, ITALY;ITGOA"><span>제노아</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="HAYDARPASA, TURKEY;TRHAY"><span>하이다르파샤</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">중동</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA"><span>두바이<br class="pc" />(제벨 알리)</span></button></td>
+                                                    <td><button type="button" value="AD DAMMAM, SAUDI ARABIA;SADMM"><span>담맘</span></button></td>
+                                                    <td><button type="button" value="BAHRAIN;BHBAH"><span>바레인</span></button></td>
+                                                    <td><button type="button" value="BANDAR ABBAS, IRAN;IRBND"><span>반다르 아바스</span></button></td>
+                                                    <td><button type="button" value="SOHAR, OMAN;OMSOH"><span>소하르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="AQABA, JORDAN;JOAQB"><span>아카바</span></button></td>
+                                                    <td><button type="button" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY"><span>알렉산드리아</span></button></td>
+                                                    <td><button type="button" value="JEDDAH, SAUDI ARABIA;SAJED"><span>제다</span></button></td>
+                                                    <td><button type="button" value="KUWAIT;KWKWI"><span>쿠웨이트</span></button></td>
+                                                    <td><button type="button" value="HAMAD;QAHMD"><span>하마드</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">오세아니아</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="SYDNEY, AUSTRALIA;AUSYD"><span>시드니</span></button></td>
+                                                    <td><button type="button" value="MELBOURNE, AUSTRALIA;AUMEL"><span>멜버른</span></button></td>
+                                                    <td><button type="button" value="BRISBANE, AUSTRALIA;AUBNE"><span>브리즈번</span></button></td>
+                                                    <td><button type="button" value="AUCKLAND, NEW ZEALAND;NZAKL"><span>오클랜드</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">아프리카</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="DURBAN, SOUTH AFRICA;ZADUR"><span>더반</span></button></td>
+                                                    <td><button type="button" value="JOHANNESBURG, SOUTH AFRICA;ZAJNB"><span>요하네스버그</span></button></td>
+                                                    <td><button type="button" value="CAPE TOWN, SOUTH AFRICA;ZACPT"><span>케이프타운</span></button></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button type="button" class="btns icon close" onclick="selectPopClose('#select_LCL_pop02');"><span class="blind">닫기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w2">
+                        <button type="submit" class="btn_type1 search" id="btn_LCLSchedule_Search" onclick="fnMovePage('SubCover')">Search</button>
+                    </div>
+                </div>
+
+                <div class="lcl-area" id="LCL_Schedule_AREA">
+                    @*<div class="lcl-continent">
+                        <h4 class="lcl-area__title">Asia</h4>
+                        <div class="lcl-area__box">
+                            <div class="lcl-area__desc">
+                                <div class="lcl-desc">
+                                    <div class="lcl-desc__line polpod">
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">POL</div>
+                                            <div class="lcl-desc__cont">Busan, Korea</div>
+                                        </div>
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">POD</div>
+                                            <div class="lcl-desc__cont">Shanghai, China</div>
+                                        </div>
+                                    </div>
+                                    <div class="lcl-desc__line">
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">담당자</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>서울 : 허명재 대리 | Tel. 02-7722-501 | Fax. 02-779-6800</p>
+                                            </div>
+                                        </div>
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">이메일</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>1asia@ckpanasia.co.kr</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lcl-desc__line">
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">반입지</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>CFS : 페어허브물류㈜ / 경상남도 창원시 진해구 신항8로 321 /<br />장치장코드 : 03077099 부산본부세관<br />TEL : 055-548-8722 / FAX : 055-548-8739 / 담당 : 하윤호 계장</p>
+                                            </div>
+                                        </div>
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">비고</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>★★ 인천발 홍콩 화물 입고시 화물 입고증 필요합니다(뒷장참고) ★★ ★<br />인천 CFS는 내품진행시 개당 50KG 이상 BOX 화물 입고 불가하오니 참고 부탁드립니다. ★</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="lcl-notice">※ 안내된 스케줄은 기상 및 PORT 상황에 따라 변경될 수 있습니다. 선적 진행시, 다시 안내 드리겠습니다.</p>
+                            <div class="lcl-tbl">
+                                <div class="lcl-tbl__head">
+                                    <div class="lcl-tbl__cont"><p>VESSLE</p></div>
+                                    <div class="lcl-tbl__cont"><p>VOYAGE</p></div>
+                                    <div class="lcl-tbl__cont"><p>DOC CLS</p></div>
+                                    <div class="lcl-tbl__cont"><p>CARGO CLS</p></div>
+                                    <div class="lcl-tbl__cont"><p>ETD</p></div>
+                                    <div class="lcl-tbl__cont"><p>ETA</p></div>
+                                    <div class="lcl-tbl__cont"><p>LINE</p></div>
+                                    <div class="lcl-tbl__cont"></div>
+                                </div>
+                                <div class="lcl-tbl__body">
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>SUNNY CALLA</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>STAR FRONTIER</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>SUNNY CALLA</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><p>SUNNY CALLA</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcl-area__box">
+                            <div class="lcl-area__desc">
+                                <div class="lcl-desc">
+                                    <div class="lcl-desc__line polpod">
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">POL</div>
+                                            <div class="lcl-desc__cont">Busan, Korea</div>
+                                        </div>
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">POD</div>
+                                            <div class="lcl-desc__cont">Hong Kong, China</div>
+                                        </div>
+                                    </div>
+                                    <div class="lcl-desc__line">
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">담당자</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>서울 : 고선희 계장 | Tel. 02-7722-501 | Fax. 02-779-6800</p>
+                                            </div>
+                                        </div>
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">이메일</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>asia@ckpanasia.co.kr</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lcl-desc__line">
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">반입지</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>인천항 공동물류 CFS (CODE : 02010033) TEL : 032-8898-1788 / FAX : 032-891-1742 /<br />이상미 사원 / 인천광역시 중구 서해대로 30번길 35</p>
+                                            </div>
+                                        </div>
+                                        <div class="lcl-desc__inner">
+                                            <div class="lcl-desc__title">비고</div>
+                                            <div class="lcl-desc__cont">
+                                                <p>태국 NO MARK 불가 !!! NO MARK 진행 시 현지 PENALTY 부과됩니다.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="lcl-notice">※ 안내된 스케줄은 기상 및 PORT 상황에 따라 변경될 수 있습니다. 선적 진행시, 다시 안내 드리겠습니다.</p>
+                            <div class="lcl-tbl">
+                                <div class="lcl-tbl__head">
+                                    <div class="lcl-tbl__cont"><p>VESSLE</p></div>
+                                    <div class="lcl-tbl__cont"><p>VOYAGE</p></div>
+                                    <div class="lcl-tbl__cont"><p>DOC CLS</p></div>
+                                    <div class="lcl-tbl__cont"><p>CARGO CLS</p></div>
+                                    <div class="lcl-tbl__cont"><p>ETD</p></div>
+                                    <div class="lcl-tbl__cont"><p>ETA</p></div>
+                                    <div class="lcl-tbl__cont"><p>LINE</p></div>
+                                    <div class="lcl-tbl__cont"></div>
+                                </div>
+                                <div class="lcl-tbl__body">
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>SUNNY CALLA</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>STAR FRONTIER</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>SUNNY CALLA</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                    <div class="lcl-tbl__line">
+                                        <div class="lcl-tbl__cont"><span>VESSEL</span><p>SUNNY CALLA</p></div>
+                                        <div class="lcl-tbl__cont"><span>VOYAGE</span><p>2211S</p></div>
+                                        <div class="lcl-tbl__cont"><span>DOC CLS</span><p>06/30 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>CARGO CLS</span><p>07/01 12:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETD</span><p>07/03 11:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>ETA</span><p>07/07 16:00</p></div>
+                                        <div class="lcl-tbl__cont"><span>LINE</span><p>CK pan-asia c.f.c.</p></div>
+                                        <div class="lcl-tbl__cont"><button type="button" class="btns quot_confirm" onclick="location.href='@Url.Action("Regist","Booking")'">견적 확인</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+                <div class="no_data" id="NoData_LCL">
+                    @*<span>원하시는 <strong>정보를 검색 해 주세요.</strong></span>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/Schedule/LCL.js")
+}
