@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "T_SearchRack";
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        <div class="contents">
+            <!-- title -->
+            <div class="sub_title">
+                <h2>ITEM SEARCH (RACK)</h2>
+            </div>
+            <!-- //title -->
+            <!-- search_zone -->
+            <div class="search_zone layout9">
+                <div class="inner">
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="LOCATION" id="Input_Location" maxlength="15">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="BARCODE" id="Input_Barcode" maxlength="12">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>TOTAL : <span id="Span_Total">0</span> / </label>
+                        <label>COUNT : <span id="Span_Count">0</span></label>
+                    </div>
+                </div>
+                <div class="inner" style="margin-top:10px;">   
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Location">LOCATION 검색</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Barcode">BARCODE 검색</button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <!-- search_zone -->
+            <div class="tbl_body_scroll300" id="IS_Rack_Scroll">
+                <table class="list_type2">
+                    <colgroup class="pc">
+                        <col class="w10per">
+                        <col class="w45per">
+                        <col class="w45per">
+                    </colgroup>
+                    <colgroup class="mo">
+                        <col class="w1">
+                        <col class="w130">
+                        <col class="w100">
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th>No</th>
+                            <th>BARCODE</th>
+                            <th>ARTICLE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="IS_Rack_Result_Area">
+                        @*
+                        <tr>
+                            <td>1</td>
+                            <td>AAAAAAAAAAAAAAAAAA</td>
+                            <td>ABCDEFGH</td>
+                        </tr>
+                        *@
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/TODS/Search_Rack.js")
+}

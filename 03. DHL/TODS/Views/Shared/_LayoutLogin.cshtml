@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:type" content="">
+    <meta property="og:title" content="DHL">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="DHL homepage">
+    <meta property="og:image" content="">
+    <title>DHL</title>
+    <link href="~/Content/fonts.css" rel="stylesheet">
+    <link href="~/Content/TODS/media.css" rel="stylesheet">
+
+    <script src="~/Scripts/API/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/API/css-vars-ponyfill.min.js"></script>
+    <script src="~/Scripts/API/jquery.scrollbar.min.js"></script>
+    <script src="~/Scripts/API/jquery.datetimepicker.full.js"></script>
+    <script src="~/Scripts/API/jquery.form.min.js"></script>
+    <script>
+        var _TODS_Domain = '@System.Configuration.ConfigurationManager.AppSettings["TODS_Domain"]';
+    </script>
+    <script src="~/Scripts/Common/common.js"></script>
+    <script src="~/Scripts/Common/comm.js"></script>
+    <script src="~/Scripts/Common/_layout.js"></script>
+</head>
+<body>
+    <!-- wrap -->
+    <div id="wrap">
+        <div class="page_area">
+            <!-- header -->
+            <header id="header" class="sub">
+                <div class="h_type1">
+                    <h1 class="logo" onclick="location.href='@Url.Action("", "T_ReceiptPutAway")'"><a><span class="blind">	</span></a></h1>
+                    <button type="button" id="hamberger"><span class="btn_total"></span></button>
+
+                    <!-- user_area -->
+                    <div class="user_area">
+                        <div class="row">
+                            <span class="nickname">@Session["USR_ID"]<span> 님</span></span>
+                            <a href="javascript:void(0)" class="btn_logout">로그아웃</a>
+                        </div>
+                        <input type="hidden" id="Session_USR_ID" value="@Session["USR_ID"]" />
+                        <input type="hidden" id="Session_OFFICE_CD" value="@Session["OFFICE_CD"]" />
+                        <input type="hidden" id="Session_DB_TYPE" value="@Session["DB_TYPE"]" />
+                        <input type="hidden" id="Session_BRANCH_CD" value="@Session["BRANCH_CD"]" />
+                        <input type="hidden" id="Session_BRANCH_NM" value="@Session["BRANCH_NM"]" />
+                        <input type="hidden" id="Session_LOC_NM" value="@Session["LOC_NM"]" />
+                        <input type="hidden" id="Session_ENG_NM" value="@Session["ENG_NM"]" />
+                        <input type="hidden" id="Session_DOMAIN" value="@Session["DOMAIN"]" />
+                        <input type="hidden" id="Session_TEL_NO" value="@Session["TEL_NO"]" />
+                        <input type="hidden" id="Session_HP_NO" value="@Session["HP_NO"]" />
+                        <input type="hidden" id="Session_EMAIL" value="@Session["EMAIL"]" />
+                        <input type="hidden" id="Session_DEPT_CD" value="@Session["DEPT_CD"]" />
+                        <input type="hidden" id="Session_AUTH_TYPE" value="@Session["AUTH_TYPE"]" />
+                        <input type="hidden" id="Session_USR_TYPE" value="@Session["USR_TYPE"]" />
+                    </div>
+                    <!-- //user_area -->
+                    <!-- total_menu -->
+                    <nav class="total_menu">
+                        <div class="menu_in">
+                            <div class="menu_top">
+                                <h1 class="logo"><a href="@Url.Action("Index", "Main")"><span class="blind">	</span></a></h1>
+                                <div class="user_area mo">
+                                    <div class="btn_area">
+                                        <span href="javascript:void(0)" class="nickname">@Session["LOC_NM"] 님 </span>
+                                        <a href="javascript:void(0)" class="btn_logout">로그아웃</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul id="lnb">
+                                <li>
+                                    <div class="sub_depth">
+
+                                        @{
+                                            if (@Session["DB_TYPE"] != null)
+                                            {
+                                                <ul>
+                                                    <li id="page_ReceiptPutAway"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_ReceiptPutAway")'">RECEIPT & PUTAWAY</a></li>
+                                                    @*<li id="page_Receipt"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "Receipt")'">RECEIPT</a></li>
+                                                    <li id="page_PutAway"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "PutAway")'">PUTAWAY</a></li>*@
+                                                    <li id="page_Picking"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_Picking")'">PICKING</a></li>
+                                                    <li id="page_Packing"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_Packing")'">PACKING</a></li>
+                                                    <li id="page_SearchD"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_SearchDelivery")'">DELIVERY</a></li>
+                                                    <li id="page_SearchL"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_SearchLocation")'">ITEM SEARCH (LOCATION)</a></li>
+                                                    <li id="page_SearchR"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_SearchRack")'">ITEM SEARCH (RACK)</a></li>
+                                                    @*<li id="page_ChangeAll"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "ChangeAll")'">LOCATION CHANGE (ALL)</a></li>*@
+                                                    <li id="page_ChangeEach"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_ChangeEach")'">LOCATION CHANGE (EACH)</a></li>
+                                                    <li id="page_ChkInventoryRack"><a href="javascript:void(0)" onclick="location.href='@Url.Action("", "T_ChkInventoryRack")'">CHK INVENTORY RACK</a></li>
+                                                </ul>
+                                            }
+                                        }
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <aside class="bn_wrap">
+                    </aside>
+                </div>
+                <!-- //total_menu -->
+            </header>
+
+            <!-- Alert -->
+            <div class="layer_zone alert_layer" id="alert01" style="z-index:10001">
+                <div class="layer_wrap">
+                    <div class="layer_inwrap">
+                        <article class="layer_cont">
+                            <!-- alert_cont -->
+                            <div class="alert_cont">
+                                <div class="inner">
+                                </div>
+                            </div>
+                            <!-- //alert_cont -->
+                            <!-- btn_w -->
+                            <div class="btn_center">
+                                <button type="button" class="btns type9 yes" onclick="layerClose('#alert01');">확인</button>
+                            </div>
+                            <!-- //btn_w -->
+                            <button type="button" class="btns close white"><span class="blind">닫기</span></button>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm -->
+            <div class="layer_zone alert_layer" id="alert02" style="z-index:10001">
+                <div class="layer_wrap">
+                    <div class="layer_inwrap">
+                        <article class="layer_cont">
+                            <!-- alert_cont -->
+                            <div class="alert_cont">
+                                <div class="inner">
+                                    해당 내용을 저장하시겠습니까?
+                                </div>
+                            </div>
+                            <!-- //alert_cont -->
+                            <!-- btn_w -->
+                            <div class="btn_center">
+                                <button type="button" class="btns type9 yes" id="ConfirmChk">예</button>
+                                <button type="button" class="btns type9" onclick="layerClose('#alert02');">아니오</button>
+                            </div>
+                            <!-- //btn_w -->
+                            <button type="button" class="btns close white" onclick="layerClose('#alert02');"><span class="blind">닫기</span></button>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!-- //header -->
+            <!-- container -->
+            @RenderSection("container", required: false)
+            <!-- //container -->
+        </div>       
+    </div>
+    
+    <!-- //wrap -->
+    
+    <!-- Progress Bar -->
+    <div class="loading" id="ProgressBar_Loading" style="display:none">
+        <div class="ispinner ispinner-large">
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+        </div>
+    </div>
+</body>
+</html>

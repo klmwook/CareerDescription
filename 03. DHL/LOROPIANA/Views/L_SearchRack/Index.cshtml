@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "L_SearchRack";
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        <div class="contents">
+            <!-- title -->
+            <div class="sub_title">
+                <h2>ITEM SEARCH (RACK)</h2>
+            </div>
+            <!-- //title -->
+            <!-- search_zone -->
+            <div class="search_zone layout5">
+                <div class="inner">
+                    <div class="col">
+                        <select class="sel st1" name="" id="Select_Plant">
+                            <option value="">PLANT</option>
+                            <option value="LREC">E-COMMERCE</option>
+                            <option value="LRRT">RETAIL</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="LOCATION" id="Input_Location" maxlength="15">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="EAN+BAT" id="Input_Barcode" maxlength="24">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>TOTAL : <span id="Span_Total">0</span> / </label>
+                        <label>COUNT : <span id="Span_Count">0</span></label>
+                    </div>
+                </div>
+                <div class="inner" style="margin-top:10px;">   
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Location">LOCATION 입력</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Barcode">EAN+BAT 입력</button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <!-- search_zone -->
+            <div class="tbl_body_scroll300" id="IS_Rack_Scroll">
+                <table class="list_type2">
+                    <colgroup class="pc">
+                        <col class="w10per">
+                        <col class="w45per">
+                        <col class="w45per">
+                    </colgroup>
+                    <colgroup class="mo">
+                        <col class="w1">
+                        <col class="w180">
+                        <col class="w100">
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th>No</th>
+                            <th>EAN+BAT</th>
+                            <th>PJART</th>
+                        </tr>
+                    </thead>
+                    <tbody id="IS_Rack_Result_Area">
+                        @*
+                        <tr>
+                            <td>1</td>
+                            <td>AAAAAAAAAAAAAAAAAA</td>
+                            <td>ABCDEFGH</td>
+                        </tr>
+                        *@
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/LOLOPIANA/Search_Rack.js")
+}

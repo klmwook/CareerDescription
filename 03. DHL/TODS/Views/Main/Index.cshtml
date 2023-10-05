@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section Container {    
+    <script type="text/javascript" src="/Scripts/API/jquery.placeholder.1.1.1.min.js" charset="euc-kr"></script>    
+
+    @Styles.Render("~/Content/jquery.motionCaptcha.0.2.css")
+    <section class="container" id="main_container">
+        <div class="login_area">
+            <div class="login_info">
+                <div class="login_logo"></div>
+                <div class="login_form">
+                    <div class="cell">
+                        <input type="text" value="" class="int login" id="Domain" maxlength="20" autocomplete="off" placeholder="도메인을 입력하세요.">
+                        <div id="Domain_Warning" style="display:none;">
+                            <p class="incorrect_login Span_Warning">도메인을 적어주세요.</p>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <input type="text" value="" class="int login" id="USR_ID" maxlength="10" autocomplete="off" placeholder="아이디를 입력하세요.">                        
+                        <div id="ID_Warning" style="display:none;">
+                            <p class="incorrect_login Span_Warning">아이디를 적어주세요.</p>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <form onsubmit="return false">
+                            <input type="password" value="" class="int" id="Password" maxlength="16" autocomplete="off" placeholder="비밀번호를 입력하세요.">                            
+                        </form>
+                        <div id="Password_Warning" style="display:none;">
+                            <p class="incorrect_login Span_Warning">비밀번호를 입력 하세요.</p>
+                        </div>
+                    </div>
+                    <div class="chk" style="text-align:right;margin: 5px 0 5px 0;">
+                        <span class="check type2">
+                            <input type="checkbox" id="login_keep" name="login_keep" class="chk">
+                            <label for="login_keep">도메인 , 아이디 저장</label>
+                        </span>
+                    </div>
+                    <button type="button" class="btn_type1" id="Login_btn">로그인</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/Main.js")
+}

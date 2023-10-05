@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "L_PutAway";
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        <div class="contents">
+            <!-- title -->
+            <div class="sub_title">
+                <h2>PUTAWAY</h2>
+            </div>
+            <!-- //title -->
+            <!-- search_zone -->
+            <div class="search_zone layout6">
+                <div class="inner">
+                    <div class="col">
+                        <select class="sel st1" name="" id="Select_Plant">
+                            <option value="">PLANT</option>
+                            <option value="LREC">E-COMMERCE</option>
+                            <option value="LRRT">RETAIL</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="sel st1" name="" id="Select_Delivery_ID">
+                            <option value="">DELIVERY ID</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="EAN+BAT" id="Input_Barcode" maxlength="24" inputmode="none">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="LOCATION" id="Input_Location" maxlength="20">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>TOTAL : <span id="Span_Total">0</span> / </label>
+                        <label>COUNT : <span id="Span_Count">0</span></label>
+                    </div>
+                </div>
+                <div class="inner" style="margin-top:10px;">
+                    @*<div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Barcode">BARCODE 입력</button>
+                        </div>
+                    </div>*@
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Location">LOCATION 입력</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- search_zone -->
+            <div class="tbl_body_scroll250" id="PutAway_Scroll">
+                <table class="list_type2">
+                    <colgroup class="pc">
+                        <col class="w10per">
+                        <col class="w30per">
+                        <col class="w30per">
+                        <col class="w30per">
+                    </colgroup>
+                    <colgroup class="mo">
+                        <col class="w1">
+                        <col class="w180">
+                        <col class="w130">
+                        <col>
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th>NO</th>
+                            <th>EAN+BAT</th>
+                            <th>LOCATION</th>
+                            <th>PJART</th>
+                        </tr>
+                    </thead>
+                    <tbody id="PutAway_Result_Area">
+                        @*<tr>
+                            <td>1</td>
+                            <td>00057451506051MSSL167111</td>
+                            <td>TEST1TEST2T</td>
+                            <td>FAE9959</td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <div class="button_area">
+                <input type="button" class="btns type10" id="btn_PutAway_Save" value="저장" />
+            </div>
+        </div>
+    </section>
+
+    <div class="layer_zone alert_layer" id="PutAway_Confirm" style="z-index:10001">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner2">
+                            내 작업으로 설정 하시겠습니까?
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_center">
+                        <button type="button" class="btns type9 yes" id="PutAway_Confirm_Yes">예</button>
+                        <button type="button" class="btns type9" onclick="layerClose('#PutAway_Confirm');">아니오</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_layer" id="Save_Confirm" style="z-index:10001">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner2">
+                            저장 하시겠습니까?
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_center">
+                        <button type="button" class="btns type9 yes" id="Save_Confirm_Yes">예</button>
+                        <button type="button" class="btns type9" onclick="layerClose('#Save_Confirm');">아니오</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/js/LOLOPIANA/PutAway.js")
+}

@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "T_SearchLocation";
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        <div class="contents">
+            <!-- title -->
+            <div class="sub_title">
+                <h2>ITEM SEARCH (LOCATION)</h2>
+            </div>
+            <!-- //title -->
+            <!-- search_zone -->
+            <div class="search_zone layout8">
+                <div class="inner">
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="BARCODE" id="Input_Barcode" maxlength="12">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>TOTAL : <span id="Span_Total">0</span></label>
+                    </div>
+                </div>
+                <div class="inner" style="margin-top:10px;">
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_Barcode">BARCODE 검색</button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            
+            <!-- search_zone -->
+            <div class="tbl_body_scroll350">
+                <table class="list_type2">
+                    <colgroup class="pc">
+                        <col class="w10per">
+                        <col class="w22per">
+                        <col class="w22per">
+                        <col class="w22per">
+                        <col class="w22per">
+                    </colgroup>
+                    <colgroup class="mo">
+                        <col class="w1">
+                        <col class="w130">
+                        <col class="w100">
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th>NO</th>
+                            <th>BARCODE</th>
+                            <th>LOCATION</th>
+                            <th>ARTICLE</th>
+                            <th>STORE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="IS_Location_Result_Area">
+                        @*
+                    <tr>
+                        <td>1</td>
+                        <td>AAAAAAAAAAAAAAAAAA</td>
+                        <td>BBBBBBBB</td>
+                        <td>1SLS</td>
+                        <td>A04-D01-H03</td>
+                    </tr>
+                        *@
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/TODS/Search_Location.js")
+}

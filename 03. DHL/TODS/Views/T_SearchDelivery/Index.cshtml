@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "T_SearchDelivery";
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        <div class="contents">
+            <!-- title -->
+            <div class="sub_title">
+                <h2>DELIVERY</h2>
+            </div>
+            <!-- //title -->
+            <!-- search_zone -->
+            <div class="search_zone layout8">
+                <div class="inner">
+                    <div class="col">
+                        <div class="int_box">
+                            <input type="text" placeholder="BOX ID" id="Input_BoxID" maxlength="20">
+                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>TOTAL : <span id="Span_Total">0</span></label>
+                    </div>
+                </div>
+                <div class="inner" style="margin-top:10px;">
+                    <div class="col">
+                        <div class="int_box none">
+                            <button class="Search_button" id="btn_BoxID">BOX ID 검색</button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <!-- search_zone -->
+            <div class="tbl_body_scroll300" id="Delivery_Scroll">
+                <table class="list_type2">
+                    <colgroup class="pc">
+                        <col class="w10per">
+                        <col class="w45per">
+                        <col class="w45per">
+                    </colgroup>
+                    <colgroup class="mo">
+                        <col class="w1">
+                        <col class="w130">
+                        <col class="w100">
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th>NO</th>
+                            <th>STORE</th>
+                            <th>ITEM QTY</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Delivery_Result_Area">
+                        @*
+                        <tr>
+                            <td>1</td>
+                            <td>AAAAAAAAAAAAAAAAAA</td>
+                            <td>ABCDEFGH</td>
+                        </tr>
+                        *@
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/TODS/Search_Delivery.js")
+}
