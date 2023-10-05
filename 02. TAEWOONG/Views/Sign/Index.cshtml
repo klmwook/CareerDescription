@@ -1,0 +1,455 @@
+﻿@{
+    ViewBag.Title = "Sign";
+    ViewBag.Sub = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section Container {
+    <!-- S : section -->
+    <section class="section sign list_in">
+
+        <input type="hidden" id="View_APV_NO" value="@ViewBag.APV_NO" />
+
+        <div class="container">
+            <div class="content">
+                <!-- S : search-area -->
+                <div class="search-area">
+                    <div class="search__date">
+                        <input type="text" class="start_date" id="input_DATE_START" inputmode="none" />
+                        <span>~</span>
+                        <input type="text" class="end_date" id="input_DATE_END" inputmode="none" />
+                    </div>
+                    <div class="search__date__long">
+                        <input type="text" class="cal_date" id="input_DATE_SUBMIT" placeholder="지불일자" />
+                    </div>
+                    <div class="search__select">
+                        <select id="select_SignStatus">
+                            <option class="black" value="" selected>전자결재 상태</option>
+                            <option class="black" value="Y">미결재</option>
+                            <option class="black" value="C">진행중</option>
+                            <option class="black" value="A">완료</option>
+                            <option class="black" value="R">결재취소</option>
+                        </select>
+                    </div>
+                    <div class="search__button">
+                        <button type="button" class="btns search" id="btn_Search" onclick="fnMovePage('Sign_Result')">조회</button>
+                    </div>
+                </div>
+                <!-- E : search-area -->
+                <!-- S : result-area -->
+                <div class="result-area" id="Sign_Result">
+                    <div class="result-box no-data">
+                        <img src="~/Images/Common/icn_nodata.png" />
+                        <span id="no_data_text"></span>
+                    </div>
+                    <!-- S : 일괄결재 -->
+                    @*<div class="sign-once">
+                            <div class="sign-once__bg">
+                                <div class="sign-once__flex">
+                                    <div class="sign-once__detail">
+                                        <div class="sign-once__title">지출일자</div>
+                                        <div class="sign-once__desc">2022-08-03</div>
+                                        <div class="sign-once__title">결재총액(KRW)</div>
+                                        <div class="sign-once__desc">KRW 1,000,000,000</div>
+                                    </div>
+                                    <button type="button" class="btns all"><img src="~/Images/Sign/icn_stamp.png" />일괄결재</button>
+                                </div>
+                            </div>
+                        </div>*@
+                    <!-- E : 일괄결재 -->
+                    <!-- S : 취소-->
+                    @*<div class="result-box">
+                            <div class="result-title2">
+                                <h3 class="result-type1">CUSTOM AGENT TGL INTERNATIONAL LLC, FOR</h3>
+                                <button type="button" class="btns plus"></button>
+                            </div>
+                            <div class="sign-info cancel">
+                                <div class="sign-info__cont">
+                                    <p>지출일자 : <span>2022-08-03</span></p>
+                                </div>
+                                <div class="sign-info__cont">
+                                    <p>청구(KRW) : <span class="red">KRW 1,000,000,000</span></p>
+                                </div>
+                            </div>
+                            <div class="result-customer__detail">
+                                <div class="result-tbl">
+                                    <div class="result-tbl__button">
+                                        <button type="button" class="btns open"><span class="hidden">펼치기</span></button>
+                                    </div>
+                                    <div class="result-tbl__hidden">
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>정산처코드</p></div>
+                                                <div class="result-tbl__desc2"><p>SBOOWON</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>HBL건수</p></div>
+                                                <div class="result-tbl__desc2"><p>1000</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>매입증빙여부</p></div>
+                                                <div class="result-tbl__desc2"><p>Y</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>VAT</p></div>
+                                                <div class="result-tbl__desc2"><p>466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구환종</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>은행명</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW 수입운임(부산) 외환은행</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>계좌번호</p></div>
+                                                <div class="result-tbl__desc2"><p>066-083368-56-00016</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>예금주</p></div>
+                                                <div class="result-tbl__desc2"><p>MCC TRANSPORT (SEALAND - A MAERSK COMPANY)</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <!-- E : 취소 -->
+                    <!-- S : 미결재 -->
+                    @*<div class="result-box">
+                            <div class="result-title2">
+                                <h3 class="result-type1">CUSTOM AGENT TGL INTERNATIONAL LLC, FOR PERMANENT ESTABLISHMENT OF HYUNDAI ENGINEERING CO., LTD</h3>
+                                <button type="button" class="btns plus"></button>
+                            </div>
+                            <div class="sign-info pend">
+                                <div class="sign-info__cont">
+                                    <p>지출일자 : <span>2022-08-03</span></p>
+                                </div>
+                                <div class="sign-info__cont">
+                                    <p>청구(KRW) : <span class="red">KRW 1,000,000,000</span></p>
+                                </div>
+                            </div>
+                            <div class="result-customer__detail">
+                                <div class="result-tbl">
+                                    <div class="result-tbl__button">
+                                        <button type="button" class="btns open"><span class="hidden">펼치기</span></button>
+                                    </div>
+                                    <div class="result-tbl__hidden">
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>정산처코드</p></div>
+                                                <div class="result-tbl__desc2"><p>SBOOWON</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>HBL건수</p></div>
+                                                <div class="result-tbl__desc2"><p>1000</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>매입증빙여부</p></div>
+                                                <div class="result-tbl__desc2"><p>Y</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>VAT</p></div>
+                                                <div class="result-tbl__desc2"><p>466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구환종</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>은행명</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW 수입운임(부산) 외환은행</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>계좌번호</p></div>
+                                                <div class="result-tbl__desc2"><p>066-083368-56-00016</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>예금주</p></div>
+                                                <div class="result-tbl__desc2"><p>MCC TRANSPORT (SEALAND - A MAERSK COMPANY)</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="result-tbl__button2">
+                                        <button type="button" class="btns sign-in">결재</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <!-- E : 미결재 -->
+                    <!-- S : 진행중 -->
+                    @*<div class="result-box">
+                            <div class="result-title2">
+                                <h3 class="result-type1">CUSTOM AGENT TGL INTERNATIONAL LLC, FOR PERMANENT ESTABLISHMENT OF HYUNDAI ENGINEERING CO., LTD</h3>
+                                <button type="button" class="btns plus"></button>
+                            </div>
+                            <div class="sign-info ongoing">
+                                <div class="sign-info__cont">
+                                    <p>지출일자 : <span>2022-08-03</span></p>
+                                </div>
+                                <div class="sign-info__cont">
+                                    <p>청구(KRW) : <span class="red">KRW 1,000,000,000</span></p>
+                                </div>
+                            </div>
+                            <div class="result-customer__detail">
+                                <div class="result-tbl">
+                                    <div class="result-tbl__button">
+                                        <button type="button" class="btns open"><span class="hidden">펼치기</span></button>
+                                    </div>
+                                    <div class="result-tbl__hidden">
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>정산처코드</p></div>
+                                                <div class="result-tbl__desc2"><p>SBOOWON</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>HBL건수</p></div>
+                                                <div class="result-tbl__desc2"><p>1000</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>매입증빙여부</p></div>
+                                                <div class="result-tbl__desc2"><p>Y</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>VAT</p></div>
+                                                <div class="result-tbl__desc2"><p>466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구환종</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>은행명</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW 수입운임(부산) 외환은행</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>계좌번호</p></div>
+                                                <div class="result-tbl__desc2"><p>066-083368-56-00016</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>예금주</p></div>
+                                                <div class="result-tbl__desc2"><p>MCC TRANSPORT (SEALAND - A MAERSK COMPANY)</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="result-tbl__button2">
+                                        <button type="button" class="btns sign-in type2">결재취소</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <!-- E : 진행중 -->
+                    <!-- S : 완료 -->
+                    @*<div class="result-box">
+                            <div class="result-title2">
+                                <h3 class="result-type1">CUSTOM AGENT TGL INTERNATIONAL LLC, FOR PERMANENT ESTABLISHMENT OF HYUNDAI ENGINEERING CO., LTD</h3>
+                                <button type="button" class="btns plus"></button>
+                            </div>
+                            <div class="sign-info complete">
+                                <div class="sign-info__cont">
+                                    <p>지출일자 : <span>2022-08-03</span></p>
+                                </div>
+                                <div class="sign-info__cont">
+                                    <p>청구(KRW) : <span class="red">KRW 1,000,000,000</span></p>
+                                </div>
+                            </div>
+                            <div class="result-customer__detail">
+                                <div class="result-tbl">
+                                    <div class="result-tbl__button">
+                                        <button type="button" class="btns open"><span class="hidden">펼치기</span></button>
+                                    </div>
+                                    <div class="result-tbl__hidden">
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>정산처코드</p></div>
+                                                <div class="result-tbl__desc2"><p>SBOOWON</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>HBL건수</p></div>
+                                                <div class="result-tbl__desc2"><p>1000</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>매입증빙여부</p></div>
+                                                <div class="result-tbl__desc2"><p>Y</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(KRW)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>운임(USD)</p></div>
+                                                <div class="result-tbl__desc2"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>VAT</p></div>
+                                                <div class="result-tbl__desc2"><p>466,151,574.00</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>청구환종</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="result-tbl__bundle">
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>은행명</p></div>
+                                                <div class="result-tbl__desc2"><p>KRW 수입운임(부산) 외환은행</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>계좌번호</p></div>
+                                                <div class="result-tbl__desc2"><p>066-083368-56-00016</p></div>
+                                            </div>
+                                            <div class="result-tbl__cont2">
+                                                <div class="result-tbl__title2"><p>예금주</p></div>
+                                                <div class="result-tbl__desc2"><p>MCC TRANSPORT (SEALAND - A MAERSK COMPANY)</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <!-- E : 완료 -->
+                </div>
+                <!-- E : result-area -->
+            </div>
+        </div>
+    </section>
+    <!-- E : section -->
+
+    <div class="layer_zone alert_type" id="layer_ALLSign">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="alert_cont">
+                        <img src="~/Images/Common/icn_alert.png" />
+                        <div class="inner2">
+                            일괄 결재 하시겠습니까?
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btns alert_cancel" id="btn_ALLSign_Cancel">취소</button>
+                        <button type="button" class="btns alert_confirm" id="btn_ALLSign_Confirm">확인</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="layer_SingleSign">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="alert_cont">
+                        <img src="~/Images/Common/icn_alert.png" />
+                        <div class="inner2">
+                            결재 하시겠습니까?
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btns alert_cancel" id="btn_SingleSign_Cancel">취소</button>
+                        <button type="button" class="btns alert_confirm" id="btn_SingleSign_Confirm">확인</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="layer_SingleCancel">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="alert_cont">
+                        <img src="~/Images/Common/icn_alert.png" />
+                        <div class="inner2">
+                            결재취소 하시겠습니까?
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btns alert_cancel" id="btn_SingleCancel_Cancel">취소</button>
+                        <button type="button" class="btns alert_confirm" id="btn_SingleCancel_Confirm">확인</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("/Scripts/js/Sign/sign.js")
+}

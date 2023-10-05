@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Home";
+    ViewBag.Sub = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section Container {
+    @Styles.Render("~/Content/css/Login/menu.css")
+    <script>
+        $("#listLayout").addClass("list_menu");
+    </script>
+    <!-- S : section -->
+    <section class="section menu">
+        <div class="container">
+            <div class="title">
+                <p>독보적인 복합운송서비스</p>
+                <p>글로벌 물류 선도</p>
+                <h2>태웅로직스</h2>
+            </div>
+            <div class="list">
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","Customer")'"><p class="item1">거래처조회</p></div>
+                </div>
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","Booking")'"><p class="item2">부킹조회</p></div>
+                </div>
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","BL")'"><p class="item3">B/L조회</p></div>
+                </div>
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","Partner")'"><p class="item4">파트너조회</p></div>
+                </div>
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","ExBooking")'"><p class="item5">가부킹조회</p></div>
+                </div>
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","Perform")'"><p class="item6">실적마감</p></div>
+                </div>
+                <div class="list_item">
+                    <div class="inner" onclick="location.href='@Url.Action("Index","Sign")'"><p class="item7">선급결재</p></div>
+                </div>
+
+                @{
+                    if (Session["USR_ID"] != null)
+                    {
+
+                        if (Session["AUTH_TYPE"].ToString() == "1" || Session["AUTH_TYPE"].ToString() == "B" || Session["AUTH_TYPE"].ToString() == "4" || Session["AUTH_TYPE"].ToString() == "I" || Session["AUTH_TYPE"].ToString() == "D")
+                        {
+                            <div class="list_item">
+                                <div class="inner" onclick="location.href='@Url.Action("Index","ChkMgr")'"><p class="item9">팀장확인</p></div>
+                            </div><div class="list_item">
+                                <div class="inner" onclick="_fnLogout()"><p class="item8">로그아웃</p></div>
+                            </div>
+                            <div class="list_item" style="visibility:hidden"></div>
+                            <div class="list_item" style="visibility:hidden"></div>
+                            <div class="list_item" style="visibility:hidden"></div>
+                        }
+                        else
+                        {
+                            <div class="list_item">
+                                <div class="inner" onclick="_fnLogout()"><p class="item8">로그아웃</p></div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </section>
+    <!-- E : section -->
+
+    @Scripts.Render("/Scripts/js/Home/menu.js")
+
+}

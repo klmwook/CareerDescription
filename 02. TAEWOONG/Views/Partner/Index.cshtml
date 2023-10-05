@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "Partner";
+    ViewBag.Sub = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section Container {
+    @Styles.Render("~/Content/css/Login/menu.css")
+    <script>
+
+    </script>
+    <!-- S : section -->
+    <section class="section partner list_in">
+        <div class="container">
+            <div class="content">
+                <!-- S : search-area -->
+                <div class="search-area">
+                    <div class="search__input int_box" id="AC_COUNTRY_Width">
+                        <input type="text" class="auto" placeholder="국가" id="input_COUNTRY_NM" />
+                        @*<button type="button" class="btns icon delete has_icn" id="btn_deleteCountry" style="display: none;"><span class="blind">삭제</span></button>*@
+                        <input type="hidden" id="input_COUNTRY_CD" />
+                    </div>
+                    <div class="search__input int_box" id="AC_CUST_Width">
+                        <input type="text" class="auto" placeholder="거래처 (3자리 이상 입력 해주세요)" id="input_CUST_NM" />
+                        @*<button type="button" class="btns icon delete has_icn" id="btn_deleteCust" style="display: none;"><span class="blind">삭제</span></button>*@
+                        <input type="hidden" id="input_CUST_CD" />
+                    </div>                    
+                    <div class="search__button">
+                        <button type="button" class="btns search" id="btn_Search" onclick="fnMovePage('Partner_Result')">조회</button>
+                    </div>
+                </div>
+                <!-- E : search-area -->
+                <!-- S : result-area -->
+                <div class="result-area" id="Partner_Result">
+                    <div class="result-box no-data">
+                        <img src="~/Images/Common/icn_nodata.png" />
+                        <span id="no_data_text"></span>
+                    </div>
+                    @*<div class="partner-num">
+                        <p>전체 <span>XX</span>건</p>
+                    </div>*@
+                    @*
+                    <div class="result-box">
+                        <div class="result-title">
+                            <h3 class="result-type3 rating01"><span>TAEWOONG LOGISTICS TAEWOONG LOGISTICS TAEWOONG LOGISTICS TAEWOONG LOGISTICS </span><span>태웅로직스태웅로직스태웅로직스태웅로직스태웅로직스태웅로직스태웅로직스</span></h3>
+                        </div>
+                        <div class="result-customer__detail">
+                            <div class="customer">
+                                <div class="cust__info">
+                                    <div class="cust__title"><p>국가</p></div>
+                                    <div class="cust__desc"><p>SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</p></div>
+                                </div>
+                                <div class="cust__info">
+                                    <div class="cust__title"><p>지역</p></div>
+                                    <div class="cust__desc"><p>S.AMERICA.EAST</p></div>
+                                </div>
+                                <div class="cust__info">
+                                    <div class="cust__title"><p>Alliance 파트너 여부</p></div>
+                                    <div class="cust__desc"><p>Globalink 외 1건</p></div>
+                                </div>
+                            </div>
+                            <div class="tab-area">
+                                <ul class="tab">
+                                    <li class="on"><div class="icon type1"></div><p>담당자</p></li>
+                                    <li><div class="icon type2"></div><p>거래내역</p></li>
+                                    <li><div class="icon type4"></div><p>미수현황</p></li>
+                                </ul>
+                                <div class="tab_panel">
+                                    <div class="panel" style="display:block;">
+                                        <div class="cust-panel__cont">
+                                            <div class="cust-panel__title"><p>Department</p></div>
+                                            <div class="cust-panel__desc"><p>PERFORMANCE CHEMICAL</p></div>
+                                        </div>
+                                        <div class="cust-panel__cont">
+                                            <div class="cust-panel__title"><p>Attention</p></div>
+                                            <div class="cust-panel__desc"><p>CLAIDAD PLASTICA S A C JORVEX S A</p></div>
+                                        </div>
+                                        <div class="cust-panel__cont">
+                                            <div class="cust-panel__title"><p>Tel</p></div>
+                                            <div class="cust-panel__desc"><p>86-21-0000-1111/2222</p></div>
+                                        </div>
+                                        <div class="cust-panel__cont">
+                                            <div class="cust-panel__title"><p>E-Mail</p></div>
+                                            <div class="cust-panel__desc"><p>sales@abc-abcabca.com</p></div>
+                                        </div>
+                                        <div class="cust-panel__cont">
+                                            <div class="cust-panel__title"><p>Cellphone</p></div>
+                                            <div class="cust-panel__desc"><p>+82 (0)10.9335.0272</p></div>
+                                        </div>
+                                        <div class="cust-panel__cont">
+                                            <div class="cust-panel__title"><p>Remark</p></div>
+                                            <div class="cust-panel__desc"><p>수입건 김태웅님 메일통보(aaabbbccc@hanmail.net)</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <div class="transaction-panel__box">
+                                            <div class="transaction-panel-bl">
+                                                <div class="transaction-panel-bl__title"><p>B/L No</p></div>
+                                                <div class="transaction-panel-bl__desc"><a href="javascript:void(0)">PCSLBSOSC2100940</a></div>
+                                            </div>
+                                            <div class="transaction-panel-dtl">
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>해운/항공</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>해운</p></div>
+                                                </div>
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>계산서일자</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>2022-07-20</p></div>
+                                                </div>
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>지역</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>Shanghai, China</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-panel__box">
+                                            <div class="transaction-panel-bl">
+                                                <div class="transaction-panel-bl__title"><p>B/L No</p></div>
+                                                <div class="transaction-panel-bl__desc"><a href="javascript:void(0)">PCSLBSOSC2100940</a></div>
+                                            </div>
+                                            <div class="transaction-panel-dtl">
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>해운/항공</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>해운</p></div>
+                                                </div>
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>계산서일자</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>2022-07-20</p></div>
+                                                </div>
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>지역</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>Shanghai, China</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-panel__box">
+                                            <div class="transaction-panel-bl">
+                                                <div class="transaction-panel-bl__title"><p>B/L No</p></div>
+                                                <div class="transaction-panel-bl__desc"><a href="javascript:void(0)">PCSLBSOSC2100940</a></div>
+                                            </div>
+                                            <div class="transaction-panel-dtl">
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>해운/항공</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>해운</p></div>
+                                                </div>
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>계산서일자</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>2022-07-20</p></div>
+                                                </div>
+                                                <div class="transaction-panel-dtl__cont">
+                                                    <div class="transaction-panel-dtl__title"><p>지역</p></div>
+                                                    <div class="transaction-panel-dtl__desc"><p>Shanghai, China</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <div class="attempted-panel">
+                                            <div class="attempted-panel__cont">
+                                                <div class="attempted-panel__title"><p>3개월 이하</p></div>
+                                                <div class="attempted-panel__desc"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="attempted-panel__cont">
+                                                <div class="attempted-panel__title"><p>3~6개월</p></div>
+                                                <div class="attempted-panel__desc"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="attempted-panel__cont">
+                                                <div class="attempted-panel__title"><p>6~9개월</p></div>
+                                                <div class="attempted-panel__desc"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="attempted-panel__cont">
+                                                <div class="attempted-panel__title"><p>9~12개월</p></div>
+                                                <div class="attempted-panel__desc"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                            <div class="attempted-panel__cont">
+                                                <div class="attempted-panel__title"><p>1년 이상</p></div>
+                                                <div class="attempted-panel__desc"><p>4,466,151,574.00</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    *@
+                </div>
+                <!-- E : result-area -->
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("/Scripts/js/Partner/Partner.js")
+    <!-- E : section -->
+}

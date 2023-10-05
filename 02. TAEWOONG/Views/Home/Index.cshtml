@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home";
+    ViewBag.Sub = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Container {
+    @Styles.Render("~/Content/css/Login/login.css")
+    <!-- S : section -->
+    <section class="section login">
+        <div class="container">
+            <div class="title">
+                <img src="~/Images/Login/title.png" />
+            </div>
+            <div class="login_info">
+                <div class="int_box">
+                    <input type="text" placeholder="ID" id="Input_ID" />
+                    <div id="ID_Warning" style="display:none">
+                        <p class="incorrect_login Span_Warning">아이디를 입력 하세요.</p>
+                    </div>
+                </div>
+                <div class="int_box">
+                    <input type="password" placeholder="Password" id="Input_Password" />
+                    <div id="Password_Warning" style="display:none">
+                        <p class="incorrect_login Span_Warning">비밀번호를 입력 하세요.</p>
+                    </div>
+                </div>
+                <div class="int_box checkbox">
+                    <input type="checkbox" id="login_keep" />
+                    <label for="login_keep">Remember me</label>
+                </div>
+                <button type="button" class="btns login" id="btn_login">Login</button>
+            </div>
+        </div>
+        <footer id="footer" class="py-5">
+            <div class="inner">
+                <address>
+                    <p class="copy">COPYRIGHTⓒ TAEWOONG LOGISTICS CO., LTD<br />ALL RIGHT RESERVED.</p>                    
+                </address>
+            </div>
+        </footer>
+    </section>
+    @Scripts.Render("/Scripts/js/Home/login.js")
+    <!-- E : section -->
+}

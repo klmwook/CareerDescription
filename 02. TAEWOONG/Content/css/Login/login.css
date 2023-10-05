@@ -1,0 +1,21 @@
+﻿.section.login{display:flex;flex-direction:column;justify-content:space-between; min-height:100vh; background:url(/Images/Common/main_visual.jpg) no-repeat 50% 50%;background-size:cover;}
+.login .container{padding:0 30px;}
+.login .title{padding:8.4375rem 0; text-align:center;}
+.login .title img{max-width:650px; width:100%;}
+.login .login_info{max-width:600px; margin:0 auto;}
+.login .login_info .int_box{padding-bottom:1.25rem;}
+.login .login_info .int_box input[type='text'],
+.login .login_info .int_box input[type='password']{height:40px;}
+
+.checkbox input{position:absolute; width:0px;height:0px;top:50%;left:1px;transform:translateY(-50%);outline:0;}
+.checkbox label{position:relative; padding-left:35px; color:#fff;}
+.checkbox label:before{display:block; content:'';position:absolute; top:0; left:0; width:26px; height:25px; background:url(/Images/Login/chk01.png) no-repeat 0 0;}
+.checkbox input:checked+label:before{background-position:0 -25px;}
+
+.btns.login{width:100%; height:50px; background:#00bce4; color:#fff; font-size:1.0625rem; border-radius:4px;}
+
+/* login 공용 */
+.Span_Warning{width:100%; display:inline-block; color:#f44336; font-size:9pt; font-weight:400; margin-top:2px;}
+
+/* Footer (Not login) */
+.login #footer{color:#d9ebef;}

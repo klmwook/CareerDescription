@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "ExBooking";
+    ViewBag.Sub = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section Container {
+    <!-- S : section -->
+    <section class="section exbooking list_in">
+        <div class="container">
+            <div class="content">
+                <!-- S : search-area -->
+                <div class="search-area">
+                    <div class="search__input int_box" id="AC_PORT_Width">
+                        <input type="text" class="auto" placeholder="PORT" id="input_PORT_NM" />
+                        <input type="hidden" id="input_PORT_CD" />
+                        @*<button type="button" class="btns icon delete has_icn" id="btn_deleteCust" style="display: none;"><span class="blind">삭제</span></button>*@
+                    </div>
+                    <div class="search__date">
+                        <input type="text" class="start_date" id="input_DATE_START" inputmode="none" />
+                        <span>~</span>
+                        <input type="text" class="end_date" id="input_DATE_END" inputmode="none" />
+                    </div>
+                    <div class="search__button">
+                        <button type="button" class="btns search" id="btn_Search" onclick="fnMovePage('ExBooking_Result')">조회</button>
+                    </div>
+                </div>
+                <!-- E : search-area -->
+                <!-- S : result-area -->
+                <div class="result-area" id="ExBooking_Result">
+                    <div class="result-box no-data">
+                        <img src="~/Images/Common/icn_nodata.png" />                        
+                        <span id="no_data_text"></span>
+                    </div>
+                    @*<div class="result-box">
+                        <div class="result-order">
+                            <div class="result-type4">
+                                <div class="result-type4__info">
+                                    <div class="result-type4__title"><p>늘푸른해운항공</p></div>
+                                    <div class="result-type4__desc"><p>CHARLESTON (Spartanburg, SC)</p></div>
+                                </div>
+                            </div>
+                            <div class="result-detail">
+                                <div class="customer">
+                                    <div class="cust__info">
+                                        <div class="cust__title"><p>담당자(팀)</p></div>
+                                        <div class="cust__desc"><p>CIS&중동영업팀</p></div>
+                                    </div>
+                                    <div class="cust__info">
+                                        <div class="cust__title"><p>ETD</p></div>
+                                        <div class="cust__desc"><p>2022-08-01</p></div>
+                                    </div>
+                                    <div class="cust__info">
+                                        <div class="cust__title"><p>상태</p></div>
+                                        <div class="cust__desc"><p>40RF</p></div>
+                                    </div>
+                                    <div class="cust__info wd100">
+                                        <div class="cust__title"><p>컨테이너 타입</p></div>
+                                        <div class="cust__desc"><p>20</p></div>
+                                    </div>
+                                    <div class="cust__info wd100">
+                                        <div class="cust__title"><p>기타</p></div>
+                                        <div class="cust__desc"><p>고려종합국제운송</p></div>
+                                    </div>
+                                    <div class="cust__info wd100">
+                                        <div class="cust__title"><p>모선&항차명</p></div>
+                                        <div class="cust__desc"><p>부산 코리아</p></div>
+                                    </div>
+                                    <div class="cust__info wd100">
+                                        <div class="cust__title"><p>선적지</p></div>
+                                        <div class="cust__desc"><p>KCTC PRIME 2021S</p></div>
+                                    </div>
+                                    <div class="cust__info wd100">
+                                        <div class="cust__title"><p>Remark</p></div>
+                                        <div class="cust__desc"><p>Remark</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+                <!-- E : result-area -->
+            </div>
+        </div>
+    </section>
+    <!-- E : section -->
+    @Scripts.Render("/Scripts/js/ExBooking/ExBooking.js")
+}

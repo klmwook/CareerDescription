@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>TAEWOONG LOGISTICS</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TAEWOONG LOGISTICS" />
+    <meta property="og:image" content="http://localhost:50001/Images/Common/meta_img01.png" />
+    <meta property="og:site_name" content="TAEWOONG LOGISTICS" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    @Styles.Render("~/Content/css/Common/fonts.css")
+    @Styles.Render("~/Content/css/Common/media.css")
+    @Styles.Render("~/Content/API/font-awesome/css/font-awesome.min.css")
+    @Styles.Render("~/Content/API/jquery.motionCaptcha.0.2.css")
+    @Scripts.Render("~/Scripts/API/jquery-2.2.3.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+    @Scripts.Render("~/Scripts/API/jquery.datetimepicker.full.js")
+    @Scripts.Render("~/Scripts/Pub/common.js")
+    @Scripts.Render("~/Scripts/js/common/Comm.js")
+    @Scripts.Render("~/Scripts/js/common/_layout.js")
+    @Scripts.Render("~/Scripts/API/scrolloverflow.js")
+    @Scripts.Render("~/Scripts/API/bluebird.min.js")    
+    <script src="~/Scripts/API/jquery.motionCaptcha.0.2.js" charset="euc-kr"></script>
+
+    @Scripts.Render("~/Scripts/API/jquery.signalR-1.1.4.js")
+    @Scripts.Render("~/Scripts/API/toastr.js")
+
+    <script type="text/javascript">
+        var _HomeUrl = window.location.origin;
+        var _Office_CD = '@System.Configuration.ConfigurationManager.AppSettings["OFFICE_CD"]';
+        var _Domain = '@System.Configuration.ConfigurationManager.AppSettings["Domain"]';
+        var _Push_Setting = '@System.Configuration.ConfigurationManager.AppSettings["Push_Setting"]'; // Y / N 
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div id="wrap">
+
+        <input type="hidden" id="Session_USR_ID" value="@Session["USR_ID"]" />
+
+        <header id="header" style="display: block;" class="header">
+        </header>
+
+        @RenderSection("Container", required: false)
+
+        <div class="layer_zone alert_type" id="alert01">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="alert_cont">
+                            <img src="~/Images/Common/icn_alert.png" />
+                            <div class="inner">
+                                데이터가 삭제 되었습니다.
+                            </div>
+                        </div>
+                        <div class="btn_w">
+                            <button type="button" class="btns alert_confirm" id="alert01_confirm" onclick="layerClose('#alert01');">확인</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="layer_zone alert_type" id="alert02">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="alert_cont">
+                            <img src="~/Images/Common/icn_alert.png" />
+                            <div class="inner">
+                                데이터가 삭제 되었습니다.
+                            </div>
+                        </div>
+                        <div class="btn_w">
+                            <button type="button" class="btns alert_cancel" id="alert02_cencel" onclick="layerClose('#alert02');">취소</button>
+                            <button type="button" class="btns alert_confirm" id="alert02_confirm" onclick="layerClose('#alert02');">확인</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="layer_zone alert_type" id="layer_in_alert">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="alert_cont">
+                            <img src="~/Images/Common/icn_alert.png" />
+                            <div class="inner" id="layer_in_alert_content">
+                            </div>
+                        </div>
+                        <div class="btn_w">
+                            <button type="button" class="btns alert_confirm" id="alert_layer01" onclick="alert_layerClose('#layer_in_alert');">확인</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="ProgressBar_Loading" style="display:none">
+            <div class="ispinner ispinner-large">
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+            </div>
+        </div>
+        <div class="toast_wrap"></div>
+    </div>
+</body>
+</html>

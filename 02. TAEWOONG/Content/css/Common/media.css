@@ -1,0 +1,164 @@
+﻿@charset "utf-8";
+
+@import url('reset.css');
+@import url('layout.css');
+
+
+@media(min-width:768.02px){
+
+    /*#wrap{background:#daf3f9;}*/
+
+    /* 가부킹 */
+    .exbooking .customer{display:flex; flex-wrap:wrap;}
+    .exbooking .customer .cust__info{flex:1 1 50%;}
+    .exbooking .customer .cust__info:nth-child(odd){padding-right:40px;border-right:1px solid #ddd;}
+    .exbooking .customer .cust__info:nth-child(3){padding-right:0;border-right:0;}
+    .exbooking .customer .cust__info:nth-child(even){padding-left:40px;}
+    .exbooking .customer .cust__info.wd100{flex:0 1 100%;margin-top:0; padding-left:0!important; padding-right:0!important; border-right:0;}
+}
+
+@media (min-width: 1024.02px){
+    #header{max-width:1400px; margin:0 auto;}
+
+    .fixed_in{max-width:1400px; margin:0 auto;}
+
+    .container{max-width:1440px; padding:0 20px;}
+
+    /* policy layer */
+	.terms_area{height:420px; font-size:14px;}
+	.terms_area h3{font-size:20px;}
+
+
+    /* Menu */
+    .list{max-width:600px;}
+    .list .list_item .inner{padding:1.25rem;}
+    .list .list_item .inner p{font-size:1rem;}
+    .list .list_item .inner p:before{left:0;}
+
+    /* list_in */
+    .list_in.list{display:block; margin:0 auto;}
+    .list_in.list .list_item .inner{padding:0.625rem 0.625rem 0.625rem 0.25rem;}
+    .list_in.list .list_item .inner p:before{left:0.375rem;}
+
+    .search-area{display:flex;}
+    .search-area > *:not(.search__button){width:100%; padding:1.25rem 1.25rem 1.25rem 0; margin-bottom:0;}
+    .search-area > *:first-child{padding-left:1.25rem;}
+    .search-area .search__date input{min-width:8.5rem;}
+
+    .btns.search{width:6.25rem; height:100%;}
+    .btns.sign-in{max-width:6.25rem;}
+    .btns.pdf{width:8.25rem;}
+
+    .result-box.no-data img{padding-right:1.875rem;}
+    .result-box.no-data span{font-size:1.875rem;}
+    .partner-num{font-size:16px;}
+
+    .result-type1{font-size:1.5rem;}
+
+    .tab-area{display:flex;}
+    .tab-area .tab{display:block; padding:1.25rem;}
+    .tab-area li{padding-bottom:1.25rem;}
+    .tab-area li:last-child{padding-bottom:0;}
+    .tab-area li p{font-size:0.875rem;}
+    
+    .tab_panel{max-height:unset; min-height:unset; width:100%; height:400px;}
+    .partner .tab_panel{height:305px;}
+    .tab_panel::-webkit-scrollbar{width:6px; height:auto; background-color:transparent}
+    .tab_panel::-webkit-scrollbar-thumb{border-radius:5px;background-color:#aaa;}
+    .tab_panel .panel{height:394px;}
+    .partner .tab_panel .panel{height:204px;}
+
+    .customer .cust__info{justify-content:normal;}
+    .customer .cust__info .cust__title{min-width:8.5rem; font-size:0.875rem;}
+
+    /* result-tbl */
+    .result-tbl__bundle{display:flex;}
+    .result-tbl__bundle:last-child .result-tbl__cont2{padding-bottom:0;}
+    .result-tbl__bundle .result-tbl__cont.short{flex:1 1 0}
+    .result-tbl__bundle .result-tbl__cont.long{flex:3 1 0}
+    .result-tbl__title,
+    .bl .result-tbl__title{min-width:6rem; font-size:0.875rem; font-weight:500; line-height:2rem;}
+    .result-tbl__desc{font-size:1rem;}
+
+    .result-tbl__button2{text-align:right;}
+    .bl .result-tbl__button{text-align:right;}
+
+    .result-tbl__cont2{width:100%;margin-right:2.5rem;padding-right:2.5rem; border-right:1px solid #ddd;}
+    .result-tbl__cont2:last-child{margin-right:0;padding-right:0;padding-bottom:0;border-right:0;}
+    .result-tbl__title2{font-size:0.875rem;}
+    .result-tbl__desc2{font-size:1rem;}
+
+    /* result-type2 (부킹, BL) */
+    .result-type2 .result-type2__info .result-type2__title{min-width:5rem; font-size:1rem; line-height:1.875rem;}
+    .result-type2 .result-type2__info .result-type2__desc{font-size:1.5rem;}
+
+    /* result-type3 (파트너) */
+    .result-type3{font-size:1.5rem;}
+
+    /* result-type4 (가부킹) */
+    .result-type4 .result-type4__info .result-type4__title{font-size:1.5rem;}
+    .result-type4 .result-type4__info .result-type4__desc{font-size:1rem;}
+
+    /* 담당자 */
+    .cust-panel__title{font-size:0.875rem;}
+    .cust-panel__desc{font-size:1rem;}
+
+    /* 거래내역 */
+    .transaction-panel-bl{padding-bottom:0.625rem;}
+    .transaction-panel-bl__title,
+    .transaction-panel-dtl__title{font-size:0.875rem;}
+    .transaction-panel-bl__title{min-width:5rem;}
+    .transaction-panel-bl__desc{font-size:1rem;}
+    .transaction-panel-dtl__cont:first-child{min-width:5rem;}
+    .transaction-panel-dtl__title{padding-bottom:0.5rem;}
+    .transaction-panel-dtl__desc{font-size:1rem;}
+
+    /* 미수현황 */
+    .attempted-panel__title{min-width:6rem; font-size:0.875rem; font-weight:500; line-height:2rem;}
+    .attempted-panel__desc{font-size:1rem;}
+    .attempted-sum__title{font-size:0.875rem;}
+    .attempted-sum__desc{font-size:1rem;}
+    /* 가부킹 */
+    .exbooking .customer .cust__info{flex:1 1 0; justify-content:space-between; width:100%;padding:0 10px; border-right:1px solid #ddd;}
+    .exbooking .customer .cust__info:nth-child(odd){padding-right:10px;}
+    .exbooking .customer .cust__info:nth-child(even){padding-left:10px;}
+    .exbooking .customer .cust__info:first-child{padding-left:0;}
+    .exbooking .customer .cust__info:last-child{border-right:0;}
+    .exbooking .customer .cust__info:nth-child(3n){padding-right:0; border-right:0;}
+    .exbooking .customer .cust__info.wd100{margin-top:10px;}
+    .exbooking .customer .cust__info .cust__title{font-size:0.875rem;}
+    .exbooking .customer .cust__info .cust__desc{font-size:1rem;}
+
+    /* 실적 */
+    .customer-hbl .customer-hbl__title{font-size:1.125rem;}
+
+    .perform .result-tbl__title{min-width:8rem;}
+    .perform-radio .perform-radio__button{width:5.5rem; font-size:0.875rem;}
+    .btns.unfinished{width:5.5rem; font-size:0.875rem;}
+
+    /* 선급 */
+    .sign-info:before{font-size:1rem;}
+    .sign-info .sign-info__cont{font-size:1rem;}
+
+    /* 팀장 확인 */
+    .chkmgr-info:before{font-size:1rem;}
+    .chkmgr-info .sign-info__cont{font-size:1rem;}
+
+    .sign .result-tbl__hidden{padding-top:0.625rem;}
+
+    /* BL */
+    #blPopup iframe{min-height:700px;}
+
+    .navi_tab .btns.top{right:3.25rem; bottom:3.25rem;}
+}
+@media(max-width:768px){
+    #wrap{background:#daf3f9;}
+}
+@media(max-width:300px){
+    .xdsoft_datetimepicker{width:220px;}
+    .xdsoft_calendar{padding:0 10px 10px;}
+    .xdsoft_datetimepicker .xdsoft_prev, .xdsoft_datetimepicker .xdsoft_next{width:35px;}
+    .xdsoft_datetimepicker .xdsoft_prev{margin-right:5px;}
+    .xdsoft_datetimepicker .xdsoft_next{margin-left:5px;}
+    .xdsoft_datetimepicker .xdsoft_label > span{padding:0 25px 0 15px;}
+}
