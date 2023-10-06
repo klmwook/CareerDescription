@@ -1,0 +1,222 @@
+﻿@{
+    ViewBag.Title = "Member";
+    ViewBag.Sub = "Find";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <script>
+            $('body').addClass('e-service--sub');
+        </script>
+
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16">
+                <div class="page-title text-center mb-20">
+                    <h2 class="common-text--38 font-weight-medium">Find Account</h2>
+                </div>
+                <div class="container">
+                    <div class="find-wrap">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-6 col-12 login_box">
+                                <div class="login_wrap">
+                                    <div class="id_tit mb-6">
+                                        <p class="common-text--22 font-weight-medium pb-2">Forgot your ID?</p>
+                                        <p class="common-text--16 font-weight-regular">Please enter the information<br /> you registered when joined.</p>
+                                    </div>
+                                    <!-- 아이디 -->
+                                    <div class="tab_con tab_con_1" style="">
+                                        <ul class="login_list">
+                                            <li>
+                                                <input type="text" class="input_for" id="FindUser_NM" placeholder="Name" data-index="FindUser1" />
+                                            </li>
+                                            <li>
+                                                <input type="text" class="input_for" id="FindUser_HP" placeholder="Phone Number" data-index="FindUser2" />
+                                            </li>
+                                            <li class="warning" id="FindUser_Error" style="display:none;">
+                                                오류메시지 테스트 영역
+                                            </li>
+                                            <li id="FindID_Area" style="display:none">
+                                                <div class="login_tbl">
+                                                    <p class="login_tbcell" id="FindID_Result"></p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <input type="button" class="btn-find badge-color-2" id="FindUser_Search" value="Find ID" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="login_wrap mt-12 mt-md-0">
+                                    <div class="id_tit mb-6">
+                                        <p class="common-text--22 font-weight-medium pb-2">Forgot your PW?</p>
+                                        <p class="common-text--16 font-weight-regular">Please enter the information<br /> you registered when joined.</p>
+                                    </div>
+                                    <!-- 비밀번호 -->
+                                    <div class="tab_con tab_con_1" style="">
+                                        <ul class="login_list">
+                                            <li>
+                                                <input type="text" class="input_for" id="FindPW_ID" placeholder="ID" data-index="FindPW1" />
+                                            </li>
+                                            <li>
+                                                <input type="text" class="input_for" id="FindPW_NM" placeholder="Name" data-index="FindPW2" />
+                                            </li>
+                                            <li class="warning" id="FindPW_Error" style="display:none;"></li>
+                                            <li>
+                                                <input type="button" class="btn-find btn-find--pw" id="FindPW_GetAuthNum" value="Issuing a certification number" />
+                                            </li>
+                                            <li class="GetAuthNum" style="display:none">
+                                                <div class="login_tbl">
+                                                    <p class="login_tbcell"><span>The certification number has been issued</span> to the email you signed up for.</p>
+                                                </div>
+                                            </li>
+                                            <li class="GetAuthNum" style="display:none">
+                                                <input type="text" class="input_for" id="FindPW_Key" placeholder="Enter your certification number." />
+                                            </li>
+                                            <li class="GetAuthNum" style="display:none">
+                                                <input type="submit" class="btn-find badge-color-2" id="FindPW_GetNewPW" value="Issuing a temporary password" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        @Scripts.Render("~/Scripts/js/Member/Find_UserEng.js")
+        @Scripts.Render("~/Scripts/js/Member/Find_PasswordEng.js")
+    }
+    else
+    {
+        <script>
+            $('body').addClass('e-service--sub');
+        </script>
+
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16">
+                <div class="page-title text-center mb-20">
+                    <h2 class="common-text--38 font-weight-medium">아이디/비밀번호 찾기</h2>
+                </div>
+                <div class="container">
+                    <div class="find-wrap">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-6 col-12 login_box">
+                                <div class="login_wrap">
+                                    <div class="id_tit mb-6">
+                                        <p class="common-text--22 font-weight-medium pb-2">아이디를 잊으셨나요?</p>
+                                        <p class="common-text--16 font-weight-regular">가입시 등록하신 정보를 입력하세요.</p>
+                                    </div>
+                                    <!-- 아이디 -->
+                                    <div class="tab_con tab_con_1" style="">
+                                        <ul class="login_list">
+                                            <li>
+                                                <input type="text" class="input_for" id="FindUser_NM" placeholder="이름을 입력하세요." data-index="FindUser1" />
+                                            </li>
+                                            <li>
+                                                <input type="text" class="input_for" id="FindUser_HP" placeholder="휴대폰번호를 입력하세요." data-index="FindUser2" />
+                                            </li>
+                                            <li class="warning" id="FindUser_Error" style="display:none;">
+                                                오류메시지 테스트 영역
+                                            </li>
+                                            <li id="FindID_Area" style="display:none">
+                                                <div class="login_tbl">
+                                                    <p class="login_tbcell" id="FindID_Result"></p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <input type="button" class="btn-find badge-color-2" id="FindUser_Search" value="아이디 찾기 " />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="login_wrap mt-12 mt-md-0">
+                                    <div class="id_tit mb-6">
+                                        <p class="common-text--22 font-weight-medium pb-2">비밀번호를 잊으셨나요?</p>
+                                        <p class="common-text--16 font-weight-regular">가입시 등록하신 정보를 입력하세요.</p>
+                                    </div>
+                                    <!-- 비밀번호 -->
+                                    <div class="tab_con tab_con_1" style="">
+                                        <ul class="login_list">
+                                            <li>
+                                                <input type="text" class="input_for" id="FindPW_ID" placeholder="아이디를 입력하세요." data-index="FindPW1" />
+                                            </li>
+                                            <li>
+                                                <input type="text" class="input_for" id="FindPW_NM" placeholder="이름을 입력하세요." data-index="FindPW2" />
+                                            </li>
+                                            <li class="warning" id="FindPW_Error" style="display:none;"></li>
+                                            <li>
+                                                <input type="button" class="btn-find btn-find--pw" id="FindPW_GetAuthNum" value="인증번호 발급 " />
+                                            </li>
+                                            <li class="GetAuthNum" style="display:none">
+                                                <div class="login_tbl">
+                                                    <p class="login_tbcell">가입하신 이메일로 <span>인증번호가 발급</span>되었습니다.</p>
+                                                </div>
+                                            </li>
+                                            <li class="GetAuthNum" style="display:none">
+                                                <input type="text" class="input_for" id="FindPW_Key" placeholder="인증번호를 입력하세요." />
+                                            </li>
+                                            <li class="GetAuthNum" style="display:none">
+                                                <input type="submit" class="btn-find badge-color-2" id="FindPW_GetNewPW" value="임시 비밀번호 발급 " />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        @Scripts.Render("~/Scripts/js/Member/Find_User.js")
+        @Scripts.Render("~/Scripts/js/Member/Find_Password.js")
+    }
+}

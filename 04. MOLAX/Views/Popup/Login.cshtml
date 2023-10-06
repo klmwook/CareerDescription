@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "Login";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-login">
+        	<div class="login_wrap">
+        		<h1 class="common-text--28 text-color-1 pb-4 text-center font-sub">MOLAX</h1>
+                <!-- 로그인 -->
+                <ul class="login_list">
+                    <li>
+                        <input type="text" class="input_for" id="Login_ID" placeholder="ID" />
+                    </li>
+                    <li>
+                        <form onsubmit="return false">
+                            <input type="password" class="input_for" id="Login_Password" placeholder="PW" autocomplete="off" />
+                        </form>
+                    </li>
+
+                    <li class="warning warning-bt" id="ID_Warning" style="display:none;">
+                        Input your ID.
+                    </li>
+                    <li class="warning warning-bt" id="Password_Warning" style="display:none;">
+                        Input your password.
+                    </li>
+
+                    <li><input type="button" class="input_for btn_login" id="Login_btn" value="login " /></li>
+                </ul>
+                <div class="bot_sec row">
+                    <div class="col-lg-3 text-gray-6 mb-md-0 mb-2 pl-4">
+                        <label class="input-label-login input-label--checkbox">
+                            <input type="checkbox" name="idsave" id="login_keep" />
+                            <span class="input-label__txt">ID Save</span>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <ul class="bot_wrap">
+                            <li class="item">
+                                <a href="@Url.Action("Join","Member")" class="bot-btn">Join</a>
+                            </li>
+                            <li class="item">
+                                <a href="@Url.Action("Find","Member")" class="bot-btn line">Find Account</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Login.js")
+    }
+    else
+    {
+        <div class="popup pop-login">
+            <div class="login_wrap">
+                <h1 class="common-text--28 text-color-1 pb-4 text-center font-sub">MOLAX</h1>
+                <!-- 로그인 -->
+                <ul class="login_list">
+                    <li>
+                        <input type="text" class="input_for" id="Login_ID" placeholder="아이디" />
+                    </li>
+                    <li>
+                        <form onsubmit="return false">
+                            <input type="password" class="input_for" id="Login_Password" placeholder="비밀번호" autocomplete="off" />
+                        </form>
+                    </li>
+
+                    <li class="warning warning-bt" id="ID_Warning" style="display:none;">
+                        아이디를 입력 하세요.
+                    </li>
+                    <li class="warning warning-bt" id="Password_Warning" style="display:none;">
+                        비밀번호를 입력 하세요.
+                    </li>
+
+                    <li><input type="button" class="input_for btn_login" id="Login_btn" value="로그인 " /></li>
+                </ul>
+                <div class="bot_sec row">
+                    <div class="col-lg-3 text-gray-6 mb-md-0 mb-2 pl-4">
+                        <label class="input-label-login input-label--checkbox">
+                            <input type="checkbox" name="idsave" id="login_keep" />
+                            <span class="input-label__txt">아이디 저장</span>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <ul class="bot_wrap">
+                            <li class="item">
+                                <a href="@Url.Action("Join","Member")" class="bot-btn">회원가입 </a>
+                            </li>
+                            <li class="item">
+                                <a href="@Url.Action("Find","Member")" class="bot-btn line">아이디/비밀번호 찾기 </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Login.js")
+    }
+}

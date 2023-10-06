@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "FileDownload";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-file-download">
+            <div class="popup-head mb-5">
+                <h1 class="popup__title text-gray-2">Files</h1>
+            </div>
+
+            <div class="file_title">
+                <div class="file_tit1">Sort</div>
+                <div class="file_tit2">File name</div>
+            </div>
+            <ul class="file_list" id="MyBoard_FileList_AREA">
+                @*<li>
+                        <div class="file_sort">
+                            <p>Customs Clearance</p>
+                        </div>
+                        <div class="file_nm">
+                            <a href="javascript:void(0)" class="file_name">
+                                ETELPUSS0673
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="file_sort"><p>House B/L</p></div>
+                        <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                    </li>
+                    <li>
+                        <div class="file_sort"><p>Invoice</p></div>
+                        <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                    </li>*@
+            </ul>
+            <div class="popup-footer mt-8">
+                <button type="button" class="btn-type-01 w-100 pop-in-close">Close</button>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/MyBoard_FileListEng.js")
+    }
+    else
+    {
+        <div class="popup pop-file-download">
+            <div class="popup-head mb-5">
+                <h1 class="popup__title text-gray-2">첨부 파일</h1>
+            </div>
+
+            <div class="file_title">
+                <div class="file_tit1">구분</div>
+                <div class="file_tit2">파일명</div>
+            </div>
+            <ul class="file_list" id="MyBoard_FileList_AREA">
+                @*<li>
+                        <div class="file_sort">
+                            <p>Customs Clearance</p>
+                        </div>
+                        <div class="file_nm">
+                            <a href="javascript:void(0)" class="file_name">
+                                ETELPUSS0673
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="file_sort"><p>House B/L</p></div>
+                        <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                    </li>
+                    <li>
+                        <div class="file_sort"><p>Invoice</p></div>
+                        <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                    </li>*@
+            </ul>
+            <div class="popup-footer mt-8">
+                <button type="button" class="btn-type-01 w-100 pop-in-close">닫기</button>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/MyBoard_FileList.js")
+    }
+}

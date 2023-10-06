@@ -1,0 +1,492 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "Tracking";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+
+    <script>
+        var _Office_CD = '@System.Configuration.ConfigurationManager.AppSettings["OFFICE_CD"]';
+    </script>
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-trcv">
+            <div class="pop-inner">
+                <div class="trc_wrap">
+                    <h1 class="common-text--24 font-weight-bold pb-4 text-center font-sub">Tracking</h1>
+                    <!-- 실시간 화물추적 -->
+                    <div class="trc_box">
+                        <h3 class="common-text--18 font-weight-medium mb-4 text-center text-md-left">Real Time Cargo Tracking</h3>
+                        <!-- 수출 -->
+                        <ul class="trc_list" id="Tracking_Result_AREA">
+                            @*<li class="trc-cnt-box end">
+                                    <div class="title">Empty Container Pick Up</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-1.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box end">
+                                    <div class="title">Arrived in the Terminal</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-2.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box now">
+                                    <div class="title">Loaded on the Vessel</div>
+                                    <div class="item blink">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-3.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">Vessel Departure</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-4.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">Vessel Arrival</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-5.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Gdansk, Poland</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>*@
+                        </ul>
+                        <!-- 수출 -->
+                        <!-- 수입 -->
+                        @*<ul class="trc_list import">
+                                <li class="trc-cnt-box end">
+                                    <div class="title">공 컨테이너 반출</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-1.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box end">
+                                    <div class="title">터미널 반입</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-2.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box end">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box now">
+                                    <div class="title">선적</div>
+                                    <div class="item blink">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-3.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">출항</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-4.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">도착</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-5.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Gdansk, Poland</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">도착</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-6.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Gdansk, Poland</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                            </ul>*@
+                        <!-- 수입 -->
+                    </div>
+                    <div class="trc_box mt-6">
+                        <h3 class="common-text--18 font-weight-medium mb-4 text-center text-md-left">A&#47;S Location</h3>
+
+                        <!-- S : (a/s 위치정보 pc)-->
+                        <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                            <p class="row-scrollwrap__txt"><i class="xi-info-o"></i>가로로 스크롤 하여 보실 수 있습니다.</p>
+                            <div class="row-scrollwrap__scroll">
+                                <div class="row-scrollwrap__content">
+                                    <!-- S: 스크롤 할 컨텐츠 -->
+                                    <table class="table table--st1">
+                                        <colgroup>
+                                            <col width="15%" />
+                                            <col width="15%" />
+                                            <col width="15%" />
+                                            <col width="15%" />
+                                            <col width="" />
+                                            <col width="10%" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>House B/L</th>
+                                                <th>Container No</th>
+                                                <th>Master B/L</th>
+                                                <th>Status</th>
+                                                <th>Last Location</th>
+                                                <th>Doc</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="TrackingList_Result_AREA_PC">
+                                            @*<tr>
+                                                    <td>YJS201000002</td>
+                                                    <td>CNTR20200001</td>
+                                                    <td>MAEU9111951</td>
+                                                    <td class="tit">공컨테이너 반출</td>
+                                                    <td>
+                                                        <p>Hanjin Busan New Port, Busan, Korea</p>
+                                                        <p>2020-11-17 14:00</p>
+                                                    </td>
+                                                    <td class="doc">
+                                                        <a href="javascript:void(0)" name="Layer_FileList">
+                                                            <span class="count">2</span>
+                                                        </a>
+                                                    </td>
+                                                </tr>*@
+                                        </tbody>
+                                    </table>
+                                    <!-- E: 스크롤 할 컨텐츠 -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- E : (a/s 위치정보 pc)-->
+                        <!-- S : (a/s 위치정보 모바일)-->
+                        <div class="m-info d-block d-md-none" id="TrackingList_Result_AREA_MO">
+                            @*<ul class="info-box py-2 px-1">
+                                    <li class="info-txt">
+                                        <p class="title">House B/L</p>
+                                        <p class="des">YJS201000002</p>
+                                    </li>
+                                    <li class="info-txt">
+                                        <p class="title">Container No</p>
+                                        <p class="des">CNTR20200001</p>
+                                    </li>
+                                    <li class="info-txt">
+                                        <p class="title">Master B/L</p>
+                                        <p class="des">MAEU9111951</p>
+                                    </li>
+                                    <li class="info-txt">
+                                        <p class="title">Status</p>
+                                        <p class="tit">공컨테이너 반출</p>
+                                    </li>
+                                    <li class="info-txt info-txt--full">
+                                        <p class="title">Last Location</p>
+                                        <p class="des">Hanjin Busan New Port, Busan, Korea</p>
+                                    </li>
+                                    <li class="info-txt info-txt--full">
+                                        <p class="title">Doc</p>
+                                        <div class="doc">
+                                            <a href="javascript:void(0)" class="popup-in-popup" onclick="layerPopup2('#layer_Tracking_FileList')">
+                                                <span class="count">2</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>*@
+                        </div>
+                        <!-- E : (a/s 위치정보 모바일)-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/TrackingEng.js")
+    }
+    else
+    {
+        <div class="popup pop-trcv">
+            <div class="pop-inner">
+                <div class="trc_wrap">
+                    <h1 class="common-text--24 font-weight-bold pb-4 text-center font-sub">Tracking</h1>
+                    <!-- 실시간 화물추적 -->
+                    <div class="trc_box">
+                        <h3 class="common-text--18 font-weight-medium mb-4 text-center text-md-left">실시간 화물추적</h3>
+                        <!-- 수출 -->
+                        <ul class="trc_list" id="Tracking_Result_AREA">
+                            @*<li class="trc-cnt-box end">
+                                    <div class="title">공 컨테이너 반출</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-1.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box end">
+                                    <div class="title">터미널 반입</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-2.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box now">
+                                    <div class="title">선적</div>
+                                    <div class="item blink">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-3.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">출항</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-4.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">도착</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-5.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Gdansk, Poland</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>*@
+                        </ul>
+                        <!-- 수출 -->
+                        <!-- 수입 -->
+                        @*<ul class="trc_list import">
+                                <li class="trc-cnt-box end">
+                                    <div class="title">공 컨테이너 반출</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-1.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box end">
+                                    <div class="title">터미널 반입</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-2.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box end">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box now">
+                                    <div class="title">선적</div>
+                                    <div class="item blink">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-3.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Hanjin Busan New Port Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">출항</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-4.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Busan, Korea</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">도착</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-5.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Gdansk, Poland</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                                <li class="trc-cnt-box yet">
+                                    <div class="title">도착</div>
+                                    <div class="item">
+                                        <img src="~/Images/Masstige/e-service/trc-icon-im-6.png" alt="아이콘" />
+                                    </div>
+                                    <div class="txt-box">
+                                        <p class="txt">Gdansk, Poland</p>
+                                        <p class="time">2020-09-14 10:44</p>
+                                    </div>
+                                </li>
+                            </ul>*@
+                        <!-- 수입 -->
+                    </div>
+                    <div class="trc_box mt-6">
+                        <h3 class="common-text--18 font-weight-medium mb-4 text-center text-md-left">A&#47;S 위치정보</h3>
+
+                        <!-- S : (a/s 위치정보 pc)-->
+                        <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                            <p class="row-scrollwrap__txt"><i class="xi-info-o"></i>가로로 스크롤 하여 보실 수 있습니다.</p>
+                            <div class="row-scrollwrap__scroll">
+                                <div class="row-scrollwrap__content">
+                                    <!-- S: 스크롤 할 컨텐츠 -->
+                                    <table class="table table--st1">
+                                        <colgroup>
+                                            <col width="15%" />
+                                            <col width="15%" />
+                                            <col width="15%" />
+                                            <col width="15%" />
+                                            <col width="" />
+                                            <col width="10%" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>House B/L</th>
+                                                <th>Container No</th>
+                                                <th>Master B/L</th>
+                                                <th>Status</th>
+                                                <th>Last Location</th>
+                                                <th>Doc</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="TrackingList_Result_AREA_PC">
+                                            @*<tr>
+                                                    <td>YJS201000002</td>
+                                                    <td>CNTR20200001</td>
+                                                    <td>MAEU9111951</td>
+                                                    <td class="tit">공컨테이너 반출</td>
+                                                    <td>
+                                                        <p>Hanjin Busan New Port, Busan, Korea</p>
+                                                        <p>2020-11-17 14:00</p>
+                                                    </td>
+                                                    <td class="doc">
+                                                        <a href="javascript:void(0)" name="Layer_FileList">
+                                                            <span class="count">2</span>
+                                                        </a>
+                                                    </td>
+                                                </tr>*@
+                                        </tbody>
+                                    </table>
+                                    <!-- E: 스크롤 할 컨텐츠 -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- E : (a/s 위치정보 pc)-->
+                        <!-- S : (a/s 위치정보 모바일)-->
+                        <div class="m-info d-block d-md-none" id="TrackingList_Result_AREA_MO">
+                            @*<ul class="info-box py-2 px-1">
+                                    <li class="info-txt">
+                                        <p class="title">House B/L</p>
+                                        <p class="des">YJS201000002</p>
+                                    </li>
+                                    <li class="info-txt">
+                                        <p class="title">Container No</p>
+                                        <p class="des">CNTR20200001</p>
+                                    </li>
+                                    <li class="info-txt">
+                                        <p class="title">Master B/L</p>
+                                        <p class="des">MAEU9111951</p>
+                                    </li>
+                                    <li class="info-txt">
+                                        <p class="title">Status</p>
+                                        <p class="tit">공컨테이너 반출</p>
+                                    </li>
+                                    <li class="info-txt info-txt--full">
+                                        <p class="title">Last Location</p>
+                                        <p class="des">Hanjin Busan New Port, Busan, Korea</p>
+                                    </li>
+                                    <li class="info-txt info-txt--full">
+                                        <p class="title">Doc</p>
+                                        <div class="doc">
+                                            <a href="javascript:void(0)" class="popup-in-popup" onclick="layerPopup2('#layer_Tracking_FileList')">
+                                                <span class="count">2</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>*@
+                        </div>
+                        <!-- E : (a/s 위치정보 모바일)-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Tracking.js")
+    }
+}

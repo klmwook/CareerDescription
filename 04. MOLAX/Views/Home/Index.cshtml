@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if(Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <input type="hidden" id="input_Tracking_HBL_NO" value="" />
+
+        <main class="main" id="contents">
+            <section class="main-visual e-main">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide item">
+                            <div class="img-bx"></div>
+                            <div class="txt-bx pr-0">
+                                <div class="container text-center">
+                                    <h1 class="e-logo mb-4">MOLAX</h1>
+                                    <!-- S : 검색영역 -->
+                                    <div class="seach-form">
+                                        <input type="text" title="검색어 입력" class="input-search" name="keyword" value="" id="input_main_Tracking" placeholder="HB/L NO" />
+                                        <a href="javascript:void(0)" class="btn-search">
+                                            @*<img src="~/Images/Masstige/e-service/search-btn.png" class="btn-img" alt="검색버튼" />*@
+                                            <img src="~/Images/Masstige/e-service/search-btn-w.png" class="btn-img--w" id="btn_main_Tracking" alt="검색버튼" />
+                                        </a>
+                                    </div>
+                                    <!-- E : 검색영역 -->
+                                    <!-- S : 버튼영역-->
+                                    <div class="btn-wrap">
+
+                                        @{
+                                            if (Session["USR_ID"] == null)
+                                            {
+                                                <div class="btn-item">
+                                                    <a href="javascript:void(0)" onclick="fnShowLoginLayer('/MOLAX/Regist')">BOOKING</a>
+                                                </div>
+                                                <div class="btn-item">
+                                                    <a href="javascript:void(0)" onclick="fnShowLoginLayer('/MOLAX/Sea')">SCHEDULE</a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="btn-item">
+                                                    <a href="@Url.Action("Regist","MOLAX")">BOOKING</a>
+                                                </div>
+                                                <div class="btn-item">
+                                                    <a href="@Url.Action("Sea","MOLAX")">SCHEDULE</a>
+                                                </div>
+                                            }
+                                        }
+
+                                        <div class="btn-item">
+                                            @*<a href="http://211.53.135.191:8052/company/notice/?Language=EN" target="_blank">NOTICE</a>*@
+                                            <a href="http://molax.co.kr/company/notice/?Language=EN" target="_blank">NOTICE</a>
+                                        </div>
+                                    </div>
+                                    <!-- E : 버튼영역-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- //tab_panel -->
+        <!-- //container -->
+        @Scripts.Render("~/Scripts/js/Main/MainEng.js")
+    }
+    else
+    {
+        <input type="hidden" id="input_Tracking_HBL_NO" value="" />
+
+        <main class="main" id="contents">
+            <section class="main-visual e-main">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide item">
+                            <div class="img-bx"></div>
+                            <div class="txt-bx pr-0">
+                                <div class="container text-center">
+                                    <h1 class="e-logo mb-4">MOLAX</h1>
+                                    <!-- S : 검색영역 -->
+                                    <div class="seach-form">
+                                        <input type="text" title="검색어 입력" class="input-search" name="keyword" value="" id="input_main_Tracking" placeholder="HB/L NO.입력" />
+                                        <a href="javascript:void(0)" class="btn-search">
+                                            @*<img src="~/Images/Masstige/e-service/search-btn.png" class="btn-img" alt="검색버튼" />*@
+                                            <img src="~/Images/Masstige/e-service/search-btn-w.png" class="btn-img--w" id="btn_main_Tracking" alt="검색버튼" />
+                                        </a>
+                                    </div>
+                                    <!-- E : 검색영역 -->
+                                    <!-- S : 버튼영역-->
+                                    <div class="btn-wrap">
+
+                                        @{
+                                            if (Session["USR_ID"] == null)
+                                            {
+                                                <div class="btn-item">
+                                                    <a href="javascript:void(0)" onclick="fnShowLoginLayer('/MOLAX/Regist')">BOOKING</a>
+                                                </div>
+                                                <div class="btn-item">
+                                                    <a href="javascript:void(0)" onclick="fnShowLoginLayer('/MOLAX/Sea')">SCHEDULE</a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="btn-item">
+                                                    <a href="@Url.Action("Regist","MOLAX")">BOOKING</a>
+                                                </div>
+                                                <div class="btn-item">
+                                                    <a href="@Url.Action("Sea","MOLAX")">SCHEDULE</a>
+                                                </div>
+                                            }
+                                        }
+
+                                        <div class="btn-item">
+                                            @*<a href="http://211.53.135.191:8052/company/notice" target="_blank">NOTICE</a>*@
+                                            <a href="http://molax.co.kr/company/notice" target="_blank">NOTICE</a>
+                                        </div>
+                                    </div>
+                                    <!-- E : 버튼영역-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- //tab_panel -->
+        <!-- //container -->
+        @Scripts.Render("~/Scripts/js/Main/Main.js")
+    }
+
+}

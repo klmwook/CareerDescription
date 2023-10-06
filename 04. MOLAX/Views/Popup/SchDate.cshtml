@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "SchDate";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-calender">
+            <div class="calendar_wrap_b">
+                <div class="control_bx text-center pb-2">
+                    <a href="?puid=&amp;year=2018&amp;num_month=3" class="btn_prev_month"><i class="xi-angle-left-thin"></i></a>
+                    <span class="year">2022. 1.</span>
+                    <a href="?puid=&amp;year=2018&amp;num_month=5" class="btn_next_month"><i class="xi-angle-right-thin"></i></a>
+                </div>
+                <table class="schedule_type_b">
+                    <caption class="hidden">
+                        날짜선택
+                    </caption>
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <span class="pk">Su</span>
+                            </th>
+                            <th scope="col">Mo</th>
+                            <th scope="col">Tu</th>
+                            <th scope="col">We</th>
+                            <th scope="col">Th</th>
+                            <th scope="col">Fr</th>
+                            <th scope="col">
+                                <span class="">Sa</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">01</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date on">02</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date today">03</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">04</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">05</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">06</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">07</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">08</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">09</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">10</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">11</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">12</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">13</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">14</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">15</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">16</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">17</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">18</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">19</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">20</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">21</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">22</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">23</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">24</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">25</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">26</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">27</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">28</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">29</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">30</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            function date(v) {
+                $('#date_text').text(v);
+                $.magnificPopup.close();
+            }
+        </script>
+    }
+    else
+    {
+        <div class="popup pop-calender">
+            <div class="calendar_wrap_b">
+                <div class="control_bx text-center pb-2">
+                    <a href="?puid=&amp;year=2018&amp;num_month=3" class="btn_prev_month"><i class="xi-angle-left-thin"></i></a>
+                    <span class="year">2022. 1.</span>
+                    <a href="?puid=&amp;year=2018&amp;num_month=5" class="btn_next_month"><i class="xi-angle-right-thin"></i></a>
+                </div>
+                <table class="schedule_type_b">
+                    <caption class="hidden">
+                        날짜선택
+                    </caption>
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <span class="pk">일</span>
+                            </th>
+                            <th scope="col">월</th>
+                            <th scope="col">화</th>
+                            <th scope="col">수</th>
+                            <th scope="col">목</th>
+                            <th scope="col">금</th>
+                            <th scope="col">
+                                <span class="">토 </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">01</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date on">02</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date today">03</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">04</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">05</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">06</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">07</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">08</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">09</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">10</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">11</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">12</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">13</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">14</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">15</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">16</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">17</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">18</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">19</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">20</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">21</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">22</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">23</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">24</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">25</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">26</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">27</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">28</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="date(this.text)" class="date sunday">29</a></td>
+                            <td><a href="#" onclick="date(this.text)" class="date">30</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            function date(v) {
+                $('#date_text').text(v);
+                $.magnificPopup.close();
+            }
+        </script>
+   }
+}

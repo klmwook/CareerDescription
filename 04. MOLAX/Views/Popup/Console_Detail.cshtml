@@ -1,0 +1,524 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "Detail";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-detail">
+            <div class="pop-inner">
+                <h2 class="common-text--20 pb-4 text-center font-weight-bold">Inquiry of receiving details</h2>
+                <div class="dt_wrap mb-5">
+                    <p class="common-text--18 text-color-1 mb-2 font-weight-semibold">Incoming information</p>
+                    <ul class="dt_inner row justify-content-start align-items-stretch" id="Layer_Console_Info">
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Receiving date</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">2021-12-22</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Receiving number</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">B211222-042</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">The client</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">SAMHWA</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Product name</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">PART</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">PORT</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">HAKATA/FUKUOKA, JAPAN</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Symbol</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">OSHIMA</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Quantity</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">13</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Weight</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">7,147,000</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">Volume</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">0.000</span>*@
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dt_wrap mb-5">
+                    <p class="common-text--18 text-color-1 mb-2 font-weight-semibold">Detailed information</p>
+                    <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                        <div class="row-scrollwrap__scroll">
+                            <div class="row-scrollwrap__content">
+                                <table class="table dt-table">
+                                    <colgroup>
+                                        <col width="15%" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Case No</th>
+                                            <th>Transverse</th>
+                                            <th>length</th>
+                                            <th>Height</th>
+                                            <th>Quantity</th>
+                                            <th>Volume</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="PC_Layer_Console_Detail">
+                                        @*<tr>
+                                                <td colspan="6" class="no-data">The data is not available.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                            </tr>*@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- S : (내용--모바일)-->
+                    <div class="m-info d-block d-md-none">
+                        <ul class="info-box py-2 px-1" id="MO_Layer_Console_Detail">
+                            @*<li class="no_data col-12 py-6">원하시는 <span class="font-weight-medium">정보를 검색해보세요.</span></li>*@
+                            @*<li class="info-txt info-txt--full">
+                                    <p class="title font-main">Case No</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">가로</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">세로</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">높이</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">수량</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">용적</p>
+                                    <p class="des"></p>
+                                </li>*@
+                        </ul>
+                    </div>
+                    <!-- E : (내용--모바일)-->
+                </div>
+
+                <!--<div class="dt_wrap">
+                <p class="common-text--18 text-color-1 mb-2 font-weight-semibold">출고 정보</p>
+                <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                    <p class="row-scrollwrap__txt"><i class="xi-info-o"></i>가로로 스크롤 하여 보실 수 있습니다.</p>
+                    <div class="row-scrollwrap__scroll">
+                        <div class="row-scrollwrap__content">
+                            <table class="table dt-table">
+                                <colgroup>
+                                    <col width="15%" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>컨테이너 번호</th>
+                                        <th>S/T</th>
+                                        <th>SEAL No.</th>
+                                        <th>출고수량</th>
+                                        <th>출고중량</th>
+                                        <th>출고용적</th>
+                                        <th>선명</th>
+                                    </tr>
+                                        <th>항차</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="txt">123456789</td>
+                                        <td class="txt">45GP</td>
+                                        <td class="txt"></td>
+                                        <td class="txt">0</td>
+                                        <td class="txt">7,147,000</td>
+                                        <td class="txt">0.000</td>
+                                        <td class="txt">HEUNG A ULSAN</td>
+                                        <td class="txt">2207E</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- S : (내용--모바일)-->
+                <!--<div class="m-info d-block d-md-none">
+                    <ul class="info-box py-2 px-1">
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">컨테이너 번호</p>
+                            <p class="des">123456789</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title">S/T</p>
+                            <p class="des">45GP</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title">SEAL No.</p>
+                            <p class="des"></p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">출고수량</p>
+                            <p class="des">0</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">출고중량</p>
+                            <p class="des">7,147,000</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">출고용적</p>
+                            <p class="des">0.000</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">선명</p>
+                            <p class="des">HEUNG A ULSAN</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">항차</p>
+                            <p class="des">2207E</p>
+                        </li>
+                    </ul>
+                </div>-->
+                <!-- E : (내용--모바일)-->
+                <!--</div>-->
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Console_DetailEng.js")
+    }
+    else
+    {
+        <div class="popup pop-detail">
+            <div class="pop-inner">
+                <h2 class="common-text--20 pb-4 text-center font-weight-bold">입고 상세내역 조회</h2>
+                <div class="dt_wrap mb-5">
+                    <p class="common-text--18 text-color-1 mb-2 font-weight-semibold">입고 정보</p>
+                    <ul class="dt_inner row justify-content-start align-items-stretch" id="Layer_Console_Info">
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">입고일자</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">2021-12-22</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">입고번호</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">B211222-042</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">고객</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">SAMHWA</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">품명</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">PART</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">PORT</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">HAKATA/FUKUOKA, JAPAN</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">기호</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">OSHIMA</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">수량</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">13</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">중량</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">7,147,000</span>*@
+                            </div>
+                        </li>
+                        <li class="item col-sm-6 col-12">
+                            <div class="text-box row">
+                                <span class="tit col-md-4 col-12">용적</span>
+                                <span class="des col-md col-12"></span>
+                                @*<span class="des col-md col-12">0.000</span>*@
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dt_wrap mb-5">
+                    <p class="common-text--18 text-color-1 mb-2 font-weight-semibold">세부 정보</p>
+                    <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                        <div class="row-scrollwrap__scroll">
+                            <div class="row-scrollwrap__content">
+                                <table class="table dt-table">
+                                    <colgroup>
+                                        <col width="15%" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                        <col width="*" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>입고번호</th>
+                                            <th>가로</th>
+                                            <th>세로</th>
+                                            <th>높이</th>
+                                            <th>수량</th>
+                                            <th>용적</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="PC_Layer_Console_Detail">
+                                        @*<tr>
+                                                <td colspan="6" class="no-data">데이터가 없습니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                                <td class="txt"></td>
+                                            </tr>*@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- S : (내용--모바일)-->
+                    <div class="m-info d-block d-md-none">
+                        <ul class="info-box py-2 px-1" id="MO_Layer_Console_Detail">
+                            @*<li class="no_data col-12 py-6">원하시는 <span class="font-weight-medium">정보를 검색해보세요.</span></li>*@
+                            @*<li class="info-txt info-txt--full">
+                                    <p class="title font-main">Case No</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">가로</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">세로</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">높이</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">수량</p>
+                                    <p class="des"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title font-main">용적</p>
+                                    <p class="des"></p>
+                                </li>*@
+                        </ul>
+                    </div>
+                    <!-- E : (내용--모바일)-->
+                </div>
+
+                <!--<div class="dt_wrap">
+                <p class="common-text--18 text-color-1 mb-2 font-weight-semibold">출고 정보</p>
+                <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                    <p class="row-scrollwrap__txt"><i class="xi-info-o"></i>가로로 스크롤 하여 보실 수 있습니다.</p>
+                    <div class="row-scrollwrap__scroll">
+                        <div class="row-scrollwrap__content">
+                            <table class="table dt-table">
+                                <colgroup>
+                                    <col width="15%" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                    <col width="*" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>컨테이너 번호</th>
+                                        <th>S/T</th>
+                                        <th>SEAL No.</th>
+                                        <th>출고수량</th>
+                                        <th>출고중량</th>
+                                        <th>출고용적</th>
+                                        <th>선명</th>
+                                    </tr>
+                                        <th>항차</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="txt">123456789</td>
+                                        <td class="txt">45GP</td>
+                                        <td class="txt"></td>
+                                        <td class="txt">0</td>
+                                        <td class="txt">7,147,000</td>
+                                        <td class="txt">0.000</td>
+                                        <td class="txt">HEUNG A ULSAN</td>
+                                        <td class="txt">2207E</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- S : (내용--모바일)-->
+                <!--<div class="m-info d-block d-md-none">
+                    <ul class="info-box py-2 px-1">
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">컨테이너 번호</p>
+                            <p class="des">123456789</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title">S/T</p>
+                            <p class="des">45GP</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title">SEAL No.</p>
+                            <p class="des"></p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">출고수량</p>
+                            <p class="des">0</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">출고중량</p>
+                            <p class="des">7,147,000</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">출고용적</p>
+                            <p class="des">0.000</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">선명</p>
+                            <p class="des">HEUNG A ULSAN</p>
+                        </li>
+                        <li class="info-txt info-txt--full">
+                            <p class="title font-main">항차</p>
+                            <p class="des">2207E</p>
+                        </li>
+                    </ul>
+                </div>-->
+                <!-- E : (내용--모바일)-->
+                <!--</div>-->
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Console_Detail.js")
+    }
+}

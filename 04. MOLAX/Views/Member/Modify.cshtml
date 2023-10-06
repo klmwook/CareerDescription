@@ -1,0 +1,303 @@
+﻿@{
+    ViewBag.Title = "Member";
+    ViewBag.Sub = "Modify";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    <script>
+        $('body').addClass('e-service--sub');
+    </script>
+    @if (setLang.Equals("EN"))
+    {
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16">
+                <div class="container">
+                    <div class="page-title text-center mb-10">
+                        <h2 class="common-text--38 font-weight-medium">My Information</h2>
+                    </div>
+
+                    <div class="table-wrap" style="max-width: 760px; margin: 0 auto">
+                        <table class="table-form-01 type_join">
+                            <colgroup>
+                                <col class="w_150" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        ID
+                                    </th>
+                                    <td>
+                                        <div class="textarea_box_border mt-2">
+                                            <div class="textarea_box" id="RES_ID">
+                                                ID
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>
+                                        <div class="textarea_box_border mt-2">
+                                            <div class="textarea_box" id="RES_EMAIL">Email</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Current PW <span class="mr-1 text-color-1">*</span></th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="password" id="RES_NOWPWD" class="input_for" data-index="Modify1" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NOWPWD_Empty" style="display: none">Please enter your password.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NOWPWD_Wrong" style="display: none">The current password is not correct.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>New PW</th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="password" id="RES_PWD" class="input_for" data-index="Modify2" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW1_Empty" style="display: none">Please enter your password.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW1_OverSix" style="display: none">Please enter a password of at least 6 digits.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW1_Regular" style="display: none">Please enter the password in English, numbers, and special characters.</p>
+                                        <input type="hidden" id="PW1_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>New PW Check</th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="password" id="RES_PWD2" class="input_for" data-index="Modify3" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_Empty" style="display: none">Please enter your password.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_OverSix" style="display: none">Please enter a password of at least 6 digits.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_Compare" style="display: none">Password is not the same. Please check and re-enter.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_Regular" style="display: none">Please enter the password in English, numbers, and special characters.</p>
+                                        <input type="hidden" id="PW2_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Name <span class="mr-1 text-color-1">*</span></th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="text" id="RES_NAME" class="input_for" data-index="Modify4" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NAME_Empty" style="display: none">Please enter a name.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NAME_OverTwo" style="display: none">Please write your name in at least 2 digits.</p>
+                                        <input type="hidden" id="NAME_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Phone Number <span class="mr-1 text-color-1">*</span></th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="text" name="uptel1" id="RES_TEL" title="휴대폰번호" maxlength="13" data-index="Modify5" class="input_for" value="" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="TEL_Empty" style="display: none">Please enter your contact number.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="TEL_NotNumber" style="display: none">Please enter a number.</p>
+                                        <input type="hidden" id="TEL_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <th>회사명</th>
+                                        <td>
+                                            <div class="textarea_box_border mt-2">
+                                                <div class="textarea_box">sihong@@yjit.co.kr</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>사업자등록번호</th>
+                                        <td>
+                                            <div class="textarea_box_border mt-2">
+                                                <div class="textarea_box">sihong@@yjit.co.kr</div>
+                                            </div>
+                                        </td>
+                                    </tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text_center mt-15">
+                        <a href="/" class="btn-type-01 modify-btn__cancle">Cancel</a>
+                        <a href="javascript:void(0)" class="btn-type-01 modify-btn" id="Modify_Save">Save</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- E : Main -->
+
+        @Scripts.Render("~/Scripts/js/Member/ModifyEng.js")
+    }
+    else
+    {
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16">
+                <div class="container">
+                    <div class="page-title text-center mb-10">
+                        <h2 class="common-text--38 font-weight-medium">회원정보수정</h2>
+                    </div>
+
+                    <div class="table-wrap" style="max-width: 760px; margin: 0 auto">
+                        <table class="table-form-01 type_join">
+                            <colgroup>
+                                <col class="w_150" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>아이디</th>
+                                    <td>
+                                        <div class="textarea_box_border mt-2">
+                                            <div class="textarea_box" id="RES_ID">아이디</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td>
+                                        <div class="textarea_box_border mt-2">
+                                            <div class="textarea_box" id="RES_EMAIL">이메일</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>현재 비밀번호 <span class="mr-1 text-color-1">*</span></th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="password" id="RES_NOWPWD" class="input_for" data-index="Modify1" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NOWPWD_Empty" style="display: none">비밀번호를 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NOWPWD_Wrong" style="display: none">현재 비밀번호가 맞지 않습니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>새로운 비밀번호</th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="password" id="RES_PWD" class="input_for" data-index="Modify2" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW1_Empty" style="display: none">비밀번호를 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW1_OverSix" style="display: none">비밀번호를 6자리 이상 입력 해 주세요..</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW1_Regular" style="display: none"> 영문, 숫자, 특수문자 조합으로 비밀번호를 입력 해 주세요.</p>
+                                        <input type="hidden" id="PW1_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>새로운 비밀번호 확인</th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="password" id="RES_PWD2" class="input_for" data-index="Modify3" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_Empty" style="display: none">비밀번호를 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_OverSix" style="display: none">비밀번호를 6자리 이상 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_Compare" style="display: none"> 비밀번호가 같지 않습니다. 확인하고 다시 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="PW2_Regular" style="display: none"> 영문, 숫자, 특수문자 조합으로 비밀번호를 입력 해 주세요.</p>
+                                        <input type="hidden" id="PW2_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>이름 <span class="mr-1 text-color-1">*</span></th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="text" id="RES_NAME" class="input_for" data-index="Modify4" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NAME_Empty" style="display: none">이름을 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="NAME_OverTwo" style="display: none">이름을 2자리 이상 적어주세요.</p>
+                                        <input type="hidden" id="NAME_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>휴대폰 <span class="mr-1 text-color-1">*</span></th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input type="text" name="uptel1" id="RES_TEL" title="휴대폰번호" maxlength="13" data-index="Modify5" class="input_for" value="" />
+                                            <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                        </div>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="TEL_Empty" style="display: none">연락처를 입력 해 주세요.</p>
+                                        <p class="mt_10 common-text--14 Span_Warning" id="TEL_NotNumber" style="display: none">숫자를 입력 해 주세요.</p>
+                                        <input type="hidden" id="TEL_Hidden" value="false" />
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <th>회사명</th>
+                                        <td>
+                                            <div class="textarea_box_border mt-2">
+                                                <div class="textarea_box">sihong@@yjit.co.kr</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>사업자등록번호</th>
+                                        <td>
+                                            <div class="textarea_box_border mt-2">
+                                                <div class="textarea_box">sihong@@yjit.co.kr</div>
+                                            </div>
+                                        </td>
+                                    </tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text_center mt-15">
+                        <a href="/" class="btn-type-01 modify-btn__cancle">취소 </a>
+                        <a href="javascript:void(0)" class="btn-type-01 modify-btn" id="Modify_Save">저장</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- E : Main -->
+
+        @Scripts.Render("~/Scripts/js/Member/Modify.js")
+    }
+}

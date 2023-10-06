@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "Upload";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-upload">
+            <h2 class="common-text--22 pb-2 text-center mb-4">Picture</h2>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="file_list">
+                        <div class="flie_txt">
+                            <h3 class="tit">Picture List</h3>
+                            <div id="layer_Upload_FileList">
+                                @*<div class="file-box row align-items-center px-2">
+                                        <p class="file-box__text col">파일명이 입력됩니다</p>
+                                        <a href="#none" class="col-auto"><i class="xi-close-thin"></i></a>
+                                    </div>
+                                    <div class="file-box row align-items-center px-2">
+                                        <p class="file-box__text col">파일명이 입력됩니다</p>
+                                        <a href="#none" class="col-auto"><i class="xi-close-thin"></i></a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="flie-box">
+                        <span class="btn-type-span">Camera</span>
+                        <input type="file" id="camera" accept="image/*" capture="camera" name="environment" />
+                    </div>
+                    <div class="flie-box">
+                        <span class="btn-type-span">Attached</span>
+                        <input type="button" name="fileadd" id="layer_FileUpload" />
+                    </div>
+                    @*<div>
+                            <button type="submit" class="btn-type-span">등록</button>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Console_Upload.js")
+    }
+    else
+    {
+        <div class="popup pop-upload">
+            <h2 class="common-text--22 pb-2 text-center mb-4">사진업로드</h2>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="file_list">
+                        <div class="flie_txt">
+                            <h3 class="tit">사진 업로드 리스트</h3>
+                            <div id="layer_Upload_FileList">
+                                @*<div class="file-box row align-items-center px-2">
+                                        <p class="file-box__text col">파일명이 입력됩니다</p>
+                                        <a href="#none" class="col-auto"><i class="xi-close-thin"></i></a>
+                                    </div>
+                                    <div class="file-box row align-items-center px-2">
+                                        <p class="file-box__text col">파일명이 입력됩니다</p>
+                                        <a href="#none" class="col-auto"><i class="xi-close-thin"></i></a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="flie-box">
+                        <span class="btn-type-span">사진촬영</span>
+                        <input type="file" id="camera" accept="image/*" capture="camera" name="environment" />
+                    </div>
+                    <div class="flie-box">
+                        <span class="btn-type-span">사진업로드</span>
+                        <input type="button" name="fileadd" id="layer_FileUpload" />
+                    </div>
+                    @*<div>
+                            <button type="submit" class="btn-type-span">등록</button>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/Scripts/js/Popup/Console_Upload.js")
+    }
+}

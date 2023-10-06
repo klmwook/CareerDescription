@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "SchArrImport";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-sch">
+            <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+            <h2 class="common-text--18 pb-2 border-bottom border-gray-6 city-text-dpt"><span class="city-text-dpt" onchange="portChange(this);">Arrival</span></h2>
+            <div class="dpt_wrap">
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Korea</h3>
+                    <ul class="d-flex">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Busan" onclick="apply_region2(this.value);">Busan</button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Incheon" onclick="apply_region2(this.value);">Incheon</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="popup pop-sch">
+            <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+            <h2 class="common-text--18 pb-2 border-bottom border-gray-6 city-text-dpt"><span class="city-text-dpt" onchange="portChange(this);">도착</span> 도시 선택</h2>
+            <div class="dpt_wrap">
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Korea</h3>
+                    <ul class="d-flex">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Busan" onclick="apply_region2(this.value);">Busan</button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Incheon" onclick="apply_region2(this.value);">Incheon</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        }
+}

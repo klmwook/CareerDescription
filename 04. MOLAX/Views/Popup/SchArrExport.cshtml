@@ -1,0 +1,686 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "SchArrExport";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-sch">
+            <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+            <h2 class="common-text--18 pb-2 border-bottom border-gray-6"><span class="city-text-arrive" onchange="portChange(this);">Arrival</span></h2>
+            <div class="dpt_wrap">
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">China</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Shanghai" onclick="apply_region2(this.value)">
+                                <span class="text">Shanghai</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Hongkong" onclick="apply_region2(this.value)">
+                                <span class="text">Hongkong</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Ningbo" onclick="apply_region2(this.value)">
+                                <span class="text">Ningbo</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Qingdao" onclick="apply_region2(this.value)">
+                                <span class="text">Qingdao</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Shekou" onclick="apply_region2(this.value)">
+                                <span class="text">Shekou</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Xiamen" onclick="apply_region2(this.value)">
+                                <span class="text">Xiamen</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Shenzhen" onclick="apply_region2(this.value)">
+                                <span class="text">Shenzhen</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Xingang" onclick="apply_region2(this.value)">
+                                <span class="text">Xingang</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Tianjin" onclick="apply_region2(this.value)">
+                                <span class="text">Tianjin</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Weihai" onclick="apply_region2(this.value)">
+                                <span class="text">Weihai</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Southeast Asia</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Haiphong" onclick="apply_region2(this.value)">
+                                <span class="text">Haiphong</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Hochiminh" onclick="apply_region2(this.value)">
+                                <span class="text">Hochiminh</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Kaohsiung" onclick="apply_region2(this.value)">
+                                <span class="text">Kaohsiung</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Keelung" onclick="apply_region2(this.value)">
+                                <span class="text">Keelung</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Singapore" onclick="apply_region2(this.value)">
+                                <span class="text">Singapore</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Jakarta" onclick="apply_region2(this.value)">
+                                <span class="text">Jakarta</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Bangkok" onclick="apply_region2(this.value)">
+                                <span class="text">Bangkok</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Laem Chabang" onclick="apply_region2(this.value)">
+                                <span class="text">Laem Chabang</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Yangon" onclick="apply_region2(this.value)">
+                                <span class="text">Yangon</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Port Kelang" onclick="apply_region2(this.value)">
+                                <span class="text">Port Kelang</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">USA</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Long Beach" onclick="apply_region2(this.value)">
+                                <span class="text">Long Beach</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="New York" onclick="apply_region2(this.value)">
+                                <span class="text">New York</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="L.A" onclick="apply_region2(this.value)">
+                                <span class="text">L.A</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Tacoma" onclick="apply_region2(this.value)">
+                                <span class="text">Tacoma</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Seattle" onclick="apply_region2(this.value)">
+                                <span class="text">Seattle</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Europe</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Hamburg" onclick="apply_region2(this.value)">
+                                <span class="text">Hamburg</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="KOPER" onclick="apply_region2(this.value)">
+                                <span class="text">KOPER</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Koper" onclick="apply_region2(this.value)">
+                                <span class="text">Koper</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Antwerpen" onclick="apply_region2(this.value)">
+                                <span class="text">Antwerpen</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Bremerhaven" onclick="apply_region2(this.value)">
+                                <span class="text">Bremerhaven</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Genoa" onclick="apply_region2(this.value)">
+                                <span class="text">Genoa</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Felixstowe" onclick="apply_region2(this.value)">
+                                <span class="text">Felixstowe</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Valencia" onclick="apply_region2(this.value)">
+                                <span class="text">Valencia</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Barcelona" onclick="apply_region2(this.value)">
+                                <span class="text">Barcelona</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Oceania</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Adelaide" onclick="apply_region2(this.value)">
+                                <span class="text">Adelaide</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Melbourne" onclick="apply_region2(this.value)">
+                                <span class="text">Melbourne</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Sydney" onclick="apply_region2(this.value)">
+                                <span class="text">Sydney</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Brisbane" onclick="apply_region2(this.value)">
+                                <span class="text">Brisbane</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Auckland" onclick="apply_region2(this.value)">
+                                <span class="text">Auckland</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Western Asia</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Nhava Sheva" onclick="apply_region2(this.value)">
+                                <span class="text">Nhava Sheva</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Chennai" onclick="apply_region2(this.value)">
+                                <span class="text">Chennai</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Mumbai" onclick="apply_region2(this.value)">
+                                <span class="text">Mumbai</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Chittagong" onclick="apply_region2(this.value)">
+                                <span class="text">Chittagong</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Karachi" onclick="apply_region2(this.value)">
+                                <span class="text">Karachi</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Middle East</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Bandar Abbas" onclick="apply_region2(this.value)">
+                                <span class="text">Bandar Abbas</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Istanbul" onclick="apply_region2(this.value)">
+                                <span class="text">Istanbul</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Jebel Ali" onclick="apply_region2(this.value)">
+                                <span class="text">Jebel Ali</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Jeddah" onclick="apply_region2(this.value)">
+                                <span class="text">Jeddah</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="El Iskandariya" onclick="apply_region2(this.value)">
+                                <span class="text">El Iskandariya</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Japan</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Kobe" onclick="apply_region2(this.value)">
+                                <span class="text">Kobe</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Osaka" onclick="apply_region2(this.value)">
+                                <span class="text">Osaka</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Tokyo" onclick="apply_region2(this.value)">
+                                <span class="text">Tokyo</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Yokohama" onclick="apply_region2(this.value)">
+                                <span class="text">Yokohama</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Nagoya" onclick="apply_region2(this.value)">
+                                <span class="text">Nagoya</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="popup pop-sch">
+            <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+            <h2 class="common-text--18 pb-2 border-bottom border-gray-6"><span class="city-text-arrive" onchange="portChange(this);">도착</span> 도시 선택</h2>
+            <div class="dpt_wrap">
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">China</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Shanghai" onclick="apply_region2(this.value)">
+                                <span class="text">Shanghai</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Hongkong" onclick="apply_region2(this.value)">
+                                <span class="text">Hongkong</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Ningbo" onclick="apply_region2(this.value)">
+                                <span class="text">Ningbo</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Qingdao" onclick="apply_region2(this.value)">
+                                <span class="text">Qingdao</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Shekou" onclick="apply_region2(this.value)">
+                                <span class="text">Shekou</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Xiamen" onclick="apply_region2(this.value)">
+                                <span class="text">Xiamen</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Shenzhen" onclick="apply_region2(this.value)">
+                                <span class="text">Shenzhen</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Xingang" onclick="apply_region2(this.value)">
+                                <span class="text">Xingang</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Tianjin" onclick="apply_region2(this.value)">
+                                <span class="text">Tianjin</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Weihai" onclick="apply_region2(this.value)">
+                                <span class="text">Weihai</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Southeast Asia</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Haiphong" onclick="apply_region2(this.value)">
+                                <span class="text">Haiphong</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Hochiminh" onclick="apply_region2(this.value)">
+                                <span class="text">Hochiminh</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Kaohsiung" onclick="apply_region2(this.value)">
+                                <span class="text">Kaohsiung</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Keelung" onclick="apply_region2(this.value)">
+                                <span class="text">Keelung</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Singapore" onclick="apply_region2(this.value)">
+                                <span class="text">Singapore</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Jakarta" onclick="apply_region2(this.value)">
+                                <span class="text">Jakarta</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Bangkok" onclick="apply_region2(this.value)">
+                                <span class="text">Bangkok</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Laem Chabang" onclick="apply_region2(this.value)">
+                                <span class="text">Laem Chabang</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Yangon" onclick="apply_region2(this.value)">
+                                <span class="text">Yangon</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Port Kelang" onclick="apply_region2(this.value)">
+                                <span class="text">Port Kelang</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">USA</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Long Beach" onclick="apply_region2(this.value)">
+                                <span class="text">Long Beach</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="New York" onclick="apply_region2(this.value)">
+                                <span class="text">New York</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="L.A" onclick="apply_region2(this.value)">
+                                <span class="text">L.A</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Tacoma" onclick="apply_region2(this.value)">
+                                <span class="text">Tacoma</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Seattle" onclick="apply_region2(this.value)">
+                                <span class="text">Seattle</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Europe</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Hamburg" onclick="apply_region2(this.value)">
+                                <span class="text">Hamburg</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="KOPER" onclick="apply_region2(this.value)">
+                                <span class="text">KOPER</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Koper" onclick="apply_region2(this.value)">
+                                <span class="text">Koper</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Antwerpen" onclick="apply_region2(this.value)">
+                                <span class="text">Antwerpen</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Bremerhaven" onclick="apply_region2(this.value)">
+                                <span class="text">Bremerhaven</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Genoa" onclick="apply_region2(this.value)">
+                                <span class="text">Genoa</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Felixstowe" onclick="apply_region2(this.value)">
+                                <span class="text">Felixstowe</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Valencia" onclick="apply_region2(this.value)">
+                                <span class="text">Valencia</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Barcelona" onclick="apply_region2(this.value)">
+                                <span class="text">Barcelona</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Oceania</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Adelaide" onclick="apply_region2(this.value)">
+                                <span class="text">Adelaide</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Melbourne" onclick="apply_region2(this.value)">
+                                <span class="text">Melbourne</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Sydney" onclick="apply_region2(this.value)">
+                                <span class="text">Sydney</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Brisbane" onclick="apply_region2(this.value)">
+                                <span class="text">Brisbane</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Auckland" onclick="apply_region2(this.value)">
+                                <span class="text">Auckland</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Western Asia</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Nhava Sheva" onclick="apply_region2(this.value)">
+                                <span class="text">Nhava Sheva</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Chennai" onclick="apply_region2(this.value)">
+                                <span class="text">Chennai</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Mumbai" onclick="apply_region2(this.value)">
+                                <span class="text">Mumbai</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Chittagong" onclick="apply_region2(this.value)">
+                                <span class="text">Chittagong</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Karachi" onclick="apply_region2(this.value)">
+                                <span class="text">Karachi</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Middle East</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Bandar Abbas" onclick="apply_region2(this.value)">
+                                <span class="text">Bandar Abbas</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Istanbul" onclick="apply_region2(this.value)">
+                                <span class="text">Istanbul</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Jebel Ali" onclick="apply_region2(this.value)">
+                                <span class="text">Jebel Ali</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Jeddah" onclick="apply_region2(this.value)">
+                                <span class="text">Jeddah</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="El Iskandariya" onclick="apply_region2(this.value)">
+                                <span class="text">El Iskandariya</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dpt_city">
+                    <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Japan</h3>
+                    <ul class="d-flex flex-wrap justify-content-start">
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Kobe" onclick="apply_region2(this.value)">
+                                <span class="text">Kobe</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Osaka" onclick="apply_region2(this.value)">
+                                <span class="text">Osaka</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Tokyo" onclick="apply_region2(this.value)">
+                                <span class="text">Tokyo</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Yokohama" onclick="apply_region2(this.value)">
+                                <span class="text">Yokohama</span>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="city-btn" value="Nagoya" onclick="apply_region2(this.value)">
+                                <span class="text">Nagoya</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        }
+}

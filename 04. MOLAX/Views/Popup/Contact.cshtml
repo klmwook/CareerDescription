@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Popup";
+    ViewBag.Sub = "Contact";
+
+    Layout = "~/Views/Shared/_PopLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <div class="popup pop-cnt">
+            <h2 class="common-text--20 pb-4 border-bottom border-gray-6 text-center font-weight-bold font-sub">Booking</h2>
+            <div class="bk_wrap">
+                <ul class="bk_inner row justify-content-center align-items-center">
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">MANAGER</span>
+                        <span class="des">김혜민 과장</span>
+                    </li>
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">TEL</span>
+                        <span class="des">02-3104-563</span>
+                    </li>
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">NATE-ON</span>
+                        <span class="des">molax555@nate.com</span>
+                    </li>
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">FAX</span>
+                        <span class="des">757-0487</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="popup pop-cnt">
+            <h2 class="common-text--20 pb-4 border-bottom border-gray-6 text-center font-weight-bold font-sub">Booking</h2>
+            <div class="bk_wrap">
+                <ul class="bk_inner row justify-content-center align-items-center">
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">담당자</span>
+                        <span class="des">김혜민 과장</span>
+                    </li>
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">연락처</span>
+                        <span class="des">02-3104-563</span>
+                    </li>
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">NATE-ON</span>
+                        <span class="des">molax555@nate.com</span>
+                    </li>
+                    <li class="item col-md-6 col-12">
+                        <span class="tit">FAX</span>
+                        <span class="des">757-0487</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+}

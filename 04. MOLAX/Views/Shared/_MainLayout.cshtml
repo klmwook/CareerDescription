@@ -1,0 +1,961 @@
+﻿@{ // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+
+<!DOCTYPE html>
+@if (setLang.Equals("EN"))
+{
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <!-- ( < IE10 ) -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="format-detection" content="telephone=no, address=no, email=no" />
+
+        <!-- 사이트 기본설정 영역 START -->
+        <!-- SEO -->
+        <meta name="title" content="Molax" />
+        <meta name="keywords" content="<?=$SS[sitekeyword]?>" />
+        <meta name="author" content="Masstige" />
+        <meta name="description" content="<?=$SS[sitedescription]?>" />
+        <!-- 최대 155자 이내 -->
+        <meta name="Robots" content="index, follow" />
+        <!-- 검색 제외 페이지인 경우 noindex, nofollow -->
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="MOLAX E-SERVICE" />
+        <meta property="og:image" content="/Images/logo/MOAX.png" />
+        <meta property="og:site_name" content="Molax" />
+        <meta property="og:url" content="http://e-service.molax.co.kr/" />
+        <meta property="og:description" content="MOLAX E-SERVICE" />
+
+        <!-- Twitter -->
+        <meta name="twitter:image" content="/Images/logo/MOAX.png" />
+        <meta name="twitter:description" content="MOLAX E-SERVICE" />
+        <meta name="twitter:title" content="MOLAX E-SERVICE" />
+
+        <!-- Naver Webmaster Tool -->
+        <meta name="naver-site-verification" content="MOLAX E-SERVICE" />
+        <!-- Google Search Console -->
+        <meta name="google-site-verification" content="MOLAX E-SERVICE" />
+
+        <link rel="image_src" href="" />
+        <!-- 대표 이미지 -->
+        @*<link rel="shortcut icon" href="<?=$SS[sitefavicon]?>" />*@
+        <!-- 파비콘 -->
+        <!-- 대표 URL -->
+        <!-- 사이트 기본설정 영역 END -->
+        <!-- XEIcon -->
+        <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/xeicon/xeicon.css" />
+
+        <!-- Masstige Custom Icon for Board Template -->
+        <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/icomoon/masstige-icons.css" />
+
+        <!-- Google Material Icons -->
+        <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/material/material-icons.css" />
+
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/bootstrap/bootstrap-icons.min.css" />
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="~/Content/Masstige/css/common.min.css" />
+
+        <!-- Load jQuery -->
+        <script src="~/Scripts/Masstige/js/lib/jquery-1.7.1.min.js"></script>
+        <!-- update your pre-1.9 jQuery code to jQuery 1.9 up to 3.0 -->
+        <script src="~/Scripts/Masstige/js/lib/jquery-migrate-1.4.1.min.js"></script>
+        <!-- jQuery 3.0 or higher, once you have used Migrate 1.x and upgraded to jQuery 1.9 or higher -->
+        <!-- <script src="../../assets/js/lib/jquery-migrate-3.3.2.min.js"></script>  -->
+        <!-- mCustomScrollbar 사용시 아래 1.11.1 버전 사용 -->
+        <!-- <script src="../../assets/js/lib/jquery-1.11.1.min.js"></script> -->
+
+        <script src="~/Scripts/Masstige/js/lib/jquery-ui.min.js"></script>
+
+        <title>Molax@*<? if($P_dp0!='main'){?> <? if($P_dp3!=null){?> <?=${nav_.$P_dp1._.$P_dp2._.$P_dp3}?> | <? }?> <? if($P_dp2!=null){?> <?=${nav_.$P_dp1._.$P_dp2}?> | <? }?> <?=${nav_.$P_dp1}?> | <? }?> <?=$SS[sitename]?>*@</title>
+
+        <script type="text/javascript">
+
+        var _Domain = '@System.Configuration.ConfigurationManager.AppSettings["Domain"]'
+
+        </script>
+
+        <link rel="stylesheet" href="~/Content/Masstige/css/e-service.min.css" />
+        @Styles.Render("~/Content/layout.css")
+        @Styles.Render("~/Content/media.css")
+        @Scripts.Render("~/Scripts/API/Comm_Pub.js")
+        @Scripts.Render("~/Scripts/js/common/KeyEvent.js")
+        @Scripts.Render("~/Scripts/js/common/Comm.js")
+        @Scripts.Render("~/Scripts/Pub/common.js")
+
+        @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+
+    </head>
+    <body class="main-body e-service">
+
+        @{
+            if (Session["USR_ID"] == null)
+            {
+                <input type="hidden" id="Session_USR_ID" value="" />
+                <input type="hidden" id="Session_LOC_NM" value="" />
+                <input type="hidden" id="Session_EMAIL" value="" />
+                <input type="hidden" id="Session_CUST_CD" value="" />
+                <input type="hidden" id="Session_CUST_NM" value="" />
+                <input type="hidden" id="Session_HP_NO" value="" />
+                <input type="hidden" id="Session_DOMAIN" value="" />
+                <input type="hidden" id="Session_OFFICE_CD" value="" />
+                <input type="hidden" id="Session_AUTH_KEY" value="" />
+                <input type="hidden" id="Session_USR_TYPE" value="" />
+            }
+            else
+            {
+                <input type="hidden" id="Session_USR_ID" value="@Session["USR_ID"]" />
+                <input type="hidden" id="Session_LOC_NM" value="@Session["USER_NM"]" />
+                <input type="hidden" id="Session_EMAIL" value="@Session["EMAIL"]" />
+                <input type="hidden" id="Session_CUST_CD" value="@Session["CUST_CD"]" />
+                <input type="hidden" id="Session_CUST_NM" value="@Session["CUST_NM"]" />
+                <input type="hidden" id="Session_HP_NO" value="@Session["HP_NO"]" />
+                <input type="hidden" id="Session_DOMAIN" value="@Session["DOMAIN"]" />
+                <input type="hidden" id="Session_OFFICE_CD" value="@Session["OFFICE_CD"]" />
+                <input type="hidden" id="Session_AUTH_KEY" value="@Session["AUTH_KEY"]" />
+                <input type="hidden" id="Session_USR_TYPE" value="@Session["USR_TYPE"]" />
+            }
+        }
+
+        <ul class="skip">
+            <li><a class="link" href="#contents">본문내용 바로가기</a></li>
+            <li><a class="link" href="#header">헤더 바로가기</a></li>
+            <li><a class="link" href="#footer">푸터 바로가기</a></li>
+        </ul>
+
+        <header id="header" class="header">
+            <div class="container header-wrap" style="max-width: 1850px">
+                <button type="button" class="mode-btn mode-btn-light"><i class="xi-sun-o pr-1"></i> DARK MODE</button>
+                <button type="button" class="mode-btn mode-btn-dark"><i class="xi-sun-o pr-1"></i> LIGHT MODE</button>
+                <a href="/" class="e-logo" title="메인으로">MOLAX</a>
+                <div class="nav__bg"></div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <nav class="nav">
+                        <ul class="nav-list nav-list--depth1">
+
+                            @{
+                                if (Session["USR_ID"] == null)
+                                {
+                                    <!-- 1depth item -->
+                                    //<li class="nav-list__item depth-1">
+                                    //    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">MOLAX</a>
+                                    //    <ul class="nav-list nav-list--depth2">
+                                    //        <!-- 2depth item -->
+                                    //        <li class="nav-list__item depth-2">
+                                    //            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">해운스케줄</a>
+                                    //        </li>
+                                    //        <li class="nav-list__item depth-2">
+                                    //            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">부킹등록</a>
+                                    //        </li>
+                                    //    </ul>
+                                    //</li>
+
+                                    <li class="nav-list__item depth-1">
+                                        <a href="@Url.Action("Sea","MOLAX")" class="link">MOLAX</a>
+                                        <ul class="nav-list nav-list--depth2">
+                                            <!-- 2depth item -->
+                                            <li class="nav-list__item depth-2">
+                                                <a href="@Url.Action("Sea","MOLAX")" class="link">Schedule</a>
+                                            </li>
+                                            <li class="nav-list__item depth-2">
+                                                <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">Booking Registration</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+
+                                    <!-- 1depth item -->
+                                    <li class="nav-list__item depth-1">
+                                        <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Myboard')">MY Shipment</a>
+                                        <ul class="nav-list nav-list--depth2">
+                                            <!-- 2depth item -->
+                                            <li class="nav-list__item depth-2">
+                                                <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Myboard')">My Board</a>
+                                            </li>
+                                            <li class="nav-list__item depth-2">
+                                                <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/BookingList')">Booking Inquiry</a>
+                                            </li>
+                                            <li class="nav-list__item depth-2">
+                                                <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Console')">Warehouse</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <!-- 1depth item -->
+                                    <li class="nav-list__item depth-1">
+                                        <a href="@Url.Action("Sea","MOLAX")" class="link">MOLAX</a>
+                                        <ul class="nav-list nav-list--depth2">
+                                            <!-- 2depth item -->
+                                            <li class="nav-list__item depth-2">
+                                                <a href="@Url.Action("Sea","MOLAX")" class="link">Schedule</a>
+                                            </li>
+                                            <li class="nav-list__item depth-2">
+                                                <a href="@Url.Action("Regist","MOLAX")" class="link">Booking Registration</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- 1depth item -->
+                                    <li class="nav-list__item depth-1">
+                                        <a href="@Url.Action("Myboard","MyMenu")" class="link">MY Shipment</a>
+                                        <ul class="nav-list nav-list--depth2">
+                                            <!-- 2depth item -->
+                                            <li class="nav-list__item depth-2">
+                                                <a href="@Url.Action("Myboard","MyMenu")" class="link">My Board</a>
+                                            </li>
+                                            <li class="nav-list__item depth-2">
+                                                <a href="@Url.Action("BookingList","MyMenu")" class="link">Booking Inquiry</a>
+                                            </li>
+                                            <li class="nav-list__item depth-2">
+                                                <a href="@Url.Action("Console","MyMenu")" class="link">Warehouse</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+                    <div class="member-box pl-12">
+
+                        @{
+                            if (Session["USR_ID"] == null)
+                            {
+                                <!-- S : 로그인 전-->
+                                <div class="member-box__login">
+                                    @*<a href="javascript:void(0)" class="link popup-link item" onclick="fnShowLoginLayer('')">로그인</a>*@
+                                    <a href="javascript:void(0)" class="link item" onclick="fnShowLoginLayer('')">Log In</a>
+                                </div>
+                                <!-- E : 로그인 전-->
+                            }
+                            else
+                            {
+                                <!-- S : 로그인 후-->
+                                <div class="member-box__logout">
+                                    <div class="text item">Welcome, <span class="user_nm">@Session["USER_NM"]</span></div>
+                                    <button type="button" class="btn-logout" onclick="_fnLogout()">Log Out</button>
+                                    <a href="@Url.Action("Modify","Member")" class="link item">My Information</a>
+                                </div>
+                                <!-- E : 로그인 후-->
+                            }
+                        }
+                        <!-- S : language -->
+                        <div class="language">
+                            <div class="language__now">ENG</div>
+                            <ul class="language__select">
+                                <li><a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })">KOR</a></li>
+                            </ul>
+                        </div>
+                        <!-- E : language -->
+                    </div>
+                </div>
+                <button class="nav-mobile__btn" type="button">
+                    <i class="xi-bars"></i>
+                </button>
+            </div>
+        </header>
+        <!-- S : aside -->
+        <div class="nav-mobile__bg"></div>
+        <aside class="nav-mobile">
+            <div class="nav-mobile__head">
+                <div class="member-box">
+                    <a href="/" class="e-logo" title="메인으로">MOLAX</a>
+
+                    @{
+                        if (Session["USR_ID"] == null)
+                        {
+                            <div class="member-box__login">
+                                <a href="javascript:void(0)" class="link item" onclick="fnShowLoginLayer('')">Log In</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="member-box__logout">
+                                <div class="text item">Welcome, <span class="user_nm">@Session["USER_NM"]</span></div>
+                                <button type="button" class="btn-logout" onclick="_fnLogout()">Log Out</button>
+                                <a href="@Url.Action("Modify","Member")" class="link item">My Information</a>
+                            </div>
+                        }
+                    }
+                    <!-- S : language -->
+                    <div class="language">
+                        <div class="language__now">ENG</div>
+                        <ul class="language__select">
+                            <li><a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })">KOR</a></li>
+                        </ul>
+                    </div>
+                    <!-- E : language -->
+                </div>
+                <button class="nav-mobile__btn" type="button">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+            <div class="nav-mobile__body">
+                <ul class="nav-list nav-list--depth1">
+
+                    @{
+                        if (Session["USR_ID"] == null)
+                        {
+                            <!-- 1depth item -->
+                            <!--<li class="nav-list__item depth-1">
+                            <a href="javascript:void(0)" class="link">MOLAX<?=$nav_1?></a>
+                            <ul class="nav-list nav-list--depth2">-->
+                            <!-- 2depth item -->
+                            <!--<li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">해운스케줄</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">부킹등록</a>
+                                </li>
+                            </ul>
+                        </li>-->
+                            <li class="nav-list__item depth-1">
+                                <a href="javascript:void(0)" class="link">MOLAX</a>
+                                <ul class="nav-list nav-list--depth2">
+                                    <!-- 2depth item -->
+                                    <li class="nav-list__item depth-2">
+                                        <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">Schedule</a>
+                                    </li>
+                                    <li class="nav-list__item depth-2">
+                                        <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">Booking Registration</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- 1depth item -->
+                            <li class="nav-list__item depth-1">
+                                <a href="javascript:void(0)" class="link">MY Shipment</a>
+                                <ul class="nav-list nav-list--depth2">
+                                    <!-- 2depth item -->
+                                    <li class="nav-list__item depth-2">
+                                        <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Myboard')">My Board</a>
+                                    </li>
+                                    <li class="nav-list__item depth-2">
+                                        <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/BookingList')">Booking Inquiry</a>
+                                    </li>
+                                    <li class="nav-list__item depth-2">
+                                        <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Console')">Warehouse</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- 1depth item -->
+                            <li class="nav-list__item depth-1">
+                                <a href="@Url.Action("Sea","MOLAX")" class="link">MOLAX</a>
+                                <ul class="nav-list nav-list--depth2">
+                                    <!-- 2depth item -->
+                                    <li class="nav-list__item depth-2">
+                                        <a href="@Url.Action("Sea","MOLAX")" class="link">Schedule</a>
+                                    </li>
+                                    <li class="nav-list__item depth-2">
+                                        <a href="@Url.Action("Regist","MOLAX")" class="link">Booking Registration</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- 1depth item -->
+                            <li class="nav-list__item depth-1">
+                                <a href="@Url.Action("Myboard","MyMenu")" class="link">MY Shipment</a>
+                                <ul class="nav-list nav-list--depth2">
+                                    <!-- 2depth item -->
+                                    <li class="nav-list__item depth-2">
+                                        <a href="@Url.Action("Myboard","MyMenu")" class="link">My Board</a>
+                                    </li>
+                                    <li class="nav-list__item depth-2">
+                                        <a href="@Url.Action("BookingList","MyMenu")" class="link">Booking Inquiry</a>
+                                    </li>
+                                    <li class="nav-list__item depth-2">
+                                        <a href="@Url.Action("Console","MyMenu")" class="link">Warehouse</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
+
+                </ul>
+            </div>
+        </aside>
+        <!-- E : aside -->
+
+        @RenderSection("Container", required: false)
+
+        <div class="layer_zone alert_type" id="layer_Tracking_FileList">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <div class="layer_cont">
+                        <div class="popup pop-file-download">
+                            <div class="popup-head mb-5">
+                                <h1 class="popup__title text-gray-2">Files</h1>
+                            </div>
+                            <div class="file_title">
+                                <div class="file_tit1">Sort</div>
+                                <div class="file_tit2">File name</div>
+                            </div>
+                            <ul class="file_list" id="Layer_FileList">
+                                @*<li>
+                                    <div class="file_sort"><p>Customs Clearance</p></div>
+                                    <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                                </li>
+                                <li>
+                                    <div class="file_sort"><p>House B/L</p></div>
+                                    <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                                </li>
+                                <li>
+                                    <div class="file_sort"><p>Invoice</p></div>
+                                    <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                                </li>*@
+                            </ul>
+                            <div class="popup-footer mt-8">
+                                <button type="button" class="btn-type-01 w-100" onclick="layerClose('#layer_Tracking_FileList')">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="~/Scripts/Masstige/js/lib/popper.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/bootstrap.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/slick.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/wow.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/aos.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/jquery.magnific-popup.min.js"></script>
+        <!-- fullpage에서 scrollOverflow 옵션 사용 시 선언 -->
+        <script src="~/Scripts/Masstige/js/lib/scrolloverflow.min.js"></script>
+        <!-- css3:false 옵션 적용 후 "linear", "swing" 또는 "easeInOutCubic" 대신 다른 easing 효과 사용 시  선언-->
+        <script src="~/Scripts/Masstige/js/lib/easings.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/fullpage.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/swiper.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/jquery.scrollbar.min.js"></script>
+        <script src="~/Scripts/Masstige/js/lib/jquery.mCustomScrollbar.min.js"></script>
+        <!-- for Board Template-->
+        <script src="~/Scripts/Masstige/js/custom/clipboard.js"></script>
+
+        <!-- Custom Library -->
+        <script src="~/Scripts/Masstige/js/custom/nav_active-1.1.6.masstige.min.js"></script>
+        <script src="~/Scripts/Masstige/js/custom/tab-1.1.0.masstige.js"></script>
+        <script src="~/Scripts/Masstige/js/custom/resizingCheck-1.0.0.masstige.js"></script>
+        <script src="~/Scripts/Masstige/js/custom/nav_drop-1.0.1.masstige.min.js"></script>
+        <script src="~/Scripts/Masstige/js/custom/scroll_track-1.0.1.masstige.min.js"></script>
+        <!-- wow.masstige.js : wow reinit -->
+        <!-- Progress Bar -->
+        <div class="loading-image" id="ProgressBar_Loading" style="display:none;">
+            <img src="~/Images/loading.svg" alt="">
+        </div>
+
+        <!-- COMMON -->
+        <script src="~/Scripts/Masstige/js/common.js"></script>
+        <script src="~/Scripts/js/common/_layoutEng.js"></script>
+
+    </body>
+</html>
+}
+else
+{
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- ( < IE10 ) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+
+    <!-- 사이트 기본설정 영역 START -->
+    <!-- SEO -->
+    <meta name="title" content="모락스" />
+    <meta name="keywords" content="<?=$SS[sitekeyword]?>" />
+    <meta name="author" content="Masstige" />
+    <meta name="description" content="<?=$SS[sitedescription]?>" />
+    <!-- 최대 155자 이내 -->
+    <meta name="Robots" content="index, follow" />
+    <!-- 검색 제외 페이지인 경우 noindex, nofollow -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MOLAX E-SERVICE" />
+    <meta property="og:image" content="/Images/logo/MOAX.png" />
+    <meta property="og:site_name" content="모락스" />
+    <meta property="og:url" content="http://e-service.molax.co.kr/" />
+    <meta property="og:description" content="MOLAX E-SERVICE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:image" content="/Images/logo/MOAX.png" />
+    <meta name="twitter:description" content="MOLAX E-SERVICE" />
+    <meta name="twitter:title" content="MOLAX E-SERVICE" />
+
+    <!-- Naver Webmaster Tool -->
+    <meta name="naver-site-verification" content="MOLAX E-SERVICE" />
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="MOLAX E-SERVICE" />
+
+    <link rel="image_src" href="" />
+    <!-- 대표 이미지 -->
+    @*<link rel="shortcut icon" href="<?=$SS[sitefavicon]?>" />*@
+    <!-- 파비콘 -->
+    <!-- 대표 URL -->
+    <!-- 사이트 기본설정 영역 END -->
+    <!-- XEIcon -->
+    <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/xeicon/xeicon.css" />
+
+    <!-- Masstige Custom Icon for Board Template -->
+    <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/icomoon/masstige-icons.css" />
+
+    <!-- Google Material Icons -->
+    <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/material/material-icons.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="~/Content/Masstige/fonts/icons/bootstrap/bootstrap-icons.min.css" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="~/Content/Masstige/css/common.min.css" />
+
+    <!-- Load jQuery -->
+    <script src="~/Scripts/Masstige/js/lib/jquery-1.7.1.min.js"></script>
+    <!-- update your pre-1.9 jQuery code to jQuery 1.9 up to 3.0 -->
+    <script src="~/Scripts/Masstige/js/lib/jquery-migrate-1.4.1.min.js"></script>
+    <!-- jQuery 3.0 or higher, once you have used Migrate 1.x and upgraded to jQuery 1.9 or higher -->
+    <!-- <script src="../../assets/js/lib/jquery-migrate-3.3.2.min.js"></script>  -->
+    <!-- mCustomScrollbar 사용시 아래 1.11.1 버전 사용 -->
+    <!-- <script src="../../assets/js/lib/jquery-1.11.1.min.js"></script> -->
+
+    <script src="~/Scripts/Masstige/js/lib/jquery-ui.min.js"></script>
+
+    <title>모락스@*<? if($P_dp0!='main'){?> <? if($P_dp3!=null){?> <?=${nav_.$P_dp1._.$P_dp2._.$P_dp3}?> | <? }?> <? if($P_dp2!=null){?> <?=${nav_.$P_dp1._.$P_dp2}?> | <? }?> <?=${nav_.$P_dp1}?> | <? }?> <?=$SS[sitename]?>*@</title>
+
+    <script type="text/javascript">
+
+        var _Domain = '@System.Configuration.ConfigurationManager.AppSettings["Domain"]'
+
+    </script>
+
+    <link rel="stylesheet" href="~/Content/Masstige/css/e-service.min.css" />
+    @Styles.Render("~/Content/layout.css")
+    @Styles.Render("~/Content/media.css")
+    @Scripts.Render("~/Scripts/API/Comm_Pub.js")
+    @Scripts.Render("~/Scripts/js/common/KeyEvent.js")
+    @Scripts.Render("~/Scripts/js/common/Comm.js")
+    @Scripts.Render("~/Scripts/Pub/common.js")
+
+    @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+
+</head>
+<body class="main-body e-service">
+
+    @{
+        if (Session["USR_ID"] == null)
+        {
+            <input type="hidden" id="Session_USR_ID" value="" />
+            <input type="hidden" id="Session_LOC_NM" value="" />
+            <input type="hidden" id="Session_EMAIL" value="" />
+            <input type="hidden" id="Session_CUST_CD" value="" />
+            <input type="hidden" id="Session_CUST_NM" value="" />
+            <input type="hidden" id="Session_HP_NO" value="" />
+            <input type="hidden" id="Session_DOMAIN" value="" />
+            <input type="hidden" id="Session_OFFICE_CD" value="" />
+            <input type="hidden" id="Session_AUTH_KEY" value="" />
+            <input type="hidden" id="Session_USR_TYPE" value="" />
+        }
+        else
+        {
+            <input type="hidden" id="Session_USR_ID" value="@Session["USR_ID"]" />
+            <input type="hidden" id="Session_LOC_NM" value="@Session["USER_NM"]" />
+            <input type="hidden" id="Session_EMAIL" value="@Session["EMAIL"]" />
+            <input type="hidden" id="Session_CUST_CD" value="@Session["CUST_CD"]" />
+            <input type="hidden" id="Session_CUST_NM" value="@Session["CUST_NM"]" />
+            <input type="hidden" id="Session_HP_NO" value="@Session["HP_NO"]" />
+            <input type="hidden" id="Session_DOMAIN" value="@Session["DOMAIN"]" />
+            <input type="hidden" id="Session_OFFICE_CD" value="@Session["OFFICE_CD"]" />
+            <input type="hidden" id="Session_AUTH_KEY" value="@Session["AUTH_KEY"]" />
+            <input type="hidden" id="Session_USR_TYPE" value="@Session["USR_TYPE"]" />
+        }
+    }
+
+    <ul class="skip">
+        <li><a class="link" href="#contents">본문내용 바로가기</a></li>
+        <li><a class="link" href="#header">헤더 바로가기</a></li>
+        <li><a class="link" href="#footer">푸터 바로가기</a></li>
+    </ul>
+
+    <header id="header" class="header">
+        <div class="container header-wrap" style="max-width: 1850px">
+            <button type="button" class="mode-btn mode-btn-light"><i class="xi-sun-o pr-1"></i> DARK MODE</button>
+            <button type="button" class="mode-btn mode-btn-dark"><i class="xi-sun-o pr-1"></i> LIGHT MODE</button>
+            <a href="/" class="e-logo" title="메인으로">MOLAX</a>
+            <div class="nav__bg"></div>
+            <div class="d-flex align-items-center justify-content-between">
+                <nav class="nav">
+                    <ul class="nav-list nav-list--depth1">
+
+                        @{
+                            if (Session["USR_ID"] == null)
+                            {
+                                <!-- 1depth item -->
+                                //<li class="nav-list__item depth-1">
+                                //    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">MOLAX</a>
+                                //    <ul class="nav-list nav-list--depth2">
+                                //        <!-- 2depth item -->
+                                //        <li class="nav-list__item depth-2">
+                                //            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">해운스케줄</a>
+                                //        </li>
+                                //        <li class="nav-list__item depth-2">
+                                //            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">부킹등록</a>
+                                //        </li>
+                                //    </ul>
+                                //</li>
+
+                                <li class="nav-list__item depth-1">
+                                    <a href="@Url.Action("Sea","MOLAX")" class="link">MOLAX</a>
+                                    <ul class="nav-list nav-list--depth2">
+                                        <!-- 2depth item -->
+                                        <li class="nav-list__item depth-2">
+                                            <a href="@Url.Action("Sea","MOLAX")" class="link">해운스케줄</a>
+                                        </li>
+                                        <li class="nav-list__item depth-2">
+                                            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">부킹등록</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                                <!-- 1depth item -->
+                                <li class="nav-list__item depth-1">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Myboard')">내화물</a>
+                                    <ul class="nav-list nav-list--depth2">
+                                        <!-- 2depth item -->
+                                        <li class="nav-list__item depth-2">
+                                            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Myboard')">My Board</a>
+                                        </li>
+                                        <li class="nav-list__item depth-2">
+                                            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/BookingList')">부킹조회</a>
+                                        </li>
+                                        <li class="nav-list__item depth-2">
+                                            <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Console')">창고업무</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <!-- 1depth item -->
+                                <li class="nav-list__item depth-1">
+                                    <a href="@Url.Action("Sea","MOLAX")" class="link">MOLAX</a>
+                                    <ul class="nav-list nav-list--depth2">
+                                        <!-- 2depth item -->
+                                        <li class="nav-list__item depth-2">
+                                            <a href="@Url.Action("Sea","MOLAX")" class="link">해운스케줄</a>
+                                        </li>
+                                        <li class="nav-list__item depth-2">
+                                            <a href="@Url.Action("Regist","MOLAX")" class="link">부킹등록</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 1depth item -->
+                                <li class="nav-list__item depth-1">
+                                    <a href="@Url.Action("Myboard","MyMenu")" class="link">내화물</a>
+                                    <ul class="nav-list nav-list--depth2">
+                                        <!-- 2depth item -->
+                                        <li class="nav-list__item depth-2">
+                                            <a href="@Url.Action("Myboard","MyMenu")" class="link">My Board</a>
+                                        </li>
+                                        <li class="nav-list__item depth-2">
+                                            <a href="@Url.Action("BookingList","MyMenu")" class="link">부킹조회</a>
+                                        </li>
+                                        <li class="nav-list__item depth-2">
+                                            <a href="@Url.Action("Console","MyMenu")" class="link">창고업무</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </nav>
+                <div class="member-box pl-12">
+
+                    @{
+                        if (Session["USR_ID"] == null)
+                        {
+                            <!-- S : 로그인 전-->
+                            <div class="member-box__login">
+                                @*<a href="javascript:void(0)" class="link popup-link item" onclick="fnShowLoginLayer('')">로그인</a>*@
+                                <a href="javascript:void(0)" class="link item" onclick="fnShowLoginLayer('')">로그인</a>
+                            </div>
+                            <!-- E : 로그인 전-->
+                        }
+                        else
+                        {
+                            <!-- S : 로그인 후-->
+                            <div class="member-box__logout">
+                                <div class="text item">@*안녕하세요,*@ <span class="user_nm">@Session["USER_NM"]</span>님</div>
+                                <button type="button" class="btn-logout" onclick="_fnLogout()">로그아웃</button>
+                                <a href="@Url.Action("Modify","Member")" class="link item">내정보</a>
+                            </div>
+                            <!-- E : 로그인 후-->
+                        }
+                    }
+                    <!-- S : language -->
+                    <div class="language">
+                        <div class="language__now">KOR</div>
+                        <ul class="language__select">
+                            <li><a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })">ENG</a></li>
+                        </ul>
+                    </div>
+                    <!-- E : language -->
+                </div>
+            </div>
+            <button class="nav-mobile__btn" type="button">
+                <i class="xi-bars"></i>
+            </button>
+        </div>
+    </header>
+    <!-- S : aside -->
+    <div class="nav-mobile__bg"></div>
+    <aside class="nav-mobile">
+        <div class="nav-mobile__head">
+            <div class="member-box">
+                <a href="/" class="e-logo" title="메인으로">MOLAX</a>
+
+                @{
+                    if (Session["USR_ID"] == null)
+                    {
+                        <div class="member-box__login">
+                            <a href="javascript:void(0)" class="link item" onclick="fnShowLoginLayer('')">로그인</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="member-box__logout">
+                            <div class="text item">@*안녕하세요,*@ <span class="user_nm">@Session["USER_NM"]</span>님</div>
+                            <button type="button" class="btn-logout" onclick="_fnLogout()">로그아웃</button>
+                            <a href="@Url.Action("Modify","Member")" class="link item">내정보</a>
+                        </div>
+                    }
+                }
+                <!-- S : language -->
+                <div class="language">
+                    <div class="language__now">KOR</div>
+                    <ul class="language__select">
+                        <li><a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })">ENG</a></li>
+                    </ul>
+                </div>
+                <!-- E : language -->
+            </div>
+            <button class="nav-mobile__btn" type="button">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div class="nav-mobile__body">
+            <ul class="nav-list nav-list--depth1">
+
+                @{
+                    if (Session["USR_ID"] == null)
+                    {
+                        <!-- 1depth item -->
+                        <!--<li class="nav-list__item depth-1">
+                            <a href="javascript:void(0)" class="link">MOLAX<?=$nav_1?></a>
+                            <ul class="nav-list nav-list--depth2">-->
+                        <!-- 2depth item -->
+                        <!--<li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">해운스케줄</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">부킹등록</a>
+                                </li>
+                            </ul>
+                        </li>-->
+                        <li class="nav-list__item depth-1">
+                            <a href="javascript:void(0)" class="link">MOLAX</a>
+                            <ul class="nav-list nav-list--depth2">
+                                <!-- 2depth item -->
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Sea')">해운스케줄</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MOLAX/Regist')">부킹등록</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 1depth item -->
+                        <li class="nav-list__item depth-1">
+                            <a href="javascript:void(0)" class="link">내화물</a>
+                            <ul class="nav-list nav-list--depth2">
+                                <!-- 2depth item -->
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Myboard')">My Board</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/BookingList')">부킹조회</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="javascript:void(0)" class="link" onclick="fnShowLoginLayer('/MyMenu/Console')">창고업무</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- 1depth item -->
+                        <li class="nav-list__item depth-1">
+                            <a href="@Url.Action("Sea","MOLAX")" class="link">MOLAX</a>
+                            <ul class="nav-list nav-list--depth2">
+                                <!-- 2depth item -->
+                                <li class="nav-list__item depth-2">
+                                    <a href="@Url.Action("Sea","MOLAX")" class="link">해운스케줄</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="@Url.Action("Regist","MOLAX")" class="link">부킹등록</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 1depth item -->
+                        <li class="nav-list__item depth-1">
+                            <a href="@Url.Action("Myboard","MyMenu")" class="link">내화물</a>
+                            <ul class="nav-list nav-list--depth2">
+                                <!-- 2depth item -->
+                                <li class="nav-list__item depth-2">
+                                    <a href="@Url.Action("Myboard","MyMenu")" class="link">My Board</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="@Url.Action("BookingList","MyMenu")" class="link">부킹조회</a>
+                                </li>
+                                <li class="nav-list__item depth-2">
+                                    <a href="@Url.Action("Console","MyMenu")" class="link">창고업무</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                }
+
+
+            </ul>
+        </div>
+    </aside>
+    <!-- E : aside -->
+
+    @RenderSection("Container", required: false)
+
+    <div class="layer_zone alert_type" id="layer_Tracking_FileList">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <div class="layer_cont">
+                    <div class="popup pop-file-download">
+                        <div class="popup-head mb-5">
+                            <h1 class="popup__title text-gray-2">첨부 파일</h1>
+                        </div>
+                        <div class="file_title">
+                            <div class="file_tit1">구분</div>
+                            <div class="file_tit2">파일명</div>
+                        </div>
+                        <ul class="file_list" id="Layer_FileList">
+                            @*<li>
+                                    <div class="file_sort"><p>Customs Clearance</p></div>
+                                    <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                                </li>
+                                <li>
+                                    <div class="file_sort"><p>House B/L</p></div>
+                                    <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                                </li>
+                                <li>
+                                    <div class="file_sort"><p>Invoice</p></div>
+                                    <div class="file_nm"><a href="javascript:void(0)" class="file_name">ETELPUSS0673</a></div>
+                                </li>*@
+                        </ul>
+                        <div class="popup-footer mt-8">
+                            <button type="button" class="btn-type-01 w-100" onclick="layerClose('#layer_Tracking_FileList')">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/Masstige/js/lib/popper.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/bootstrap.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/slick.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/wow.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/aos.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/jquery.magnific-popup.min.js"></script>
+    <!-- fullpage에서 scrollOverflow 옵션 사용 시 선언 -->
+    <script src="~/Scripts/Masstige/js/lib/scrolloverflow.min.js"></script>
+    <!-- css3:false 옵션 적용 후 "linear", "swing" 또는 "easeInOutCubic" 대신 다른 easing 효과 사용 시  선언-->
+    <script src="~/Scripts/Masstige/js/lib/easings.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/fullpage.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/swiper.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/jquery.scrollbar.min.js"></script>
+    <script src="~/Scripts/Masstige/js/lib/jquery.mCustomScrollbar.min.js"></script>
+    <!-- for Board Template-->
+    <script src="~/Scripts/Masstige/js/custom/clipboard.js"></script>
+
+    <!-- Custom Library -->
+    <script src="~/Scripts/Masstige/js/custom/nav_active-1.1.6.masstige.min.js"></script>
+    <script src="~/Scripts/Masstige/js/custom/tab-1.1.0.masstige.js"></script>
+    <script src="~/Scripts/Masstige/js/custom/resizingCheck-1.0.0.masstige.js"></script>
+    <script src="~/Scripts/Masstige/js/custom/nav_drop-1.0.1.masstige.min.js"></script>
+    <script src="~/Scripts/Masstige/js/custom/scroll_track-1.0.1.masstige.min.js"></script>
+    <!-- wow.masstige.js : wow reinit -->
+    <!-- Progress Bar -->
+    <div class="loading-image" id="ProgressBar_Loading" style="display:none;">
+        <img src="~/Images/loading.svg" alt="">
+    </div>
+
+    <!-- COMMON -->
+    <script src="~/Scripts/Masstige/js/common.js"></script>
+    <script src="~/Scripts/js/common/_layout.js"></script>
+
+</body>
+</html>
+
+}

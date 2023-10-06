@@ -1,0 +1,2035 @@
+﻿@{
+    ViewBag.Title = "MyMenu";
+    ViewBag.Sub = "BookingList";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <input type="hidden" id="View_BKG_NO" value="@ViewBag.BKG_NO" />
+        <input type="hidden" id="REG_BKG_NO" value="@ViewBag.REG_BKG_NO" />
+
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16 section--bk-sck">
+                <div class="container">
+                    <div class="page-title text-left mb-6">
+                        <h2 class="common-text--28 font-weight-medium title-deco pl-4">Booking Inquiry</h2>
+                    </div>
+
+                    <!-- S : (search-bar)-->
+                    <div class="sch-bar sch-bar--board">
+                        <div class="sch-box row align-items-center">
+                            <div class="sch-item item1">
+                                <select name="Service" class="btn-selc" id="select_CntrType">
+                                    <option value="F">FCL</option>
+                                    <option value="L" selected>LCL</option>
+                                </select>
+                            </div>
+                            <div class="sch-item item2">
+                                <select name="Export" class="btn-selc" id="Select_Bound">
+                                    <option value="E">Export</option>
+                                    <option value="I">Import</option>
+                                </select>
+                            </div>
+                            <div class="sch-item item3">
+                                <select name="Booking Date/ ETD / ETA" class="btn-selc" id="Select_BK_ETD_ETA">
+                                    <option value="ALL">Booking Date / ETD / ETA</option>
+                                    <option value="BK">Booking Date</option>
+                                    <option value="ETD">ETD</option>
+                                    <option value="ETA">ETA</option>
+                                </select>
+                            </div>
+                            @*<div class="sch-item item4">
+                                    <div class="date-wrap">
+                                        <input type="text" name="" class="input-date datepicker" placeholder="출발일" id="input_ETD" />
+                                        <span class="icon-date" id="input_ETD_Icon"></span>
+                                    </div>
+                                </div>
+                                <div class="sch-item item5">
+                                    <div class="date-wrap">
+                                        <input type="text" name="" class="input-date datepicker" placeholder="도착일" id="input_ETA" />
+                                        <span class="icon-date" id="input_ETA_Icon"></span>
+                                    </div>
+                                </div>*@
+                            <div class="sch-item item4">
+                                <div class="date-wrap">
+                                    <input type="text" name="" class="input-date start_date" placeholder="Departure Date" id="input_ETD" />
+                                    <span class="icon-date" id="input_ETD_Icon"></span>
+                                </div>
+                            </div>
+                            <div class="sch-item item5">
+                                <div class="date-wrap">
+                                    <input type="text" name="" class="input-date end_date" placeholder="Arrival Date" id="input_ETA" />
+                                    <span class="icon-date" id="input_ETA_Icon"></span>
+                                </div>
+                            </div>
+                            <div class="sch-item item6">
+                                <button type="submit" title="Search" class="btn-type-01 btn-sch" id="btn_BkList_Search"><i class="xi-search"></i></button>
+                            </div>
+                            <div class="sch-item box2 d-none item7">
+                                <select name="Booking_Status" class="btn-selc" id="select_BkgDetail_Status"></select>
+                            </div>
+                            <div class="sch-item box2 d-none item8">
+                                <div class="pop__export">
+                                    <a href="javascript:void(0)" class="link btn-dpt start-region">
+                                        <span class="tit" id="input_POL">Departure</span>
+                                        <input type="hidden" class="input-sch" value="" id="input_POLCD" />
+                                        <img src="~/Images/Masstige/e-service/maker-icon.png" class="btn-marker" alt="SearchButton" />
+                                    </a>
+                                    <button type="button" class="delete-btn" style="display:none" name="input_POL"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="pop__import" style="display:none" id="AC_POL_Width">
+                                    <input type="text" class="link btn-dpt input-auto" placeholder="Departure" id="input_auto_POL" />
+                                    <input type="hidden" class="input-sch" value="" id="input_auto_POLCD" />
+                                    <button type="button" class="delete-btn" style="display:none" name="input_auto_POL"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="sch-pop sch-pop--pol--import">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6"><span class="city-text-arrive">Departure</span></h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">China</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SHANGHAI, CHINA;CNSHA">
+                                                            <span class="text">Shanghai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HONG KONG;HKHKG">
+                                                            <span class="text">Hongkong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="NINGBO, CHINA;CNNGB">
+                                                            <span class="text">Ningbo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="QINGDAO, CHINA;CNTAO">
+                                                            <span class="text">Qingdao</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SHEKOU, CHINA;CNSHK">
+                                                            <span class="text">Shekou</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="XIAMEN, CHINA;CNXMN">
+                                                            <span class="text">Xiamen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SHENZHEN, CHINA;CNSZX">
+                                                            <span class="text">Shenzhen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="XINGANG, CHINA;CNXIN">
+                                                            <span class="text">Xingang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="TIANJIN, CHINA;CNTSN">
+                                                            <span class="text">Tianjin</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="WEIHAI, CHINA;CNWEI">
+                                                            <span class="text">Weihai</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Southeast Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HAIPHONG, VIETNAM;VNHPH">
+                                                            <span class="text">Haiphong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HO CHI MINH CITY, VIETNAM;VNSGN">
+                                                            <span class="text">Hochiminh</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KAOHSIUNG, TAIWAN;TWKHH">
+                                                            <span class="text">Kaohsiung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KEELUNG,TAIWAN;TWKEL">
+                                                            <span class="text">Keelung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SINGAPORE;SGSIN">
+                                                            <span class="text">Singapore</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JAKARTA, INDONESIA;IDJKT">
+                                                            <span class="text">Jakarta</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BANGKOK, THAILAND;THBKK">
+                                                            <span class="text">Bangkok</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="LAEM CHABANG, THAILAND;THLCH">
+                                                            <span class="text">Laem Chabang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="YANGON, MYANMAR;MMRGN">
+                                                            <span class="text">Yangon</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="PORT KELANG, MALAYSIA;MYPKG">
+                                                            <span class="text">Port Kelang</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">USA</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="LONG BEACH, U.S.A.;USLGB">
+                                                            <span class="text">Long Beach</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="NEW YORK, U.S.A.;USNYC">
+                                                            <span class="text">New York</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="LOS ANGELES, U.S.A.;USLAX">
+                                                            <span class="text">L.A</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="TACOMA, U.S.A.;USTIW">
+                                                            <span class="text">Tacoma</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SEATTLE, U.S.A.;USSEA">
+                                                            <span class="text">Seattle</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Europe</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HAMBURG, GERMANY;DEHAM">
+                                                            <span class="text">Hamburg</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KOPER, SLOVENIA;SIKOP">
+                                                            <span class="text">KOPER</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="ANTWERPEN, BELGIUM;BEANR">
+                                                            <span class="text">Antwerpen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BREMERHAVEN, GERMANY;DEBRV">
+                                                            <span class="text">Bremerhaven</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="GENOA, ITALY;ITGOA">
+                                                            <span class="text">Genoa</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="FELIXSTOWE, UNITED KINGDOM;GBFXT">
+                                                            <span class="text">Felixstowe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="VALENCIA, SPAIN;ESVLC">
+                                                            <span class="text">Valencia</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BARCELONA, SPAIN;ESBCN">
+                                                            <span class="text">Barcelona</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Oceania</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="ADELAIDE, AUSTRALIA;AUADL">
+                                                            <span class="text">Adelaide</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="MELBOURNE, AUSTRALIA;AUMEL">
+                                                            <span class="text">Melbourne</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SYDNEY, AUSTRALIA;AUSYD">
+                                                            <span class="text">Sydney</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BRISBANE, AUSTRALIA;AUBNE">
+                                                            <span class="text">Brisbane</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="AUCKLAND, NEW ZEALAND;NZAKL">
+                                                            <span class="text">Auckland</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Western Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA">
+                                                            <span class="text">Nhava Sheva</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="CHENNAI (EX MADRAS), INDIA;INMAA">
+                                                            <span class="text">Chennai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="MUMBAI (EX BOMBAY), INDIA;INBOM">
+                                                            <span class="text">Mumbai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="CHITTAGONG, BANGLADESH;BDCGP">
+                                                            <span class="text">Chittagong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KARACHI, PAKISTAN;PKKHI">
+                                                            <span class="text">Karachi</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Middle East</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BANDAR ABBAS, IRAN;IRBND">
+                                                            <span class="text">Bandar Abbas</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="ISTANBUL, TURKEY;TRIST">
+                                                            <span class="text">Istanbul</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA">
+                                                            <span class="text">Jebel Ali</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JEDDAH, SAUDI ARABIA;SAJED">
+                                                            <span class="text">Jeddah</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY">
+                                                            <span class="text">El Iskandariya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Japan</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KOBE, JAPAN;JPUKB">
+                                                            <span class="text">Kobe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="OSAKA, JAPAN;JPOSA">
+                                                            <span class="text">Osaka</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="TOKYO, JAPAN;JPTYO">
+                                                            <span class="text">Tokyo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="YOKOHAMA, JAPAN;JPYOK">
+                                                            <span class="text">Yokohama</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="NAGOYA, AICHI;JPNGO">
+                                                            <span class="text">Nagoya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sch-pop sch-pop--pol--export">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6 city-text-dpt"><span class="city-text-dpt">Departure</span></h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Korea</h3>
+                                                <ul class="d-flex">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BUSAN, KOREA;KRPUS">Busan</button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="INCHEON,KOREA;KRINC">Incheon</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sch-item box2 d-none item9">
+                                <div class="pop__import" style="display:none">
+                                    <a href="javascript:void(0)" class="link btn-dpt arrive-region" id="sch_pod_popup">
+                                        <span class="tit" id="input_POD">Arrival</span>
+                                        <input type="hidden" class="input-sch" value="" id="input_PODCD" />
+                                        <img src="~/Images/Masstige/e-service/maker-icon.png" class="btn-marker" alt="SearchButton" />
+                                    </a>
+                                    <button type="button" class="delete-btn" style="display:none" name="input_POD"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="pop__export" id="AC_POD_Width">
+                                    <input type="text" class="link btn-dpt input-auto import" placeholder="Arrival" id="input_auto_POD" />
+                                    <input type="hidden" class="input-sch" value="" id="input_auto_PODCD" />
+                                    <button type="button" class="delete-btn" style="display:none" name="input_auto_POD"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="sch-pop sch-pop--pod--export">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <input type="hidden" id="input_POD" />
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6"><span class="city-text-arrive">Arrival</span></h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">China</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SHANGHAI, CHINA;CNSHA">
+                                                            <span class="text">Shanghai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HONG KONG;HKHKG">
+                                                            <span class="text">Hongkong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="NINGBO, CHINA;CNNGB">
+                                                            <span class="text">Ningbo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="QINGDAO, CHINA;CNTAO">
+                                                            <span class="text">Qingdao</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SHEKOU, CHINA;CNSHK">
+                                                            <span class="text">Shekou</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="XIAMEN, CHINA;CNXMN">
+                                                            <span class="text">Xiamen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SHENZHEN, CHINA;CNSZX">
+                                                            <span class="text">Shenzhen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="XINGANG, CHINA;CNXIN">
+                                                            <span class="text">Xingang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="TIANJIN, CHINA;CNTSN">
+                                                            <span class="text">Tianjin</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="WEIHAI, CHINA;CNWEI">
+                                                            <span class="text">Weihai</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Southeast Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HAIPHONG, VIETNAM;VNHPH">
+                                                            <span class="text">Haiphong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HO CHI MINH CITY, VIETNAM;VNSGN">
+                                                            <span class="text">Hochiminh</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KAOHSIUNG, TAIWAN;TWKHH">
+                                                            <span class="text">Kaohsiung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KEELUNG,TAIWAN;TWKEL">
+                                                            <span class="text">Keelung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SINGAPORE;SGSIN">
+                                                            <span class="text">Singapore</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JAKARTA, INDONESIA;IDJKT">
+                                                            <span class="text">Jakarta</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BANGKOK, THAILAND;THBKK">
+                                                            <span class="text">Bangkok</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="LAEM CHABANG, THAILAND;THLCH">
+                                                            <span class="text">Laem Chabang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="YANGON, MYANMAR;MMRGN">
+                                                            <span class="text">Yangon</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="PORT KELANG, MALAYSIA;MYPKG">
+                                                            <span class="text">Port Kelang</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">USA</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="LONG BEACH, U.S.A.;USLGB">
+                                                            <span class="text">Long Beach</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="NEW YORK, U.S.A.;USNYC">
+                                                            <span class="text">New York</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="LOS ANGELES, U.S.A.;USLAX">
+                                                            <span class="text">L.A</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="TACOMA, U.S.A.;USTIW">
+                                                            <span class="text">Tacoma</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SEATTLE, U.S.A.;USSEA">
+                                                            <span class="text">Seattle</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Europe</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HAMBURG, GERMANY;DEHAM">
+                                                            <span class="text">Hamburg</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KOPER, SLOVENIA;SIKOP">
+                                                            <span class="text">KOPER</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="ANTWERPEN, BELGIUM;BEANR">
+                                                            <span class="text">Antwerpen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BREMERHAVEN, GERMANY;DEBRV">
+                                                            <span class="text">Bremerhaven</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="GENOA, ITALY;ITGOA">
+                                                            <span class="text">Genoa</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="FELIXSTOWE, UNITED KINGDOM;GBFXT">
+                                                            <span class="text">Felixstowe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="VALENCIA, SPAIN;ESVLC">
+                                                            <span class="text">Valencia</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BARCELONA, SPAIN;ESBCN">
+                                                            <span class="text">Barcelona</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Oceania</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="ADELAIDE, AUSTRALIA;AUADL">
+                                                            <span class="text">Adelaide</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="MELBOURNE, AUSTRALIA;AUMEL">
+                                                            <span class="text">Melbourne</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SYDNEY, AUSTRALIA;AUSYD">
+                                                            <span class="text">Sydney</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BRISBANE, AUSTRALIA;AUBNE">
+                                                            <span class="text">Brisbane</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="AUCKLAND, NEW ZEALAND;NZAKL">
+                                                            <span class="text">Auckland</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Western Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA">
+                                                            <span class="text">Nhava Sheva</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="CHENNAI (EX MADRAS), INDIA;INMAA">
+                                                            <span class="text">Chennai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="MUMBAI (EX BOMBAY), INDIA;INBOM">
+                                                            <span class="text">Mumbai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="CHITTAGONG, BANGLADESH;BDCGP">
+                                                            <span class="text">Chittagong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KARACHI, PAKISTAN;PKKHI">
+                                                            <span class="text">Karachi</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Middle East</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BANDAR ABBAS, IRAN;IRBND">
+                                                            <span class="text">Bandar Abbas</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="ISTANBUL, TURKEY;TRIST">
+                                                            <span class="text">Istanbul</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA">
+                                                            <span class="text">Jebel Ali</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JEDDAH, SAUDI ARABIA;SAJED">
+                                                            <span class="text">Jeddah</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY">
+                                                            <span class="text">El Iskandariya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Japan</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KOBE, JAPAN;JPUKB">
+                                                            <span class="text">Kobe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="OSAKA, JAPAN;JPOSA">
+                                                            <span class="text">Osaka</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="TOKYO, JAPAN;JPTYO">
+                                                            <span class="text">Tokyo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="YOKOHAMA, JAPAN;JPYOK">
+                                                            <span class="text">Yokohama</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="NAGOYA, AICHI;JPNGO">
+                                                            <span class="text">Nagoya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sch-pop sch-pop--pod--import">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6 city-text-dpt"><span class="city-text-dpt">Arrival</span></h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Korea</h3>
+                                                <ul class="d-flex">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BUSAN, KOREA;KRPUS">Busan</button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="INCHEON,KOREA;KRINC">Incheon</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sch-item box2 d-none item10">
+                                <div class="input-box">
+                                    <input type="text" class="input_for px-5" placeholder="Booking No" id="select_BKDetail_BkgNo" />
+                                    <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-bx">
+                            <a href="javascript:void(0);" class="more-btn"> </a>
+                        </div>
+                    </div>
+                    <!-- E : (search-bar)-->
+                    <!-- S : (내용--pc)-->
+                    <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                        @*<p class="row-scrollwrap__txt"><i class="xi-info-o"></i>가로로 스크롤 하여 보실 수 있습니다.</p>*@
+                        <div class="row-scrollwrap__scroll">
+                            <div class="row-scrollwrap__content">
+                                <!-- S: 스크롤 할 컨텐츠 -->
+                                <table class="table sch-table bk-sch-table">
+                                    <colgroup>
+                                        <col width="12%" />
+                                        <col width="14%" />
+                                        <col width="14%" />
+                                        <col width="12%" />
+                                        <col width="12%" />
+                                        <col width="14%" />
+                                        <col width="5%" />
+                                        @*<col width="10%" />*@
+                                        <col width="*" />
+                                        <col width="*" />
+                                    </colgroup>
+                                    <thead id="BookingList_orderby">
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Carrier</div>
+                                                    <button type="button" class="btn-arrow" value="LINE_CD"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Vessel</div>
+                                                    <button type="button" class="btn-arrow" value="VSL_VOY"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Departure</div>
+                                                    <button type="button" class="btn-arrow" value="ETD"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Arrival</div>
+                                                    <button type="button" class="btn-arrow" value="ETA"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">CBM</div>
+                                                    <button type="button" class="btn-arrow" value="MSRMT"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit">Terms</div>
+                                                    @*<button type="button" class="btn-arrow" value="CARGO"></button>*@
+                                                </div>
+                                            </th>
+                                            <th>Info</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="BK_Result_AREA_PC">
+                                        <tr>
+                                            <td colspan="9" class="no_data"></td>
+                                        </tr>
+                                        @*<tr class="sch_row">
+                                                <td class="txt txt--b">승인</td>
+                                                <td class="txt font-sub font-weight-medium"></td>
+                                                <td class="txt font-sub font-weight-medium">KMTC ULSAN 2022S</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-sub font-weight-medium">40 ft HC x4</td>
+                                                <td class="txt font-sub font-weight-medium">USD 190</td>
+                                                <td class="txt">
+                                                    <a href="@Url.Action("Regist","MOLAX")" class="bk-sch">상세</a>
+                                                </td>
+                                                <td class="txt">
+                                                    <a href="javascript:void(0)" class="btn_rel"><i class="xi-plus"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr class="related_info" id="row_1">
+                                                <td colspan="9">
+                                                    <ul class="etc_info">
+                                                        <li class="item">
+                                                            <em>반입지 : BICT</em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <em>담당자 : </em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <em>비고 : </em>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>*@
+                                        @*<tr>
+                                                <td class="txt txt--g">요청</td>
+                                                <td class="txt font-sub font-weight-medium"></td>
+                                                <td class="txt font-sub font-weight-medium">KMTC ULSAN 2022S</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-sub font-weight-medium">40 ft HC x4</td>
+                                                <td class="txt font-sub font-weight-medium">USD 190</td>
+                                                <td class="txt">
+                                                    <a href="@Url.Action("Regist","MOLAX")" class="bk-sch mb-1">상세</a>
+                                                    <button type="button" class="text-gray-6 bk-sch">Cancel</button>
+                                                </td>
+                                                <td class="txt">
+                                                    <a href="/Popup/Tracking" class="link popup-link"><i class="xi-plus"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt txt--r">취소</td>
+                                                <td class="txt font-sub font-weight-medium"></td>
+                                                <td class="txt font-sub font-weight-medium">KMTC ULSAN 2022S</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-sub font-weight-medium">40 ft HC x4</td>
+                                                <td class="txt font-sub font-weight-medium">USD 190</td>
+                                                <td class="txt">
+                                                    <a href="@Url.Action("Regist","MOLAX")" class="bk-sch mb-1">상세</a>
+                                                    <button type="button" class="text-gray-6 bk-sch">Cancel</button>
+                                                </td>
+                                                <td class="txt">
+                                                    <a href="/Popup/Tracking" class="link popup-link"><i class="xi-plus"></i></a>
+                                                </td>
+                                            </tr>*@
+                                    </tbody>
+                                </table>
+                                <!-- E: 스크롤 할 컨텐츠 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- E : (내용--pc)-->
+                    <!-- S : (내용--모바일)-->
+                    <div class="m-info d-block d-md-none" id="BK_Result_AREA_MO">
+                        <ul class="info-box py-2 px-1">
+                            <li class="no_data col-12 py-6"></li>
+                            @*<li class="info-txt info-txt--full">
+                                    <p class="title">Status</p>
+                                    <p class="txt--b des">승인</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Carrier</p>
+                                    <p class="des des--bl"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Vessel</p>
+                                    <p class="text-gray-6 common-text--14 des">KMTC ULSAN 2022S</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Departure</p>
+                                    <p class="text-gray-6 common-text--14 des">2020.10.29 (목) Busan, Korea</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Arrival</p>
+                                    <p class="text-gray-6 common-text--14 des">2020.10.29 (목) Busan, Korea</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Cargo</p>
+                                    <p class="text-gray-6 common-text--14 des">40 ft HC x4</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Price</p>
+                                    <p class="text-gray-6 common-text--14 des">USD 190</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <a href="../schedule/booking-out.html" class="bk-sch">상세</a>
+                                </li>
+                                <li class="info-txt info-txt--full related_info">
+                                    <ul class="etc_info">
+                                        <li class="item">
+                                            <em>반입지 : BICT</em>
+                                        </li>
+                                        <li class="item">
+                                            <em>담당자 : </em>
+                                        </li>
+                                        <li class="item">
+                                            <em>비고 : </em>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                        </ul>
+                    </div>
+                    <!-- E : (내용--모바일)-->
+                    <!-- S : 페이징 -->
+                    <div class="paging-area" id="Paging_Area" style="display:none">
+                        <ul>
+                            <li>
+                                <a href="javascript:;" class="prev-first"><span>To the front</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="prev"><span>Before</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="active">1<span></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">2<span></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">3<span></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="next"><span>Next</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="next-last"><span>At the very end</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- E : 페이징 -->
+                </div>
+            </section>
+        </main>
+        <!-- E : Main -->
+        @Scripts.Render("~/Scripts/js/MyMenu/BookingListEng.js")
+    }
+    else
+    {
+        <input type="hidden" id="View_BKG_NO" value="@ViewBag.BKG_NO" />
+        <input type="hidden" id="REG_BKG_NO" value="@ViewBag.REG_BKG_NO" />
+
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16 section--bk-sck">
+                <div class="container">
+                    <div class="page-title text-left mb-6">
+                        <h2 class="common-text--28 font-weight-medium title-deco pl-4">부킹조회</h2>
+                    </div>
+
+                    <!-- S : (search-bar)-->
+                    <div class="sch-bar sch-bar--board">
+                        <div class="sch-box row align-items-center">
+                            <div class="sch-item item1">
+                                <select name="Service" class="btn-selc" id="select_CntrType">
+                                    <option value="F">FCL</option>
+                                    <option value="L" selected>LCL</option>
+                                </select>
+                            </div>
+                            <div class="sch-item item2">
+                                <select name="Export" class="btn-selc" id="Select_Bound">
+                                    <option value="E">Export</option>
+                                    <option value="I">Import</option>
+                                </select>
+                            </div>
+                            <div class="sch-item item3">
+                                <select name="Booking Date/ ETD / ETA" class="btn-selc" id="Select_BK_ETD_ETA">
+                                    <option value="ALL">Booking Date / ETD / ETA</option>
+                                    <option value="BK">Booking Date</option>
+                                    <option value="ETD">ETD</option>
+                                    <option value="ETA">ETA</option>
+                                </select>
+                            </div>
+                            @*<div class="sch-item item4">
+                                    <div class="date-wrap">
+                                        <input type="text" name="" class="input-date datepicker" placeholder="출발일" id="input_ETD" />
+                                        <span class="icon-date" id="input_ETD_Icon"></span>
+                                    </div>
+                                </div>
+                                <div class="sch-item item5">
+                                    <div class="date-wrap">
+                                        <input type="text" name="" class="input-date datepicker" placeholder="도착일" id="input_ETA" />
+                                        <span class="icon-date" id="input_ETA_Icon"></span>
+                                    </div>
+                                </div>*@
+                            <div class="sch-item item4">
+                                <div class="date-wrap">
+                                    <input type="text" name="" class="input-date start_date" placeholder="출발일" id="input_ETD" />
+                                    <span class="icon-date" id="input_ETD_Icon"></span>
+                                </div>
+                            </div>
+                            <div class="sch-item item5">
+                                <div class="date-wrap">
+                                    <input type="text" name="" class="input-date end_date" placeholder="도착일" id="input_ETA" />
+                                    <span class="icon-date" id="input_ETA_Icon"></span>
+                                </div>
+                            </div>
+                            <div class="sch-item item6">
+                                <button type="submit" title="검색" class="btn-type-01 btn-sch" id="btn_BkList_Search"><i class="xi-search"></i></button>
+                            </div>
+                            <div class="sch-item box2 d-none item7">
+                                <select name="Booking_Status" class="btn-selc" id="select_BkgDetail_Status"></select>
+                            </div>
+                            <div class="sch-item box2 d-none item8">
+                                <div class="pop__export">
+                                    <a href="javascript:void(0)" class="link btn-dpt start-region">
+                                        <span class="tit" id="input_POL">출발</span>
+                                        <input type="hidden" class="input-sch" value="" id="input_POLCD" />
+                                        <img src="~/Images/Masstige/e-service/maker-icon.png" class="btn-marker" alt="검색버튼" />
+                                    </a>
+                                    <button type="button" class="delete-btn" style="display:none" name="input_POL"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="pop__import" style="display:none" id="AC_POL_Width">
+                                    <input type="text" class="link btn-dpt input-auto" placeholder="출발" id="input_auto_POL" />
+                                    <input type="hidden" class="input-sch" value="" id="input_auto_POLCD" />
+                                    <button type="button" class="delete-btn" style="display:none" name="input_auto_POL"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="sch-pop sch-pop--pol--import">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6"><span class="city-text-arrive">출발</span> 도시 선택</h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">China</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SHANGHAI, CHINA;CNSHA">
+                                                            <span class="text">Shanghai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HONG KONG;HKHKG">
+                                                            <span class="text">Hongkong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="NINGBO, CHINA;CNNGB">
+                                                            <span class="text">Ningbo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="QINGDAO, CHINA;CNTAO">
+                                                            <span class="text">Qingdao</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SHEKOU, CHINA;CNSHK">
+                                                            <span class="text">Shekou</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="XIAMEN, CHINA;CNXMN">
+                                                            <span class="text">Xiamen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SHENZHEN, CHINA;CNSZX">
+                                                            <span class="text">Shenzhen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="XINGANG, CHINA;CNXIN">
+                                                            <span class="text">Xingang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="TIANJIN, CHINA;CNTSN">
+                                                            <span class="text">Tianjin</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="WEIHAI, CHINA;CNWEI">
+                                                            <span class="text">Weihai</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Southeast Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HAIPHONG, VIETNAM;VNHPH">
+                                                            <span class="text">Haiphong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HO CHI MINH CITY, VIETNAM;VNSGN">
+                                                            <span class="text">Hochiminh</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KAOHSIUNG, TAIWAN;TWKHH">
+                                                            <span class="text">Kaohsiung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KEELUNG,TAIWAN;TWKEL">
+                                                            <span class="text">Keelung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SINGAPORE;SGSIN">
+                                                            <span class="text">Singapore</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JAKARTA, INDONESIA;IDJKT">
+                                                            <span class="text">Jakarta</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BANGKOK, THAILAND;THBKK">
+                                                            <span class="text">Bangkok</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="LAEM CHABANG, THAILAND;THLCH">
+                                                            <span class="text">Laem Chabang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="YANGON, MYANMAR;MMRGN">
+                                                            <span class="text">Yangon</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="PORT KELANG, MALAYSIA;MYPKG">
+                                                            <span class="text">Port Kelang</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">USA</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="LONG BEACH, U.S.A.;USLGB">
+                                                            <span class="text">Long Beach</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="NEW YORK, U.S.A.;USNYC">
+                                                            <span class="text">New York</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="LOS ANGELES, U.S.A.;USLAX">
+                                                            <span class="text">L.A</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="TACOMA, U.S.A.;USTIW">
+                                                            <span class="text">Tacoma</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SEATTLE, U.S.A.;USSEA">
+                                                            <span class="text">Seattle</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Europe</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="HAMBURG, GERMANY;DEHAM">
+                                                            <span class="text">Hamburg</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KOPER, SLOVENIA;SIKOP">
+                                                            <span class="text">KOPER</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="ANTWERPEN, BELGIUM;BEANR">
+                                                            <span class="text">Antwerpen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BREMERHAVEN, GERMANY;DEBRV">
+                                                            <span class="text">Bremerhaven</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="GENOA, ITALY;ITGOA">
+                                                            <span class="text">Genoa</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="FELIXSTOWE, UNITED KINGDOM;GBFXT">
+                                                            <span class="text">Felixstowe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="VALENCIA, SPAIN;ESVLC">
+                                                            <span class="text">Valencia</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BARCELONA, SPAIN;ESBCN">
+                                                            <span class="text">Barcelona</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Oceania</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="ADELAIDE, AUSTRALIA;AUADL">
+                                                            <span class="text">Adelaide</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="MELBOURNE, AUSTRALIA;AUMEL">
+                                                            <span class="text">Melbourne</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="SYDNEY, AUSTRALIA;AUSYD">
+                                                            <span class="text">Sydney</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BRISBANE, AUSTRALIA;AUBNE">
+                                                            <span class="text">Brisbane</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="AUCKLAND, NEW ZEALAND;NZAKL">
+                                                            <span class="text">Auckland</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Western Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA">
+                                                            <span class="text">Nhava Sheva</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="CHENNAI (EX MADRAS), INDIA;INMAA">
+                                                            <span class="text">Chennai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="MUMBAI (EX BOMBAY), INDIA;INBOM">
+                                                            <span class="text">Mumbai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="CHITTAGONG, BANGLADESH;BDCGP">
+                                                            <span class="text">Chittagong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KARACHI, PAKISTAN;PKKHI">
+                                                            <span class="text">Karachi</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Middle East</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BANDAR ABBAS, IRAN;IRBND">
+                                                            <span class="text">Bandar Abbas</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="ISTANBUL, TURKEY;TRIST">
+                                                            <span class="text">Istanbul</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA">
+                                                            <span class="text">Jebel Ali</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="JEDDAH, SAUDI ARABIA;SAJED">
+                                                            <span class="text">Jeddah</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY">
+                                                            <span class="text">El Iskandariya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Japan</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="KOBE, JAPAN;JPUKB">
+                                                            <span class="text">Kobe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="OSAKA, JAPAN;JPOSA">
+                                                            <span class="text">Osaka</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="TOKYO, JAPAN;JPTYO">
+                                                            <span class="text">Tokyo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="YOKOHAMA, JAPAN;JPYOK">
+                                                            <span class="text">Yokohama</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="NAGOYA, AICHI;JPNGO">
+                                                            <span class="text">Nagoya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sch-pop sch-pop--pol--export">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6 city-text-dpt"><span class="city-text-dpt">출발</span> 도시 선택</h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Korea</h3>
+                                                <ul class="d-flex">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="BUSAN, KOREA;KRPUS">Busan</button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pol_port" value="INCHEON,KOREA;KRINC">Incheon</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sch-item box2 d-none item9">
+                                <div class="pop__import" style="display:none">
+                                    <a href="javascript:void(0)" class="link btn-dpt arrive-region" id="sch_pod_popup">
+                                        <span class="tit" id="input_POD">도착</span>
+                                        <input type="hidden" class="input-sch" value="" id="input_PODCD" />
+                                        <img src="~/Images/Masstige/e-service/maker-icon.png" class="btn-marker" alt="검색버튼" />
+                                    </a>
+                                    <button type="button" class="delete-btn" style="display:none" name="input_POD"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="pop__export" id="AC_POD_Width">
+                                    <input type="text" class="link btn-dpt input-auto import" placeholder="도착" id="input_auto_POD" />
+                                    <input type="hidden" class="input-sch" value="" id="input_auto_PODCD" />
+                                    <button type="button" class="delete-btn" style="display:none" name="input_auto_POD"><i class="xi-close-thin"></i></button>
+                                </div>
+                                <div class="sch-pop sch-pop--pod--export">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <input type="hidden" id="input_POD" />
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6"><span class="city-text-arrive">도착</span> 도시 선택</h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">China</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SHANGHAI, CHINA;CNSHA">
+                                                            <span class="text">Shanghai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HONG KONG;HKHKG">
+                                                            <span class="text">Hongkong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="NINGBO, CHINA;CNNGB">
+                                                            <span class="text">Ningbo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="QINGDAO, CHINA;CNTAO">
+                                                            <span class="text">Qingdao</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SHEKOU, CHINA;CNSHK">
+                                                            <span class="text">Shekou</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="XIAMEN, CHINA;CNXMN">
+                                                            <span class="text">Xiamen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SHENZHEN, CHINA;CNSZX">
+                                                            <span class="text">Shenzhen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="XINGANG, CHINA;CNXIN">
+                                                            <span class="text">Xingang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="TIANJIN, CHINA;CNTSN">
+                                                            <span class="text">Tianjin</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="WEIHAI, CHINA;CNWEI">
+                                                            <span class="text">Weihai</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Southeast Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HAIPHONG, VIETNAM;VNHPH">
+                                                            <span class="text">Haiphong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HO CHI MINH CITY, VIETNAM;VNSGN">
+                                                            <span class="text">Hochiminh</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KAOHSIUNG, TAIWAN;TWKHH">
+                                                            <span class="text">Kaohsiung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KEELUNG,TAIWAN;TWKEL">
+                                                            <span class="text">Keelung</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SINGAPORE;SGSIN">
+                                                            <span class="text">Singapore</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JAKARTA, INDONESIA;IDJKT">
+                                                            <span class="text">Jakarta</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BANGKOK, THAILAND;THBKK">
+                                                            <span class="text">Bangkok</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="LAEM CHABANG, THAILAND;THLCH">
+                                                            <span class="text">Laem Chabang</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="YANGON, MYANMAR;MMRGN">
+                                                            <span class="text">Yangon</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="PORT KELANG, MALAYSIA;MYPKG">
+                                                            <span class="text">Port Kelang</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">USA</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="LONG BEACH, U.S.A.;USLGB">
+                                                            <span class="text">Long Beach</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="NEW YORK, U.S.A.;USNYC">
+                                                            <span class="text">New York</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="LOS ANGELES, U.S.A.;USLAX">
+                                                            <span class="text">L.A</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="TACOMA, U.S.A.;USTIW">
+                                                            <span class="text">Tacoma</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SEATTLE, U.S.A.;USSEA">
+                                                            <span class="text">Seattle</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Europe</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="HAMBURG, GERMANY;DEHAM">
+                                                            <span class="text">Hamburg</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KOPER, SLOVENIA;SIKOP">
+                                                            <span class="text">KOPER</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="ANTWERPEN, BELGIUM;BEANR">
+                                                            <span class="text">Antwerpen</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BREMERHAVEN, GERMANY;DEBRV">
+                                                            <span class="text">Bremerhaven</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="GENOA, ITALY;ITGOA">
+                                                            <span class="text">Genoa</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="FELIXSTOWE, UNITED KINGDOM;GBFXT">
+                                                            <span class="text">Felixstowe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="VALENCIA, SPAIN;ESVLC">
+                                                            <span class="text">Valencia</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BARCELONA, SPAIN;ESBCN">
+                                                            <span class="text">Barcelona</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Oceania</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="ADELAIDE, AUSTRALIA;AUADL">
+                                                            <span class="text">Adelaide</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="MELBOURNE, AUSTRALIA;AUMEL">
+                                                            <span class="text">Melbourne</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="SYDNEY, AUSTRALIA;AUSYD">
+                                                            <span class="text">Sydney</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BRISBANE, AUSTRALIA;AUBNE">
+                                                            <span class="text">Brisbane</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="AUCKLAND, NEW ZEALAND;NZAKL">
+                                                            <span class="text">Auckland</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Western Asia</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JAWAHARLAL NEHRU (NHAVA SHEVA), INDIA;INNSA">
+                                                            <span class="text">Nhava Sheva</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="CHENNAI (EX MADRAS), INDIA;INMAA">
+                                                            <span class="text">Chennai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="MUMBAI (EX BOMBAY), INDIA;INBOM">
+                                                            <span class="text">Mumbai</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="CHITTAGONG, BANGLADESH;BDCGP">
+                                                            <span class="text">Chittagong</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KARACHI, PAKISTAN;PKKHI">
+                                                            <span class="text">Karachi</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Middle East</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BANDAR ABBAS, IRAN;IRBND">
+                                                            <span class="text">Bandar Abbas</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="ISTANBUL, TURKEY;TRIST">
+                                                            <span class="text">Istanbul</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JEBEL ALI, UNITED ARAB EMIRATES;AEJEA">
+                                                            <span class="text">Jebel Ali</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="JEDDAH, SAUDI ARABIA;SAJED">
+                                                            <span class="text">Jeddah</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="EL ISKANDARIYA (= ALEXANDRIA), EGYPT;EGALY">
+                                                            <span class="text">El Iskandariya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Japan</h3>
+                                                <ul class="d-flex flex-wrap justify-content-start">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="KOBE, JAPAN;JPUKB">
+                                                            <span class="text">Kobe</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="OSAKA, JAPAN;JPOSA">
+                                                            <span class="text">Osaka</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="TOKYO, JAPAN;JPTYO">
+                                                            <span class="text">Tokyo</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="YOKOHAMA, JAPAN;JPYOK">
+                                                            <span class="text">Yokohama</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="NAGOYA, AICHI;JPNGO">
+                                                            <span class="text">Nagoya</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sch-pop sch-pop--pod--import">
+                                    <div class="popup pop-sch">
+                                        <button type="button" class="btn-close"><i class="xi-close-thin"></i></button>
+                                        <h2 class="common-text--18 pb-2 border-bottom border-gray-6 city-text-dpt"><span class="city-text-dpt">도착</span> 도시 선택</h2>
+                                        <div class="dpt_wrap">
+                                            <div class="dpt_city">
+                                                <h3 class="common-text--16 font-weight-medium font-sub text-color-1 py-2">Korea</h3>
+                                                <ul class="d-flex">
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="BUSAN, KOREA;KRPUS">Busan</button>
+                                                    </li>
+                                                    <li class="item">
+                                                        <button type="button" class="city-btn quick_pod_port" value="INCHEON,KOREA;KRINC">Incheon</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sch-item box2 d-none item10">
+                                <div class="input-box">
+                                    <input type="text" class="input_for px-5" placeholder="Booking No" id="select_BKDetail_BkgNo" />
+                                    <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-bx">
+                            <a href="javascript:void(0);" class="more-btn"> </a>
+                        </div>
+                    </div>
+                    <!-- E : (search-bar)-->
+                    <!-- S : (내용--pc)-->
+                    <div class="row-scrollwrap d-none d-md-block" data-show="800">
+                        @*<p class="row-scrollwrap__txt"><i class="xi-info-o"></i>가로로 스크롤 하여 보실 수 있습니다.</p>*@
+                        <div class="row-scrollwrap__scroll">
+                            <div class="row-scrollwrap__content">
+                                <!-- S: 스크롤 할 컨텐츠 -->
+                                <table class="table sch-table bk-sch-table">
+                                    <colgroup>
+                                        <col width="12%" />
+                                        <col width="14%" />
+                                        <col width="14%" />
+                                        <col width="12%" />
+                                        <col width="12%" />
+                                        <col width="14%" />
+                                        <col width="5%" />
+                                        @*<col width="10%" />*@
+                                        <col width="*" />
+                                        <col width="*" />
+                                    </colgroup>
+                                    <thead id="BookingList_orderby">
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Carrier</div>
+                                                    <button type="button" class="btn-arrow" value="LINE_CD"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Vessel</div>
+                                                    <button type="button" class="btn-arrow" value="VSL_VOY"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Departure</div>
+                                                    <button type="button" class="btn-arrow" value="ETD"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">Arrival</div>
+                                                    <button type="button" class="btn-arrow" value="ETA"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit orderby">CBM</div>
+                                                    <button type="button" class="btn-arrow" value="MSRMT"></button>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="title-ctrl">
+                                                    <div class="tit">Terms</div>
+                                                    @*<button type="button" class="btn-arrow" value="CARGO"></button>*@
+                                                </div>
+                                            </th>
+                                            <th>Info</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="BK_Result_AREA_PC">
+                                        <tr>
+                                            <td colspan="9" class="no_data"></td>
+                                        </tr>
+                                        @*<tr class="sch_row">
+                                                <td class="txt txt--b">승인</td>
+                                                <td class="txt font-sub font-weight-medium"></td>
+                                                <td class="txt font-sub font-weight-medium">KMTC ULSAN 2022S</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-sub font-weight-medium">40 ft HC x4</td>
+                                                <td class="txt font-sub font-weight-medium">USD 190</td>
+                                                <td class="txt">
+                                                    <a href="@Url.Action("Regist","MOLAX")" class="bk-sch">상세</a>
+                                                </td>
+                                                <td class="txt">
+                                                    <a href="javascript:void(0)" class="btn_rel"><i class="xi-plus"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr class="related_info" id="row_1">
+                                                <td colspan="9">
+                                                    <ul class="etc_info">
+                                                        <li class="item">
+                                                            <em>반입지 : BICT</em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <em>담당자 : </em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <em>비고 : </em>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>*@
+                                        @*<tr>
+                                                <td class="txt txt--g">요청</td>
+                                                <td class="txt font-sub font-weight-medium"></td>
+                                                <td class="txt font-sub font-weight-medium">KMTC ULSAN 2022S</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-sub font-weight-medium">40 ft HC x4</td>
+                                                <td class="txt font-sub font-weight-medium">USD 190</td>
+                                                <td class="txt">
+                                                    <a href="@Url.Action("Regist","MOLAX")" class="bk-sch mb-1">상세</a>
+                                                    <button type="button" class="text-gray-6 bk-sch">Cancel</button>
+                                                </td>
+                                                <td class="txt">
+                                                    <a href="/Popup/Tracking" class="link popup-link"><i class="xi-plus"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt txt--r">취소</td>
+                                                <td class="txt font-sub font-weight-medium"></td>
+                                                <td class="txt font-sub font-weight-medium">KMTC ULSAN 2022S</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-weight-medium">2020.10.29 (목) Busan, Korea</td>
+                                                <td class="txt font-sub font-weight-medium">40 ft HC x4</td>
+                                                <td class="txt font-sub font-weight-medium">USD 190</td>
+                                                <td class="txt">
+                                                    <a href="@Url.Action("Regist","MOLAX")" class="bk-sch mb-1">상세</a>
+                                                    <button type="button" class="text-gray-6 bk-sch">Cancel</button>
+                                                </td>
+                                                <td class="txt">
+                                                    <a href="/Popup/Tracking" class="link popup-link"><i class="xi-plus"></i></a>
+                                                </td>
+                                            </tr>*@
+                                    </tbody>
+                                </table>
+                                <!-- E: 스크롤 할 컨텐츠 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- E : (내용--pc)-->
+                    <!-- S : (내용--모바일)-->
+                    <div class="m-info d-block d-md-none" id="BK_Result_AREA_MO">
+                        <ul class="info-box py-2 px-1">
+                            <li class="no_data col-12 py-6"></li>
+                            @*<li class="info-txt info-txt--full">
+                                    <p class="title">Status</p>
+                                    <p class="txt--b des">승인</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Carrier</p>
+                                    <p class="des des--bl"></p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Vessel</p>
+                                    <p class="text-gray-6 common-text--14 des">KMTC ULSAN 2022S</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Departure</p>
+                                    <p class="text-gray-6 common-text--14 des">2020.10.29 (목) Busan, Korea</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Arrival</p>
+                                    <p class="text-gray-6 common-text--14 des">2020.10.29 (목) Busan, Korea</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Cargo</p>
+                                    <p class="text-gray-6 common-text--14 des">40 ft HC x4</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <p class="title">Price</p>
+                                    <p class="text-gray-6 common-text--14 des">USD 190</p>
+                                </li>
+                                <li class="info-txt info-txt--full">
+                                    <a href="../schedule/booking-out.html" class="bk-sch">상세</a>
+                                </li>
+                                <li class="info-txt info-txt--full related_info">
+                                    <ul class="etc_info">
+                                        <li class="item">
+                                            <em>반입지 : BICT</em>
+                                        </li>
+                                        <li class="item">
+                                            <em>담당자 : </em>
+                                        </li>
+                                        <li class="item">
+                                            <em>비고 : </em>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                        </ul>
+                    </div>
+                    <!-- E : (내용--모바일)-->
+                    <!-- S : 페이징 -->
+                    <div class="paging-area" id="Paging_Area" style="display:none">
+                        <ul>
+                            <li>
+                                <a href="javascript:;" class="prev-first"><span>맨앞으로</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="prev"><span>이전으로</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="active">1<span></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">2<span></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">3<span></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="next"><span>다음으로</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="next-last"><span>맨뒤로</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- E : 페이징 -->
+                </div>
+            </section>
+        </main>
+        <!-- E : Main -->
+        @Scripts.Render("~/Scripts/js/MyMenu/BookingList.js")
+    }
+}

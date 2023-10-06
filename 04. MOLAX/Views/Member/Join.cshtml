@@ -1,0 +1,487 @@
+﻿@{
+    ViewBag.Title = "Member";
+    ViewBag.Sub = "Join";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        if (Request.Params["Language"] == null)
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+    }
+    else
+    {
+        if (Request.Params["Language"] == "KO")
+        {
+            setLang = "KO";
+            HttpContext.Current.Session["Language"] = "KO";
+        }
+        else if (Request.Params["Language"] == "EN")
+        {
+            setLang = "EN";
+            HttpContext.Current.Session["Language"] = "EN";
+        }
+        else
+        {
+            setLang = HttpContext.Current.Session["Language"].ToString();
+            HttpContext.Current.Session["Language"] = HttpContext.Current.Session["Language"].ToString();
+        }
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+
+}
+@section Container {
+    @if (setLang.Equals("EN"))
+    {
+        <script>
+            $('body').addClass('e-service--sub');
+        </script>
+
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16">
+                <div class="page-title text-center mb-10">
+                    <h2 class="common-text--38 font-weight-medium">Join</h2>
+                </div>
+                <div class="container">
+                    <!-- S : (폼 시작)-->
+                    <!-- E : -->
+                    <form action="">
+                        <div class="table-wrap" style="max-width: 760px; margin: 0 auto">
+                            <table class="table-form-01 type_join">
+                                <colgroup>
+                                    <col class="w_150" />
+                                    <col width="*" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>ID <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" id="RES_ID" class="input_for" maxlength="10" data-index="resgi1" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_Empty" style="display: none">Please enter your ID.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_LENGTH" style="display: none">Please enter your ID in 5 to 10 digits.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_SCWarning" style="display: none">Special symbols are not allowed(*,%,&,+,\,:,',<,>,/).</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_CheckID" style="display: none">The ID is already in use.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_Refuser" style="display: none">Rejected ID. Please contact the person in charge.</p>
+                                            <input type="hidden" id="ID_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>PW <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="password" id="RES_PWD" class="input_for" maxlength="16" autocomplete="off" data-index="resgi2" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW1_Empty" style="display: none">Please enter your password.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW1_OverSix" style="display: none">Please enter a password of at least 6 digits.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW1_Regular" style="display: none">Please enter the password in English, numbers, and special characters.</p>
+                                            <input type="hidden" id="PW1_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>PW Check <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="password" id="RES_PWD2" class="input_for" maxlength="16" autocomplete="off" data-index="resgi3" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_Empty" style="display: none">Please enter your password.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_OverSix" style="display: none">Please enter a password of at least 6 digits.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_Compare" style="display: none">Password is not the same. Please check and re-enter.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_Regular" style="display: none">Please enter the password in English, numbers, and special characters.</p>
+                                            <input type="hidden" id="PW2_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Name <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" id="RES_NAME" class="input_for" maxlength="10" data-index="resgi4" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="NAME_Empty" style="display: none">Please enter a name.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="NAME_OverTwo" style="display: none">Please write your name in at least 2 digits.</p>
+                                            <input type="hidden" id="NAME_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email <span class="text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" name="uemail2" id="RES_EMAIL" title="이메일" maxlength="50" class="input_for" data-index="resgi5" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_Empty" style="display: none">Please enter your email.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_Warning" style="display: none">Please enter it in the email format. EX)abc@naver.com </p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_SCWarning" style="display: none">Special symbols are not allowed(*,%,&,+,\,:,',<,>,/).</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_CheckID" style="display: none">This email is already in use.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_Refuser" style="display: none">Rejected ID. Please contact the person in charge.</p>
+                                            <input type="hidden" id="Email_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone Number <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                @*<input type="tel" name="uptel1" id="uptel1" title="휴대폰번호" maxlength="4" size="4" class="input_for" onkeyup="if(isNaN(this.value)) {alert('숫자만 입력해 주세요.');this.value=''};" value="" />*@
+                                                <input type="text" name="uptel1" id="RES_TEL" title="휴대폰번호" maxlength="13" data-index="resgi6" class="input_for" value="" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="TEL_Empty" style="display: none">Please enter your contact number.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="TEL_NotNumber" style="display: none">Please enter a number.</p>
+                                            <input type="hidden" id="TEL_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Company Registration Number <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" name="uptel1" id="RES_CRN" title="사업자 등록 번호" maxlength="10" data-index="resgi7" class="input_for" value="" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CRN_Empty" style="display: none">Please enter business registration number.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CRN_Ten" style="display: none">Please enter a 10-digit business registration number.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CRN_NotNumber" style="display: none">Please enter a number.</p>
+                                            <input type="hidden" id="CRN_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Company Name <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input id="CUST_CD" type="hidden">
+                                                <input type="text" name="uptel1" id="CUST_NM" title="회사명" maxlength="50" data-index="resgi8" class="input_for" value="" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CustNAME_Empty" style="display: none">Please enter the company name.</p>
+                                            <input type="hidden" id="CustNAME_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text_center mt-15">
+                            <button type="button" class="btn-type-01" id="btnJoin">Join</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        @Scripts.Render("~/Scripts/js/Member/JoinEng.js")
+    }
+    else
+    {
+        <script>
+            $('body').addClass('e-service--sub');
+        </script>
+
+        <main class="main sub-main" id="contents">
+            <section class="section py-lg-30 py-16">
+                <div class="page-title text-center mb-10">
+                    <h2 class="common-text--38 font-weight-medium">회원가입</h2>
+                </div>
+                <div class="container">
+                    <!-- S : (폼 시작)-->
+                    <!-- E : -->
+                    <form>
+                        <div class="table-wrap" style="max-width: 760px; margin: 0 auto">
+                            <table class="table-form-01 type_join">
+                                <colgroup>
+                                    <col class="w_150" />
+                                    <col width="*" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>아이디 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" id="RES_ID" class="input_for" maxlength="10" data-index="resgi1" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_Empty" style="display: none">아이디를 적어주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_LENGTH" style="display: none">아이디를 5자리 ~ 10자리로 적어주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_SCWarning" style="display: none">특수기호(*,%,&,+,\,:,',<,>,/)는 사용 할 수 없습니다.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_CheckID" style="display: none">이미 사용중인 아이디 입니다.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="ID_Refuser" style="display: none">거절 된 아이디 입니다. 담당자에게 문의하세요</p>
+                                            <input type="hidden" id="ID_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>비밀번호 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="password" id="RES_PWD" class="input_for" maxlength="16" autocomplete="off" data-index="resgi2" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW1_Empty" style="display: none">비밀번호를 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW1_OverSix" style="display: none">비밀번호를 6자리 이상 입력 해 주세요..</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW1_Regular" style="display: none"> 영문, 숫자, 특수문자 조합으로 비밀번호를 입력 해 주세요.</p>
+                                            <input type="hidden" id="PW1_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>비밀번호 확인 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="password" id="RES_PWD2" class="input_for" maxlength="16" autocomplete="off" data-index="resgi3" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_Empty" style="display: none">비밀번호를 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_OverSix" style="display: none">비밀번호를 6자리 이상 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_Compare" style="display: none"> 비밀번호가 같지 않습니다. 확인하고 다시 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="PW2_Regular" style="display: none"> 영문, 숫자, 특수문자 조합으로 비밀번호를 입력 해 주세요.</p>
+                                            <input type="hidden" id="PW2_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>이름 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" id="RES_NAME" class="input_for" maxlength="10" data-index="resgi4" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="NAME_Empty" style="display: none">이름을 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="NAME_OverTwo" style="display: none">이름을 2자리 이상 적어주세요.</p>
+                                            <input type="hidden" id="NAME_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>이메일 <span class="text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" name="uemail2" id="RES_EMAIL" title="이메일" maxlength="50" class="input_for" data-index="resgi5" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_Empty" style="display: none">이메일을 적어주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_Warning" style="display: none">이메일 형식을 맞춰서 입력해주세요. EX)abc@naver.com </p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_SCWarning" style="display: none">특수기호(*,%,&,+,\,:,',<,>,/)는 사용 할 수 없습니다.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_CheckID" style="display: none">이미 사용중인 이메일 입니다.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="Email_Refuser" style="display: none">거절 된 아이디 입니다. 담당자에게 문의하세요</p>
+                                            <input type="hidden" id="Email_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>휴대폰 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                @*<input type="tel" name="uptel1" id="uptel1" title="휴대폰번호" maxlength="4" size="4" class="input_for" onkeyup="if(isNaN(this.value)) {alert('숫자만 입력해 주세요.');this.value=''};" value="" />*@
+                                                <input type="text" name="uptel1" id="RES_TEL" title="휴대폰번호" maxlength="13" data-index="resgi6" class="input_for" value="" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="TEL_Empty" style="display: none">연락처를 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="TEL_NotNumber" style="display: none">숫자를 입력 해 주세요.</p>
+                                            <input type="hidden" id="TEL_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>사업자 등록번호 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" name="uptel1" id="RES_CRN" title="사업자 등록 번호" maxlength="10" data-index="resgi7" class="input_for" value="" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CRN_Empty" style="display: none">사업자 등록 번호를 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CRN_Ten" style="display: none">10자리 사업자 등록번호를 입력 해 주세요.</p>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CRN_NotNumber" style="display: none">숫자를 입력 해 주세요.</p>
+                                            <input type="hidden" id="CRN_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>회사명 <span class="mr-1 text-color-1">*</span></th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input id="CUST_CD" type="hidden">
+                                                <input type="text" name="uptel1" id="CUST_NM" title="회사명" maxlength="50" data-index="resgi8" class="input_for" value="" />
+                                                <button type="button" class="delete-btn"><i class="xi-close-thin"></i></button>
+                                            </div>
+                                            <p class="mt_10 common-text--14 Span_Warning" id="CustNAME_Empty" style="display: none">회사명을 입력 해 주세요.</p>
+                                            <input type="hidden" id="CustNAME_Hidden" value="false" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="clause_wrap mt-10">
+                                <div class="agree_box agree_box--checkbox py-4 border-bottom border-gray-6 px-5">
+                                    <input type="checkbox" name="agree" value="1" id="agreeBox01" class="mr_05" />
+                                    <label for="agreeBox01">개인정보 수집 및 이용에 대한 안내</label>
+                                    <button type="button" class="clause-btn on"></button>
+                                </div>
+                                <ul class="clause_list">
+                                    <li class="mt-4 px-5">
+                                        <div class="textarea_box_border mt-2">
+                                            <div class="clause_list">
+                                                <div class="textarea_box">
+                                                    <p>
+                                                        <span class="cr_burg">&lt;모락스&gt;</span>('http://e-service.molax.co.kr/'이하 'E-service')은(는) 개인정보보호법에 따라 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다.
+                                                    </p>
+                                                    <p>
+                                                        <span class="cr_burg">&lt;모락스&gt;</span>('E-service') 은(는) 회사는 개인정보처리방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
+                                                    </p>
+                                                    <p>○ 본 방침은부터 2022년 8월 1일부터 시행됩니다.</p>
+                                                    <div class="grp">
+                                                        <h3>1. 개인정보의 처리 목적</h3>
+                                                        <p>
+                                                            &lt;모락스&gt;('http://e-service.molax.co.kr/'이하 'E-service')은(는) 개인정보를 다음의 목적을 위해 처리합니다. 처리한 개인정보는 다음의 목적이외의 용도로는 사용되지 않으며 이용 목적이 변경될 시에는 사전동의를 구할 예정입니다.
+                                                        </p>
+                                                        <ol class="list01">
+                                                            <li>
+                                                                <strong class="tit">가. 홈페이지 회원가입 및 관리</strong>
+                                                                <p>회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별·인증, 회원자격 유지·관리, 제한적 본인확인제 시행에 따른 본인확인 등을 목적으로 개인정보를 처리합니다.</p>
+                                                            </li>
+                                                            <li>
+                                                                <strong class="tit">나. 재화 또는 서비스 제공</strong>
+                                                                <p>서비스 제공, 콘텐츠 제공, 맞춤 서비스 제공, 본인인증 등을 목적으로 개인정보를 처리합니다.</p>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>2. 개인정보 파일 현황</h3>
+                                                        <ol class="list02">
+                                                            <li>
+                                                                1. 개인정보 파일명 : 회원관리
+                                                                <ul class="list03">
+                                                                    <li>- 개인정보 항목 : 이메일, 휴대전화번호, 비밀번호, 로그인ID, 회사명</li>
+                                                                    <li>- 수집방법 : 홈페이지</li>
+                                                                    <li>- 보유근거 : 회원관리의 목적</li>
+                                                                    <li>- 보유기간 : 5년</li>
+                                                                    <li>- 관련법령 : 신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년, 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년, 계약 또는 청약철회 등에 관한 기록 : 5년</li>
+                                                                </ul>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>3. 개인정보의 처리 및 보유 기간</h3>
+                                                        <ol class="list02">
+                                                            <li>
+                                                                ① &lt;모락스&gt;('E-service')은(는) 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유,이용기간 내에서 개인정보를 처리,보유합니다.
+                                                            </li>
+                                                            <li>
+                                                                ② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
+                                                                <ol class="list03">
+                                                                    <li>
+                                                                        1.&lt;홈페이지 회원가입 및 관리&gt; <br>
+                                                                        &lt;홈페이지 회원가입 및 관리&gt;와 관련한 개인정보는 수집.이용에 관한 동의일로부터&lt;&gt;준영구&gt;까지 위 이용목적을 위하여 보유.이용됩니다. <br>
+                                                                        -보유근거 : 회원관리의 목적 <br>
+                                                                        -관련법령 : <br>
+                                                                        &nbsp;&nbsp;1)신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년<br>
+                                                                        &nbsp;&nbsp;2) 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년
+                                                                    </li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>4. 정보주체와 법정대리인의 권리·의무 및 그 행사방법</h3>
+                                                        <p>이용자는 개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.</p>
+                                                        <ol class="list02">
+                                                            <li>① 정보주체는 모락스에 대해 언제든지 개인정보 열람,정정,삭제,처리정지 요구 등의 권리를 행사할 수 있습니다.</li>
+                                                            <li>② 제1항에 따른 권리 행사는 모락스에 대해 개인정보 보호법 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 모락스은(는) 이에 대해 지체 없이 조치하겠습니다.</li>
+                                                            <li>③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다. 이 경우 개인정보 보호법 시행규칙 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</li>
+                                                            <li>④ 개인정보 열람 및 처리정지 요구는 개인정보보호법 제35조 제5항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.</li>
+                                                            <li>⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.</li>
+                                                            <li>⑥ 모락스은(는) 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.</li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>5. 처리하는 개인정보의 항목 작성</h3>
+                                                        <ol class="list02">
+                                                            <li>
+                                                                ① &lt;모락스&gt;('http://e-service.molax.co.kr/'이하 'E-service')은(는) 다음의 개인정보 항목을 처리하고 있습니다.<br>
+                                                                1&lt;홈페이지 회원가입 및 관리&gt;<br>
+                                                                - 필수항목 : 이메일, 휴대전화번호, 비밀번호, 로그인ID, 회사명
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>6. 개인정보의 파기</h3>
+                                                        <p>
+                                                            &lt;모락스&gt;('E-service')은(는) 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
+                                                        </p>
+                                                        <ol class="list01">
+                                                            <li>
+                                                                - 파기절차<br>
+                                                                이용자가 입력한 정보는 목적 달성 후 별도의 DB에 옮겨져(종이의 경우 별도의 서류) 내부 방침 및 기타 관련 법령에 따라 일정기간 저장된 후 혹은 즉시 파기됩니다. 이 때, DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 다른 목적으로 이용되지 않습니다.
+                                                            </li>
+                                                            <li>
+                                                                - 파기기한<br>
+                                                                이용자의 개인정보는 개인정보의 보유기간이 경과된 경우에는 보유기간의 종료일로부터 5일 이내에, 개인정보의 처리 목적 달성, 해당 서비스의 폐지, 사업의 종료 등 그 개인정보가 불필요하게 되었을 때에는 개인정보의 처리가 불필요한 것으로 인정되는 날로부터 5일 이내에 그 개인정보를 파기합니다.
+                                                            </li>
+                                                            <li>
+                                                                - 파기방법<br>
+                                                                전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다.
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>7. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항</h3>
+                                                        <ol class="list02">
+                                                            <li>
+                                                                ① 모락스 은(는) 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠기(cookie)’를 사용합니다.
+                                                            </li>
+                                                            <li>
+                                                                ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다.
+                                                                <ul class="list03">
+                                                                    <li>가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다.</li>
+                                                                    <li>나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다.</li>
+                                                                    <li>다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.</li>
+                                                                </ul>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>8. 개인정보 처리방침 변경</h3>
+                                                        <ol class="list02">
+                                                            <li>①이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.</li>
+                                                        </ol>
+                                                    </div>
+                                                    <div class="grp">
+                                                        <h3>9. 개인정보의 안전성 확보 조치</h3>
+                                                        <p>&lt;모락스&gt;('E-service')은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.</p>
+                                                        <ol class="list01">
+                                                            <li>
+                                                                <strong class="tit">1. 내부관리계획의 수립 및 시행</strong>
+                                                                <p>개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.</p>
+                                                            </li>
+                                                            <li>
+                                                                <strong class="tit">2. 개인정보에 대한 접근 제한</strong>
+                                                                <p>개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</p>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text_center mt-15">
+                            <button type="button" class="btn-type-01" id="btnJoin">회원가입</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        @Scripts.Render("~/Scripts/js/Member/Join.js")
+    }
+}
