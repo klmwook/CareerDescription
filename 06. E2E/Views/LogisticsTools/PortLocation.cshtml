@@ -1,0 +1,1000 @@
+﻿@{
+    ViewBag.Title = "LogisticsTools";
+    ViewBag.Sub = "PortLocation";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(1)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(7) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle">PORT 정보</h4>
+            </div>
+        </div>
+        <div class="fixed_in type2 logistics">
+            <div class="logi_tab port">
+                <table class="logi_table port">
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="javascript:void(0)" class="on">아시아</a>
+                                <a href="javascript:void(0)">유럽</a>
+                                <a href="javascript:void(0)">중동</a>
+                                <a href="javascript:void(0)">북아메리카</a>
+                                <a href="javascript:void(0)">남아메리카</a>
+                                <a href="javascript:void(0)">아프리카</a>
+                                <a href="javascript:void(0)">오세아니아</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port asia on">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_01.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/taiwan.htm" target="_blank">대만</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/russia.htm" target="_blank">러시아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/macao.htm" target="_blank">마카오</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/malaysia.htm" target="_blank">말레이시아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/maldives.htm" target="_blank">몰디브</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/myanmar.htm" target="_blank">미얀마</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bangladesh.htm" target="_blank">방글라데시</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/vietnam.htm" target="_blank">베트남</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/north_korea.htm" target="_blank">북한</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/brunei.htm" target="_blank">브루나이</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/sri_lanka.htm" target="_blank">스리랑카</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/singapore.htm" target="_blank">싱가포르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/india.htm" target="_blank">인도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/indonesia.htm" target="_blank">인도네시아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/japan.htm" target="_blank">일본</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/china.htm" target="_blank">중국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/kazakhstan.htm" target="_blank">카자흐스탄</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cambodia.htm" target="_blank">캄보디아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/christmas_island.htm" target="_blank">크리스마스 섬</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/tajikistan.htm" target="_blank">타지키스탄</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/thailand.htm" target="_blank">태국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/turkmenistan.htm" target="_blank">투르크메니스탄</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/philippines.htm" target="_blank">필리핀</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/south_korea.htm" target="_blank">한국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/hong_kong.htm" target="_blank">홍콩</a></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_01.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/taiwan.htm" target="_blank">대만</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/russia.htm" target="_blank">러시아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/macao.htm" target="_blank">마카오</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/malaysia.htm" target="_blank">말레이시아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/maldives.htm" target="_blank">몰디브</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/myanmar.htm" target="_blank">미얀마</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/bangladesh.htm" target="_blank">방글라데시</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/vietnam.htm" target="_blank">베트남</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/north_korea.htm" target="_blank">북한</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/brunei.htm" target="_blank">브루나이</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/sri_lanka.htm" target="_blank">스리랑카</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/singapore.htm" target="_blank">싱가포르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/india.htm" target="_blank">인도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/indonesia.htm" target="_blank">인도네시아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/japan.htm" target="_blank">일본</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/china.htm" target="_blank">중국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/kazakhstan.htm" target="_blank">카자흐스탄</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cambodia.htm" target="_blank">캄보디아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/christmas_island.htm" target="_blank">크리스마스 섬</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/tajikistan.htm" target="_blank">타지키스탄</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/thailand.htm" target="_blank">태국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/turkmenistan.htm" target="_blank">투르크메니스탄</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/philippines.htm" target="_blank">필리핀</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/south_korea.htm" target="_blank">한국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/hong_kong.htm" target="_blank">홍콩</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port europe">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_02.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/greece.htm" target="_blank">그리스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/netherlands.htm" target="_blank">네덜란드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/norway.htm" target="_blank">노르웨이</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/denmark.htm" target="_blank">덴마크</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/germany.htm" target="_blank">독일</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/latvia.htm" target="_blank">라트비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/romania.htm" target="_blank">루마니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/luxembourg.htm" target="_blank">룩셈부르크</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/lithuania.htm" target="_blank">리투아니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/isle_of_man.htm" target="_blank">맨섬</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/monaco.htm" target="_blank">모나코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/moldova.htm" target="_blank">몰도바</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/malta.htm" target="_blank">몰타</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/vatican.htm" target="_blank">바티칸</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/belgium.htm" target="_blank">벨기에</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/belarus.htm" target="_blank">벨로루시</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/bulgaria.htm" target="_blank">불가리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/san_marino.htm" target="_blank">산마리노</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/serbia.htm" target="_blank">세르비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/sweden.htm" target="_blank">스웨덴</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/spain.htm" target="_blank">스페인</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/slovakia.htm" target="_blank">슬로바키아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/slovenia.htm" target="_blank">슬로베니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ireland.htm" target="_blank">아일랜드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/andorra.htm" target="_blank">안도라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/albania.htm" target="_blank">알바니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/estonia.htm" target="_blank">에스토니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/united_kingdom.htm" target="_blank">영국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/austria.htm" target="_blank">오스트리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ukraine.htm" target="_blank">우크라이나</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/italy.htm" target="_blank">이탈리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/gibraltar.htm" target="_blank">지브롤터</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/czech_republic.htm" target="_blank">체코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/croatia.htm" target="_blank">크로아티아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cyprus.htm" target="_blank">키프로스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/faroe_islands.htm" target="_blank">페로 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/portugal.htm" target="_blank">포르투갈</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/poland.htm" target="_blank">폴란드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/france.htm" target="_blank">프랑스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/finland.htm" target="_blank">핀란드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/hungary.htm" target="_blank">헝가리</a></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_02.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/greece.htm" target="_blank">그리스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/netherlands.htm" target="_blank">네덜란드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/norway.htm" target="_blank">노르웨이</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/denmark.htm" target="_blank">덴마크</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/germany.htm" target="_blank">독일</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/latvia.htm" target="_blank">라트비아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/romania.htm" target="_blank">루마니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/luxembourg.htm" target="_blank">룩셈부르크</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/lithuania.htm" target="_blank">리투아니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/isle_of_man.htm" target="_blank">맨섬</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/monaco.htm" target="_blank">모나코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/moldova.htm" target="_blank">몰도바</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/malta.htm" target="_blank">몰타</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/vatican.htm" target="_blank">바티칸</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/belgium.htm" target="_blank">벨기에</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/belarus.htm" target="_blank">벨로루시</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/bulgaria.htm" target="_blank">불가리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/san_marino.htm" target="_blank">산마리노</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/serbia.htm" target="_blank">세르비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/sweden.htm" target="_blank">스웨덴</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/spain.htm" target="_blank">스페인</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/slovakia.htm" target="_blank">슬로바키아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/slovenia.htm" target="_blank">슬로베니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ireland.htm" target="_blank">아일랜드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/andorra.htm" target="_blank">안도라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/albania.htm" target="_blank">알바니아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/estonia.htm" target="_blank">에스토니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/united_kingdom.htm" target="_blank">영국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/austria.htm" target="_blank">오스트리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ukraine.htm" target="_blank">우크라이나</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/italy.htm" target="_blank">이탈리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/gibraltar.htm" target="_blank">지브롤터</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/czech_republic.htm" target="_blank">체코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/croatia.htm" target="_blank">크로아티아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/cyprus.htm" target="_blank">키프로스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/faroe_islands.htm" target="_blank">페로 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/portugal.htm" target="_blank">포르투갈</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/poland.htm" target="_blank">폴란드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/france.htm" target="_blank">프랑스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/finland.htm" target="_blank">핀란드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/hungary.htm" target="_blank">헝가리</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port middle_east">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_03.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/lebanon.html" target="_blank">레바논</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bahrain.html" target="_blank">바레인</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saudi_arabia.html" target="_blank">사우디아라비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/syria.html" target="_blank">시리아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/azerbaijan.html" target="_blank">아제르바이잔</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/yemen.html" target="_blank">예멘</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/oman.html" target="_blank">오만</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/jordan.html" target="_blank">요르단</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/iraq.html" target="_blank">이라크</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/iran.html" target="_blank">이란</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/israel.html" target="_blank">이스라엘</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/qatar.html" target="_blank">카타르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/kuwait.html" target="_blank">쿠웨이트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/turkey.html" target="_blank">터키</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/pakistan.html" target="_blank">파키스탄</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_03.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/lebanon.html" target="_blank">레바논</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bahrain.html" target="_blank">바레인</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/saudi_arabia.html" target="_blank">사우디아라비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/syria.html" target="_blank">시리아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/azerbaijan.html" target="_blank">아제르바이잔</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/yemen.html" target="_blank">예멘</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/oman.html" target="_blank">오만</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/jordan.html" target="_blank">요르단</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/iraq.html" target="_blank">이라크</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/iran.html" target="_blank">이란</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/israel.html" target="_blank">이스라엘</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/qatar.html" target="_blank">카타르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/kuwait.html" target="_blank">쿠웨이트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/turkey.html" target="_blank">터키</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/pakistan.html" target="_blank">파키스탄</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port north_america">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_04.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/greenland.htm" target="_blank">그린란드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/united_states.htm" target="_blank">미국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/united_states_minor_outlying_islands.htm" target="_blank">미국령 군소 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/barbados.htm" target="_blank">바베이도스</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/bahamas.htm" target="_blank">바하마</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bermuda.htm" target="_blank">버뮤다</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/belize.htm" target="_blank">벨리즈</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_pierre_and_miquelon.htm" target="_blank">생피에르 미클롱</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/american_samoa.htm" target="_blank">아메리칸사모아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/iceland.htm" target="_blank">아이슬란드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/haiti.htm" target="_blank">아이티</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/antigua_and_barbuda.htm" target="_blank">앤티가 바부다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/anguilla.htm" target="_blank">앵귈라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/british_virgin_islands.htm" target="_blank">영국령 버진 아일랜드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/georgia.htm" target="_blank">조지아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/canada.htm" target="_blank">캐나다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/panama.htm" target="_blank">파나마</a></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_04.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/greenland.htm" target="_blank">그린란드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/united_states.htm" target="_blank">미국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/united_states_minor_outlying_islands.htm" target="_blank">미국령 군소 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/barbados.htm" target="_blank">바베이도스</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/bahamas.htm" target="_blank">바하마</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bermuda.htm" target="_blank">버뮤다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/belize.htm" target="_blank">벨리즈</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_pierre_and_miquelon.htm" target="_blank">생피에르 미클롱</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/american_samoa.htm" target="_blank">아메리칸사모아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/iceland.htm" target="_blank">아이슬란드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/haiti.htm" target="_blank">아이티</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/antigua_and_barbuda.htm" target="_blank">앤티가 바부다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/anguilla.htm" target="_blank">앵귈라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/british_virgin_islands.htm" target="_blank">영국령 버진 아일랜드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/georgia.htm" target="_blank">조지아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/canada.htm" target="_blank">캐나다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/panama.htm" target="_blank">파나마</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port south_america">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_05.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guyana.htm" target="_blank">가이아나</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/guadeloupe.htm" target="_blank">과들루프</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/guatemala.htm" target="_blank">과테말라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/grenada.htm" target="_blank">그레나다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/netherlands_antilles.htm" target="_blank">네덜란드령 안틸레스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/nicaragua.htm" target="_blank">니카라과</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/dominican_republic.htm" target="_blank">도미니카 공화국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/dominica.htm" target="_blank">도미니카 연방</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/martinique.htm" target="_blank">마르티니크</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mexico.htm" target="_blank">멕시코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/montserrat.htm" target="_blank">몬트세랫</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/us_virgin_islands.htm" target="_blank">미국령 버진 아일랜드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/venezuela.htm" target="_blank">베네수엘라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bolivia.htm" target="_blank">볼리비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/brazil.htm" target="_blank">브라질</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/south_georgia_and_the_south_sandwich_islands.htm" target="_blank">사우스조지아 사우스샌드위치</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_lucia.htm" target="_blank">세인트루시아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_vincent_and_the_grenadines.htm" target="_blank">세인트빈센트 그레나딘</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_kitts_and_nevis.htm" target="_blank">세인트키츠 네비스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/suriname.htm" target="_blank">수리남</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/aruba.htm" target="_blank">아루바</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/argentina.htm" target="_blank">아르헨티나</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ecuador.htm" target="_blank">에콰도르</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/el_salvador.htm" target="_blank">엘살바도르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/honduras.htm" target="_blank">온두라스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/uruguay.htm" target="_blank">우루과이</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/chile.htm" target="_blank">칠레</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cayman_islands.htm" target="_blank">케이맨 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/costa_rica.htm" target="_blank">코스타리카</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/colombia.htm" target="_blank">콜롬비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cuba.htm" target="_blank">쿠바</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/curacao.htm" target="_blank">퀴라소</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/turks_and_caicos_islands.htm" target="_blank">터스크 케이커스 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/trinidad_and_tobago.htm" target="_blank">트리니다드 토바고</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/paraguay.htm" target="_blank">파라과이</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/peru.htm" target="_blank">페루</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/falkland_islands.htm" target="_blank">포클랜드 제도 (말비나스 군도)</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/puerto_rico.htm" target="_blank">푸에르토리코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/french_guiana.htm" target="_blank">프랑스령 기아나</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_05.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guyana.htm" target="_blank">가이아나</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/guadeloupe.htm" target="_blank">과들루프</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guatemala.htm" target="_blank">과테말라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/grenada.htm" target="_blank">그레나다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/netherlands_antilles.htm" target="_blank">네덜란드령 안틸레스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/nicaragua.htm" target="_blank">니카라과</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/dominican_republic.htm" target="_blank">도미니카 공화국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/dominica.htm" target="_blank">도미니카 연방</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/martinique.htm" target="_blank">마르티니크</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mexico.htm" target="_blank">멕시코</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/montserrat.htm" target="_blank">몬트세랫</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/us_virgin_islands.htm" target="_blank">미국령 버진 아일랜드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/venezuela.htm" target="_blank">베네수엘라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/bolivia.htm" target="_blank">볼리비아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/brazil.htm" target="_blank">브라질</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/south_georgia_and_the_south_sandwich_islands.htm" target="_blank">사우스조지아 사우스샌드위치</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_lucia.htm" target="_blank">세인트루시아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_vincent_and_the_grenadines.htm" target="_blank">세인트빈센트 그레나딘</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_kitts_and_nevis.htm" target="_blank">세인트키츠 네비스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/suriname.htm" target="_blank">수리남</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/aruba.htm" target="_blank">아루바</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/argentina.htm" target="_blank">아르헨티나</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/ecuador.htm" target="_blank">에콰도르</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/el_salvador.htm" target="_blank">엘살바도르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/honduras.htm" target="_blank">온두라스</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/uruguay.htm" target="_blank">우루과이</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/chile.htm" target="_blank">칠레</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cayman_islands.htm" target="_blank">케이맨 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/costa_rica.htm" target="_blank">코스타리카</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/colombia.htm" target="_blank">콜롬비아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/cuba.htm" target="_blank">쿠바</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/curacao.htm" target="_blank">퀴라소</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/turks_and_caicos_islands.htm" target="_blank">터스크 케이커스 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/trinidad_and_tobago.htm" target="_blank">트리니다드 토바고</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/paraguay.htm" target="_blank">파라과이</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/peru.htm" target="_blank">페루</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/falkland_islands.htm" target="_blank">포클랜드 제도 (말비나스 군도)</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/puerto_rico.htm" target="_blank">푸에르토리코</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/french_guiana.htm" target="_blank">프랑스령 기아나</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port africa">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_06.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/ghana.htm" target="_blank">가나</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/gabon.htm" target="_blank">가봉</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/gambia.htm" target="_blank">감비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/guinea.htm" target="_blank">기니</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guinea_bissau.htm" target="_blank">기니비사우</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/namibia.htm" target="_blank">나미비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/nigeria.htm" target="_blank">나이지리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/south_africa.htm" target="_blank">남아프리카 공화국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/liberia.htm" target="_blank">라이베리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/reunion.htm" target="_blank">레위니옹</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/libya.htm" target="_blank">리비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/madagascar.htm" target="_blank">마다가스카르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/mayotte.htm" target="_blank">마요트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mali.htm" target="_blank">말리</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/morocco.htm" target="_blank">모로코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mauritius.htm" target="_blank">모리셔스</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/mauritania.htm" target="_blank">모리타니</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mozambique.htm" target="_blank">모잠비크</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/benin.htm" target="_blank">베냉</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/burundi.htm" target="_blank">부룬디</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/sao_tome_and_principe.htm" target="_blank">상투메 프린시페</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/senegal.htm" target="_blank">세네갈</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/seychelles.htm" target="_blank">세이셸</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_helena.htm" target="_blank">세인트헬레나</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/somali.htm" target="_blank">소말리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/somaliland.htm" target="_blank">소말릴란드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/sudan.htm" target="_blank">수단</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/sierra_leone.htm" target="_blank">시에라리온</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/united_arab_emirates.htm" target="_blank">아랍에미리트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/algeria.htm" target="_blank">알제리</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/angola.htm" target="_blank">앙골라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/eritrea.htm" target="_blank">에리트레아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/ethiopia.htm" target="_blank">에티오피아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/uganda.htm" target="_blank">우간다</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/egypt.htm" target="_blank">이집트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/jamaica.htm" target="_blank">자메이카</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/zambia.htm" target="_blank">잠비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/equatorial_guinea.htm" target="_blank">적도 기니</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/central_african_republic.htm" target="_blank">중앙아프리카 공화국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/djibouti.htm" target="_blank">지부티</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/zimbabwe.htm" target="_blank">짐바브웨</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cameroon.htm" target="_blank">카메룬</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cape_verde.htm" target="_blank">카보 베르데</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/kenya.htm" target="_blank">케냐</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/comoros.htm" target="_blank">코모로</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ivory_coast.htm" target="_blank">코트디부아르</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/republic_of_the_congo.htm" target="_blank">콩고 공화국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/democratic_republic_of_the_congo.htm" target="_blank">콩고 민주 공화국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/tanzania.htm" target="_blank">탄자니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/togo.htm" target="_blank">토고</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/tunisia.htm" target="_blank">튀니지</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_06.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/ghana.htm" target="_blank">가나</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/gabon.htm" target="_blank">가봉</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/gambia.htm" target="_blank">감비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/guinea.htm" target="_blank">기니</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guinea_bissau.htm" target="_blank">기니비사우</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/namibia.htm" target="_blank">나미비아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/nigeria.htm" target="_blank">나이지리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/south_africa.htm" target="_blank">남아프리카 공화국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/liberia.htm" target="_blank">라이베리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/reunion.htm" target="_blank">레위니옹</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/libya.htm" target="_blank">리비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/madagascar.htm" target="_blank">마다가스카르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/mayotte.htm" target="_blank">마요트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mali.htm" target="_blank">말리</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/morocco.htm" target="_blank">모로코</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mauritius.htm" target="_blank">모리셔스</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/mauritania.htm" target="_blank">모리타니</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/mozambique.htm" target="_blank">모잠비크</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/benin.htm" target="_blank">베냉</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/burundi.htm" target="_blank">부룬디</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/sao_tome_and_principe.htm" target="_blank">상투메 프린시페</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/senegal.htm" target="_blank">세네갈</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/seychelles.htm" target="_blank">세이셸</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/saint_helena.htm" target="_blank">세인트헬레나</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/somali.htm" target="_blank">소말리아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/somaliland.htm" target="_blank">소말릴란드</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/sudan.htm" target="_blank">수단</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/sierra_leone.htm" target="_blank">시에라리온</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/united_arab_emirates.htm" target="_blank">아랍에미리트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/algeria.htm" target="_blank">알제리</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/angola.htm" target="_blank">앙골라</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/eritrea.htm" target="_blank">에리트레아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/ethiopia.htm" target="_blank">에티오피아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/uganda.htm" target="_blank">우간다</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/egypt.htm" target="_blank">이집트</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/jamaica.htm" target="_blank">자메이카</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/zambia.htm" target="_blank">잠비아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/equatorial_guinea.htm" target="_blank">적도 기니</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/central_african_republic.htm" target="_blank">중앙아프리카 공화국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/djibouti.htm" target="_blank">지부티</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/zimbabwe.htm" target="_blank">짐바브웨</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/cameroon.htm" target="_blank">카메룬</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/cape_verde.htm" target="_blank">카보 베르데</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/kenya.htm" target="_blank">케냐</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/comoros.htm" target="_blank">코모로</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/ivory_coast.htm" target="_blank">코트디부아르</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/republic_of_the_congo.htm" target="_blank">콩고 공화국</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/democratic_republic_of_the_congo.htm" target="_blank">콩고 민주 공화국</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/tanzania.htm" target="_blank">탄자니아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/togo.htm" target="_blank">토고</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/tunisia.htm" target="_blank">튀니지</a></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="logi_panel port oceania">
+                <table class="pc">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><img src="~/Images/map_07.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guam.htm" target="_blank">괌</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/nauru.htm" target="_blank">나우루</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/norfolk_island.htm" target="_blank">노퍽섬</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/new_caledonia.htm" target="_blank">뉴 칼레도니아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/new_zealand.htm" target="_blank">뉴질랜드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/niue.htm" target="_blank">니우에</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/marshall_islands.htm" target="_blank">마셜 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/micronesia.htm" target="_blank">미크로네시아 연방</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/vanuatu.htm" target="_blank">바누아투</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/northern_mariana_islands.htm" target="_blank">북마리아나 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/samoa.htm" target="_blank">사모아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/solomon_islands.htm" target="_blank">솔로몬 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/cook_islands.htm" target="_blank">쿡 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/kiribati.htm" target="_blank">키리바시</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/tonga.htm" target="_blank">통가</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/tuvalu.htm" target="_blank">투발루</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/papua_new_guinea.htm" target="_blank">파푸아뉴기니</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/palau.htm" target="_blank">팔라우</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/french_polynesia.htm" target="_blank">프랑스령 폴리네시아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/fiji.htm" target="_blank">피지</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/pitcairn.htm" target="_blank">핏케언 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/australia.htm" target="_blank">호주</a></td>
+                            <td class="no_hover"></td>
+                            <td class="no_hover"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mo">
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th colspan="2"><img src="~/Images/map_07.png" /></th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/guam.htm" target="_blank">괌</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/nauru.htm" target="_blank">나우루</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/norfolk_island.htm" target="_blank">노퍽섬</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/new_caledonia.htm" target="_blank">뉴 칼레도니아</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/new_zealand.htm" target="_blank">뉴질랜드</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/niue.htm" target="_blank">니우에</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/marshall_islands.htm" target="_blank">마셜 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/micronesia.htm" target="_blank">미크로네시아 연방</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/vanuatu.htm" target="_blank">바누아투</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/northern_mariana_islands.htm" target="_blank">북마리아나 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/samoa.htm" target="_blank">사모아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/solomon_islands.htm" target="_blank">솔로몬 제도</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/cook_islands.htm" target="_blank">쿡 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/kiribati.htm" target="_blank">키리바시</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/tonga.htm" target="_blank">통가</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/tuvalu.htm" target="_blank">투발루</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/papua_new_guinea.htm" target="_blank">파푸아뉴기니</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/palau.htm" target="_blank">팔라우</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/french_polynesia.htm" target="_blank">프랑스령 폴리네시아</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/fiji.htm" target="_blank">피지</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.searates.com/kr/maritime/pitcairn.htm" target="_blank">핏케언 제도</a></td>
+                            <td><a href="https://www.searates.com/kr/maritime/australia.htm" target="_blank">호주</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

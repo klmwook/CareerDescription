@@ -1,0 +1,1077 @@
+﻿@charset "utf-8";
+
+@import url('reset.css');
+@import url('layout.css');
+
+@media(max-width:1500px){
+	/* Common */
+	.lnb > li {/*margin:0 -3px;*/padding:0 10px;}
+	.lnb .sub_depth{width:95%;}
+	/* Common */
+}
+@media(max-width:1300px){
+	/* Common */
+
+	#footer .copy{position:relative; bottom:0; right:0; margin-top:7px;}
+	/* Common */
+
+	/* 물류도구 */
+	/* 인코텀즈 */
+	.logi_panel .left_area{width:18%;}
+	.logi_panel .right_area{width:82%;}
+	.inco_title_sub p{ font-size:11px; letter-spacing:-0.7px;}
+
+	/* CBM 계산기 */
+	.tbl_cntr_loaded tbody tr th, .tbl_cntr_loaded tbody tr td, .tbl_cntr_char tbody tr th, .tbl_cntr_char tbody tr td{letter-spacing:-1.1px;}
+
+}
+
+@media(max-width:1200px){
+	/* Common */
+	#header .search_top{max-width:176px;}
+
+	.lnb > li {/*margin:0 -5px;*/ width:83px;}
+	.lnb > li > a{font-size:15px;}
+	.lnb .sub_depth{width:90%;}
+	.lnb .sub_depth a{font-size:12px;}
+	/* Common */
+}
+
+@media (max-width: 1024px)
+{
+	/* Common - 공통 */
+    .pc{display: none !important;}
+    .mo{display:block;}
+	.tab.type2.mo{display:block; margin-top:-1px;}
+	colgroup.mo{display:table-column-group;}
+	tbody.mo{display:table-row-group;}
+	table.mo tr{display:table-row;}
+	table.pc{display:none !important;}
+	table.mo{display:table !important;}
+	tr.mo{display:table-row;}
+	td.mo{display:table-cell;}
+	.sub_depth .mo{display:inline-block;}
+
+
+	:root .select{background: #fff url(/Images/icn_sel.png) right 12px top 50% no-repeat; background-size: 13px 8px; font-size:12px;}
+	.panel .fixed_in.type2{padding:0;}
+	.fixed_in.type2.logistics{padding: 0 20px;}
+
+	#header{text-align: center; background:#fff; padding:0;}
+	#header.scroll {background:#0070ba;}
+	#header .top_row{height:56px; z-index:101; background:#fff;}
+	#header .logo{left:20px; padding-left:0; font-size:23px;}
+	#header .logo a{width:210px; height:30px; background:url(/Images/logo_m.png) no-repeat 50% 50%;}
+	#header .search_top, #header.scroll .search_top{display:none;}
+
+	#header .dim.on{}
+	
+	.layer_wrap .close.white{background:url(/Images/close.png) no-repeat 50% 50%; background-size:24px 24px;}
+
+	/* total_menu - 모바일 메뉴 */
+	#header .total_menu{display:block; position:fixed; left:auto; right:-120%; z-index:100; width:100%; height:100%; max-height:100%; max-width:initial; /*padding-top:56px;*/ overflow-y:auto; background-color:#fff; z-index:1000;
+						-webkit-transform: translateX(0);
+						-moz-transform:translateX(0);
+						-o-transform:translateX(0);
+						-ms-transform:translateX(0);
+						-sand-transform:translateX(0);
+						transform:translateX(0);
+						transition:all .7s ease;
+	}
+	#header .total_menu.on{right:0; transition:all .7s ease;}
+	#header .total_menu.on .search_top{display:block; max-width:unset; position:relative; top:unset; left:unset; margin-top:0; margin-bottom:10px;}
+	#header .total_menu.on .search_top.side{position:relative; width:100%; min-width:100%; top:auto; left:auto; padding:0 8px; transform:translateY(0);}
+	#header .total_menu .lnb{position:relative; top:0; right:0; padding:0 10px;}
+	#header .total_menu .lnb > li{float:none; text-align:left; margin:0; padding:10px; width:100%; border-bottom:1px solid #ddd; transition:all .3s ease; box-sizing:border-box;}
+	#header .total_menu .lnb > li:after{display:block; content:''; clear:both;}
+	#header .total_menu .lnb > li:first-child{border-top:1px solid #ddd;}
+	#header .total_menu .lnb > li > a{/*float:left; width:31%; */position:relative; display:block; color:#000; font-weight: 700; padding-bottom:10px; /*padding:0 13px;*/font-size:16px; line-height:normal; cursor:pointer; transition:all .3s ease;}
+	#header .total_menu .lnb .sub_depth{/*float:left;*/ display:block; position:relative; width:100%; height:auto;}
+	#header .total_menu .lnb .sub_depth ul{display:flex; flex-wrap:wrap; width:100%; padding-top:0;}
+	#header .total_menu .lnb .sub_depth > ul > li{width:50%; height:40px; color:#000; font-size:14px; text-align:left; padding-bottom:8px; /*padding: 0 20px;*/ line-height:40px; /*background-color:#0070ba;*/ font-weight:400; cursor:pointer; transition:all .3s ease;}
+	#header .total_menu .lnb .sub_depth > ul > li > a{display:block; font-size:14px;}
+	#header .total_menu .lnb .sub_depth > ul > li > a:hover{color:#2bb9b9;}
+	#header .total_menu .lnb .sub_depth > ul > li > a .mo_icn_check{position:relative;}
+	#header .total_menu .lnb .sub_depth > ul > li > a:hover .mo_icn_check{position:relative;}
+	#header .total_menu .lnb .sub_depth > ul > li > a.on .mo_icn_check:before,
+	#header .total_menu .lnb .sub_depth > ul > li > a:hover .mo_icn_check:before{display:block; content:''; position:absolute; top:50%; left:auto; right:-15px; width:13px; height:11px; background:url(/Images/icn_lnb.png) no-repeat 50% 50%; transform:translateY(-50%);}
+	#header .search_top_mo{display:block; width:100%; max-width:290px; height:40px; color:#000; margin:0 auto;}
+	#header .search_top_mo input[type='text']{width:100%; height:100%; border:2px solid #111; padding: 0 50px 0 20px; font-size:16px; font-weight: 400;}
+	#header .search_top_mo .btn_search{position:absolute; top:0; right:0; width:40px; height:100%;}
+	#header .search_top input[type='text']{font-size:12px;}
+
+	/* login_info - 상단 메뉴 로그인 */
+	#header .total_menu .login_info{display:block;/* margin:8px; border:1px solid #0070ba;*/ text-align:left;}
+	.login_info .info_line{/*display:flex; padding:5px;*/ font-size:12px;}
+	.login_info .info_line:first-child{display:flex; height:50px; background:#006fba;}
+	.login_info .info_line.not_login:first-child{display:block; height:auto; background:transparent;}
+	.login_info .info_line > .logout:last-child{float:none;padding:0;background-color:transparent;text-align:right;}
+	.login_info .logout,
+	.login_info .user_info{display:inline-block; width:calc(50% - 3px);}
+	.login_info .user_greeting{padding-left:10px; padding-right:10px;}
+	.login_info .logout button,
+	.login_info .myboard,
+	.login_info .user_info button{padding:7px 0; color:#fff;}
+	.login_info .question{padding-right:15px; background-image:url(/Images/icn_arrow5.png); background-repeat:no-repeat; background-position:calc(100% - 20px) 50%;}
+	.login_info .logout{width:29px;}
+	.login_info .logout button{width:29px; height:100%; background:url(/Images/btn_logout_w.png) no-repeat 50% 50%;}
+	.login_info .myboard{width:calc(100% - 20px); margin:10px; padding-left:40px; color:#333; text-align:left; background-color:#eee; background-image:url(/Images/icn_arrow5.png), url(/Images/icn_myboard.png); background-position: calc(100% - 13px) 50%, 10px 50%;}
+	.login_info .user_info button{width:50%; border:1px solid #00a0e9; background-color:#00a0e9; transition:all .3s ease;}
+	.login_info .myboard button:hover,
+	.login_info .user_info button:hover{background-color:#fff; color:#111; transition:all .3s ease;}
+	.login_info .user_greeting{display:inline-block; color:#fff; line-height:50px; background:#006fba;}
+	.login_info .not_login .user_greeting{display:block; width:auto; line-height:50px; color:#fff; background:#006fba;}
+	.login_info .user_greeting strong{font-weight:400;}
+	.login_info .login,
+	.login_info .user_info{display:inline-block; width:calc(100% - 20px); margin:10px; padding-left:40px; padding-right:20px; color:#333; text-align:left;}
+	.total_menu .btn_menu_close{position:absolute;top:0;right:0;width:50px;height:50px; background:url(/Images/close_white.png) no-repeat 50% 50% / 18px;}
+
+	/* 우측 상단 메뉴 버튼 */
+	#hamberger{display: block; border:0;top:4px;right:10px;}
+	#hamberger .btn_total{margin-left: -5px; width:20px; height:2px;}
+	#hamberger .btn_total:before{width:16px; right:0;}
+	#hamberger .btn_total:after{width:20px; right:0;}
+	#hamberger.show .btn_total:before,
+	#hamberger.show .btn_total:after{width: 24px;}
+
+	#hamberger2{display:none;}
+	
+	#checkerboard{display:none;}
+	
+	.btn_search{background-size: 17px auto;}
+
+	#container{padding-top:0; min-height:600px;}
+	.container{padding-top:56px; padding-bottom:0;}
+	
+	/* footer */
+	#footer{height:auto;}
+	#footer .inner{padding:15px 0;}
+	#footer .logo{display:none;}
+	#footer address table th,
+	#footer address table td{font-size:12px; line-height:1.5;}
+	#footer address table th{padding-right:15px;}
+	#footer .copy{margin-top:5px;padding-top:15px; font-size:11px;}
+
+	.etc_link{margin-bottom:20px;}
+	.etc_link > li {margin-right:15px;}
+	.etc_link > li > a{font-size:12px;}
+
+	/* alert - alert 창 디자인 */
+	.alert_type .btns.radius{min-width:70px; padding:7px 12px;}
+	.alert_cont{padding:0 20px;}
+	.alert_cont .inner{font-size:14px;}
+
+	/* 네비게이션 */
+	/*.navi_tab{right:0; bottom:85px;}*/
+
+	/*.navigation.scroll{right:-20px;}
+	.btn_top{width:30px; height:30px; top:20px; font-size:10px;}*/
+
+	/* search_bar - 검색 바 */
+	.search_bar{display:block;}
+	.search_bar, .search_detail{padding:20px;}
+	.search_bar .col{display:block; margin-bottom:10px; padding:0;}
+	.search_bar .col.w1,
+	.search_bar .col.w2,
+	.search_bar .col.w3,
+	.search_bar .col.w4,
+	.search_bar .col.w5,
+	.search_bar .col.w6,
+	.search_bar .col.w8,
+	.search_bar.schedule .col.w1,
+	.search_bar.schedule .col.w6{width:100%; text-align:center;}
+	.search_bar .col.w2.inq{display:inline-block; width:calc(100% - 50px);}
+	.search_bar .col.w6.inq{display:inline-block; width:40px; margin-left:10px;}
+	.search_bar.schedule .col.w3{float:left; width:33.3333%;}
+	.search_bar.schedule .col.w3:after{display:block;content:'';clear:both;}
+	.search_bar .col,
+	.search_bar .col:last-child{padding:0;}
+
+	.search_bar .grid_fluid,
+	.search_bar .grid_fluid > .grid_col,
+	.search_bar .grid_fluid.type1 > .grid_col:nth-child(even),
+	.search_bar .grid_fluid.type1 > .grid_col:nth-child(odd) {display: block; padding: 0;}
+	.search_bar .grid_fluid > .grid_col{margin-bottom:10px; width:100%;}
+	.search_bar .grid_fluid > .grid_col:last-child{margin-bottom:0;}
+
+	/* radio button - 공통 라디오버튼 */
+	.switch_label{line-height:38px; height:38px; width:100%; font-size:12px;}
+	.switch_label_sub{width:100%; font-size:12px;}
+	/*.first .switch_label,
+	.first .switch_label:before,
+	.first .switch_label_sub,
+	.first .switch_label_sub:before{border-radius:5px 0 0 5px;}*/
+	.middle .switch_label,
+	.middle .switch_label:before,
+	.middle .switch_label_sub,
+	.middle .switch_label_sub:before{border-radius:0;}
+	/*.last .switch_label,
+	.last .switch_label:before,
+	.last .switch_label_sub,
+	.last .switch_label_sub:before{border-radius:0 5px 5px 0}*/
+
+	.int_box input[type='text']{font-size:12px; height:38px; padding:0 54px 0 15px;}
+
+	/* search_detail - 상세 검색 창 */
+	.search_detail.schedule .row{padding:0 10px;}
+	.search_detail .left_area,
+	.search_detail .right_area{float:none; width:100%; border-right:0;}
+	.search_detail .right_area .title02,
+	.search_detail .right_area .cont{margin-left:0;}
+	.search_detail .title02{font-size:20px;}
+	.search_detail .left_area .cont{border-right:0;}
+	.search_detail .check{flex:0 1 33%; width:33.3333%; margin-bottom:10px;}
+	
+	/* 체크 버튼 label */
+	.check label{height:30px; padding-left:22px; font-size:10px;}
+	.check label:before{width:16px; height:16px; background-size:16px auto; margin-top:-8px;}
+	.check input:checked + label:before{content:''; background-position:0 -16px;}
+	.check label .label_vertical_mid{height:26px;}
+
+	.no_data{padding:80px 0; font-size:16px;}
+
+	/* select_pop */
+	.select_pop{width:100%;}
+	.title03{font-size:12px;}
+	.select_pop .btns.close{right:0;}
+	.select_pop .select_location{min-width:100%; width:100%; height:238px;}
+
+	.tbl_option th,
+	.tbl_option td{font-size:10px; height:34px;}
+	.tbl_option th{padding-top:9px; padding-left:9px; text-align:left;}
+
+	/* sub_visual - sub 페이지 상단 제목 */
+	.subtitlezone{padding:0 20px;}
+	.subtitle{font-size:30px; padding:30px 0;}
+	.sub_visual{padding: 0;}
+	.sub_visual .inner{padding:0;}
+	.sub_visual .inner .mo img{width:90%;}
+
+	.sub_location{margin:0;}
+	.sub_location .home{display:none;}
+	.sub_location .depth > a{font-size:11px; padding:10px 12px;}
+	.sub_location .depth > a > span{padding-right:23px;}
+	.sub_location .depth > a > span:before{margin-top:-3px; width:5px; height:6px;}
+	.sub_location .depth .sub_list{top:95%;}
+	.sub_location .depth .sub_list ul{padding-bottom:6px;}
+	.sub_location .depth .sub_list a{padding:7px 12px; font-size:11px;}
+	.sub_location .depth .sub_list a:hover{color:#fff; padding-left:17px;}
+	.sub_location .depth.now > a > span{min-width:80px;}
+	.logistics_popup{top:5px; right:20px;}
+	
+	.logi_table td a{font-size:14px; line-height:30px; width:33.3%; margin-top:-1px;}
+
+	.logistics .select_cover{width:100%; display:block; padding:5px 5px 0;}
+
+	.tracking_area{height:auto;}
+	.tracking_area #map{height:320px;}
+	#SVT_Area{height:400px;}
+
+	/* common layer */
+	.layer_wrap .close{right:15px;}
+
+	/* policy layer */
+	.terms_area{height:370px; font-size:12px;}
+	.terms_area h3{font-size:20px;}
+
+	/* login_layer */
+	.layer_zone.type1.login_pop .layer_cont{max-width:280px;}
+	.layer_zone.type1.login_pop .alert_cont{display:block; padding:30px 10px 0;}
+	.layer_zone.type1.login_pop .login_form{padding:0;}
+	.security_char,
+	.security_char .tit,
+	.security_char .inner{display:block;width:100%;}
+	.security_char .tit{padding:11px 0; font-size:12px; border-bottom:1px solid #e0e6e8;}
+	.security_char .inner{padding:14px 16px 27px;}
+	.security_char .txt1{font-size:12px; text-align:center;}
+	.security_char .txt2{font-size:12px; padding-top:36px;}
+	.security_char .inner .box{margin-top:6px; margin-bottom:6px; padding-right:0;}
+	.security_char .box .btns.type3{max-width:85px; bottom:-35px; padding-top:6px; padding-bottom:6px; font-size:12px; border-radius:8px;}
+	.security_char .btns span.refresh{padding-left:20px; background-size:15px auto;}
+	.security_char .character{height:auto;}
+
+
+	/* Common */
+
+
+	/* company */
+	.company_info{padding:0; margin:15px 0;}
+
+	/* Main - Common */
+	
+	/* main_visual */
+	.main_visual{height:auto;margin-bottom:-79px; background-size:auto 90%; background-position:40% 100%;}
+	.main_visual .inner{height:auto; padding:86px 0 42px; vertical-align:top;}
+	.main_visual .title{margin:10px 0; padding-left:30px; font-size:30px;}
+	.main_visual .title.sub{padding-bottom:74px; font-size:17px; margin-top:0;}
+
+	/* tab_area - 해운, 항공, 화물진행정보, 수출이행내역 탭 */
+	.tab_area{padding:0; border-bottom:0;}
+	.tab.type2 .mo{width:50%;}
+	.tab.type2{display:table; width:100%; height:40px; padding:0; table-layout:fixed; box-sizing:border-box;}
+	.tab.type2 > li{float:left; display:table-cell; width:50%; height:40px; line-height:16px;}
+	.tab.type2 > li:first-child{border-left:0;}
+	.tab.type2 > li:nth-child(2),
+	.tab.type2.mo > li:nth-child(4){border-right:0;}
+	.tab.type2 > li:after{display:block; content:''; clear:both;}
+	.tab.type2 > li.on{height:40px;}
+	.tab.type2 > li > a{padding:10px; font-size:14px; line-height:unset; vertical-align:middle; font-weight:700;}
+
+
+	/* tab_panel */
+	#container .tab_panel{padding:0 0 50px;}
+	.tab_panel .panel{padding:0 20px;}
+
+	/* btn */
+	.btn_type1{font-size:16px;}
+	/* Main - Common */
+
+
+	/* Main - 유니패스 */
+
+	/* unipass */
+	.unipass_area .search_bar .col.w1{width:50%; float:left;}
+	.unipass_area .search_bar .col.w1:after{display:block; content:''; clear:both;}
+	.unipass_area .search_bar .col:nth-child(3){width:100%;}
+
+	.unipass_output table.tbl_type1{table-layout:fixed}
+	.unipass_output th{width:auto;}
+	.unipass_output th,
+	.unipass_output td{font-size:12px;}
+	.notice_box{font-size:13px;}
+
+	/* 유니패스 항목 모바일 타이틀 */
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(1) td:nth-of-type(1):before{content: "화물관리번호";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(1) td:nth-of-type(2):before{content: "진행상태";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(1) td:nth-of-type(3):before{content: "선사/항공사";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(2) td:nth-of-type(1):before{content: "M B/L-H B/L";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(2) td:nth-of-type(2):before{content: "화물구분";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(2) td:nth-of-type(3):before{content: "선박/항공편명";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(3) td:nth-of-type(1):before{content: "통관진행상태";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(3) td:nth-of-type(2):before{content: "처리일시";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(3) td:nth-of-type(3):before{content: "선박국적";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(3) td:nth-of-type(4):before{content: "선박대리점";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(4) td:nth-of-type(1):before{content: "품명";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(4) td:nth-of-type(2):before{content: "적재항";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(5) td:nth-of-type(1):before{content: "포장개수";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(5) td:nth-of-type(2):before{content: "총 중량";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(5) td:nth-of-type(3):before{content: "양륙항";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(5) td:nth-of-type(4):before{content: "입항세관";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(6) td:nth-of-type(1):before{content: "용적";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(6) td:nth-of-type(2):before{content: "B/L유형";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(6) td:nth-of-type(3):before{content: "입항일";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(6) td:nth-of-type(4):before{content: "항차";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(7) td:nth-of-type(1):before{content: "관리대상지정여부";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(7) td:nth-of-type(2):before{content: "컨테이너개수";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(7) td:nth-of-type(3):before{content: "반출의무과태료";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(7) td:nth-of-type(4):before{content: "신고지연가산세";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(8) td:nth-of-type(1):before{content: "특수화물코드";}
+	.unipass_table#div_UniCargoFirst1 tr:nth-of-type(8) td:nth-of-type(2):before{content: "컨테이너번호";}
+	
+	.unipass_table#div_UniCargoSecond tr:nth-child(odd) td:nth-of-type(1):before{content: "No.";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(odd) td:nth-of-type(2):before{content: "처리단계";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(odd) td:nth-of-type(3):before{content: "장치장/장치위치";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(odd) td:nth-of-type(4):before{content: "포장개수";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(odd) td:nth-of-type(5):before{content: "반출입(처리)일시";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(odd) td:nth-of-type(6):before{content: "신고번호";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(even) td:nth-of-type(1):before{content: "처리일시";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(even) td:nth-of-type(2):before{content: "장치장명";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(even) td:nth-of-type(3):before{content: "중량";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(even) td:nth-of-type(4):before{content: "반출입(처리)내용";}
+	.unipass_table#div_UniCargoSecond tr:nth-child(even) td:nth-of-type(5):before{content: "반출입근거번호";}
+
+	.unipass_table#div_UniOB_NumSecond td:nth-of-type(1):before{content: "B/L 번호";}
+	.unipass_table#div_UniOB_NumSecond td:nth-of-type(2):before{content: "선적일자";}
+	.unipass_table#div_UniOB_NumSecond td:nth-of-type(3):before{content: "선기적포장개수";}
+	.unipass_table#div_UniOB_NumSecond td:nth-of-type(4):before{content: "선기적중량(KG)";}
+	
+	.unipass_table.type1.no_head th,
+	.unipass_table.type1 colgroup,
+	.unipass_table.type1.no_head thead,
+	.unipass_table.type3 thead{display:none;}
+	.unipass_table.type1.no_head td,
+	.unipass_table.type3 td{display:table; width:100%; table-layout:fixed; text-align:left; font-size:12px;}
+	.unipass_table.type1#div_UniOB_NumFirst td{display:table-cell;}
+	.unipass_output .unipass_table.center td{padding-left:12px; text-align:center;}
+	.unipass_output .unipass_table .grid_col{display:block;}
+	.unipass_output .unipass_table .grid_col:first-child{margin-bottom:6px; padding-right:0;}
+	.unipass_output .unipass_table .grid_col:last-child{padding-left:0;}
+	.unipass_table.type1 .w1,
+	.unipass_table.type1 td:before,
+	.unipass_table.type3 td:before{width:95px;}
+	.unipass_table.type1 td .data,
+	.unipass_table.type3 td .data,
+	.unipass_table.type1 td:before,
+	.unipass_table.type3 td:before{display:table-cell; vertical-align:middle; padding:3px 0; box-sizing:border-box;}
+	.unipass_table.type1.no_head td:before,
+	.unipass_table.type3.no_head td:before{content:''; font-size:10px; font-weight:500; text-align:center; white-space:nowrap; letter-spacing:-0.02em; color:#222; background-color:#f5f7f8; border-right:1px solid #e0e6e8;}
+	.unipass_table.type1 td .data,
+	.unipass_table.type3 td .data{padding-left:10px;}
+
+	/* 화물 추적 MBL 테이블 */
+	table.list_type1 .layout_type5{background-color: #fff;padding: 0 20px 20px;border-bottom: 1px solid #111;border-top: 2px solid #2b3c4e;}
+	table.list_type1 .layout_type5 > .row{padding:10px 0;border-bottom: 1px dashed #ccc;line-height: 1.25;font-size: 14px;font-weight: 700;}
+	table.list_type1 .layout_type5 > .row:last-of-type{border-bottom: 0}
+	table.list_type1 .layout_type5 > .s1{display: table;width: 100%;line-height: 1.3;font-size: 14px;font-weight: 700;}
+	table.list_type1 .layout_type5 > .s1 > .col{position:relative;display: table-cell;vertical-align: middle;text-align: left;padding:10px 0}
+	table.list_type1 .layout_type5 > .s1 > .col.w1{width: 50%;text-align: right;}
+	table.list_type1 .layout_type5 > .s2 table{width: 100%;table-layout: fixed}
+	table.list_type1 .layout_type5 > .s2 th,
+	table.list_type1 .layout_type5 > .s2 td{display:table-cell !important;text-align:left;border-bottom: 0;padding: 5px 0;font-weight: 400;font-size: 13px;box-sizing: border-box;vertical-align: top}
+	table.list_type1 .layout_type5 > .s2 th{text-align: right;padding-right:30px;width: 50%;color: #666;font-weight: 300;font-size: 12px;}
+	table.list_type1 tr:first-of-type .layout_type5{margin-top: 0}
+
+	.mobile_layout .layout_type5 > .row{padding:10px 0;border-bottom: 1px dashed #ccc;line-height: 1.25;font-size: 14px;font-weight: 700;}
+	.mobile_layout .layout_type5 > .row:last-of-type{border-bottom: 0}
+	.mobile_layout .layout_type5 > .s1{display: table;width: 100%;line-height: 1.3;font-size: 14px;font-weight: 700;}
+	.mobile_layout .layout_type5 > .s1 > .col{position:relative;display: table-cell;vertical-align: middle;text-align: left;padding:13px 0}
+	.mobile_layout .layout_type5 > .s1 > .col.w1{width: 42%;text-align: right;padding-right:30px;}
+	.mobile_layout .layout_type5 > .s2 table{width: 100%;table-layout: fixed}
+	.mobile_layout .layout_type5 > .s2 th,
+	.mobile_layout .layout_type5 > .s2 td{display:table-cell !important;text-align:left;border-bottom: 0;padding: 5px 0;font-weight: 400;font-size: 13px;box-sizing: border-box;vertical-align: top;}
+	.mobile_layout .layout_type5 > .s2 th{text-align: right;padding-right:30px;width: 42%;color: #666;font-weight: 300;font-size: 12px;}
+
+	/* Main - 유니패스 */
+
+	/* Main - 스케줄 */
+	/* 해상, 항공 스케줄 조회 테이블 */
+	table.list_type1:not(.keep_on) thead,
+	table.list_type1:not(.keep_on) tr:not(.related_info) td:not(.mobile_layout),
+	table.list_type1 colgroup.pc{display:none;}
+	table.list_type1 .mobile_layout{display:table-cell; width:100%; padding:0;}
+	table.list_type1 td,
+	table.list_type1 .btn_type1,
+	table.list_type1 .btn_type6,
+	table.list_type1 [class^=btn_]{font-size:12px;}
+	table.list_type1 tr.related_info{display:none !important;}
+	table.list_type1 th,
+	table.list_type1 td{line-height:1.8; vertical-align: top;}
+	table.list_type1.keep_on th,
+	table.list_type1.keep_on td{vertical-align:middle;}
+	table.list_type1 td{border-bottom:0;}
+	table.list_type1 tr .layout_type2{background-color:#fff; padding:0 10px; border-bottom:2px solid #0070ba; margin-top:0;}
+	table.list_type1 tr:first-child .layout_type2{border-top:2px solid #0070ba;}
+	table.list_type1 .layout_type2 > .s2{border-bottom:1px dashed #ccc;}
+	table.list_type1 .layout_type2 > .s3{font-weight:300; font-size:12px;}
+	table.list_type1 .layout_type2 > .row:last-of-type{border-bottom:0;}
+	table.list_type1 .layout_type2 > .row table{width:100%; margin: 10px auto;}
+	table.list_type1 .layout_type2 > .row.s3 table{margin-top:0;}
+	table.list_type1 .layout_type2 > .s3 tr{position:relative;}
+	table.list_type1 .layout_type2 > .s3 th,
+	table.list_type1 .layout_type2 > .s3 td{display:table-cell !important; /*position:relative;*/ text-align:left; border-bottom:1px solid #ddd; padding:0 10px; font-weight:600; color:#666; font-size:12px; line-height:30px;}
+	table.list_type1 .layout_type2 > .s3 tr:nth-last-child(1) th,
+	table.list_type1 .layout_type2 > .s3 tr:nth-last-child(1) td{border-bottom:0;}
+	table.list_type1 .layout_type2 > .s3 td.ta_center{text-align:left;}
+	table.list_type1 .layout_type2 > .s3 th{padding-right:10px; font-weight:300;text-align:right; width:50%;background:#f1f1f1;}
+	table.list_type1 .layout_type2 > .s3 tr.sch_comment td{background-color:#f7f7f7; border:1px solid #aaa; text-align:center;}
+	table.list_type1 .layout_type2 > .s3 tr td .btn_type1{margin:10px auto; text-align:center;}
+	table.list_type1 .layout_type2 > .s3 tr:last-child td .btn_type1{margin:10px auto 0;}
+	table.list_type1 .layout_type2 > .s4{display:table; width:100%; table-layout:fixed; line-height:1.3; font-size:14px; font-weight:700; padding:10px 0; border-bottom:1px dashed #ccc;}
+	table.list_type1 .layout_type2 > .s4 > .col{display:table-cell; position:relative;padding:10px 5px; text-align:center; vertical-align:middle;}
+	table.list_type1 img{height:30px;}
+	table.list_type1 #SEA_Schedule_AREA img,
+	table.list_type1 #AIR_Schedule_AREA img{max-width:85%; max-height:40px;}
+
+	.etc_info > li{font-size:12px; line-height:30px; vertical-align:middle;}
+
+	/* Main - 스케줄 */
+
+
+	/* 문서 관리 - B/L 조회 */
+	/* BL */
+	.document .list_type1 tr:last-child .mobile_layout{padding-bottom:0;}
+	.document .list_type1 .btn_type1{width:100%; text-align:center;}
+
+	/*.search_bar.document{padding:0;}*/
+	.search_bar .inner{width:100%; margin:0;}
+	.search_bar.document .col.w1,
+	.search_bar.document .col.w3,
+	.search_bar.document .col.w4,
+	.search_bar.document .col.w5,
+	.search_bar.document .col.w8{width:100%;}
+	.search_bar.document .col.w4.radio{float:left; width:50%; font-size:0;}
+
+	/* 수입, 수출 아이콘 */
+	.trade.export,
+	.trade.import{font-size:12px; font-weight:400;}
+	.trade.export:before,
+	.trade.import:before{/*background-size:88px auto;background-position:-2px -2px;*/margin:2px 0;}
+	/*.trade.export.ship:before,
+	.trade.import.ship:before{width:38px;height:29px;}
+	.trade.export.ship:before{background-position:-2px -36px;}
+	.trade.import.airline:before{background-position:-40px -1px;}
+	.trade.export.airline:before{background-position:-40px -33px;}*/
+
+	/* BL 팝업 */
+	.bl_pop .layer_wrap{padding:20px 0;}
+	.bl_pop .layer_wrap .close.white{background-size:15px;}
+	.bl_pop .layer_wrap .layer_title2{padding: 11px 21px 12px;min-height: 41px;}
+	.bl_pop .layer_wrap .layer_title2 .tit{font-size:14px;}
+	.bl_pop .close{width:36px; height:36px; top:2px; right:8px;}
+	.bl_output,
+	.bl_output .col_left,
+	.bl_output .col_right{display:block;width:100%;}
+	.bl_output{padding:20px 0;}
+	.bl_output .col_left{padding:0 20px 25px; border-right:0;}
+	.bl_output .col_right{height:auto; padding:0 20px;}
+	.bl_output .col_right .tit_row{padding:10px 0 20px;}
+	.bl_output .col_right .tit_row .tit{font-size:14px;}
+	.bl_output .output_area{height:400px;}
+	.btn_type2{font-size:12px; height:38px; line-height:36px; min-width:100px;}
+	.bl_output .col_right .edit_list{height:auto; padding:0 16px; font-size:12px; border:1px solid #ddd;}
+	.bl_output .col_right .edit_list .tit,
+	.bl_output .col_right .edit_list textarea{font-size:12px;}
+	.bl_output .col_right .edit_list .item:last-child textarea{height:120px;}
+
+	/* 문서 관리 - B/L 조회 */
+
+
+	/* MyBoard - MyBoard */
+	/* My Board */
+	.icon_area{font-size:12px; padding-top:10px; padding-bottom:10px;}
+	/* MyBoard - MyBoard */
+
+
+	/* 부킹 관리 - 부킹등록 */
+	/* booking_regist - 부킹등록 박스 */
+	.booking_write .left_area,
+	.booking_write .right_area{float:none; width:100%;}
+	.booking_write .left_area{padding-bottom:20px;}
+	.booking_write .list_type1 .select{height:31px;}
+	.bk_box{padding:0; border:0;}
+	.left_area .bk_box{margin-right:0;}
+	.right_area .bk_box{margin-left:0;}
+
+	.booking_write .txtarea{font-size:12px;}
+	.booking_write .add_file{width:100px;}
+	.add_file .btn_file{min-width:100px; height:30px; line-height:30px; font-size:14px;}
+
+	.booking_view .detail td{font-size:14px;}
+	.booking_view .detail td strong{font-size:18px;}
+
+	.btn_type1.reverse{font-size:14px;}
+	.btn_type1.half,
+	.btn_type1.three{width:100%;}
+
+	/* 부킹 관리 - 부킹등록 */
+
+
+	/* 부킹 관리 - 부킹조회 */
+	/* booking_inquiry - 부킹조회 리스트 */
+	.list_type1 .approve,
+	.list_type1 .cancel,
+	.list_type1 .request{padding:10px 0; font-size:14px;}
+	.search_bar .col.first,
+	.search_bar .col.middle,
+	.search_bar .col.last{display:inline-block; width:50%;}
+	table.list_type1.no_border{border-top:0;}
+	table.list_type1.wd100{width:100%;}
+
+	.search_detail .row{padding:0;}
+	.grid_fluid > .grid_col{display:block;}
+	.grid_fluid.type2 > .grid_col{padding:0 10px 10px;}
+	.grid_fluid.type2 > .grid_col:last-child{padding-bottom:0;}
+	.grid_fluid.type3 > .grid_col{padding: 0 0 10px;}
+	.grid_fluid.type3 .grid_col:first-child{padding-left:0;}
+	.grid_fluid.type3 .grid_col:last-child{padding-right:0;}
+	.grid_fluid .grid_col:first-child{padding-left:10px;}
+	.grid_fluid .grid_col:last-child{padding-right:10px;}
+
+	.search_zone .inner{display:block;}
+	.search_zone.layout2 .col .label, .search_zone.layout2 .col .int_box{display:block}
+	.search_zone.layout2 .col{display:block;padding:0;margin-bottom:8px;}
+	#footer .copy{position:unset;}
+
+	/* 부킹 관리 - 부킹조회 */
+
+
+	/* Tracking - 화물추적 */
+	/* tracking_layer */
+	.search_zone .label{font-size:12px;}
+	.search_zone.layout2 .col .label{margin:0 0 3px; padding-left:0; background:transparent;}
+	.search_zone.layout2 .col .label.cr1,
+	.search_zone.layout2 .col .label.cr2{border:0;}
+	.search_zone.layout2 .int_box{width:100%; padding:0 15px; font-size:12px;}
+	.search_zone.layout2 .int_box.cr1{border-left:1px solid #0070ba;}
+	.search_zone.layout2 .int_box.cr2{border-left:1px solid #0070ba;}
+	.search_zone .btns.type7.icn_search{width:100%;}
+
+	.tracking_layer .search_zone{margin:0;}
+	.tracking_layer .search_zone.layout2{position:relative; width:auto; padding:25px 16px;}
+	.tracking_layer .search_zone.layout2 .inner,
+	.tracking_layer .search_zone.layout2 .col,
+	.tracking_layer .search_zone.layout2 .col .label,
+	.tracking_layer .search_zone.layout2 .col .int_box{display:block;}
+	.tracking_layer .search_zone.layout2 .col{margin-bottom:8px; padding:0; background-color:transparent;}
+	.tracking_layer .close{top:3px; right:8px; background-size:16px auto;}
+
+	.tracking_area #map{height:320px;}
+	.tracking_area #SVT_layer_Area{height:320px;}
+
+	.tracking_layer .delivery_status,
+	.delivery_status{position:relative; width:100%; top:auto; left:auto; border:1px solid #e0e6e8; margin-top:6px;}
+	.delivery_status .top_box{padding:24px 16px; border-bottom:1px solid #e0e6e8;}
+	.delivery_status .btn_close{font-size:12px;}
+	.delivery_status .cargo_info .col{padding-left:15px;}
+	.delivery_status .cargo_info .col:first-child{padding-left:0;}
+	.delivery_status .shipping_step{padding-top:15px;}
+	.delivery_status .slimScrollDiv,
+	.delivery_status .scrollbar_layer{max-height:500px !important;}
+	.delivery_status .scrollbar_layer{max-width:unset;}
+
+	.shipping_step{padding-bottom:5px;}
+	.shipping_step ul > li{margin-bottom:8px;}
+	/*.shipping_step ul > li:before{top:38px;}*/
+	.shipping_step .tit{font-size:12px; line-height:38px;}
+	.shipping_step .info_box{padding:14px 0 16px;}
+	.shipping_step .info_box .col{padding:0 6px; font-size:12px;}
+
+	/* Tracking - 화물추적 */
+
+	/* 물류도구 */
+
+	/* 안전운임제 */
+	.logistics .tariff_option_tbl.second .select_cover{padding-bottom:5px;}
+
+	.tariff_option{float:none; display:block; width:100%; padding-bottom:5px;}
+
+	.tariff_list{width:100%;}
+	.tariff_list.wd25{width:100%;}
+	.tariff_list:last-child{border-bottom:0;}
+	.tariff_list .select_cover.in_three{display:block; width:100%; padding:5px 5px 0;}
+	.tariff_list .select_cover.in_three:last-child{padding:5px;}
+	.tariff_list .select_cover,
+	.tariff_list_title{padding:5px 0 0; font-size:14px;}
+	.tariff_list_title{border-left:0; vertical-align:middle;}
+
+	.tariff_option.search{width:100%; height:40px; line-height:40px; margin-bottom:10px;}
+	.tariff_option.search.mg_bot{margin-bottom:5px;}
+
+	.tariff_option_list .tariff_list:last-child .select_cover{padding-right:0;}
+
+	.tariff_add_option th{font-size:14px; border-right:0;}
+
+	.tariff_result_tbl table .mobile_layout table{border-top:0;}
+	.tariff_result_tbl table tr td{font-size:14px;}
+	.tariff_result_tbl table tr td.mobile_layout{border-bottom:0;}
+
+	/* 안전운임제 모바일 테이블 */
+	table.list_type1.tools{border-top:0;}
+	table.list_type1.tools tr .layout_type2{padding:0; margin-bottom:10px; border:1px solid #cecece; border-radius:10px; overflow:hidden;}
+	table.list_type1.tools tr .layout_type2 > .row table{width:100%; margin:0;}
+	table.list_type1.tools .layout_type2 .s1{font-size:14px; background-color:rgba(0,91,172,0.1); border-bottom:1px solid #cecece;}
+	table.list_type1.tools .layout_type2 .s1 .gray_font{color:#7c7c7c;}
+	table.list_type1.tools .layout_type2 .s3 th,
+	table.list_type1.tools .layout_type2 .s3 td{width:33.3333%; line-height:23px; text-align:center;}
+	table.list_type1.tools .layout_type2 .s3 th{padding-right:0;}
+	table.list_type1.tools .layout_type2 .s3 .has_border_bt{border-bottom:1px dashed #cecece;}
+
+	/* 부대비용 */
+	.surcharge_option{display:block;}
+	.surcharge_option_tbl{float:none; width:100%; height:81px;}
+	.surcharge_option_tbl.tbl1{border-bottom:0; border-right:1px solid #cecece;}
+	.surcharge_option_tbl.tbl2{margin-left:0; margin-top:-1px; border-top:0; border-left:1px solid #cecece;}
+	.surcharge_option_tbl .switch_label{height:30px; line-height:30px; font-size:13px;}
+	.surcharge_option_tbl table col.w1{width:37%;}
+	.surcharge_option_tbl table col.w2{width:63%;}
+	.surcharge_option_tbl table tr th,
+	.surcharge_option_tbl table tr td{font-size:12px;}
+	.surcharge_option_tbl table tr td .exchange{padding:4px 20px 5px 4px;}
+	.surcharge_option_tbl table tr td .apply{height:30px; font-size:12px;}
+
+	.surcharge_option_list{width:100%; height:auto;}
+	.surcharge_list{width:100%;}
+	.surcharge_list.wd33{width:100%;}
+	.surcharge_list .select_cover{padding:5px 0 0;}
+
+	.surcharge_search{width:100%; margin: 5px 0 0;}
+
+	.surcharge_result table tr td{font-size:14px;}
+	.surcharge_exchange{float:none;width:100%; padding-bottom:30px; overflow:auto;}
+	.surcharge_exchange .left_area{width:40%;}
+	.surcharge_exchange .right_area{width:60%;}
+	.surcharge_exchange .exchange{width:calc(100% - 54px);}
+
+	/* 법령정보 */
+	.aeo_info_tbl{margin-bottom:20px;}
+	.aeo_info_tbl col.w2{width:50%;}
+	.aeo_info_tbl col.w3{width:20%;}
+	.aeo_info_tbl tr th,
+	.aeo_info_tbl tr td{font-size:13px;}
+	.aeo_info table.list_type1.tools{border-top:2px solid #0070ba;}
+	.aeo_info table.list_type1 thead{display:table-header-group;}
+	.aeo_info table.list_type1 th{height:30px; font-size:14px; line-height:1.3; vertical-align:middle;}
+	.aeo_info table.list_type1 td{border-bottom:1px solid #eaeaea;}
+	.aeo_info table.list_type1 tr:not(.related_info) td:not(.mobile_layout){display:table-cell;}
+
+	/* 인코텀즈 */
+	.logi_panel .right_area{width:100%;}
+	.logi_panel .inco_title span{font-size:12px; line-height:20px;}
+	.logi_panel .inco_title span strong{font-size:30px;}
+	.logi_panel .inco_explane{padding:20px 0; line-height:25px;}
+	.logi_panel .inco_explane p{font-size:13px; line-height:23px;}
+	.logi_panel .inco_explane p:before{top:9px;}
+
+	.color_list{padding-bottom:10px;}
+	.color_list .list{padding-bottom:5px;}
+	.color_list .list .cost_color,
+	.color_list .list .risk_color,
+	.color_list .list .insurance_color,
+	.color_list .list .all_color,
+	.color_list .list .sea_color{width:15px; height:15px;}
+	.color_list span{font-size:13px; line-height:15px;}
+
+	.inco_title_sub{padding-top:10px;}
+
+	.inco_bar{padding-top:10px;}
+	.inco_bar .bar,
+	.inco_bar.sub .bar{font-size:12px;}
+	.inco_bar .bar_title{width:100%; font-size:12px; line-height:20px; text-align:center; margin-bottom:5px;}
+	.inco_bar .bar_title.all{background: linear-gradient(90deg, rgba(255,195,195,0) 0%, rgba(255,195,195,0.7) 20%, rgba(255,195,195,1) 50%, rgba(255,195,195,0.7) 80%, rgba(255,195,195,0) 100%);}
+	.inco_bar .bar_title.sea{background: linear-gradient(90deg, rgba(178,235,244,0) 0%, rgba(178,235,244,0.7) 20%, rgba(178,235,244,1) 50%, rgba(178,235,244,0.7) 80%, rgba(178,235,244,0) 100%);}
+	.inco_bar .bar_title strong{font-size:20px; padding-right:10px;}
+	.inco_bar .gray_bar:after{width:1px; height:60px;}
+
+	.inco_bar .gray_bar:nth-last-child(7):after{margin-left:12%;}
+	.inco_bar .gray_bar:nth-last-child(6):after{margin-left:23%;}
+	.inco_bar .gray_bar:nth-last-child(5):after{margin-left:33%;}
+	.inco_bar .gray_bar:nth-last-child(4):after{margin-left:44%;}
+	.inco_bar .gray_bar:nth-last-child(3):after{margin-left:56%;}
+	.inco_bar .gray_bar:nth-last-child(2):after{margin-left:83%;}
+	.inco_bar .gray_bar:nth-last-child(1):after{margin-left:90%;}
+
+	.inco_img{height:185px;}
+
+	/* 차량제원 */
+	.card .card_title{padding-top:80px; font-size:14px;}
+	.card .card_img{min-height:102px;}
+	.card .card_img img{height:80px;}
+	.card .card_desc table tr th,
+	.card .card_desc table tr td{font-size:12px;}
+	.card .card_img.no_image span{padding-top:30px;}
+
+	/* 포트정보 */
+	.logi_panel.port table col.w1{width:50%;}
+	.logi_panel.port table tr td a{padding:10px 0; font-size:14px;}
+
+	/* CBM 계산기 */
+	.cbm_floating{height:auto;}
+	.cbm_unit .cbm_left,
+	.cbm_unit .cbm_right,
+	.cbm_quantity .cbm_left,
+	.cbm_quantity .cbm_right{padding-bottom:0;}
+	.cbm_left, .cbm_right{padding-bottom:0;}
+	.cbm_left span{padding-left:10px;}
+	.count input.int{width:110px; height:30px;}
+	.count .cbm_unit_detail{width:30px;}
+
+	.tbl_cbm_cal,
+	.tbl_cbm_result,
+	.tbl_cntr_loaded table,
+	.tbl_cntr_char table{font-size:12px;}
+	.tbl_cbm_cal .switch_label{height:30px;line-height:30px;}
+
+	.tbl_cntr_loaded tbody tr th,
+	.tbl_cntr_loaded tbody tr td,
+	.tbl_cntr_char thead tr th,
+	.tbl_cntr_char tbody tr td{font-size:12px;}
+
+	.tbl_cntr_char{padding-top:0;}
+	.tbl_cntr_char p{padding:10px 20px; font-size:12px;}
+	.tbl_cntr_char .cntr_img{padding:0;}
+	.tbl_cntr_char table{margin-bottom:5px;}
+	.tbl_cntr_char table col.w1{width:100%;}
+	.tbl_cntr_char tbody tr th{padding:5px 0;}
+	.tbl_cntr_char table tbody tr td{letter-spacing:-0.7px;}
+
+	.tbl_cntr_loaded table{margin-bottom:10px;}
+	.tbl_cntr_loaded col.w1{width:50%;}
+
+	.tbl_cbm_cal,
+	.tbl_cbm_result{float:none; width:100%;}
+	.cbm_padding{padding:10px;}
+	.cbm_height .cbm_right{padding-bottom:10px;}
+	.cbm_left span {letter-spacing:-1.7px;}
+	.count input.int{width:calc(100% - 45px);}
+	.cbm_radio{float:left; width:33.3333333%;}
+	.switch_label.cbm{width:100%;}
+	.cbm_quantity{padding-top:0;}
+
+	.dry_img h2{padding:10px 0 10px 10px; font-size:24px;}
+	.dry_img img{float:none; width:100%; padding-bottom:5px;}
+
+	.file_layer{width:100%;}
+}
+
+@media(max-width: 767px){
+
+	/* Common */
+	/* total_menu */
+	#header .total_menu .lnb .sub_depth > ul > li{height:30px; line-height:30px;}
+
+	/* login_info - 상단 메뉴 로그인*/
+	/*.login_info .logout button{}*/
+
+	/* 달력 */
+	.xdsoft_datetimepicker{width:240px;}
+	
+	/* sub_공통 */
+	.subtitle02{font-size:24px; margin-bottom:10px;}
+	.subtitle02 span{padding:0 20px;}
+
+	.center_area{margin-top:20px;}	
+
+	/* Common */
+
+
+	/* Main Common */
+
+	/* main_visual */
+	.main_visual {margin-bottom:-79px;}
+	.main_visual .inner{padding:56px 0 42px;}
+	.main_visual .title{font-size:23px;margin:43px 0 12px 0;}
+
+	/* tab_area - 해운, 항공, 화물진행정보, 수출이행내역 탭 */
+	.tab.type2 > li > a{font-size:12px; font-weight:500;}
+
+	/* Main Common */
+
+	/* Main - 스케줄 */
+	/* 해상, 항공 스케줄 조회 */
+	table.list_type1 .layout_type2 > .s3 th,
+	table.list_type1 .layout_type2 > .s3 td{letter-spacing:-0.3px;}
+	table.list_type1 .layout_type2 > .s3 th{width:auto; text-align:left;}
+
+	/* Main - 스케줄 */
+
+	/* Main - 유니패스 */
+	/* unipass_area */
+	.unipass_area .unipass_output th,
+	.unipass_area .unipass_output td,
+	.cnt_box .cnt{font-size:12px;}
+	
+	/* Main - 유니패스 */
+
+	/* 새 파일리스트 레이어 */
+	.file_layer_new{width:100%;}
+
+	/* 물류도구 */
+	
+	/* 안전운임제 */
+	.tariff_option_tbl table tr th,
+	.tariff_option_tbl table tr td,
+	.tariff_result_tbl table tr th,
+	.tariff_result_tbl table tr td {font-size: 12px; letter-spacing:-1.6px;}
+	
+	.tariff_option_tbl table col.w1{width:20%;}
+	.tariff_option_tbl table col.w2{width:80%;}
+	.tariff_option_tbl table tr th,
+	.tariff_option_tbl table tr td{padding-left:0;}
+	.tariff_option_tbl table tr th{text-align:center;}
+	.tariff_option_tbl table tr td .tariff_dest{line-height:20px;}
+
+	.tariff_result_tbl table tr th {padding:2px 0;}
+	.tariff_result_tbl.no_head td{font-size:12px;}
+	.tariff_result_tbl.no_head td:before{font-size:10px;}
+
+	.logistics_popup{padding:5px 10px;}
+	.logistics_popup.cbm{top:35px;}
+	.logistics table tr td .select{width:100%; padding-right:20px;}
+	.logistics table tr td .select.mg_top{margin-top:5px;}
+
+	.btn_tariff .tariff{right:0;}
+
+	.tariff_prov p{font-size:12px; line-height:23px;}
+
+	/* 부대비용 */
+	.surcharge_result table col.w1{width:30%;}
+	.surcharge_result table col.w2{width:12%;}
+	.surcharge_result table col.w3{width:17%;}
+	.surcharge_result table tr th,
+	.surcharge_result table tr td{font-size:12px;}
+
+	/* 법령정보 */
+	.aeo_info_tbl tr th,
+	.aeo_info_tbl tr td{font-size:11px;}
+
+	/* 인코텀즈 */
+	.logi_tab{padding-top:0;}
+	.inco_bar .bar,
+	.inco_bar.sub .bar{font-size:10px; letter-spacing:-1px; line-height:20px;}
+	.inco_bar.sub .bar{height:30px;}
+
+	.inco_img{height:90px; background:url(/Images/incoterms_mo.png) no-repeat 50% 50% / 100%;}
+
+	/* 차량제원 */
+	.vehicle_tbl{padding:0 10px;}
+	.vehicle_tbl .select_cover{padding-left:10px;}
+	.vehicle_tbl table td .select_cover .select{width:calc(100% - 20px);}
+
+	.card{width:100%;}
+	.card .card_desc table th,
+	.card .card_desc table td{line-height:16px;}
+	.card .card_desc table th{height:20px;}
+	.card .card_desc table td{height:18px;}
+	.card .card_desc table tr.card_char{height:30px;}
+
+	.vehicle_img{width:100%;}
+	
+	/* 포트정보 */
+	.logi_panel.port{padding:20px 0;}
+	.logi_table td{padding:0;}
+	.logi_table.port td a{width:100%; font-size:12px; line-height:24px; margin-top:-1px;}
+	.logi_panel.port table tr td a{font-size:12px;}
+
+	/* CBM 계산기 */
+	.cbm_subtitle{width:190px;}
+	
+	
+	/* list_tracking */
+	/* delivery_pop */
+	.btns.icon.type3{top:15px;}
+
+	.delivery_pop .layer_cont{padding:50px 20px 20px;}
+	.delivery_pop .search_top{display:block;}
+	.delivery_pop .search_top input[type='text']{width:100%;}
+	/* delivery_pop */
+
+	/* tracking_box */
+	.track_stat.on .track_process:before{left:-10px; width:20px;}
+	.track_proc{width:100px;}
+	.track_proc p:before{left:45px;}
+	.track_proc p:after{bottom:-100px; left:49px; height:90px;}
+	.track_stat.on .track_proc p:after{bottom:-100px; left:49px; height:90px;}
+	.track_stat.yet .track_proc p:after{left:49px; bottom:-100px; height:90px;}
+	.track_process{width:calc(100% - 100px); min-height:170px; height:auto;}
+	.track_process .track_inner{display:block; padding:0 10px 10px;}
+	.track_inner .track{max-width:unset; padding-bottom:10px;}
+	.track_stat:nth-child(1) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking01.png) no-repeat 50% 50% / 60%; overflow:hidden;}
+	.track_stat:nth-child(2) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking02.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat:nth-child(3) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking03.png) no-repeat 50% 50% / 60%; overflow:hidden;}
+	.track_stat:nth-child(4) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking04.png) no-repeat 50% 50% / 60%; overflow:hidden;}
+	.track_stat:nth-child(5) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking05.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.import:nth-child(1) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_imp01.png) no-repeat 50% 50% / 60%; overflow:hidden;}
+	.track_stat.import:nth-child(2) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_imp02.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.import:nth-child(3) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_imp03.png) no-repeat 50% 50% / 35%; overflow:hidden;}
+	.track_stat.import:nth-child(4) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_imp04.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.import:nth-child(5) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_imp05.png) no-repeat 50% 50% / 60%; overflow:hidden;}
+	.track_stat.import:nth-child(6) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_imp06.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.air:nth-child(1) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_air_pass01.png) no-repeat 50% 50% / 60%; overflow:hidden;}
+	.track_stat.air:nth-child(2) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_air_pass02.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.on.air:nth-child(1) .track_proc p:before,
+	.track_stat.yet.air:nth-child(1) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_air01.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.on.air:nth-child(2) .track_proc p:before,
+	.track_stat.yet.air:nth-child(2) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_air02.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.air.on.import:nth-child(1) .track_proc p:before,
+	.track_stat.air.yet.import:nth-child(1) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_air_imp01.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	.track_stat.air.on.import:nth-child(2) .track_proc p:before,
+	.track_stat.air.yet.import:nth-child(2) .track_proc p:before{display: block; content: ''; position: absolute; top: -45px; left: 0; width: 100px; height: 80px; border-radius: 10px; background: url(/Images/icn_tracking_air_imp02.png) no-repeat 50% 50% / 50%; overflow:hidden;}
+	/* tracking_box */
+
+	/* trk_list */
+	.trk_cover{display:block; margin:0 20px; padding:20px 10px;}
+	.trk_info{font-size:12px;}
+	.trk_info .trk_cont{font-size:14px;}
+	/* trk_list */
+	/* list_tracking */
+}
+
+@media (max-width: 441px){
+	/* 인코텀즈 */
+	.inco_img{height:50px;}
+}
+@media (min-width:1025px){
+	/* Common */
+	#header.scroll{background-color:#fff; color:#000;transition:all 0s ease;}
+	#header.scroll .total_menu{font-size: 18px;}
+	#header.scroll .lnb_top{top: 21px;left:auto;right:210px;}
+	#header.scroll .lnb_top > li > a{font-size: 18px;}
+	#header.scroll .lnb_top .sub_depth{padding-top: 13px;display: block}
+	#header.scroll .lnb_top .sub_depth ul{padding-top: 0;}
+	#header.scroll .lnb_top .sub_depth a{font-size: 16px;}
+	#header.scroll #checkerboard,
+	#header.active #checkerboard{background: url(/Images/btn_nav.png) no-repeat 50% 50%; background-size:30px 30px;}
+	#header.active .sub_depth,
+	#header.scroll.active .total_menu,
+	#heardr.scroll.active .sub_depth{display: block;}
+
+	.total_menu .login_info{position:absolute;width:176px;height:242px;top:90px;right:514px;padding:10px 30px 10px 10px;}
+	.total_menu .login_info.partner{right:152px;}
+	.login_info .user_greeting,
+	.login_info .login,
+	.login_info .logout,
+	.login_info .myboard,
+	.login_info .question,
+	.login_info .user_info{display:inline-block; padding:3px 0; color:#333; cursor:pointer; transition:all .3s ease;}
+	.login_info .logout{width:29px; height:28px; background:url(/Images/btn_logout.png) no-repeat 50% 50%;}
+	.login_info .logout:hover:before{display:block; content:''; position:absolute; top:-25px; left:-22px; width:63px; height:23px; background:url(/Images/icn_bubble_logout.png) no-repeat 50% 50%;}
+	.login_info .login{width:100%; margin-top:20px; padding-right:15px; color:#333; font-weight:500;}
+	.login_info .not_login .user_greeting{width:100%;}
+	.login_info .myboard,
+	.login_info .question{padding-right:6px; color:#fff; background-image:url(/Images/icn_arrow4.png); background-repeat:no-repeat; background-position:calc(50% + 35px) 50%;}
+	.login_info .myboard{color:#333; background-color:#eee; background-image:url(/Images/icn_arrow5.png), url(/Images/icn_myboard.png); background-position: calc(100% - 13px) 50%, 10px 50%;}
+	.login_info .user_greeting{width:calc(100% - 29px); padding:3px 0 0; text-align:left; cursor:auto;}
+	.login_info .info_line{display:flex; justify-content:space-between; padding-bottom:20px; font-size:14px;}
+	.login_info .info_line.not_login{display:block;}
+
+	/* 대메뉴 드롭다운 */
+	.lnb{/*margin-right:48px;*/}
+	.lnb > li:hover{color:#1b9393; transition:all .3s ease;}
+	.lnb > li > a {line-height:90px;}
+	.lnb > li > a span{position:relative;}
+	/*.lnb > li > a span:before{display:block;content:'';position:absolute;width:100%;height:3px;bottom:-11px;left:50%;padding:0 7px;background-color:#220e3f;opacity:0;transition:all .3s ease;
+		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-sand-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}*/
+	.lnb > li:hover > a span:before{opacity:1;}
+	.lnb > li:last-child .sub_depth{border-right:1px solid #ddd;}
+	.lnb .sub_depth{display: none;position: absolute;height:242px;width:100%;left:0; top:90px; border-left:1px solid #ddd;}
+	.lnb .sub_depth ul{padding-left:10px;}
+	.lnb > li:nth-child(2) .sub_depth ul{padding-left:10px;}
+	.lnb .sub_depth li{height: 15px; margin-bottom: 13px; padding-left:10px; text-align:left;}
+	.lnb .sub_depth a{display: block;position:relative; font-weight: 500;color: #333;transition:all .3s ease;}
+	.lnb .sub_depth a:hover{color:#2bb9b9; font-weight:700; transition:all .3s ease;}
+	.lnb .sub_depth a:hover:before{position:absolute; content:''; top:50%; left:-15px; width:13px; height:11px; background:url(/Images/icn_lnb.png) no-repeat 50% 50%; transform:translateY(-50%);}
+
+	.bk_box{min-height:681px;}
+
+	/* MainVisual */
+	.main_visual .title{padding-left:30px;}
+	.main_visual .title.sub{padding-left:270px;}
+
+	/* table.list_type1 */
+	table.list_type1.shadow tbody tr:hover{box-shadow:2px 3px 3px #ccc; cursor:pointer;}
+	table.list_type1.shadow tbody tr.related_info:hover{cursor:unset;}
+
+	/* tracking_layer */
+	.tracking_layer{overflow:hidden;}
+	.tracking_layer .tracking_inner{overflow:hidden; height:100%;}
+	.shipping_step .info_box .col{display:table-cell;}
+
+	#SVT_Area{height:800px;}
+
+	/* Common */
+	
+	.file_view{position:relative;}
+}
+
+@media(min-width:1201px){
+	/* Common */
+	.total_menu .login_info{right:674px;}
+	.total_menu .login_info.partner{right:221px;}
+
+	.lnb .sub_depth ul{padding-left:20px;}
+	.lnb > li:nth-child(2) .sub_depth ul{padding-left:15px;}
+	/* Common */
+}
+
+@media (min-width:1501px){
+	/* Common */
+	.total_menu .login_info{right:720px;}
+	.total_menu .login_info.partner{right:287px;}
+	/* Common */
+}

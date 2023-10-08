@@ -1,0 +1,587 @@
+﻿@{
+    ViewBag.Title = "LogisticsTools";
+    ViewBag.Sub = "Tariff";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(1)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(1) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle">안전운임제</h4>
+            </div>
+        </div>
+        <div class="fixed_in type2 logistics">
+            <div class="search_bar">
+                <div class="tariff_option">
+                    <div class="tariff_option_list">
+                        <div class="tariff_list">
+                            <div class="select_cover">
+                                <select class="select" id="select_YearQuarter"></select>
+                            </div>
+                        </div>
+                        <div class="tariff_list">
+                            <div class="select_cover">
+                                <select class="select" id="select_Type">
+                                    <option value="TF" selected>안전운송운임(화주->운송사)</option>
+                                    <option value="CF">안전위탁운임(운송사->차주)</option>
+                                    <option value="IF">=> 운수사업자간운임</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tariff_list">
+                            <div class="select_cover">
+                                <select class="select" id="select_Section">
+                                    <option value="부산북항기점(왕복)" selected>부산북항기점(왕복)</option>
+                                    <option value="부산신항기점(왕복)">부산신항기점(왕복)</option>
+                                    <option value="인천항기점(왕복)">인천항기점(왕복)</option>
+                                    <option value="인천신항기점(왕복)">인천신항기점(왕복)</option>
+                                    <option value="인천항국제여객터미널기점(왕복)">인천항국제여객터미널기점(왕복)</option>
+                                    <option value="광양항기점(왕복)">광양항기점(왕복)</option>
+                                    <option value="평택항기점(왕복)">평택항기점(왕복)</option>
+                                    <option value="울산구항기점(왕복)">울산구항기점(왕복)</option>
+                                    <option value="울산신항기점(왕복)">울산신항기점(왕복)</option>
+                                    <option value="포항항기점(왕복)">포항항기점(왕복)</option>
+                                    <option value="군산항기점(왕복)">군산항기점(왕복)</option>
+                                    <option value="마산항기점(왕복)">마산항기점(왕복)</option>
+                                    <option value="대산항기점(왕복)">대산항기점(왕복)</option>
+                                    <option value="의왕ICD기점(왕복)">의왕ICD기점(왕복)</option>
+                                    <option value="부산북항기점(편도)">부산북항기점(편도)</option>
+                                    <option value="부산신항기점(편도)">부산신항기점(편도)</option>
+                                    <option value="광양항기점(편도)">광양항기점(편도)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tariff_option_list">
+                        @*<div class="tariff_list">
+                                <div class="select_cover">
+                                    <select class="select" id="select_AddrState">
+                                        <option value="">전체(시, 도)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="tariff_list">
+                                <div class="select_cover">
+                                    <select class="select mg_top" id="select_AddrCity">
+                                        <option value="">전체(시, 군, 구)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="tariff_list">
+                                <div class="select_cover">
+                                    <select class="select mg_top" id="select_AddrTownship">
+                                        <option value="">전체(읍, 면, 동)</option>
+                                    </select>
+                                </div>
+                            </div>*@
+                        <div class="tariff_list wd25">
+                            <div class="select_cover">
+                                <select class="select" id="select_AddrState">
+                                    <option value="">전체(시,도)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tariff_list wd25">
+                            <div class="select_cover">
+                                <select class="select mg_top" id="select_AddrCity">
+                                    <option value="">전체(시,군.구)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tariff_list wd25">
+                            <div class="select_cover">
+                                <select class="select mg_top" id="select_AddrTownship">
+                                    <option value="">전체(읍,면,동 - 행정동)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tariff_list wd25">
+                            <div class="select_cover">
+                                <select class="select mg_top" id="select_AddrTownship2">
+                                    <option value="">전체(읍,면,동 - 법정동)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tariff_option search mg_bot" id="Tariff_Search">Search</div>
+                <div class="tariff_option search premium">
+                    <span class="check_type1">
+                        <input type="checkbox" name="tariff" id="tariff_menu">
+                        <label for="tariff_menu" class="switch_label_sub" id="Tariff_Premium">할증옵션</label>
+                    </span>
+                </div>
+            </div>
+            <table class="tariff_add_option">
+                <colgroup>
+                    <col class="w1" />
+                    <col class="w2" />
+                </colgroup>
+                <tbody id="tariff_PrimiumRate_Area">
+                    @*<tr>
+                            <th class="mo">할증</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2" class="pc">할증</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="cntr_type" id="cntr_flexibag" value="20" />
+                                    <label for="cntr_flexibag" class="">플렉시백 컨테이너 20%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="cntr_type" id="cntr_tank" value="30" />
+                                    <label for="cntr_tank" class="">탱크 컨테이너(비위험물) 30%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="cntr_type" id="cntr_reefer" value="30" />
+                                    <label for="cntr_reefer" class="">냉동냉장 컨테이너 30% (편도미적용)</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="rough_road" value="20" />
+                                    <label for="rough_road">험로 및 오지 20%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="dump_cntr" value="25" />
+                                    <label for="dump_cntr">덤프 컨테이너 25%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="holiday" value="20" />
+                                    <label for="holiday">일요일 및 공휴일 20%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="midnight" value="20" />
+                                    <label for="midnight">심야(22:00~06:00) 20%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_N" name="check_type" id="x_ray" value="96000" />
+                                    <label for="x_ray">검색대(X-ray) 통과 할증 : 96,000원</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="bobtail_1" value="100" />
+                                    <label for="bobtail_1">밥테일 1회 왕복 100%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="bobtail_2" value="200" />
+                                    <label for="bobtail_2">밥테일 2회 왕복 200%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="hazardous" value="30" />
+                                    <label for="hazardous">위험물, 유독물, 유해화학물질 30%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="gunpowder" value="100" />
+                                    <label for="gunpowder">화약류 100%</label>
+                                </div>
+                                <div class="select_cover">
+                                    <input type="checkbox" class="PR_Check input_checkbox_Y" name="check_type" id="radioactivity" value="200" />
+                                    <label for="radioactivity">방사성물질 200%</label>
+                                </div>
+                            </td>
+                        </tr>*@
+                </tbody>
+            </table>
+            <div class="btn_tariff">
+                <button type="button"><span class="logistics_popup tariff" onclick="layerPopup('#safe_tariff_pop')">부대조항</span></button>
+            </div>
+            <div class="tariff_result_tbl no_head">
+                <table class="list_type1 tools">
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead id="thead_Tariff_Result">
+                        <tr>
+                            <th>항구</th>
+                            <th><button id="ADDR_STATE" class="">행선지 (시, 도)</button></th>
+                            <th><button id="ADDR_CITY" class="">행선지(시, 군, 구)</button></th>
+                            <th><button id="ADDR_TOWNSHIP" class="">행선지 (읍, 면, 동)</button></th>
+                            <th><button id="TO_NUMBER(DISTANCE)" class="">거리 (km)</button></th>
+                            <th><button id="20FT" class="">20ft (원)</button></th>
+                            <th><button id="40FT" class="">40ft (원)</button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_Tariff_Result">
+                        @*<tr>
+                                <td>부산북항</td>
+                                <td>서울</td>
+                                <td>종로구</td>
+                                <td>종로1234가동</td>
+                                <td>404</td>
+                                <td>725,782</td>
+                                <td>799,169</td>
+                                <td class="mobile_layout" colspan="7">
+                                    <div class="layout_type2">
+                                        <div class="row s1">
+                                            <span>부산북항</span>
+                                        </div>
+                                        <div class="row s3">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>행선지(시, 도)</th>
+                                                        <th>행선지(시, 군, 구)</th>
+                                                        <th>행선지 (읍, 면, 동)</th>
+                                                    </tr>
+                                                    <tr class="has_border_bt">
+                                                        <td>서울</td>
+                                                        <td>종로구</td>
+                                                        <td>종로1234가동</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>거리 (km)</th>
+                                                        <th>20ft (원)</th>
+                                                        <th>40ft (원)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>404</td>
+                                                        <td>725,782</td>
+                                                        <td>799,169</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>*@
+                    </tbody>
+                </table>
+                <div class="no_data" id="Tariff_Nodata">
+                    <span>원하시는 <strong>정보를 검색 해 주세요.</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 컨테이너 적입 이미지 팝업 -->
+    <div class="layer_zone logis" id="safe_tariff_pop">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <h2 class="subtitle02"><span>부대조항</span></h2>
+                    <div class="terms_area">
+                        <div class="scrollbar_layer">
+                            <div class="tariff_prov">
+                                <p>
+                                    1. <strong>(안전운임과 기존 운임과의 관계)</strong> 안전위탁운임은 화물차주에 대한 적정한 소득을 보장하기 위해 지급하는 최소한의 운임이므로,
+                                    안전위탁운임을 이유로 현재 지급하고 있는 운임을 낮게 지급할 수 없다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>2. <strong>(왕복·편도·복화 운송운임)</strong> 컨테이너 품목 안전운임은 다음 각 목을 따른다.</p>
+                                <p>
+                                    가. 모든 운임은 왕복운임을 적용한다. 단, 수도권 화주공장(서울·인천·경기 및 강원 춘천·강원 홍천 지역)에서 작업하며
+                                    공(空)컨테이너의 반납 또는 수령 장소가 의왕ICD인 경우에는 편도운임을 적용한다.
+                                </p>
+                                <p> 나. 할증품목 등 특수컨테이너(냉동·냉장컨테이너, 오픈탑(O/T) 컨테이너, FR컨테이너 등)는 위 '가' 목 단서에 해당하는 경우라도 왕복운임을 적용한다.</p>
+                                <p>
+                                    다. 복화 운송의 경우 운임은 구간 왕복운임의 100%를 추가 적용하며, 복화 비용이 발생하는 경우
+                                    그 비용은 차주와 운수사 간 협의하여 결정한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    3. <strong>(운임 지급원칙)</strong> 당월 운송분 안전위탁운임은 가급적 익월 말일 이내 현금으로 지급한다. 안전위탁운임을
+                                    어음으로 지급하는 경우에는 차주에게 「어음에 의한 하도급대금 지급시의 할인율 고시」에 따른 할인율을 적용하여 어음할인수수료를 별도로 지급하여야 한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    4. <strong>(할증 지급방식)</strong> 사전에 예측 가능한 할증 운임의 경우 운임에 포함하여 지급한다. 다만, 사전에
+                                    예측하지 못한 운임 할증(예: 배차취소료 등)이 발생한 경우에는 운송완료 이후 입증자료를 제출하여 적용한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    5. <strong>(할증률 가산)</strong> 다수의 할증 조항이 동시에 적용되는 운송일 경우 모든 할증률을 합산하여 운임을 지급하되,
+                                    할증률 중 가장 높은 할증률을 적용한 후 나머지 할증률은 50%씩만 적용하며, 최종 합산 할증률의 상한은
+                                    가장 높은 할증률에 50%p를 더한 값으로 한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    6. <strong>(운임 및 운송거리 적용방법)</strong> 본 부대조항에서 적용되는 모든 운임 및 요금은 백원미만을 사사오입하여 적용
+                                    (단, 부가가치세는 제외)하며, 거리(Km)는 소수점 첫째자리에서 사사오입하여 적용한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    7. <strong>(선박이용료 등)</strong> 도선에 따른 선박 이용료, 대형교량 통행료(예: 인천대교, 영종대교, 거가대교 등),
+                                    인천공항 주차료가 발생하는 구간은 운임에 실비를 추가하여 지급한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>8. <strong>(COMBINE 운송)</strong> 20FT 컨테이너를 2개 운송하는 COMBINE 운송운임은 다음 각 목을 따른다.</p>
+                                <p class="list_kr">가. COMBINE 운송 시에는 각각의 컨테이너에 20FT 운임의 100%를 적용한다.</p>
+                                <p class="list_kr">나. 다음의 1)~4) 요건을 모두 충족한 COMBINE 운송 시에는 20FT 컨테이너 운임의 180%를 적용한다.(수입·수출 컨테이너에 동일 적용. 배후단지·환적화물은 제외)</p>
+                                <p class="list_num">1) 컨테이너 2개의 화주가 동일할 것</p>
+                                <p class="list_num">2) 냉동·냉장, 위험물, 탱크 등 할증 대상 컨테이너가 아닐 것</p>
+                                <p class="list_num">3) 컨테이너 2개의 중량 합계가 20톤 미만일 것</p>
+                                <p class="list_num">4) 동일 장소(부두의 경우 동일 블록)에서 상차하고, 동일 장소에서 하차할 것</p>
+                                <p class="list_kr">다. COMBINE 운송 중 상행과 하행 시 운송하는 컨테이너가 20FT 2개, 20FT 1개로 각각 다른 경우에는 다음과 같이 20FT 컨테이너 운임의 140%를 적용한다.</p>
+                                <p class="list_num">1) 20FT 컨테이너 2개 운송 시 : 20FT 컨테이너 각각 왕복운임의 40%</p>
+                                <p class="list_num">2) 20FT 컨테이너 1개 운송 시 : 20FT 컨테이너 왕복운임의 60%</p>
+                                <p class="list_kr">라. COMBINE 운송 중 상행과 하행 시 운송하는 컨테이너가 20FT 컨테이너 2개, 40FT 컨테이너 1개로 각각 다른 경우에는 다음과 같이 운임을 적용한다.</p>
+                                <p class="list_num">1) 20FT 컨테이너 2개 운송 시 : 20FT 컨테이너 각각 왕복운임의 40%</p>
+                                <p class="list_num">2) 40FT 컨테이너 1개 운송 시 : 40FT 컨테이너 왕복운임의 60%</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>9. <strong>(할증 적용방식)</strong> 각종 할증 운임은 다음 각 목을 따른다.</p>
+                                <p class="list_kr">
+                                    가. (<span>중량물 할증</span>) 컨테이너 내품 무게가 40FT 22톤, 20FT 19톤을 기준으로 매 1톤을 초과할 때마다 해당구간 운임의 10%씩을 할증하여 적용한다.
+                                    (예시① : 40FT 23톤 초과 24톤 이하 10%, 24톤 초과 25톤 이하 20% 할증 적용, 예시② : 20FT 20톤 초과 21톤 이하 10%, 21톤 초과 22톤 이하 20% 할증 적용)
+                                    단, 테레프탈산(PTA, Purified Terephthalic Acid) 품목에 대해서는 20FT 21톤을 초과하는 경우 매 1톤을 초과할 때마다 10%씩을 할증하여 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    나. (활대품 할증) ｢도로법｣ 제77조 및 ｢도로법 시행령｣ 제79조에 따라 도로통행에 제한을 받아 허가가 필요한 활대품(폭, 높이, 길이 초과)은
+                                    법령으로 정한 제한 기준으로부터 매 10cm를 초과할 때마다 해당구간 운임의 10%씩을 할증하여 적용한다. 단, 운수사업자가 제공하는 서비스 비용은
+                                    별도로 협의하여 적용한다.
+                                </p>
+                                <p class="list_kr">다. (탱크 컨테이너) ｢컨테이너식이동탱크저장소의 허가업무지침｣에서 정하는 ‘탱크 컨테이너’를 운송하는 경우 해당구간 운임의 30%를 할증하여 적용한다.</p>
+                                <p class="list_kr">
+                                    라. (플렉시백 컨테이너) 플렉시백 컨테이너를 운송하는 경우 액체 화물은 해당구간 운임의 20% 할증을 적용하고,
+                                    가루‧칩 형태의 분말화물은 해당구간 운임의 10% 할증을 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    마. (냉동‧냉장 컨테이너) 냉동·냉장장치가 부착된 컨테이너를 발전기가 부착된 차량으로 운송할 경우 장치의 가동여부와 상관없이
+                                    해당구간 운임의 30%를 할증하여 적용한다. 단, 냉동 발전기가 부착된 샤시를 운수사업자가 제공한 경우 할증의 50%는 운수사업자가 수취하며,
+                                    화주 또는 운수사업자의 냉동·냉장장치 가동 요구에도 불구하고 차주가 냉동·냉장장치를 가동하지 않은 경우에는 할증운임을 적용하지 아니한다.
+                                </p>
+                                <p class="list_kr">바. (통행제한지역) 주간에 화물자동차 운행이 제한되어 허가를 받아야 되는 지역으로 운행 시 해당구간 운임의 30% 이상을 할증하여 적용한다.</p>
+                                <p class="list_kr">
+                                    사. (험로 및 오지) 도로폭이 좁거나 비포장인 경우, 경사가 심하여 운송에 시간과 비용 소요가 많은 경우,
+                                    산간벽지 등 오지의 경우 해당구간 운임의 최소 20% 이상을 할증하여 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    아. (공휴일) 화주의 요청 또는 화주의 요청을 받은 운수사업자의 요청에 따라 ｢관공서의 공휴일에 관한 규정｣ 제2조에서 정하는
+                                    공휴일 및 일요일에 작업 또는 운행할 경우 해당구간 운임의 20%를 할증하여 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    자. (심야) 화주의 요청 또는 화주의 요청을 받은 운수사업자의 요청으로 심야(22:00-06:00)에 작업 또는 운행할 경우
+                                    해당구간 운임의 20%를 할증하여 적용한다. 단, 이 경우 운수사업자와 화주는 확인서를 발급하여야 한다.
+                                </p>
+                                <p class="list_kr">
+                                    차. (대기료) 트랙터의 상‧하차 대기가 발생할 경우 다음의 1)∼2)에서 정하는 시간으로부터 30분을 초과할 때마다 20,000원씩 지급한다.
+                                    대기시간은 화주 또는 부두운영사의 도착요청 시간부터 상·하차 및 송장 발급을 완료한 시간까지로 하고,
+                                    화주의 확인서 또는 부두 운영사의 입‧출입 카드 내역서 등을 증빙자료로 활용한다.
+                                </p>
+                                <p class="list_num">1) 항만 부두의 경우: 40FT와 20FT 공통적으로 1시간</p>
+                                <p class="list_num">2) 화주 문전의 경우: 40FT 3시간, 20FT 2시간</p>
+                                <p class="list_kr">카. (덤프 컨테이너) 덤프컨테이너의 경우 해당구간 운임의 25%를 할증 적용한다.</p>
+                                <p class="list_kr">타. (검색대 통과 할증) 검색대(X-ray)를 통과할 경우 96,000원을 할증하여 적용한다.</p>
+                                <p class="list_kr">
+                                    파. (인천기점 할증) 인천 신항, 인천 구항, 인천국제여객부두 기점 운송의 경우 구간별 운임표 상 안전위탁운임은 20% 할증이 적용되어 있으며,
+                                    구간별 운임표에 기재되지 않은 구간은 거리별 운임표를 적용하되, 안전위탁운임의 20%를 별도로 할증하여야 한다. 창고, 공장 등
+                                    화주 문전에서 인천기점으로 운행한 경우도 동일하게 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    하. (평택기점 할증) 평택항 기점 운송의 경우 구간별 운임표상 안전위탁운임은 18% 할증이 적용되어 있으며,
+                                    구간별 운임표에 기재되지 않은 구간은 거리별 운임표를 적용하되, 안전위탁운임의 18%를 별도로 할증하여야 한다.
+                                    창고, 공장 등 화주문전에서 기점으로 운행한 경우도 동일하게 할증률을 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    거. (위험물 등) ｢물류정책기본법｣제29조 제1항에서 정의하는 위험물, 유해화학물질 등을 운송하는 차량이
+                                    위험물, 유해화학물질 등이 적재된 컨테이너를 운송할 때는 위험물의 종류에 따라 해당구간 운임에 다음과 같이 가산적용한다.
+                                </p>
+                                <p class="list_num">1) 위험물, 유독물, 유해화학물질: 30%</p>
+                                <p class="list_num">2) 화약류: 100%</p>
+                                <p class="list_num">3) 방사성물질: 200%(단, 운수사업자가 제공하는 서비스 비용은 별도로 협의하여 적용한다)</p>
+                                <p class="list_num">
+                                    4) 화주는 적재화물이 위험물(유독물, 유해화학물질)일 경우 스티커 부착 등에 대한 고지의무가 있으며,
+                                    이를 고지하지 않아 발생하는 문제에 대한 책임은 화주에게 있다.
+                                </p>
+                                <p class="list_num">
+                                    5) 위험물이 공장 또는 부두에 직반입할 수 없어 별도의 위험물 장치장에 보관 후 다시 운송을 해야 하는 경우에는
+                                    다시 운송하는 거리의 기본운임과 할증 운임을 추가로 지급한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    10. <strong>(제한차량 운행허가 수수료)</strong> ｢도로법｣제77조 및 ｢도로법 시행령｣제79조와 관련하여 도로통행 제한 높이
+                                    또는 길이의 초과로 발생되는 “제한차량 운행허가” 수수료 등은 화주가 실비 정산하여 지급한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    11. <strong>(밥테일 운송, 온그라운드 운송)</strong> 화주의 요청 또는 화주의 요청을 받은 운수사업자의 요청으로
+                                    화주 문전에 샤시를 장치하고 트랙터만으로 다시 기점으로 돌아오는 밥테일 운송 또는 장비를 사용하여 컨테이너 하차 후
+                                    샤시만 기점으로 돌아오는 온그라운드 운송 시 다음 각 목에 따른 운임을 적용한다.
+                                </p>
+                                <p class="list_kr">가. 1회 왕복 시 해당 구간 왕복 운임의 100%를 적용한다.</p>
+                                <p class="list_kr">나. 2회 왕복 시 해당 구간 왕복 운임의 200%를 적용한다.</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>12. <strong>(배차 취소료)</strong> 배차 취소료는 다음 각 목을 따른다. 다만, 천재지변으로 배차가 취소되는 경우에는 적용하지 아니한다.</p>
+                                <p class="list_kr">가. 배차를 받고 컨테이너 상차를 위한 현장에 도착 후 1시간 이상 경과하여 배차가 취소된 경우 배차된 해당구간 왕복운임의 50%를 지급한다.</p>
+                                <p class="list_kr">나. 컨테이너 상차 후 상·하차지 및 작업지로 이동 중 배차가 취소되는 경우 배차된 해당구간 왕복운임의 70%를 지급한다.</p>
+                                <p class="list_kr">
+                                    다. 컨테이너 상차 후 상·하차지 및 작업지에 도착하여 대기 중 배차가 취소된 경우에는
+                                    배차된 해당구간 왕복 운임의 100%를 지급하며, 과도한 대기가 발생한 경우 대기료는 추가로 협의하여 적용한다.
+                                </p>
+                                <p class="list_kr">
+                                    라. 작업지에서 작업을 완료한 후 컨테이너를 싣고 이동 중 작업지로 회차하여
+                                    상‧하차 작업을 다시 하는 경우는 배차된 해당구간 왕복 운임의 200%를 적용한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    13. <strong>(차주 대상 비용 공제 또는 청구)</strong> 운수사업자는 차주에게 안전위탁운임을 지급한 이후 안전운임 산정 시
+                                    차주 원가항목에 반영된 다음 각 목 외의 비용을 공제하거나 청구할 수 없다. 단, 주선사업자가 중개‧대리하여 화주가 직접 차주에게
+                                    안전운송운임을 지불한 경우에는 차주가 해당 주선사업자에게 주선요금을 납부하여야 한다.
+                                </p>
+                                <p class="list_kr">
+                                    가. 지입료(｢화물자동차 운수사업법｣제40조에 따라 차량과 그 경영의 일부를 위탁하거나
+                                    차량을 현물출자한 사람에게 그 경영의 일부를 위탁한 경우에 한함)
+                                </p>
+                                <p class="list_kr">나. 주차료(주차장을 이용하는 경우에 한함)</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    14. <strong>(샤시 임차료)</strong> 화주가 운수사업자나 화물차주에게서 샤시(CHASSIS)를 임대하는 경우 샤시 임차료는 40FT의 경우
+                                    대당 49,000원/1일, 20FT의 경우 대당 20,000원/1일을 화주가 지급한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>15. <strong>(컨테이너 세척 등)</strong> 컨테이너 세척 및 손상 컨테이너와 관련한 추가 운임은 다음 각 목을 따른다.</p>
+                                <p class="list_kr">가. 컨테이너 세척 발생으로 차주가 세척장까지 운행 또는 대기 등을 할 경우 원인 제공자(선사)는 건당 20,000원의 셔틀운임을 지급한다.</p>
+                                <p class="list_kr">
+                                    나. (손상 컨테이너 셔틀운임) 항내에서 손상된 컨테이너를 교체하기 위해
+                                    대기 및, 상ㆍ하차, 운송 등이 발생하는 경우 원인제공자(선사 또는 화주)는 건당 20,000원의 셔틀운임을 지급한다.
+                                </p>
+                                <p class="list_kr">
+                                    다. (손상 컨테이너 교체) 화주 문전에 도착 후 컨테이너 손상이 발견되어 회차 및 컨테이너 교체가 이루어지는 경우
+                                    차주에게 상하차비 등 일체의 비용 전가를 시킬 수 없으며, 선사는 해당구간 왕복운임의 80%를 지급하여야 한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    16. <strong>(공차 운행)</strong> 화주 또는 운수사업자의 요구로 10km 이상의 거리를 공차로 운행할 경우
+                                    공차 운행거리에 해당하는 왕복운임의 50%를 지급하여야 한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    17. <strong>(과적 단속)</strong> 송장에 기입된 중량과 실제 중량의 차이로 과적에 단속되거나, 화주의 적재 잘못으로
+                                    축중량 과적에 단속되어 회차할 경우 화주가 운수사를 통하여 기존 배차구간 운임의 100%를 차주에게 지급하며 과태료도 화주가 부담한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    18. <strong>(포지셔닝)</strong> 포지셔닝(내륙 컨테이너 기지와 항만 간 공컨테이너 공급 운송)이 발생하는 경우
+                                    해당구간 왕복운임의 50%를 적용하고, 공차운행 발생 시 부대조항 16호에 따른 운임을 적용한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    19. <strong>(셔틀 운송)</strong> 화주 또는 운수사업자의 요구에 의해 자가CY, 철도CY, 사내 야적장 간
+                                    셔틀 운송이 발생하는 경우 운행거리에 따른 왕복운임을 지급한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>20. <strong>(철도 CY 직송 운송)</strong> 철도 CY 물량을 화물자동차로 직송 운송하는 경우 운행거리에 따른 왕복운임의 50%를 적용한다.</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>21. <strong>(45FT 컨테이너)</strong> 45FT 컨테이너의 '안전위탁운임 및 안전운송운임'(이하 "운임" 이라 한다)은 40FT 컨테이너 운임의 112.5%를 적용한다.</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    22. <strong>(비규격 컨테이너)</strong> 본 고시에서 정하지 않은 기타 비규격 컨테이너
+                                    (20FT, 40FT, 45FT를 제외한 컨테이너) 운임은 화주, 운수사업자, 차주 간 협의하여 결정한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    23. <strong>(새로운 서비스 적용)</strong> 본 운임산정 시 누락된 항목 또는 새로운 서비스가 발생한 경우
+                                    항목 신설 여부와 금액을 안전운임위원회의 승인을 받아 적용한다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>24. <strong>(고용보험)</strong> 안전운임 적용 화물차주 대상 고용보험제도가 시행될 경우에는 운송원가에 고용보험료를 반영하여 안전운임을 변경고시한다.</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>
+                                    25. <strong>(인프라 운영비)</strong> 화주 또는 선사의 요구에 따라 자가CY, 철송장 등을 설치 및 운영할 경우
+                                    운영비 등은 화주 또는 선사가 부담하며 차주에게 상‧하차비 등을 청구할 수 없다.
+                                </p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>26. <strong>(차주의 업무범위)</strong> 차주에게 수행시킬 수 없는 업무는 다음 각 목와 같다.</p>
+                                <p class="list_kr">가. FR(Flat Rack) 컨테이너의 양옆 벽면을 접거나 펴는 작업</p>
+                                <p class="list_kr">나. 컨테이너에 부착된 위험물 스티커 제거 작업</p>
+                                <p class="list_kr">다. 컨테이너 검사 및 청소작업</p>
+                                <p class="list_kr">라. 오픈탑 컨테이너(O/T) 천막 개폐 및 설치 작업</p>
+                                <p class="list_kr">마. 그 외 법적으로 차주가 수행해서는 안되는 업무</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>27. <strong>(갈등 조정)</strong> 부대조항과 관련하여 갈등 및 혼란이 초래될 경우 국토교통부 주관 하에 안전운임위원회에서의 협의를 통해 조정할 수 있다.</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>28. <strong>(부가가치세)</strong> 본 부대조항이 정한 모든 금액은 부가가치세가 포함되지 않은 금액이다.</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>29. <strong>(거리 측정방식)</strong> 구간별 거리표의 거리 측정방식은 다음 각 목과 같다.</p>
+                                <p class="list_kr">가. 기‧종점 간 구간거리에 터미널 내 운송거리를 더하여 측정한다.</p>
+                                <p class="list_kr">
+                                    나. 기‧종점 간 구간거리는 대표 터미널에서 종점이 위치한 읍‧면‧동 주민센터까지의 거리로,
+                                    거리 측정은 네이버 지도(거리우선, 차종 5종, 4축 이상, 특수화물차 적용)를 이용하여 오전 07시에 측정하는 것을 기준으로 한다.
+                                </p>
+                                <p class="list_kr">다. 본 운임에 기‧종점이 고시되지 않은 구간의 운임은 국토부에서 공개하는 구간별 거리표와 본 운임의 거리(Km)별 운임표를 적용한다.</p>
+                                <p class="list_kr">라. 항만별 대표터미널 및 터미널 내 운송거리는 다음과 같다.</p>
+                                <p class="list_num">1) 부산북항(신선대터미널)</p>
+                                <p class="list_num">2) 부산신항(HMMPSA 신항만, HPNT) : 3.3km</p>
+                                <p class="list_num">3) 인천항(인천컨테이너터미널, ICT) : 1km</p>
+                                <p class="list_num">4) 인천신항(한진인천컨테이너터미널) : 2km</p>
+                                <p class="list_num">5) 인천항국제여객터미널 : 2km</p>
+                                <p class="list_num">6) 광양항(한국국제터미널, 허치슨) : 4km</p>
+                                <p class="list_num">7) 평택항(평택컨테이너터미널) : 2km</p>
+                                <p class="list_num">8) 울산구항 : 1km</p>
+                                <p class="list_num">9) 울산신항 : 2km</p>
+                                <p class="list_num">10) 포항항 : 1.5km</p>
+                                <p class="list_num">11) 군산항 : 2km</p>
+                                <p class="list_num">12) 마산항 : 1.2km</p>
+                                <p class="list_num">13) 대산항 : 1km</p>
+                                <p class="list_num">14) 의왕ICD(제1터미널) : 2km</p>
+                            </div>
+                            <div class="tariff_prov">
+                                <p>30. <strong>(유가 반영)</strong> 안전운임에 적용되는 유가는 다음 각 목과 같다.</p>
+                                <p class="list_kr">
+                                    가. 2021년 1월 26일부터 2021년 4월 25일까지(3개월)의 평균 유가가 이 고시의 안전운임 산정 시 적용된
+                                    2020년 10월 26일부터 2021년 1월 25일까지(3개월)의 평균 유가보다 50원 이상 인상되거나 인하될 경우, 변경된 평균 유가에 따라
+                                    안전운임을 변경 고시하며, 변경된 안전운임의 시행 기간은 안전운임위원회에서 정한다.
+                                </p>
+                                <p class="list_kr">
+                                    나. 2021년 4월 26일부터 2021년 7월 25일까지(3개월)의 평균유가가 2021년 7월 25일 시점의 안전운임에 적용된
+                                    평균유가보다 50원 이상 인상되거나 인하될 경우 변경된 평균 유가에 따라 안전운임을 변경 고시하며, 변경된 안전운임의 시행 기간은 안전운임위원회에서 정한다.
+                                </p>
+                                <p class="list_kr">
+                                    다. 2021년 7월 26일부터 2021년 10월 25일까지(3개월)의 평균 유가가 2021년 10월 25일 시점의 안전운임에 적용된
+                                    평균유가보다 50원 이상 인상되거나 인하될 경우 변경된 평균 유가에 따라 안전운임을 변경 고시하며, 변경된 안전운임의 시행 기간은 안전운임위원회에서 정한다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btn_check" onclick="layerClose('#safe_tariff_pop');">확인</button>
+                    </div>
+                    <button type="button" class="close tariff" onclick="layerClose('#safe_tariff_pop');"><span class="blind">닫기</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+    <!-- //컨테이너 적입 이미지 팝업 -->
+    @Scripts.Render("~/Scripts/js/LogisticsTools/Tariff.js")
+    @Scripts.Render("~/Scripts/API/Tariff.js")
+    }

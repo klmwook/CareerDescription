@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "";
+}
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>E2E 관리자 로그인</title>
+    @Styles.Render("~/Content/fonts.css")
+    @Styles.Render("~/Content/layout.css")
+    @Styles.Render("~/Content/media.css")
+    @Styles.Render("~/Content/admin.css")
+    @Styles.Render("~/Content/API/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/API/font-awesome/css/font-awesome.min.css")
+    @Styles.Render("~/Content/API/libs.common.min.css")
+    @Styles.Render("~/Content/API/just.css")
+
+    @Scripts.Render("~/Scripts/API/jquery-2.2.3.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.autocomplete.js")
+    @Scripts.Render("~/Scripts/API/ion.rangeSlider.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.datetimepicker.full.js")
+    @Scripts.Render("~/Scripts/Pub/common.js")
+    @*@Scripts.Render("~/Scripts/js/common/Comm.js")*@
+    @*@Scripts.Render("~/Scripts/js/common/_layout.js")*@
+    @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+    @Scripts.Render("~/Scripts/API/scrolloverflow.js")
+    @Scripts.Render("~/Scripts/API/bluebird.min.js")    
+    @Scripts.Render("~/Scripts/js/Admin/_login.js")
+    @Scripts.Render("~/Scripts/js/common/KeyEvent.js")    
+
+    <script type="text/javascript">
+        @*var _Domain = '@System.Configuration.ConfigurationManager.AppSettings["Domain"]';*@
+        var _HomeUrl = window.location.origin;
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/themes/base/jquery-ui.css">
+</head>
+
+<body style="background-color:#f8f8f8;">
+    <header id="header" style="display: block;" class="">
+        <div class="fixed_in type1">
+            <div class="top_row">
+                <h1 class="logo"><a href="/"></a></h1>
+            </div>
+        </div>
+    </header>
+    <div class="sub_visual">
+        @*<div class="inner">
+        </div>*@
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        로그인
+                    </div>
+                    <div class="panel-body">
+                        <form id="loginForm">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="아이디입력" id="m_id" name="m_id" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                                </div>
+                                <p>(아이디/비밀번호 분실시 관리자에게 문의하세요)</p>
+                                <a href="javascript:void(0);" class="btn btn-lg btn-success btn-block" id="login_submit">Login</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

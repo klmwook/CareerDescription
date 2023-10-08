@@ -1,0 +1,726 @@
+﻿@{
+    ViewBag.Title = "LogisticsTools";
+    ViewBag.Sub = "Incoterms";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(1)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(5) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle">INCOTERMS</h4>
+            </div>
+        </div>
+        <div class="fixed_in type2 logistics">
+            <div class="logi_tab">
+                <table class="logi_table">
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="javascript:void(0)" class="on">전체</a>
+                                <a href="javascript:void(0)">EXW</a>
+                                <a href="javascript:void(0)">FCA</a>
+                                <a href="javascript:void(0)">FAS</a>
+                                <a href="javascript:void(0)">FOB</a>
+                                <a href="javascript:void(0)">CFR</a>
+                                <a href="javascript:void(0)">CIF</a>
+                                <a href="javascript:void(0)">CPT</a>
+                                <a href="javascript:void(0)">CIP</a>
+                                <a href="javascript:void(0)">DAP</a>
+                                <a href="javascript:void(0)">DPU</a>
+                                <a href="javascript:void(0)">DDP</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- inco_ALL -->
+            <div class="logi_panel on" id="inco_ALL">
+                <h2 class="inco_title"><span><strong>INCOTERMS</strong></span></h2>
+                <div class="inco_explane">
+                    <p class="pc">
+                        INCOTERMS의 정의<br />
+                        지구상에는 200개가 넘는 나라들의 국가간 거래(무역)가 일어나고 있으며, 또한 각 거래 국가들의 역사, 문화와 상관습 등이 다르기 때문에
+                        거래에 관한 규칙을 통일해야 할 필요성이 있었다. 이와 관련하여 국제상업회의소 (ICC : International Chamber of Commerce)에서
+                        INCOTERMS를 제정하여 국가간의 거래 중 물품을 주고 받는 과정에서 생길 수 있는 위험과 비용의 한계를 정하였다.
+                    </p>
+                    <p class="pc">
+                        INCOTERMS 2020의 11가지 규칙의 분류<br />
+                        < RULLS FOR ANY MODE OR MODES OF TRANSPORT : 단일 또는 복수의 운송방식에 사용 가능한 규칙 ><br />
+                        1. EXW - Ex Works(공장인도)<br />
+                        2. FCA - Free Carrier(운송인 인도)<br />
+                        3. CPT - Carriage Paid To(운송비 지급 인도)<br />
+                        4. CIP - Carriage and Inusrance Paid To(운송비, 보험료 지급 인도)<br />
+                        5. DAP - Delivered At Place(도착장소인도)<br />
+                        6. DPU - Delivered at Place Unloaded(도착지 양하인도)<br />
+                        7. DDP - Delivered Duty Paid(관세 지급인도)<br /><br />
+                        < RULES FOR SEA AND INLAND WATERWAY TRANSPORT : 해상운송과 내수로 운송에 사용 가능한 규칙 ><br />
+                        8. FAS - Free Alongside Ship(선측인도)<br />
+                        9. FOB - Free On Board(본선인도)<br />
+                        10. CFR - Cost and Freight(운임 포함인도)<br />
+                        11. CIF - Cost Insurance and Freight(운임, 보험료 포함 인도)<br />
+                    </p>
+                </div>
+                <div class="color_list">
+                    <div class="list all">
+                        <div class="all_color"></div><span>복합운송 조건</span>
+                    </div>
+                    <div class="list sea">
+                        <div class="sea_color"></div><span>해상운송 조건</span>
+                    </div>
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                    <div class="list insurance">
+                        <div class="insurance_color"></div><span>Insurance</span>
+                    </div>
+                </div>
+                <div class="inco_bar_area">
+                    <div class="left_area pc">
+                        <div class="inco_title_sub">
+                            <div class="mode all"><p class="inco_title_sub_big">EXW</p><p class="pc">Ex Works</p></div>
+                            <div class="mode all"><p class="inco_title_sub_big">FCA</p><p class="pc">Free Carrier</p></div>
+                            <div class="mode sea"><p class="inco_title_sub_big">FAS</p><p class="pc">Free Alongside Ship</p></div>
+                            <div class="mode sea"><p class="inco_title_sub_big">FOB</p><p class="pc">Free On Board</p></div>
+                            <div class="mode sea"><p class="inco_title_sub_big">CFR</p><p class="pc">Cost and Freight</p></div>
+                            <div class="mode sea big"><p class="inco_title_sub_big">CIF</p><p class="pc">Cost, Insurance and Freight</p></div>
+                            <div class="mode all"><p class="inco_title_sub_big">CPT</p><p class="pc">Carriage Paid To</p></div>
+                            <div class="mode all big"><p class="inco_title_sub_big">CIP</p><p class="pc">Carriage and Insurance Paid to</p></div>
+                            <div class="mode all"><p class="inco_title_sub_big">DAP</p><p class="pc">Delivered At Place</p></div>
+                            <div class="mode all"><p class="inco_title_sub_big">DPU</p><p class="pc">Delivered at Place Unloaded</p></div>
+                            <div class="mode all"><p class="inco_title_sub_big">DDP</p><p class="pc">Delivered Duty Paid</p></div>
+                        </div>
+                    </div>
+                    <div class="right_area">
+                        <div class="inco_bar">
+                            <div class="inco_img pc"><span class="hidden">INCOTERMS Image</span></div>
+                            <div class="EXW standard">
+                                <div class="bar_title all mo"><strong>EXW</strong>Ex Works</div>
+                                <div class="EXW cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="EXW risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="FCA standard">
+                                <div class="bar_title all mo"><strong>FCA</strong>Free Carrier</div>
+                                <div class="FCA cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="FCA risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="FAS standard">
+                                <div class="bar_title sea mo"><strong>FAS</strong>Free Alongside Ship</div>
+                                <div class="FAS cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="FAS risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="FOB standard">
+                                <div class="bar_title sea mo"><strong>FOB</strong>Free On Board</div>
+                                <div class="FOB cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="FOB risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="CFR standard">
+                                <div class="bar_title sea mo"><strong>CFR</strong>Cost and Freight</div>
+                                <div class="CFR cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="CFR risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="CIF standard">
+                                <div class="bar_title sea mo"><strong>CIF</strong>Cost, Inusrance and Freight</div>
+                                <div class="CIF cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="CIF risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="CIF insurance bar">
+                                    <div class="buyer"></div>
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer"></div>
+                                </div>
+                            </div>
+                            <div class="CPT standard">
+                                <div class="bar_title all mo"><strong>CPT</strong>Carriage Paid To</div>
+                                <div class="CPT cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="CPT risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="CIP standard">
+                                <div class="bar_title all mo"><strong>CIP</strong>Carriage and Insurance Paid to</div>
+                                <div class="CIP cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="CIP risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="CIP insurance bar">
+                                    <div class="buyer"></div>
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer"></div>
+                                </div>
+                            </div>
+                            <div class="DAP standard">
+                                <div class="bar_title all mo"><strong>DAP</strong>Delivered At Place</div>
+                                <div class="DAP cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="DAP risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="DPU standard">
+                                <div class="bar_title all mo"><strong>DPU</strong>Delivered at Place Unloaded</div>
+                                <div class="DPU cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="DPU risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="DDP standard">
+                                <div class="bar_title all mo"><strong>DDP</strong>Delivered Duty Paid</div>
+                                <div class="DDP cost bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                                <div class="DDP risk bar">
+                                    <div class="seller">SELLER</div>
+                                    <div class="buyer">BUYER</div>
+                                </div>
+                            </div>
+                            <div class="gray_bar pc"></div>
+                            <div class="gray_bar pc"></div>
+                            <div class="gray_bar pc"></div>
+                            <div class="gray_bar pc"></div>
+                            <div class="gray_bar pc"></div>
+                            <div class="gray_bar pc"></div>
+                            <div class="gray_bar pc"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //inco_ALL -->
+            <!-- inco_EXW -->
+            <div class="logi_panel" id="inco_EXW">
+                <h2 class="inco_title"><span><strong>EXW</strong> : Ex Works</span></h2>
+                <div class="inco_explane">
+                    <p>Ex Works (공장인도조건)</p>
+                    <p>매도인이 물품을 지정장소에서 매수인의 처분 하에 놓았을 때 매도인이 인도하는 것으로 되는 것을 의미한다.</p>
+                    <p>모든 운송방식에서 사용 가능하며, 매수인이 운송계약을 체결한다.</p>
+                    <p>
+                        매수인은 물품 운송과 수출통관, 통과 국, 수입통관에서 관세 및 세금을 부담한다. (매수인은 수출통관이 곤란한 경우는 FCA가 적합하다)
+                    </p>
+                    <p>
+                        매도인 / 매수인 모두 보험계약 체결 의무는 없으나, EXW은 매수인이 배송 과정에서 발생하는 거의 모든 비용과
+                        위험을 감수하는 조건으로 매수인이 상품을 확인한 후에는 물품 적재 작업을 포함한 모든 책임이 매수인에게 이전된다.
+                    </p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub EXW">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="EXW cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="EXW risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_EXW -->
+            <!-- inco_FCA -->
+            <div class="logi_panel" id="inco_FCA">
+                <h2 class="inco_title"><span><strong>FCA</strong> : Free Carrier</span></h2>
+                <div class="inco_explane">
+                    <p>Free Carrier (운송인 인도조건)</p>
+                    <p>매도인의 영업구내인 경우 매수인이 제공한 운송수단에 적재된 때, 영업구내가 아닌 경우 매도인의 운송수단에 실린 채 매수인의 운송인의 처분에 놓인 때 매도인이 물품을 인도하는 것을 의미한다.</p>
+                    <p>모든 운송방식에서 사용 가능하며, 매수인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하고 매수인이 통과국 및 수입국의 통관의무와 비용을 부담한다.</p>
+                    <p>매도인/매수인 모두 보험계약 체결의무는 없으며, 매도인은 물품이 인도된 때까지 물품에 관한 모든 비용을 부담한다.</p>
+                    <p>매도인은 자신의 비용으로 물품이 인도되었다는 통상적인 증거를 제공하고, 선적 선하증권이 필요한 경우 매수인의 비용으로 매도인에게 발행하도록 운송인에게 지시한다.</p>
+                    <p>당사자들은 지정인도장소 내의 지점을 가급적 명확하게 명시하는 것이 바람직하다. 그러한 지점에서 위험이 매수인에게 이전하기 때문이다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub FCA">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="FCA cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="FCA risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_FCA -->
+            <!-- inco_FAS -->
+            <div class="logi_panel" id="inco_FAS">
+                <h2 class="inco_title"><span><strong>FAS</strong> : Free Alongside Ship</span></h2>
+                <div class="inco_explane">
+                    <p>Free Alongside Ship (선측 인도조건)</p>
+                    <p>물품이 지정 선적항에서 매수인에 의하여 지정된 본선의 선측(e.g. 부두 혹은 바지선)에 놓이는 때에 매도인이 인도하는 것을 의미한다.</p>
+                    <p>선박 운송에서만 사용 가능하며, 매수인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하고 매수인이 통과국 및 수입국의 통관의무와 비용을 부담한다.</p>
+                    <p>매도인/매수인 모두 보험계약 체결의무는 없다.</p>
+                    <p>매도인은 물품이 인도된 때까지 물품에 관한 모든 비용을 부담한다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub FAS">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="FAS cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="FAS risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_FAS -->
+            <!-- inco_FOB -->
+            <div class="logi_panel" id="inco_FOB">
+                <h2 class="inco_title"><span><strong>FOB</strong> : Free On Board</span></h2>
+                <div class="inco_explane">
+                    <p>Free On Board (본선 인도조건)</p>
+                    <p>매도인이 지정 선적항에서 매수인이 지정한 본선의 갑판상에 물품을 두었을 때 화물이 인도되는 것을 의미한다.</p>
+                    <p>물품의 멸실 또는 손상의 위험은 물품이 본선에 적재된 때에 이전하며 매수인은 그러한 시점 이후의 모든 비용을 부담한다.</p>
+                    <p>선박 운송에서만 사용 가능하며, 매수인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하고 매수인이 통과국 및 수입국의 통관 의무와 비용을 부담한다.</p>
+                    <p>매도인 / 매수인 모두 보험계약 체결의무는 없으나, FOB 조건은 매도인은 물품이 선박에 인도될 때까지의 모든 비용과 위험을 부담하고 매수인은 물품이 선박에 탑재된 순간부터 모든 책임을 지게 된다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub FOB">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="FOB cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="FOB risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_FOB -->
+            <!-- inco_CFR -->
+            <div class="logi_panel" id="inco_CFR">
+                <h2 class="inco_title"><span><strong>CFR</strong> : Cost and Freight</span></h2>
+                <div class="inco_explane">
+                    <p>Cost and Freight (운임포함인도)</p>
+                    <p>매도인이 자신이 계약한 선적항의 본선에 물품을 적재한 때 또는 그렇게 인도된 물품을 조달한 때 매도인이 물품을 매수인에게 인도한 것을 의미한다. (위험의 분기점 ≠ 비용의 분기점)</p>
+                    <p>물품의 멸실 또는 손상의 위험은 물품이 본선에 적재된 때에 이전한다.</p>
+                    <p>선박 운송에서만 사용 가능하며, 매도인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하고 매수인이 통과국 및 수입국의 통관 의무와 비용을 부담한다.</p>
+                    <p>매도인 / 매수인 모두 보험계약 체결의무는 없다.</p>
+                    <p>매도인은 FOB와 동일한 책임을 지지만, 물품이 인도된 때까지 물품에 대한 모든 비용을 부담해야 하며 매수인은 물품이 선박에 탑재된 순간부터 모든 책임을 인수하게 된다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub CFR">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="CFR cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="CFR risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_CFR -->
+            <!-- inco_CIF -->
+            <div class="logi_panel" id="inco_CIF">
+                <h2 class="inco_title"><span><strong>CIF</strong> : Cost, Insurance and Freight</span></h2>
+                <div class="inco_explane">
+                    <p>Cost, Insurance and Freight (운송인 인도조건)</p>
+                    <p>매도인의 영업구내인 경우 매수인이 제공한 운송수단에 적재된 때, 영업구내가 아닌 경우 매도인의 운송수단에 실린 채 매수인의 운송인의 처분에 놓인 때 매도인이 물품을 인도하는 것을 의미한다.</p>
+                    <p>모든 운송방식에서 사용 가능하며, 매수인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하고 매수인이 통과국 및 수입국의 통관의무와 비용을 부담한다.</p>
+                    <p>매도인/매수인 모두 보험계약 체결의무는 없으며, 매도인은 물품이 인도된 때까지 물품에 관한 모든 비용을 부담한다.</p>
+                    <p>매도인은 자신의 비용으로 물품이 인도되었다는 통상적인 증거를 제공하고, 선적 선하증권이 필요한 경우 매수인의 비용으로 매도인에게 발행하도록 운송인에게 지시한다.</p>
+                    <p>당사자들은 지정인도장소 내의 지점을 가급적 명확하게 명시하는 것이 바람직하다. 그러한 지점에서 위험이 매수인에게 이전하기 때문이다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                    <div class="list insurance">
+                        <div class="insurance_color"></div><span>Insurance</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub CIF">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="CIF cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="CIF risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="CIF insurance bar">
+                        <div class="buyer"></div>
+                        <div class="seller">SELLER</div>
+                        <div class="buyer"></div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_CIF -->
+            <!-- inco_CPT -->
+            <div class="logi_panel" id="inco_CPT">
+                <h2 class="inco_title"><span><strong>CPT</strong> : Carriage Paid To</span></h2>
+                <div class="inco_explane">
+                    <p>Carriage Paid To (운임지급 인도조건)</p>
+                    <p>
+                        매도인이 합의된 장소(당사자 간에 이러한 장소의 합의가 있는 경우)에서 물품을 자신이 지정한 운송인이나
+                        제3자에게 인도하고 매도인이 물품을 지정 목적지까지 운송하는 데 필요한 계약을 체결하고 그 운송 비용을 부담하여야 하는 것을 의미한다.
+                        (위험의 분기점 ≠ 비용의 분기점)
+                    </p>
+                    <p>모든 운송방식에서 사용 가능하며, 매도인이 운송계약 체결의무를 가진다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하고 매수인이 통과국 및 수입국의 통관의무와 비용을 부담한다.</p>
+                    <p>매도인은 물품이 인도된 때까지 물품에 관한 모든 비용을 부담한다.</p>
+                    <p>매도인 / 매수인 모두 보험계약 체결의무는 없다.</p>
+                    <p>한 가지 조건을 제외하고는 FCA와 동일한 매도인 책임으로 매도인이 배송비를 부담하고 FCA와 마찬가지로 수출통관은 매도인이 진행한다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub CPT">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="CPT cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="CPT risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_CPT -->
+            <!-- inco_CIP -->
+            <div class="logi_panel" id="inco_CIP">
+                <h2 class="inco_title"><span><strong>CIP</strong> : Carriage and Insurance Paid to</span></h2>
+                <div class="inco_explane">
+                    <p>Carriage and Insurance Paid to (운송비 및 보험료 지급인도)</p>
+                    <p>
+                        매도인이 합의된 장소(당사자 간에 이러한 장소의 합의가 있는 경우)에서 물품을 자신이 지정한 운송인이나
+                        제3자에게 인도하고 매도인이 물품을 지정 목적지까지 운송하는 데 필요한 운송과 보험 계약을 체결하고
+                        그 운송과 보험 비용을 부담하여야 하는 것을 의미한다. (위험의 분기점 ≠ 비용의 분기점)
+                    </p>
+                    <p>모든 운송방식에서 사용 가능하며, 매도인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관 의무와 비용을 부담하며 매수인이 통과국 및 수입국의 통관 의무와 비용을 부담한다.</p>
+                    <p>매도인은 물품이 인도된 때까지 물품에 대한 모든 비용을 부담한다.</p>
+                    <p>매도인이 보험계약 체결의무를 가지고 있다. (ICC(A), 매매계약 통화로 대금의 110% 이상 부보)</p>
+                    <p>한 가지 조건을 제외하고는 CPT와 동일한 매도인 책임으로 매도인이 물건에 대한 보험료 지불 조건을 가지고 있다. 다만 매수인이 보다 포괄적인 보험을 원할 경우에는 매수인이 직접 보험 부보하여야 한다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                    <div class="list insurance">
+                        <div class="insurance_color"></div><span>Insurance</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub CIP">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="CIP cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="CIP risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="CIP insurance bar">
+                        <div class="buyer"></div>
+                        <div class="seller">SELLER</div>
+                        <div class="buyer"></div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_CIP -->
+            <!-- inco_DAP -->
+            <div class="logi_panel" id="inco_DAP">
+                <h2 class="inco_title"><span><strong>DAP</strong> : Delivered At Place</span></h2>
+                <div class="inco_explane">
+                    <p>Delivered At Place (목적지 인도조건)</p>
+                    <p>물품이 지정 목적지에서 도착 운송 수단에 실린 채 양하 준비된 상태로 매수인의 처분 하에 놓이는 때에 매도인이 인도하는 것을 의미한다.</p>
+                    <p>모든 운송방식에서 사용 가능하며, 매도인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관과 통과국 통관에 관한 의무와 비용을 부담하고, 매수인이 수입통관 의무를 부담한다.</p>
+                    <p>매도인 / 매수인 모두 보험계약 체결의무는 없으나, 매도인은 물품이 인도된 때까지 물품에 관한 모든 비용을 부담한다. (지정목적지에서의 양하 비용은 매수인이 부담한다.)</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub DAP">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="DAP cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="DAP risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_DAP -->
+            <!-- inco_DPU -->
+            <div class="logi_panel" id="inco_DPU">
+                <h2 class="inco_title"><span><strong>DPU</strong> : Delivered at Place Unloaded</span></h2>
+                <div class="inco_explane">
+                    <p>Delivered at Place Unloaded (도착지 양하인도조건)</p>
+                    <p>물품이 지정 목적지 또는 지정 목적지 내에 합의된 지접에서 도착운송수단으로부터 양하된 상태로 매수인의 처분 하에 놓인 때에 매도인이 인도하는 것을 의미한다.</p>
+                    <p>모든 운송방식에서 사용 가능하며, 매도인이 운송계약을 체결한다.</p>
+                    <p>매도인은 수출통관과 통과국 통관에 대한 의무와 비용을 부담하고, 매수인이 수입통관 의무를 부담한다.</p>
+                    <p>매도인 / 매수인 모두 보험계약 체결의무는 없으나, 매도인은 양하해서 인도할 때까지 비용을 부담한다. (지정목적지에서의 양하 비용은 매도인이 부담한다.)</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub DPU">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="DPU cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="DPU risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_DPU -->
+            <!-- inco_DDP -->
+            <div class="logi_panel" id="inco_DDP">
+                <h2 class="inco_title"><span><strong>DDP</strong> : Delivered Duty Paid</span></h2>
+                <div class="inco_explane">
+                    <p>Delivered Duty Paid (관세지급 인도조건)</p>
+                    <p>물품이 지정 목적지 또는 지정 목적지 내에 합의된 지점에서 수입통관 후 도착운송수단에 실어둔 채 양하 준비된 상태로 매수인의 처분 하에 놓인 때 매도인이 인도하는 것을 의미한다.</p>
+                    <p>모든 운송방식에서 사용 가능하며, 매도인이 운송계약을 체결한다.</p>
+                    <p>매도인이 수출국, 통과국, 수입국의 통관의무를 부담한다. (매도인이 수입통관하기 곤란한 경우에는 DAP 또는 DPU가 적합하다.)</p>
+                    <p>매도인 / 매수인 모두 보험계약 체결의무는 없으나, 매도인은 물품이 인도된 때까지 물품에 관한 모든 비용을 부담한다. (지정목적지에서의 양하 비용은 매수인이 부담한다.)</p>
+                    <p>매도인이 배송 과정에서 발생하는 거의 모든 책임, 비용과 위험을 부담하는 조건이며 매도인은 물품 하역 준비가 되었는지 확인해야 하고, 수출입에 관한 사항을 책임져야 하며, 모든 관세를 지불해야 한다.</p>
+                </div>
+                <div class="color_list">
+                    <div class="list cost">
+                        <div class="cost_color"></div><span>Cost</span>
+                    </div>
+                    <div class="list risk">
+                        <div class="risk_color"></div><span>Risk</span>
+                    </div>
+                </div>
+                <div class="inco_bar sub DDP">
+                    <div class="inco_img"><span class="hidden">INCOTERMS Image</span></div>
+                    <div class="DDP cost bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="DDP risk bar">
+                        <div class="seller">SELLER</div>
+                        <div class="buyer">BUYER</div>
+                    </div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                    <div class="gray_bar short"></div>
+                </div>
+            </div>
+            <!-- //inco_DDP -->
+        </div>
+    </div>
+}

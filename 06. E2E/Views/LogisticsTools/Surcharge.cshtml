@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "LogisticsTools";
+    ViewBag.Sub = "Surcharge";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(1)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(2) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle">부대비용</h4>
+            </div>
+        </div>
+        <div class="fixed_in type2 logistics">
+            <div class="surcharge_option">
+                @*<div class="surcharge_option_type">
+                        <div class="surcharge_radio middle">
+                            <input type="radio" name="Surcharge_shippingType" id="unit_shipping" value="shipping" checked="checked">
+                            <label for="unit_shipping" class="switch_label surcharge">선사</label>
+                        </div>
+                        <div class="surcharge_radio middle">
+                            <input type="radio" name="Surcharge_shippingType" id="unit_ferry" value="ferry">
+                            <label for="unit_ferry" class="switch_label surcharge">훼리</label>
+                        </div>
+                    </div>*@
+                <div class="surcharge_option_list">
+                    <div class="surcharge_list">
+                        <div class="select_cover wd100">
+                            <select class="select" id="select_Surcharge_Bound" name="select_Surcharge_Bound">
+                                <option value="" selected>BOUND</option>
+                                <option value="O">수출</option>
+                                <option value="I">수입</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="surcharge_list">
+                        <div class="select_cover wd100">
+                            <select class="select" id="select_surcharge_port" name="select_surcharge_port"></select>
+                        </div>
+                    </div>
+                    <div class="surcharge_list">
+                        <div class="select_cover wd100">
+                            <select class="select" id="select_Surcharge_CntrType" name="select_Surcharge_CntrType">
+                                <option value="">컨테이너 타입</option>
+                                <option value="D">DRY</option>
+                                <option value="DC">DANGEROUS CARGO</option>
+                                <option value="R">REEFER</option>
+                                <option value="OT">OPEN TOP</option>
+                                <option value="FR">FLAT RACK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="surcharge_list">
+                        <div class="select_cover wd100">
+                            <select class="select" name="select_CountryList">
+                                <option value="">국가 옵션</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="surcharge_search">
+                    <button type="submit" class="btn_type1 search" id="btn_surcharge_Search">Search</button>
+                </div>
+            </div>
+            <div class="surcharge_exchange">
+                <div class="left_area">
+                    <span class="exchange_tit">USD 환율</span>
+                </div>
+                <div class="right_area">
+                    <input type="text" class="exchange" value="1100" id="input_ER" />
+                    <button type="button" class="apply" id="Surcharge_btn">적용</button>
+                </div>
+            </div>
+
+            <div id="surcharge_result_Area">
+                <div class="surcharge_result">
+                    <table class="list_type1 tools">
+                        <colgroup>
+                            <col />
+                            <col class="w3" />
+                            <col class="w3" />
+                            <col class="w3" />
+                            <col class="w3" />
+                            <col class="w3" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>내역</th>
+                                <th>코드</th>
+                                <th>단위</th>
+                                <th>화폐</th>
+                                <th>단가</th>
+                                <th>원화</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="no_data">
+                        <span>원하시는 <strong>정보를 검색 해 주세요.</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="surcharge_notice">
+            <div class="notice_cover">
+                <div class="alert">주 의<br />사 항</div>
+                <div class="alert_desc">계산된 부대비용은 업계의 일반적인 가격으로 참고용입니다.<br />업체별, 화물별, 국가별 조건에 따라 상이할 수 있으니 참고바랍니다.</div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/LogisticsTools/Surcharge.js")
+}

@@ -1,0 +1,220 @@
+﻿@{
+
+    if (Session["admin_idx"] == null)
+    {
+        Response.Redirect("/Admin/Login");
+    }
+    else
+    {
+        ViewBag.Title = "_AdminLayout.cshtml";
+    }
+
+}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>My E2E Admin</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="My E2E" />
+    <meta property="og:image" content="http://ctest.elvisprime.com/Images/meta_img01.png" />
+    <meta property="og:site_name" content="My E2E" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    @Styles.Render("~/Content/fonts.css")
+    @Styles.Render("~/Content/admin.css")
+    @Styles.Render("~/Content/API/font-awesome/css/font-awesome.min.css")
+    @Styles.Render("~/Content/API/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/API/libs.common.min.css")
+    @Styles.Render("~/Content/API/just.css")
+
+    @Scripts.Render("~/Scripts/API/jquery-2.2.3.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+    @Scripts.Render("~/Scripts/API/ion.rangeSlider.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.datetimepicker.full.js")
+    @Scripts.Render("~/Scripts/Pub/common.js")
+    @Scripts.Render("~/Scripts/js/common/Comm.js")
+    @Scripts.Render("~/Scripts/js/common/_layout.js")
+    @*@Scripts.Render("~/Scripts/js/Main/Main.js")*@
+    @Scripts.Render("~/Scripts/js/Admin/admin.js")
+    @Scripts.Render("~/Scripts/API/scrolloverflow.js")
+    @Scripts.Render("~/Scripts/API/bluebird.min.js")
+
+    @Scripts.Render("~/Scripts/js/common/KeyEvent.js")
+
+    <script type="text/javascript">
+        var _HomeUrl = window.location.origin;
+        var _UserID = '@Session["admin_idx"]'; //로그인 아이디
+        var _Domain = ''; //Domain
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/themes/base/jquery-ui.css">
+</head>
+
+<body class="sidebar-collapsible  sidebar-open" data-spy="scroll" data-target="#myScrollspy">
+    <!-- <body class="sidebar-offcanvas" data-spy="scroll" data-target="#myScrollspy"> -->
+    <!-- 세션 값 저장 -->
+    @{
+        if (Session["admin_idx"] != null)
+        {
+            <input type="hidden" id="Session_USR_ID" value="@Session["admin_idx"]" />
+        }
+        else
+        {
+            <input type="hidden" id="Session_USR_ID" value="" />
+        }
+    }
+
+    <div class="st-wrapper">
+        <!-- SIDE BAR -->
+        <div class="st-sidebar">
+            <div class="st-sidebar__header">
+                <a class="st-sidebar__logo" href="/">Menu</a>
+                @*<div class="st-sidebar__mico st-sidebar__toggle"><i class="fa fa-bars"></i></div>*@
+            </div>
+            <div class="st-sidebar__cont">
+                <div class="st-sidebar__scroll">
+                    <div class="st-sidebar__nav">
+                        <ul>
+                            <li>
+                                <a href="/Admin/Member">
+                                    <div class="fluid-cols">
+                                        <div class="min-col"><i class="fa fa-cog st-sidebar__ico"></i>&nbsp;</div>
+                                        <div class="expand-col text-ellipsis"><span class="st-sidebar__title">관리자 관리</span></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Admin/TariffAdmin">
+                                    <div class="fluid-cols">
+                                        <div class="min-col"><i class="glyphicon glyphicon-road st-sidebar__ico"></i>&nbsp;</div>
+                                        <div class="expand-col text-ellipsis"><span class="st-sidebar__title">안전운임제 관리</span></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Admin/TariffPremium">
+                                    <div class="fluid-cols">
+                                        <div class="min-col"><i class="fa fa-won st-sidebar__ico"></i>&nbsp;</div>
+                                        <div class="expand-col text-ellipsis"><span class="st-sidebar__title">안전운임제 할증관리</span></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Admin/SurchargeAdmin">
+                                    <div class="fluid-cols">
+                                        <div class="min-col"><i class="fa fa-usd st-sidebar__ico"></i>&nbsp;</div>
+                                        <div class="expand-col text-ellipsis"><span class="st-sidebar__title">부대비용 관리</span></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Admin/VehicleAdmin">
+                                    <div class="fluid-cols">
+                                        <div class="min-col"><i class="fa fa-truck st-sidebar__ico"></i>&nbsp;</div>
+                                        <div class="expand-col text-ellipsis"><span class="st-sidebar__title">차량제원 관리</span></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Admin/Logout">
+                                    <div class="fluid-cols">
+                                        <div class="min-col"><i class="fa fa-sign-out st-sidebar__ico"></i>&nbsp;</div>
+                                        <div class="expand-col text-ellipsis"><span class="st-sidebar__title">로그아웃</span></div>
+                                    </div>
+                                </a>
+                            </li>
+                            @*<li>
+                                    <a href="/Admin/Test">
+                                        <div class="fluid-cols">
+                                            <div class="min-col"><i class="fa fa-sign-out st-sidebar__ico"></i>&nbsp;</div>
+                                            <div class="expand-col text-ellipsis"><span class="st-sidebar__title">테스트</span></div>
+                                        </div>
+                                    </a>
+                                </li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="st-sidebar__popup"></div>
+            </div>
+        </div>
+        <!-- SIDE BAR -->
+
+        @RenderSection("stMain", required: false)
+
+    </div>
+
+    <!-- 프로그래스 바 loading -->
+    <div class="loading" id="ProgressBar_Loading" style="display:none">
+        <div class="ispinner ispinner-large">
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+        </div>
+    </div>
+    <!-- 프로그래스 바 loading -->
+    <div class="layer_zone alert_type" id="alert01">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="alert_confirm" onclick="layerClose('#alert01');">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="layer_zone alert_type" id="alert02">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr2" onclick="_fnConfirmMsg_No();">취소</button>
+                        <button type="button" class="btns radius cr1" id="Layer_Confirm" onclick="_fnConfirmMsg_Yes();">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+

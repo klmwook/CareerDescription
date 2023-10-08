@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "LogisticsTools";
+    ViewBag.Sub = "Vehicle";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(1)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(6) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle">차량제원</h4>
+            </div>
+        </div>
+        <div class="fixed_in type2">
+            <div class="vehicle_tbl">
+                <table>
+                    <colgroup>
+                        <col class="w1" />
+                        <col class="w2" />
+                        <col class="w1" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>구분</th>
+                            <td>
+                                <div class="select_cover">
+                                    <select class="select" id="select_vehicle_div">
+                                        <option value="">전체</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <span id="btn_vehicleDtlName" onclick="layerPopup('#layer_vehicle_dtl')">
+                                    <button type="button">제원명칭</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- card_cover -->
+            <div class="card_cover" id="Vehicle_Result">
+                <!-- card -->
+                <div class="card" id="ton_twenty_four">
+                    <!-- card_margin -->
+                    <!--<div class="card_margin">-->
+                    <!-- card_img -->
+                    <!--<div class="card_title">
+                        <p>24톤슬라이드</p>
+                    </div>
+                    <div class="card_img">
+                        <img src="~/Images/1t_cargo.jpg" />
+                    </div>-->
+                    <!-- //card_img -->
+                    <!-- card_desc -->
+                    <!--<div class="card_desc">
+                        <table>
+                            <colgroup>
+                                <col class="w1" />
+                                <col class="w1" />
+                                <col class="w1" />
+                                <col class="w1" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>약칭</th>
+                                    <th>적재함 길이</th>
+                                    <th>탑높이</th>
+                                    <th>바닥높이</th>
+                                </tr>
+                                <tr>
+                                    <td>슬라이드</td>
+                                    <td>12~18m</td>
+                                    <td>0m</td>
+                                    <td>0.4~0.7m</td>
+                                </tr>
+                                <tr>
+                                    <th>적재함 넓이</th>
+                                    <th>적재중량</th>
+                                    <th>적재부피</th>
+                                    <th>차량 총 높이</th>
+                                </tr>
+                                <tr>
+                                    <td>2.4~2.9m</td>
+                                    <td>24t</td>
+                                    <td>50CBM</td>
+                                    <td>3.6~3.8m</td>
+                                </tr>
+                                <tr class="card_char">
+                                    <th>특이사항</th>
+                                    <td class="no_border" colspan="3"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>-->
+                    <!-- //card_desc -->
+                    <!--</div>-->
+                    <!-- //card_margin -->
+                </div>
+                <!-- //card -->
+            </div>
+            <!-- //card_cover -->
+        </div>
+    </div>
+    <!-- 제원명칭 이미지 팝업 -->
+    <div class="layer_zone logis" id="layer_vehicle_dtl">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <h2 class="subtitle02"><span>차량제원 명칭</span></h2>
+                    <div class="terms_area">
+                        <img src="~/Images/vehicle_name.png" />
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btn_check" onclick="layerClose('#layer_vehicle_dtl');">확인</button>
+                    </div>
+                    <button type="button" class="close tariff" onclick="layerClose('#layer_vehicle_dtl');"><span class="blind">닫기</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/LogisticsTools/Vehicle.js")
+}

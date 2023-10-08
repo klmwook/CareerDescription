@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(5)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(1) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle" id="Booking_Title">화물 추적</h4>
+            </div>
+        </div>
+        <div class="sub_cover" id="SubCover">
+            <div class="search_zone layout2 tracking_page" id="tracking_page">
+                <div class="inner">
+                    <div class="col">
+                        <em class="label cr1">B/L No :</em>
+                        <div class="int_box cr1">
+                            <input type="text" name="" value="" placeholder="" id="input_TrkHBL" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <em class="label cr2">CNTR No :</em>
+                        <div class="int_box cr2">
+                            <input type="text" name="" value="" placeholder="" id="input_TrkCntr" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btns type7 icn_search" id="btn_SearchTrk"><span class="icn_search"></span></button>
+                </div>
+            </div>
+            <!-- //search_zone -->
+            <!-- SeaVentage Tracking_Area -->
+            <div class="fixed_in type2" id="SVN_Trk_Area" style="display: none;">
+                <div id="SVT_Area" style="overflow:hidden;">
+                    <iframe src="" id="SVT_map" class="map" width="100%" height="100%"></iframe>
+                </div>
+                <div class="delivery_status SVT_trk_delivery_status" style="display:none">
+                    <div class="top_box">
+                        <button type="button" class="btn_close" id="SVT_delivery_status_close">CLOSE</button>
+                        <!-- cargo_info -->
+                        <div class="cargo_info">
+                            <div class="col">
+                                <em class="tit">Master B/L No :</em>
+                                <p id="SVT_Trk_MBL_NO"></p>
+                            </div>
+                            <div class="col">
+                                <em class="tit">House B/L No :</em>
+                                <p id="SVT_Trk_HBL_NO"></p>
+                            </div>
+                        </div>
+                        <!-- //cargo_info -->
+                    </div>
+                    <div class="shipping_step">
+                        <div class="scrollbar_layer">
+                            <ul id="SVT_trackAppend"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaflet Tracking_Area -->
+            <div class="fixed_in type2" id="LF_Trk_Area" style="display:none">
+                <div id="LF_map_Area">
+                    <div id="LF_map" class="LF_map"></div>
+                </div>
+                <div class="delivery_status LF_trk_delivery_status" style="display:none">
+                    <div class="top_box">
+                        <button type="button" class="btn_close" id="LF_delivery_status_close">CLOSE</button>
+                        <!-- cargo_info -->
+                        <div class="cargo_info">
+                            <div class="col">
+                                <em class="tit">Master B/L No :</em>
+                                <p id="LF_Trk_MBL_NO"></p>
+                            </div>
+                            <div class="col">
+                                <em class="tit">House B/L No :</em>
+                                <p id="LF_Trk_HBL_NO"></p>
+                            </div>
+                        </div>
+                        <!-- //cargo_info -->
+                    </div>
+                    <div class="shipping_step">
+                        <div class="scrollbar_layer">
+                            <ul id="LF_trackAppend"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List Tracking Area -->
+            <div class="fixed_in type2" id="List_Trk_Area" style="display:none">
+                <div class="scrollbar_listTrk">
+                    <div class="trk_list" id="tracking_List"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/Tracking/Tracking.js")
+}

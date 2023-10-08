@@ -1,0 +1,727 @@
+﻿@{
+    ViewBag.Title = "LogisticsTools";
+    ViewBag.Sub = "CBM";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+
+    <script>
+        $('.lnb > li:nth-child(1)').addClass('on');
+        $('.lnb > li.on .sub_depth li:nth-child(8) a').addClass('on');
+    </script>
+
+    <div class="container">
+        <div class="sub_visual">
+            <div class="inner">
+                <h4 class="subtitle">CBM계산기</h4>
+            </div>
+        </div>
+        <div class="fixed_in type2 logistics">
+            <div class="tbl_cbm_cal">
+                <div class="cbm_floating">
+                    <div class="cbm_unit">
+                        <div class="cbm_left">
+                            <span>단위</span>
+                        </div>
+                        <div class="cbm_right">
+                            <div class="cbm_radio first">
+                                <input type="radio" name="cbm_unit_value" id="unit_mm" value="mm" checked="checked">
+                                <label for="unit_mm" class="switch_label cbm">mm</label>
+                            </div>
+                            <div class="cbm_radio middle">
+                                <input type="radio" name="cbm_unit_value" id="unit_cm" value="cm">
+                                <label for="unit_cm" class="switch_label cbm">cm</label>
+                            </div>
+                            <div class="cbm_radio last">
+                                <input type="radio" name="cbm_unit_value" id="unit_m" value="m">
+                                <label for="unit_m" class="switch_label cbm">m</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cbm_whd">
+                        <div class="cbm_length">
+                            <div class="cbm_left">
+                                <span>길이</span>
+                            </div>
+                            <div class="cbm_right">
+                                <div class="count">
+                                    <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                    <input type="number" id="cbm_length" value="" name="" pattern="[0-9]*" class="int" placeholder="0" data-index="LogisticsCBM1">
+                                    <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                    <span class="cbm_unit_detail" name="cbm_unit_text">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbm_width">
+                            <div class="cbm_left">
+                                <span>너비</span>
+                            </div>
+                            <div class="cbm_right">
+                                <div class="count">
+                                    <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                    <input type="number" id="cbm_width" value="" name="" pattern="[0-9]*" class="int" placeholder="0" data-index="LogisticsCBM2">
+                                    <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                    <span class="cbm_unit_detail" name="cbm_unit_text">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbm_height">
+                            <div class="cbm_left">
+                                <span>높이</span>
+                            </div>
+                            <div class="cbm_right">
+                                <div class="count">
+                                    <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                    <input type="number" id="cbm_height" value="" name="" pattern="[0-9]*" class="int" placeholder="0" data-index="LogisticsCBM3">
+                                    <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                    <span class="cbm_unit_detail" name="cbm_unit_text">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cbm_quantity">
+                        <div class="cbm_left">
+                            <span>개수</span>
+                        </div>
+                        <div class="cbm_right">
+                            <div class="count">
+                                <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                <input type="number" id="cbm_quantity" value="" name="" pattern="[0-9]*" class="int" placeholder="0" data-index="LogisticsCBM4">
+                                <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                <span class="cbm_unit_detail">EA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tbl_cbm_result">
+                <div class="cbm_floating right">
+                    <div class="cbm_value">
+                        <div class="cbm_result">
+                            <div class="cbm_left">
+                                <span>결과값</span>
+                            </div>
+                            <div class="cbm_right">
+                                <div class="count">
+                                    <input type="number" id="cbm_result" value="" name="" pattern="[0-9]*" class="int" placeholder="0" readonly>
+                                    <span class="cbm_unit_detail">CBM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbm_volume">
+                            <div class="cbm_left">
+                                <span>부피중량 (항공화물)</span>
+                            </div>
+                            <div class="cbm_right">
+                                <div class="count">
+                                    <input type="number" id="cbm_air_result" value="" name="" pattern="[0-9]*" class="int" placeholder="0" readonly>
+                                    <span class="cbm_unit_detail">KG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cbm_enable_quantity">
+                        <!-- 20210727 sihong - 고객사 요청에 의해 주석 -->
+                        @*<div class="cbm_load_20ft">
+                                <div class="cbm_left">
+                                    <span>20FT 적입가능 수량</span>
+                                </div>
+                                <div class="cbm_right">
+                                    <div class="count">
+                                        <input type="number" id="cbm_20FT_result" value="" name="" pattern="[0-9]*" class="int" placeholder="0" readonly>
+                                        <span class="cbm_unit_detail">EA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbm_load_40ft">
+                                <div class="cbm_left">
+                                    <span>40FT 적입가능 수량</span>
+                                </div>
+                                <div class="cbm_right">
+                                    <div class="count">
+                                        <input type="number" id="cbm_40FT_result" value="" name="" pattern="[0-9]*" class="int" placeholder="0" readonly>
+                                        <span class="cbm_unit_detail">EA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbm_load_40hc">
+                                <div class="cbm_left">
+                                    <span>40HC 적입가능 수량</span>
+                                </div>
+                                <div class="cbm_right">
+                                    <div class="count">
+                                        <input type="number" id="cbm_40HC_result" value="" name="" pattern="[0-9]*" class="int" placeholder="0" readonly>
+                                        <span class="cbm_unit_detail">EA</span>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="tbl_cntr_loaded">
+                            <div class="cbm_padding">
+                                <h2 class="cbm_subtitle in_table">파렛트 사이즈별 컨테이너 적입수</h2>
+                                <span class="logistics_popup cbm" onclick="layerPopup('#cntr_entry_pop')"><button type="button">적입 이미지</button></span>
+                                <table>
+                                    <colgroup class="pc">
+                                        <col class="w1" />
+                                        <col class="w1" />
+                                        <col class="w1" />
+                                        <col class="w1" />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2">20FT Dry 기준</th>
+                                            <th colspan="2" class="pc">40FT Dry 기준</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1100mm * 1100mm : 10개</td>
+                                            <td>1000mm * 1200mm : 9개</td>
+                                            <td class="pc">1100mm * 1100mm : 20개</td>
+                                            <td class="pc">1000mm * 1200mm : 22개</td>
+                                        </tr>
+                                        <tr>
+                                            <td>800mm * 1200mm : 11개</td>
+                                            <td>1140mm * 1140mm : 10개</td>
+                                            <td class="pc">800mm * 1200mm : 25개</td>
+                                            <td class="pc">1140mm * 1140mm : 20개</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="mo">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2">40FT Dry 기준</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1100mm * 1100mm : 20개</td>
+                                            <td>1000mm * 1200mm : 22개</td>
+                                        </tr>
+                                        <tr>
+                                            <td>800mm * 1200mm : 25개</td>
+                                            <td>1140mm * 1140mm : 20개</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cbm_notice">
+                        <p>※ 화물특성 및 포장상테에 따라 적입수량 차이가 날 수 있음</p>
+                        <p>※ 적입가능 수량은 화물 1개에 대한 예상값</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tbl_cntr_char">
+                <div class="cbm_padding">
+                    <h2 class="cbm_subtitle">컨테이너 종류별 특징</h2>
+                    <table class="tbl_cntr_img pc">
+                        <colgroup>
+                            <col class="w1" />
+                            <col class="w1" />
+                            <col class="w1" />
+                            <col class="w1" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>드라이 컨테이너<br />(Dry Container)</th>
+                                <th>냉동 컨테이너<br />(Reefer Container)</th>
+                                <th>오픈 탑 컨테이너<br />(Open Top Container)</th>
+                                <th>플랫 랙 컨테이너<br />(Flat Rack Container)</th>
+                            </tr>
+                            <tr>
+                                <td>일반화물의 수송에 사용하는 전형적인 일반 컨테이너</td>
+                                <td>온도조절을 요하는 화물의 운송용으로 냉동, 냉장을 할 수 있는 컨테이너</td>
+                                <td>화물의 높이가 일반 컨테이너보다 높은 화물 운송용으로 윗면이 없는 컨테이너</td>
+                                <td>일반 컨테이너 적재가 불가능한 대형 또는 중량 화물의 운송용으로 윗면과 옆면이 없는 컨테이너</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="cntr_img"><img src="~/Images/dry_container.jpg" /></div>
+                                </td>
+                                <td>
+                                    <div class="cntr_img"><img src="~/Images/reefer_container.png" /></div>
+                                </td>
+                                <td>
+                                    <div class="cntr_img"><img src="~/Images/open_top_container.png" /></div>
+                                </td>
+                                <td>
+                                    <div class="cntr_img"><img src="~/Images/flat_rack_container.png" /></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="mo">
+                        <colgroup>
+                            <col class="w1" />
+                            <col class="w1" />
+                        </colgroup>
+                        <tbody class="mo">
+                            <tr>
+                                <th>드라이 컨테이너<br />(Dry Container)</th>
+                                <th>냉동 컨테이너<br />(Reefer Container)</th>
+                            </tr>
+                            <tr>
+                                <td>일반화물의 수송에 사용하는 전형적인 일반 컨테이너</td>
+                                <td>온도조절을 요하는 화물의 운송용으로 냉동, 냉장을 할 수 있는 컨테이너</td>
+                            </tr>
+                            <tr>
+                                <td><div class="cntr_img"><img src="~/Images/dry_container.jpg" /></div></td>
+                                <td><div class="cntr_img"><img src="~/Images/reefer_container.png" /></div></td>
+                            </tr>
+                            <tr>
+                                <th>오픈 탑 컨테이너<br />(Open Top Container)</th>
+                                <th>플랫 랙 컨테이너<br />(Flat Rack Container)</th>
+                            </tr>
+                            <tr>
+                                <td>화물의 높이가 일반 컨테이너보다 높은 화물 운송용으로 윗면이 없는 컨테이너</td>
+                                <td>일반 컨테이너 적재가 불가능한 대형 또는 중량 화물의 운송용으로 윗면과 옆면이 없는 컨테이너</td>
+                            </tr>
+                            <tr>
+                                <td><div class="cntr_img"><img src="~/Images/open_top_container.png" /></div></td>
+                                <td><div class="cntr_img"><img src="~/Images/flat_rack_container.png" /></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>주의사항 : 화물적재용적 계산 시 내축과 개구부 치수를 함께 고려해야 합니다. 선사마다 최대 적재 중량이 다를 수 있습니다.</p>
+                    <table class="tbl_cntr_detail pc">
+                        <colgroup>
+                            <col class="w2" />
+                            <col class="w3" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="2">구분</th>
+                                <th>20DRY</th>
+                                <th>40DRY</th>
+                                <th>40HC</th>
+                                <th>45HC</th>
+                                <th>20RF</th>
+                                <th>40RF</th>
+                                <th>40RF(H)</th>
+                                <th>20OT</th>
+                                <th>40OT</th>
+                                <th>20FR</th>
+                                <th>40FR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="3">Internal<br />(내측)</td>
+                                <td>L</td>
+                                <td>5.898m</td>
+                                <td>12.032m</td>
+                                <td>12.032m</td>
+                                <td>13.556m</td>
+                                <td>5.454m</td>
+                                <td>11.583m</td>
+                                <td>11.583m</td>
+                                <td>5.889m</td>
+                                <td>12.044m</td>
+                                <td>5.612m</td>
+                                <td>11.770m</td>
+                            </tr>
+                            <tr>
+                                <td>W</td>
+                                <td>2.352m</td>
+                                <td>2.352m</td>
+                                <td>2.352m</td>
+                                <td>2.352m</td>
+                                <td>2.286m</td>
+                                <td>2.286m</td>
+                                <td>2.290m</td>
+                                <td>2.345m</td>
+                                <td>2.350m</td>
+                                <td>2.227m</td>
+                                <td>1.955m</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.390m</td>
+                                <td>2.390m</td>
+                                <td>2.695m</td>
+                                <td>2.698m</td>
+                                <td>2.245m</td>
+                                <td>2.215m</td>
+                                <td>2.542m</td>
+                                <td>2.312m</td>
+                                <td>2.348m</td>
+                                <td>2.213m</td>
+                                <td>1.955m</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Door Opening<br />(개구부)</td>
+                                <td>W</td>
+                                <td>2.340m</td>
+                                <td>2.340m</td>
+                                <td>2.340m</td>
+                                <td>2.340m</td>
+                                <td>2.286m</td>
+                                <td>2.294m</td>
+                                <td>2.290m</td>
+                                <td>2.335m</td>
+                                <td>2.335m</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.280m</td>
+                                <td>2.280m</td>
+                                <td>2.585m</td>
+                                <td>2.585m</td>
+                                <td>2.168m</td>
+                                <td>2.248m</td>
+                                <td>2.500m</td>
+                                <td>2.277m</td>
+                                <td>2.280m</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">내부용적</td>
+                                <td>33.2cbm</td>
+                                <td>67.8cbm</td>
+                                <td>76.4cbm</td>
+                                <td>86.0cbm</td>
+                                <td>28.5cbm</td>
+                                <td>58.7cbm</td>
+                                <td>67.4cbm</td>
+                                <td>31.8cbm</td>
+                                <td>66.3cbm</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Tare Weight</td>
+                                <td>2,250kg</td>
+                                <td>3,740kg</td>
+                                <td>3,940kg</td>
+                                <td>4,720kg</td>
+                                <td>3,000kg</td>
+                                <td>4,700kg</td>
+                                <td>4,750kg</td>
+                                <td>2,020kg</td>
+                                <td>3,980kg</td>
+                                <td>2,740kg</td>
+                                <td>5,600kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Maximum Payload<br />(최대적재중량)</td>
+                                <td>21,750kg</td>
+                                <td>26,740kg</td>
+                                <td>26,540kg</td>
+                                <td>25,760kg</td>
+                                <td>22,000kg</td>
+                                <td>25,780kg</td>
+                                <td>25,730kg</td>
+                                <td>21,980kg</td>
+                                <td>26,500kg</td>
+                                <td>31,260kg</td>
+                                <td>39,400kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">총중량</td>
+                                <td>24,000kg</td>
+                                <td>30,480kg</td>
+                                <td>30,480kg</td>
+                                <td>30,480kg</td>
+                                <td>25,000kg</td>
+                                <td>30,480kg</td>
+                                <td>30,480kg</td>
+                                <td>24,000kg</td>
+                                <td>30,480kg</td>
+                                <td>34,000kg</td>
+                                <td>45,000kg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="tbl_cntr_detail mo">
+                        <colgroup>
+                            <col class="w2" />
+                            <col class="w3" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th colspan="2">구분</th>
+                                <th>20DRY</th>
+                                <th>40DRY</th>
+                                <th>40HC</th>
+                                <th>45HC</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Internal<br />(내측)</td>
+                                <td>L</td>
+                                <td>5.898m</td>
+                                <td>12.032m</td>
+                                <td>12.032m</td>
+                                <td>13.556m</td>
+                            </tr>
+                            <tr>
+                                <td>W</td>
+                                <td>2.352m</td>
+                                <td>2.352m</td>
+                                <td>2.352m</td>
+                                <td>2.352m</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.390m</td>
+                                <td>2.390m</td>
+                                <td>2.695m</td>
+                                <td>2.698m</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Door Opening<br />(개구부)</td>
+                                <td>W</td>
+                                <td>2.340m</td>
+                                <td>2.340m</td>
+                                <td>2.340m</td>
+                                <td>2.340m</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.280m</td>
+                                <td>2.280m</td>
+                                <td>2.585m</td>
+                                <td>2.585m</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">내부용적</td>
+                                <td>33.2cbm</td>
+                                <td>67.8cbm</td>
+                                <td>76.4cbm</td>
+                                <td>86.0cbm</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Tare Weight</td>
+                                <td>2,250kg</td>
+                                <td>3,740kg</td>
+                                <td>3,940kg</td>
+                                <td>4,720kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Maximum Payload<br />(최대적재중량)</td>
+                                <td>21,750kg</td>
+                                <td>26,740kg</td>
+                                <td>26,540kg</td>
+                                <td>25,760kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">총중량</td>
+                                <td>24,000kg</td>
+                                <td>30,480kg</td>
+                                <td>30,480kg</td>
+                                <td>30,480kg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="tbl_cntr_detail mo">
+                        <colgroup>
+                            <col class="w2" />
+                            <col class="w3" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th colspan="2">구분</th>
+                                <th>20RF</th>
+                                <th>40RF</th>
+                                <th>40RF(H)</th>
+                                <th>20OT</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Internal<br />(내측)</td>
+                                <td>L</td>
+                                <td>5.454m</td>
+                                <td>11.583m</td>
+                                <td>11.583m</td>
+                                <td>5.889m</td>
+                            </tr>
+                            <tr>
+                                <td>W</td>
+                                <td>2.286m</td>
+                                <td>2.286m</td>
+                                <td>2.290m</td>
+                                <td>2.345m</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.245m</td>
+                                <td>2.215m</td>
+                                <td>2.542m</td>
+                                <td>2.312m</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Door Opening<br />(개구부)</td>
+                                <td>W</td>
+                                <td>2.286m</td>
+                                <td>2.294m</td>
+                                <td>2.290m</td>
+                                <td>2.335m</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.168m</td>
+                                <td>2.248m</td>
+                                <td>2.500m</td>
+                                <td>2.277m</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">내부용적</td>
+                                <td>28.5cbm</td>
+                                <td>58.7cbm</td>
+                                <td>67.4cbm</td>
+                                <td>31.8cbm</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Tare Weight</td>
+                                <td>3,000kg</td>
+                                <td>4,700kg</td>
+                                <td>4,750kg</td>
+                                <td>2,020kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Maximum Payload<br />(최대적재중량)</td>
+                                <td>22,000kg</td>
+                                <td>25,780kg</td>
+                                <td>25,730kg</td>
+                                <td>21,980kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">총중량</td>
+                                <td>25,000kg</td>
+                                <td>30,480kg</td>
+                                <td>30,480kg</td>
+                                <td>24,000kg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="tbl_cntr_detail mo">
+                        <colgroup>
+                            <col class="w2" />
+                            <col class="w3" />
+                            <col class="w4" />
+                            <col class="w4" />
+                            <col class="w4" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th colspan="2">구분</th>
+                                <th>40OT</th>
+                                <th>20FR</th>
+                                <th>40FR</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Internal<br />(내측)</td>
+                                <td>L</td>
+                                <td>12.044m</td>
+                                <td>5.612m</td>
+                                <td>11.770m</td>
+                            </tr>
+                            <tr>
+                                <td>W</td>
+                                <td>2.350m</td>
+                                <td>2.227m</td>
+                                <td>1.955m</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.348m</td>
+                                <td>2.213m</td>
+                                <td>1.955m</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Door Opening<br />(개구부)</td>
+                                <td>W</td>
+                                <td>2.335m</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>2.280m</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">내부용적</td>
+                                <td>66.3cbm</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Tare Weight</td>
+                                <td>3,980kg</td>
+                                <td>2,740kg</td>
+                                <td>5,600kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Maximum Payload<br />(최대적재중량)</td>
+                                <td>26,500kg</td>
+                                <td>31,260kg</td>
+                                <td>39,400kg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">총중량</td>
+                                <td>30,480kg</td>
+                                <td>34,000kg</td>
+                                <td>45,000kg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 컨테이너 적입 이미지 팝업 -->
+    <div class="layer_zone logis" id="cntr_entry_pop">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="terms_area">
+                        <div class="scrollbar_layer">
+                            <h2 class="subtitle02">20FT Dry 기준</h2>
+                            <div class="dry_img dry_20ft">
+                                <img src="~/Images/container1.png" />
+                                <img src="~/Images/container2.png" />
+                                <img src="~/Images/container3.png" />
+                                <img src="~/Images/container4.png" />
+                            </div>
+                            <h2 class="subtitle02">40FT Dry 기준</h2>
+                            <div class="dry_img dry_40ft">
+                                <img src="~/Images/container5.png" />
+                                <img src="~/Images/container6.png" />
+                                <img src="~/Images/container7.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_w">
+                        <button type="button" class="btn_check" onclick="layerClose('#cntr_entry_pop');">확인</button>
+                    </div>
+                    <button type="button" class="close cbm" onclick="layerClose('#cntr_entry_pop');"><span class="blind">닫기</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+    <!-- //컨테이너 적입 이미지 팝업 -->
+    @Scripts.Render("~/Scripts/js/LogisticsTools/cbm.js")
+
+}
