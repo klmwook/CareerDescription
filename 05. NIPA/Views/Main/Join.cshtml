@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Join";
+    Layout = "~/Views/Shared/_LayoutJoin.cshtml";
+}
+@section Container {
+    <section class="container">
+        <div class="inner join">
+            <div class="join_box">
+                <p class="care"><span class="red">*</span>표시는 필수적으로 입력해 주셔야 가입이 됩니다.</p>
+                <div class="flex_type4">
+                    <div class="flex_line">
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>사용할 아이디</p>
+                            </div>
+                            <div class="flex_inner has_btn">
+                                <input type="text" id="Elvis_ID" class="input_type1" maxlength="50" data-index="1" />
+                                <button type="button" id="Elvis_Check_ID" class="btn_confirm">아이디 중복 확인</button>
+                            </div>
+                        </div>
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>비밀번호</p>
+                            </div>
+                            <div class="flex_inner">
+                                <input id="Elvis_PW1" type="password" maxlength="16" data-index="2" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line">
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>비밀번호 확인</p>
+                            </div>
+                            <div class="flex_inner">
+                                <input id="Elvis_PW2" type="password" maxlength="16" data-index="3" />
+                                <p class="Span_Warning" style="display: none" id="Pw2_OverSix">비밀번호를 6자리 이상 입력 해 주세요</p>
+                                <p class="Span_Warning" style="display: none" id="Pw2_Compare">비밀번호가 같지 않습니다. 확인하고 다시 입력 해 주세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>이메일</p>
+                            </div>
+                            <div class="flex_inner">
+                                <input id="Elvis_EMAIL" type="text" maxlength="50" data-index="4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line">
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>사업자등록번호</p>
+                            </div>
+                            <div class="flex_inner">
+                                <input type="text" id="Elvis_CRN" placeholder="- 없이 입력 해주세요." maxlength="10" data-index="5" />
+                            </div>
+                        </div>
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p>상호</p>
+                            </div>
+                            <div class="flex_inner">
+                                <input id="Elvis_OfficeNM" type="text" maxlength="25" data-index="6" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line">
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>포워더 연계사 사업자등록번호</p>
+                            </div>
+                            <div class="flex_inner has_btn">
+                                <input type="text" id="Elvis_ForCRN" placeholder="- 없이 입력 해주세요." maxlength="10" data-index="7" />
+                                <button type="button" id="Elvis_Check_Crn" class="btn_confirm">사업자 번호 확인</button>
+                            </div>
+                        </div>
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p><span class="red">*</span>휴대전화</p>
+                            </div>
+                            <div class="flex_inner">
+                                <input type="text" id="Elvis_HP_NO" maxlength="13" data-index="8" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line">
+                        <div class="flex_box">
+                            <div class="flex_title">
+                                <p>주소</p>
+                            </div>
+                            <div class="flex_inner has_btn">
+                                <input type="text" id="Elvis_OFFICE_CODE" placeholder="우편번호" readonly />
+                                <button type="button" id="Elvis_Find_Addr" class="btn_confirm">주소 찾기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line">
+                        <div class="flex_box">
+                            <div class="flex_inner">
+                                <input type="text" id="Elvis_OFFICE_ADDR" placeholder="주소를 입력 해주세요." readonly />
+                            </div>
+                        </div>
+                        <div class="flex_box">
+                            <div class="flex_inner">
+                                <input type="text" id="Elvis_OFFICE_ADDR2" placeholder="상세주소" maxlength="90" data-index="9" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="submit">
+                <button type="button" class="btn_submit" id="btn_Regester">동의하고 가입하기</button>
+                <div class="terms">
+                    @*<p>본인은 <a href="javascript:void(0)" onclick="layerPopup('#terms')">이용약관</a> 및 <a href="javascript:void(0)" onclick="layerPopup('#policy')">개인정보취급방침</a>, <a href="javascript:void(0)" onclick="layerPopup('#Noget_Email')">이메일무단수집거부</a>를 확인 하였으며, 동의합니다.</p>*@
+                </div>
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/Main/Join.js")
+}

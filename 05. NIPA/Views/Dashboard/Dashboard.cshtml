@@ -1,0 +1,782 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        @*<h1 class="sub_title">ELVIS-BIG<img src="~/Images/title02.png" /></h1>*@
+        <div class="search_type2">
+            <div class="search_cover ds_cover">
+                <div class="type_value no_flex" id="">
+                    <div class="int_box">
+                        <input type="text" class="line_bk" id="input_LineBK" placeholder="Line B/K No." autocomplete="off">
+                        <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                        <input type="hidden" id="input_PODCD">
+                    </div>
+                </div>
+                <div class="type_value no_flex">
+                    <button type="button" id="btn_search" class="btn_search">조회</button>
+                </div>
+                <div class="type_value bottom right no_flex">
+                    <img src="~/Images/status.png" />
+                </div>
+            </div>
+        </div>
+        <div class="list_type1" id="Dashboard_ResultArea">
+            @*<div class="flex_type5 height100">
+                <div class="flex_box">
+                    <div class="flex_line w1">
+                        <div class="flex_row">
+                            <div class="flex_cell">
+                                <img src="~/Images/logo/ONEY.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line w1">
+                        <div class="flex_row">
+                            <div class="flex_cell">
+                                <p class="title">CUSTOMER</p>
+                                <p class="desc">NEXEN TIRE</p>
+                            </div>
+                        </div>
+                        <div class="flex_row">
+                            <div class="flex_cell has_line">
+                                <p class="title">LINE B/K No.</p>
+                                <p class="desc">KR03112436</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line w1">
+                        <div class="flex_row">
+                            <div class="flex_cell">
+                                <p class="title">M B/L No.</p>
+                                <p class="desc">KMTCPUSE797193</p>
+                            </div>
+                        </div>
+                        <div class="flex_row">
+                            <div class="flex_cell has_line">
+                                <p class="title">H B/L No.</p>
+                                <p class="desc">NEXNPUS211019001</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line w1">
+                        <div class="flex_row">
+                            <div class="flex_cell">
+                                <p class="title">POL</p>
+                                <p class="desc">KRPUS</p>
+                            </div>
+                        </div>
+                        <div class="flex_row">
+                            <div class="flex_cell has_line">
+                                <p class="title">POD</p>
+                                <p class="desc">CNSHA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line w1">
+                        <div class="flex_row">
+                            <div class="flex_cell">
+                                <p class="title">ETD</p>
+                                <p class="desc">2021-09-25</p>
+                            </div>
+                        </div>
+                        <div class="flex_row">
+                            <div class="flex_cell has_line">
+                                <p class="title">ETA</p>
+                                <p class="desc">2021-10-12</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_line w2">
+                        <div class="flex_row">
+                            <div class="flex_cell">
+                                <p class="title02">BOOKING</p>
+                                <p class="desc02">2021-08-25<br />16:00</p>
+                                <div class="dash_status green"></div>
+                            </div>
+                            <div class="flex_cell">
+                                <p class="title02">S/R</p>
+                                <p class="desc02">2021-09-10<br />19:00</p>
+                                <div class="dash_status yellow"></div>
+                            </div>
+                            <div class="flex_cell">
+                                <p class="title02">INVOICE</p>
+                                <p class="desc02">2021-09-12<br />20:00</p>
+                                <div class="dash_status red"></div>
+                            </div>
+                            <div class="flex_cell">
+                                <p class="title02">컨테이너반입</p>
+                                <p class="desc02">2021-09-15<br />21:00</p>
+                                <div class="dash_status gray"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            @*<div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/ONEY.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">KMTCPUSE797193</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPUS211019001</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">CNSHA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-09-25</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2021-10-12</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <p class="desc02">2021-08-25<br />16:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <p class="desc02">2021-09-10<br />19:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <p class="desc02">2021-09-12<br />20:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <p class="desc02">2021-09-15<br />21:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/ONEY.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">ONEYPUSE797193</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPUS541919001</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">CNSHA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-09-27</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2021-10-15</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <p class="desc02">2021-08-25<br />16:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <p class="desc02">2021-09-10<br />19:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <p class="desc02">2021-09-12<br />20:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <p class="desc02">2021-09-15<br />21:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/CKCO.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">CKCOPFAL123654</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPUE122678521</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">HKHKG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-11-01</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2021-11-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <p class="desc02">2021-10-25<br />16:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <p class="desc02">2021-10-28<br />19:00</p>
+                                    <div class="dash_status yellow"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/COSN.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">CKCOPFAL123214</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPUE121564521</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">HKHKG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-11-01</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2021-11-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <p class="desc02">2021-10-25<br />16:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <p class="desc02">2021-10-28<br />19:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/COSN.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">COSNPFAL178915</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPUE142564251</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">HKHKG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-11-01</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2021-11-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <p class="desc02">2021-10-25<br />16:00</p>
+                                    <div class="dash_status green"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <p class="desc02">2021-10-28<br />19:00</p>
+                                    <div class="dash_status yellow"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/HDMU.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">HDMUPFAL123654</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPAL992143523</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">USLAX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-12-25</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2022-02-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="flex_type5 height100">
+                    <div class="flex_box">
+                        <div class="flex_line w3">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <img src="~/Images/logo/HDMU.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">CUSTOMER</p>
+                                    <p class="desc">NEXEN TIRE</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">LINE B/K No.</p>
+                                    <p class="desc">KR03112436</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">M B/L No.</p>
+                                    <p class="desc">HDMUPFAL123654</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">H B/L No.</p>
+                                    <p class="desc">NEXNPAL122143524</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">POL</p>
+                                    <p class="desc">KRPUS</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">POD</p>
+                                    <p class="desc">USLAX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w1">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title">ETD</p>
+                                    <p class="desc">2021-12-25</p>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_cell has_line">
+                                    <p class="title">ETA</p>
+                                    <p class="desc">2022-02-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_line w2">
+                            <div class="flex_row">
+                                <div class="flex_cell">
+                                    <p class="title02">BOOKING</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">S/R</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">INVOICE</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                                <div class="flex_cell">
+                                    <p class="title02">컨테이너반입</p>
+                                    <div class="dash_status gray"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        <div class="dashboard" id="no_data" style="display:none">
+            <div class="no_data">
+                <div class="no_sorry">
+                    <h3>
+                        Sorry<br />
+                        <span>검색 결과가 없습니다.</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard" id="no_search">
+            <div class="no_data">
+                <div class="no_sorry no_search">
+                    <h3>
+                        Search<br />
+                        <span>원하시는 정보를 검색해보세요.</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="base_paging">
+            <div class="paging_in" id="Paging_List_Area"></div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/Sub/Dashboard.js")
+    @Scripts.Render("~/Scripts/js/swiper.js")
+}

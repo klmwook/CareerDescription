@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "Tracking";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        <div class="contents">
+            @*<h1 class="sub_title"><img src="~/Images/title02.png" /></h1>*@
+            <div class="search_type2">
+                <div class="search_cover tr_cover">
+                    <div class="type_value">
+                        <div class="int_box">
+                            <input type="text" class="tracking" placeholder="#MBL, #HBL, #Cntr No" id="S_BL_NO" />
+                            <button type="button" class="btns icon delete" style="display:none;"><span class="blind">삭제</span></button>
+                        </div>
+                    </div>
+                    <div class="type_value">
+                        <button type="button" class="btn_search" id="btn_TrackingSearch">조회</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tracking_box" id="trk_list">
+                <div class="client" id="no_search">
+                    <div class="no_data">
+                        <div class="no_sorry no_search">
+                            <h3>
+                                Search<br />
+                                <span>원하시는 정보를 검색해보세요.</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client" id="no_data" style="display:none">
+                <div class="no_data">
+                    <div class="no_sorry">
+                        <h3>
+                            Sorry<br />
+                            <span>검색 결과가 없습니다.</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- terminal_layer -->
+        <div class="layer_zone terminal_layer" id="terminalPop" style="z-index:10001">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont" id="Cntr_list">
+                        <!-- alert_cont -->
+                        <!--<div class="term_cont">
+                    <div class="term_box">
+                        <div class="term_inner long">
+                            <p class="title">BPT 신선대(NSPR-15)</p>
+                            <p>선석 No.2<span class="cong_level green">여유</span></p>
+                            <div class="term_flex">
+                                <div class="term_info">
+                                    <span class="vsl_nm">STAR EXPLORER</span>
+                                    <span class="vsl_per">5%</span>
+                                    <div class="vsl_bar">
+                                        <div class="bar_percent per5"></div>
+                                    </div>
+                                </div>-->
+                        @*<div class="refresh">
+                            <button type="button" class="btn_refresh"></button>
+                        </div>*@
+                        <!--</div>
+                        </div>
+                    </div>
+                    <div class="term_box">-->
+                        @*<div class="term_inner">
+                            <p class="title">터미널 컨테이너 수량</p>
+                            <p class="desc">30 / 100</p>
+                        </div>*@
+                        <!--<div class="term_inner">
+                        <p class="title">작업 시작시간</p>
+                        <p class="desc">2021.08.10 23:30</p>
+                    </div>
+                    <div class="term_inner">
+                        <p class="title">작업 종료(예상) 시간</p>
+                        <p class="desc">-</p>
+                    </div>
+                    <div class="term_inner">
+                        <p class="title">출항(예정) 시간</p>
+                        <p class="desc">2021.08.11 04:30</p>
+                    </div>
+                    <div class="term_inner">
+                        <p class="title">양하</p>
+                        <p class="desc">26/256 <span>10%</span></p>
+                    </div>
+                    <div class="term_inner">
+                        <p class="title">적하</p>
+                        <p class="desc">0 / 204 <span>0%</span></p>
+                    </div>
+                    <div class="term_inner">
+                        <p class="title">합계</p>
+                        <p class="desc">26 / 460 <span class="per">5%</span></p>
+                    </div>-->
+                        @*<div class="term_inner">
+                            <p class="title">혼잡도</p>
+                            <p class="desc"><span class="cong_level red">혼잡</span></p>
+                        </div>*@
+                        <!--</div>
+
+                    </div>-->
+                        <!-- //alert_cont -->
+                        <button type="button" class="btns close" onclick="layerClose('#terminalPop');"><span class="blind">닫기</span></button>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+        <!-- terminal_layer -->
+        <!-- unipass_layer -->
+        <div class="layer_zone unipass_layer" id="unipassPop" style="z-index:10001">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <!-- alert_cont -->
+                        <div class="unipass_output" id="div_UniCargoArea">
+                            <div id="UniCarogo_Result">
+                                <div class="unipass_table type1 no_head" id="div_UniCargoFirst1">
+                                </div>
+                                <div class="unipass_table type2" id="div_UniCargoFirst2">
+                                </div>
+
+                                <div class="btn_right"></div>
+                                <div class="notice_box">
+                                    위 이미지는 가장 일반적인 절차를 기준으로 제공되므로 상황에 따라 실제 업무 절차와 일치하지 않을 수 있습니다. 반드시 아래의 <span class="red">"처리단계"</span>를 참조하시어 업무 진행하시기 바랍니다.
+                                </div>
+                                <div class="cnt_box">
+                                    <span class="cnt" id="span_UniCount">
+                                        전체 <em>9</em>건
+                                    </span>
+                                </div>
+                                <div class="unipass_table type1" id="div_UniCargoSecond">
+                                </div>
+                                <div class="unipass_table type1" id="div_UniCargoSecond2">
+                                </div>
+                                @*<div class="no_data" id="UniCarogo_no_data"><span>원하시는 <strong>정보를 검색해보세요.</strong></span></div>*@
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <button type="button" class="btns close" onclick="layerClose('#unipassPop');"><span class="blind">닫기</span></button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- unipass_layer -->
+        <!-- unipass_layer -->
+        <div class="layer_zone unipass_layer" id="import_unipassPop" style="z-index:10001">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <!-- alert_cont -->
+                        <div class="unipass_output" id="div_UniOB_BLArea">
+                            <div class="cnt_box" style="display: none;">
+                                <span class="cnt" id="span_UniOB_BlCount">전체 <em>1</em>건</span>
+                            </div>
+                            <div class="unipass_table type1 center" id="div_UniOB_BlFirst">
+                                <div class="grid_col">
+                                    <table>
+                                        <colgroup>
+                                            <col>
+                                            <col>
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">통관사항</th>
+                                            </tr>
+                                            <tr>
+                                                <th>수출자</th>
+                                                <th>수리일자</th>
+                                                <th>통관포장개수</th>
+                                            </tr>
+                                            <tr>
+                                                <th>수출신고번호</th>
+                                                <th>적재의무기한</th>
+                                                <th>통관중량(KG)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>티지에스파이프(주)</td>
+                                                <td>2009-12-29</td>
+                                                <td>61 BE</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12210-09-00340033</td>
+                                                <td>2010-01-28</td>
+                                                <td>60,678</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="grid_col">
+                                    <table>
+                                        <colgroup>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="4">선적사항</th>
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2">적하목록관리번호</th>
+                                                <th>선기적지</th>
+                                                <th>선기적포장개수</th>
+                                                <th>분할회수</th>
+                                            </tr>
+                                            <tr>
+                                                <th>출항일자</th>
+                                                <th>선기적중량(KG)</th>
+                                                <th>선기적완료여부</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td rowspan="2">10HDMUGG018</td>
+                                                <td>포항항</td>
+                                                <td class="a_right">61 GT	</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2010-01-07</td>
+                                                <td class="a_right">60,678</td>
+                                                <td>Y</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <button type="button" class="btns close" onclick="layerClose('#unipassPop');"><span class="blind">닫기</span></button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- unipass_layer -->
+
+    </section>
+    @Scripts.Render("~/Scripts/Sub/Tracking.js")
+    @Scripts.Render("~/Scripts/js/swiper.js")
+}

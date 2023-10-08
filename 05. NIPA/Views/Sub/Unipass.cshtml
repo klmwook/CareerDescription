@@ -1,0 +1,841 @@
+﻿
+@{
+    ViewBag.Title = "Unipass";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+    <section class="container" id="container">
+        @*<h1 class="sub_title">ELVIS-BIG<img src="~/Images/title02.png" /></h1>*@
+        <div class="tab_area" id="tab_area">
+            <ul class="tab fixed_in type2">
+                <li class="on" id="UniCargo"><a href="javascript:void(0)">수입화물진행정보</a></li>
+                <li id="UniOB"><a href="javascript:void(0)">수출이행내역</a></li>
+            </ul>
+        </div>
+        <div class="tab_panel">
+            <!-- panel - 화물진행정보 -->
+            <div class="panel" id="containerUnipass" style="display:block;">
+                <div class="unipass_area">
+                    <div class="search_bar">
+                        <div class="col w1">
+                            <div class="switch">
+                                <input type="radio" name="cargo" id="cargo01" value="BL" checked="checked">
+                                <label for="cargo01" class="switch_label">M B/L-H B/L</label>
+                                <input type="radio" name="cargo" id="cargo02" value="MTNO">
+                                <label for="cargo02" class="switch_label">화물관리번호</label>
+                            </div>
+                        </div>
+                        <div class="col w3" name="Cargo_Express_Input_Box">
+                            <!-- grid_fluid -->
+                            <div class="grid_fluid type1">
+                                <div class="grid_col">
+                                    <div class="int_box">
+                                        <input type="text" value="" placeholder="M B/L" class="inputMasterBLNum border-animation__inner" id="input_UniCargoMBL" data-index="Main_UniCargoBL1" maxlength="30">
+                                        <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                    </div>
+                                </div>
+                                <div class="grid_col">
+                                    <div class="int_box">
+                                        <input type="text" value="" placeholder="H B/L" class="inputHouseBLNum border-animation__inner" id="input_UniCargoHBL" data-index="Main_UniCargoBL2" maxlength="30">
+                                        <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                    </div>
+                                </div>
+                                <div class="grid_col w2">
+                                    <div class="label_col int_box">
+                                        <select id="select_UniCargoYear" class="select"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //grid_fluid -->
+                        </div>
+                        <div class="col w4" name="Cargo_Express_Input_Box" style="display:none;">
+                            <!-- grid_fluid -->
+                            <div class="grid_fluid type1">
+                                <div class="grid_col wd100">
+                                    <div class="int_box">
+                                        <input type="text" placeholder="화물관리번호를 입력하세요." class="inputCargoManageNum long" id="input_UniCargoMtno" data-index="Main_UniCargoMtno1">
+                                        <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //grid_fluid -->
+                        </div>
+                        <div class="col w2">
+                            <div class="grid_fluid type1" style="">
+                                <div class="grid_col">
+                                    <button type="submit" class="btn_type1 search" id="btn_Cargo_Search" onclick="fnMovePage('tab_area')"><span>조회</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unipass_output" id="div_UniCargoArea">
+                        <div class="mb30 bord_tp2" id="UniCargoList">
+                            @*<table class="tbl_type1 mo2">
+                                <colgroup class="pc">
+                                    <col class="w1">
+                                    <col class="w4">
+                                    <col>
+                                    <col class="w3">
+                                    <col class="w2">
+                                    <col class="w3">
+                                </colgroup>
+                                <colgroup class="mo">
+                                    <col class="w5">
+                                    <col class="w5">
+                                    <col class="w5">
+                                    <col class="w5">
+                                    <col class="w5">
+                                </colgroup>
+                                <thead class="head">
+                                    <tr class="row">
+                                        <th class="pc">번호</th>
+                                        <th>화물관리번호</th>
+                                        <th>B/L 번호</th>
+                                        <th>입항일자</th>
+                                        <th>양륙항</th>
+                                        <th>운송사명</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="scrollbar_mbl">
+                                <table class="tbl_type1 mo2">
+                                    <colgroup class="pc">
+                                        <col class="w1">
+                                        <col class="w4">
+                                        <col>
+                                        <col class="w3">
+                                        <col class="w2">
+                                        <col class="w3">
+                                    </colgroup>
+                                    <colgroup class="mo">
+                                        <col class="w5">
+                                        <col class="w5">
+                                        <col class="w5">
+                                        <col class="w5">
+                                        <col class="w5">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="pc">1</td>
+                                            <td><a href="javascript:void(0)" class="Searchmngt">21PCLUH027I30460001</a></td>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <td>20210403</td>
+                                            <td>인천항</td>
+                                            <td>범주해운(주)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pc">1</td>
+                                            <td><a href="javascript:void(0)" class="Searchmngt">21PCLUH027I30460001</a></td>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <td>20210403</td>
+                                            <td>인천항</td>
+                                            <td>범주해운(주)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pc">1</td>
+                                            <td><a href="javascript:void(0)" class="Searchmngt">21PCLUH027I30460001</a></td>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <td>20210403</td>
+                                            <td>인천항</td>
+                                            <td>범주해운(주)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pc">1</td>
+                                            <td><a href="javascript:void(0)" class="Searchmngt">21PCLUH027I30460001</a></td>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <td>20210403</td>
+                                            <td>인천항</td>
+                                            <td>범주해운(주)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pc">1</td>
+                                            <td><a href="javascript:void(0)" class="Searchmngt">21PCLUH027I30460001</a></td>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <td>20210403</td>
+                                            <td>인천항</td>
+                                            <td>범주해운(주)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pc">1</td>
+                                            <td><a href="javascript:void(0)" class="Searchmngt">21PCLUH027I30460001</a></td>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <td>20210403</td>
+                                            <td>인천항</td>
+                                            <td>범주해운(주)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>*@
+                        </div>
+                        <div id="UniCarogo_Result">
+                            <div class="unipass_table type1 no_head" id="div_UniCargoFirst1">
+                                @*<table>
+                                <colgroup class="mo">
+                                    <col class="w1">
+                                    <col>
+                                    <col class="w1">
+                                    <col>
+                                </colgroup>
+                                <colgroup class="pc">
+                                    <col class="w1">
+                                    <col>
+                                    <col class="w1">
+                                    <col>
+                                    <col class="w1">
+                                    <col>
+                                    <col class="w1">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>화물관리번호</th>
+                                        <td><span class="data">21PCLUH027I30460001</span></td>
+                                        <th>진행상태</th>
+                                        <td><span class="data">반출완료</span></td>
+                                        <th>선사/항공사</th>
+                                        <td colspan="3"><span class="data">범주해운(주)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>M B/L-H B/L</th>
+                                        <td><span class="data">PCLU2112GL5023-221921035497</span></td>
+                                        <th>화물구분</th>
+                                        <td><span class="data">수입 일반화물</span></td>
+                                        <th>선박/항공편명</th>
+                                        <td colspan="3"><span class="data">PANCON GLORY</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>통관진행상태</th>
+                                        <td><span class="data">수입신고수리</span></td>
+                                        <th>처리일시</th>
+                                        <td><span class="data">2021-04-05 15:08:11</span></td>
+                                        <th>선박국적</th>
+                                        <td><span class="data">한국</span></td>
+                                        <th>선박대리점</th>
+                                        <td><span class="data">범주해운</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>품명</th>
+                                        <td colspan="3"><span class="data">LEAD ACID BATTERY</span></td>
+                                        <th class="pc">적재항</th>
+                                        <td colspan="3"><span class="data">CNSHA : Shanghai, CN</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>포장개수</th>
+                                        <td><span class="data">1 GT</span></td>
+                                        <th>총 중량</th>
+                                        <td><span class="data">1,150 KG</span></td>
+                                        <th>양륙항</th>
+                                        <td><span class="data">KRINC : 인천항</span></td>
+                                        <th>입항세관</th>
+                                        <td><span class="data">인천세관</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>용적</th>
+                                        <td><span class="data">0.968</span></td>
+                                        <th>B/L유형</th>
+                                        <td><span class="data">Consol</span></td>
+                                        <th>입항일</th>
+                                        <td><span class="data">2021-04-03</span></td>
+                                        <th>항차</th>
+                                        <td><span class="data">2112E</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>관리대상지정여부</th>
+                                        <td><span class="data">N</span></td>
+                                        <th>컨테이너개수</th>
+                                        <td><span class="data">1</span></td>
+                                        <th>반출의무과태료</th>
+                                        <td><span class="data">N</span></td>
+                                        <th>신고지연가산세</th>
+                                        <td><span class="data">N</span></td>
+                                    </tr>
+                                    <tr class="pc">
+                                        <th>특수화물코드</th>
+                                        <td><span class="data"></span></td>
+                                        <th>컨테이너번호</th>
+                                        <td colspan="5"><span class="data">SEGU6469530</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>*@
+                                @*<table>
+                                    <colgroup class="mo">
+                                        <col class="w1">
+                                        <col>
+                                        <col class="w1">
+                                        <col>
+                                    </colgroup>
+                                    <colgroup class="pc">
+                                        <col class="w1">
+                                        <col>
+                                        <col class="w1">
+                                        <col>
+                                        <col class="w1">
+                                        <col>
+                                        <col class="w1">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>화물관리번호</th>
+                                            <td>21PCLUH027I30460001</td>
+                                            <th>진행상태</th>
+                                            <td>반출완료</td>
+                                            <th class="pc">선사/항공사</th>
+                                            <td colspan="3" class="pc">범주해운(주)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>M B/L-H B/L</th>
+                                            <td>PCLU2112GL5023-221921035497</td>
+                                            <th>화물구분</th>
+                                            <td>수입 일반화물</td>
+                                            <th class="pc">선박/항공편명</th>
+                                            <td colspan="3" class="pc">PANCON GLORY</td>
+                                        </tr>
+                                        <tr>
+                                            <th>통관진행상태</th>
+                                            <td>수입신고수리</td>
+                                            <th>처리일시</th>
+                                            <td>20210405150811</td>
+                                            <th class="pc">선박국적</th>
+                                            <td class="pc">한국</td>
+                                            <th class="pc">선박대리점</th>
+                                            <td class="pc">범주해운</td>
+                                        </tr>
+                                        <tr>
+                                            <th>품명</th>
+                                            <td colspan="3">LEAD ACID BATTERY</td>
+                                            <th class="pc">적재항</th>
+                                            <td colspan="3" class="pc">CNSHA : Shanghai, CN</td>
+                                        </tr>
+                                        <tr>
+                                            <th>포장개수</th>
+                                            <td>1 GT</td>
+                                            <th>총 중량</th>
+                                            <td>1150 KG</td>
+                                            <th class="pc">양륙항</th>
+                                            <td class="pc">KRINC : 인천항</td>
+                                            <th class="pc">입항세관</th>
+                                            <td class="pc">인천세관</td>
+                                        </tr>
+                                        <tr>
+                                            <th>용적</th>
+                                            <td>0.968</td>
+                                            <th>B/L유형</th>
+                                            <td>Consol</td>
+                                            <th class="pc">입항일</th>
+                                            <td class="pc">20210403</td>
+                                            <th class="pc">항차</th>
+                                            <td class="pc">2112E</td>
+                                        </tr>
+                                        <tr>
+                                            <th>관리대상지정여부</th>
+                                            <td>0.968</td>
+                                            <th>컨테이너개수</th>
+                                            <td>Consol</td>
+                                            <th class="pc">반출의무과태료</th>
+                                            <td class="pc">20210403</td>
+                                            <th class="pc">신고지연가산세</th>
+                                            <td class="pc">2112E</td>
+                                        </tr>
+                                        <tr class="pc">
+                                            <th>특수화물코드</th>
+                                            <td></td>
+                                            <th>컨테이너번호</th>
+                                            <td colspan="5">SEGU6469530</td>
+                                        </tr>
+                                    </tbody>
+                                </table>*@
+                            </div>
+                            <div class="unipass_table type2" id="div_UniCargoFirst2">
+                                @*<table class="mo">
+                                    <colgroup>
+                                        <col class="w1">
+                                        <col>
+                                        <col class="w1">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>선사/항공사</th>
+                                            <td colspan="3">PANCON GLORY</td>
+                                        </tr>
+                                        <tr>
+                                            <th>선박/항공편명</th>
+                                            <td colspan="3">PANCON GLORY</td>
+                                        </tr>
+                                        <tr>
+                                            <th>선박국적</th>
+                                            <td>한국</td>
+                                            <th>선박대리점</th>
+                                            <td>범주해운</td>
+                                        </tr>
+                                        <tr>
+                                            <th>적재항</th>
+                                            <td colspan="3">CNSHA : Shanghai, CN</td>
+                                        </tr>
+                                        <tr>
+                                            <th>양륙항</th>
+                                            <td>KRINC : 인천항</td>
+                                            <th>입항세관</th>
+                                            <td>인천세관</td>
+                                        </tr>
+                                        <tr>
+                                            <th>입항일</th>
+                                            <td>20210403</td>
+                                            <th>항차</th>
+                                            <td>2112E</td>
+                                        </tr>
+                                        <tr>
+                                            <th>반출의무과태료</th>
+                                            <td>20210403</td>
+                                            <th>신고지연가산세</th>
+                                            <td>2112E</td>
+                                        </tr>
+                                        <tr class="mo">
+                                            <th>특수화물코드</th>
+                                            <td></td>
+                                            <th>컨테이너번호</th>
+                                            <td>SEGU6469530</td>
+                                        </tr>
+                                    </tbody>
+                                </table>*@
+                            </div>
+
+                            <div class="btn_right"></div>
+                            <div class="notice_box">
+                                위 이미지는 가장 일반적인 절차를 기준으로 제공되므로 상황에 따라 실제 업무 절차와 일치하지 않을 수 있습니다. 반드시 아래의 <span class="red">"처리단계"</span>를 참조하시어 업무 진행하시기 바랍니다.
+                            </div>
+                            <div class="cnt_box">
+                                <span class="cnt" id="span_UniCount">
+                                    전체 <em>9</em>건
+                                </span>
+                            </div>
+                            <div class="unipass_table type1" id="div_UniCargoSecond">
+                                @*<table>
+                                    <colgroup>
+                                        <col style="width: 10%">
+                                        <col style="width: 18%">
+                                        <col style="width: 18%">
+                                        <col style="width: 18%">
+                                        <col style="width: 18%">
+                                        <col style="width: 18%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">No.</th>
+                                            <th>처리단계</th>
+                                            <th>장치장/장치위치</th>
+                                            <th>포장개수</th>
+                                            <th>반출입(처리)일시</th>
+                                            <th>신고번호</th>
+                                        </tr>
+                                        <tr>
+                                            <th>처리일시</th>
+                                            <th>장치장 명</th>
+                                            <th>중량</th>
+                                            <th>반출입(처리)내용</th>
+                                            <th>반출입근거번호</th>
+                                        </tr>
+                                    </thead>
+                                </table>*@
+                            </div>
+                            <div class="unipass_table type1" id="div_UniCargoSecond2">
+                                @*<div class="scrollbar_tbl">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width: 10%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="a_center" rowspan="2">9</td>
+                                                <td class="a_center">반출신고</td>
+                                                <td>03012240</td>
+                                                <td class="a_right">18 CT</td>
+                                                <td class="a_center">2000-11-17 17:13:23</td>
+                                                <td class="a_center">0301224000048587</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center">2000-11-17 17:24:04</td>
+                                                <td>한국허치슨터미널(주)부산컨테</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center">보세운송 반출</td>
+                                                <td class="a_center">03010010002000012648</td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center" rowspan="2">8</td>
+                                                <td class="a_center">반출신고</td>
+                                                <td>03911095</td>
+                                                <td class="a_right">18 GT</td>
+                                                <td class="a_center">2000-11-16 13:54:30</td>
+                                                <td class="a_center">0391109500909850</td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center">2000-11-16 14:27:23</td>
+                                                <td>동방보세창고</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center">수입신고 수리후 반출</td>
+                                                <td class="a_center">20375001103374</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center" rowspan="2">7</td>
+                                                <td class="a_center">수입신고수리</td>
+                                                <td>03911095</td>
+                                                <td class="a_right">18 CT</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center">20375001103374</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center">2000-11-16 13:37:53</td>
+                                                <td>동방보세창고</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center"></td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center" rowspan="2">6</td>
+                                                <td class="a_center">수입신고</td>
+                                                <td>03911095</td>
+                                                <td class="a_right">18 CT</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center">20375001103374</td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center">2000-11-16 10:28:11</td>
+                                                <td>동방보세창고</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center">수정합동관세사무소</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center" rowspan="2">5</td>
+                                                <td class="a_center">반입신고</td>
+                                                <td>03911095/2-1</td>
+                                                <td class="a_right">18 GT</td>
+                                                <td class="a_center">2000-11-15 09:44:13</td>
+                                                <td class="a_center">0391109500009397</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center">2000-11-16 09:46:31</td>
+                                                <td>동방보세창고</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center">보세운송 반입</td>
+                                                <td class="a_center">03010010002000012648</td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center" rowspan="2">4</td>
+                                                <td class="a_center">보세운송 신고 수리</td>
+                                                <td>03012240</td>
+                                                <td class="a_right">18 GT</td>
+                                                <td class="a_center">(도)03911095 동방창</td>
+                                                <td class="a_center">03010010002000012648</td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center">2000-11-15 15:59:59</td>
+                                                <td>한국허치슨터미널(주)부산컨테</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center">(주)국보</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center" rowspan="2">3</td>
+                                                <td class="a_center">반입신고</td>
+                                                <td>03012240</td>
+                                                <td class="a_right">18 CT</td>
+                                                <td class="a_center">2000-11-15 14:06:00</td>
+                                                <td class="a_center">0301224000037486</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center">2000-11-15 15:07:12</td>
+                                                <td>한국허치슨터미널(주)부산컨테</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center">입항 반입</td>
+                                                <td class="a_center"></td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center" rowspan="2">2</td>
+                                                <td class="a_center">하선신고 수리</td>
+                                                <td>03012240</td>
+                                                <td class="a_right">18 GT</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center">00030151513</td>
+                                            </tr>
+                                            <tr style="background: #fafafa;">
+                                                <td class="a_center">2000-11-14 09:58:47</td>
+                                                <td>한국허치슨터미널(주)부산컨테</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center" rowspan="2">1</td>
+                                                <td class="a_center">입항적하목록 심사완료</td>
+                                                <td>03911095</td>
+                                                <td class="a_right">18 GT</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center">2000-11-14 09:58:17</td>
+                                                <td>동방보세창고</td>
+                                                <td class="a_right">8,230 KG</td>
+                                                <td class="a_center"></td>
+                                                <td class="a_center"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>*@
+                            </div>
+                        </div>
+                        @*<div class="no_data" id="UniCarogo_no_data"><span>원하시는 <strong>정보를 검색해보세요.</strong></span></div>*@
+                    </div>
+                </div>
+            </div>
+            <!-- //panel -->
+            <!-- panel - 수출이행내역 -->
+            <div class="panel" id="exportUnipass">
+                <div class="fixed_in type2">
+                    <div class="unipass_area">
+                        <div class="search_bar">
+                            <div class="col w1">
+                                <div class="switch">
+                                    <input type="radio" name="export" id="export01" value="OUTBOUND" checked="checked">
+                                    <label for="export01" class="switch_label">수출신고번호</label>
+                                    <input type="radio" name="export" id="export02" value="BL">
+                                    <label for="export02" class="switch_label">B/L</label>
+                                </div>
+                            </div>
+                            <div class="col w4">
+                                <!-- grid_fluid -->
+                                <div class="grid_fluid type1" name="UniPass_Export_Box">
+                                    <div class="grid_col wd100">
+                                        <div class="int_box">
+                                            <input type="text" id="input_UniOBnum" value="" placeholder="수출신고번호를 입력하세요." class="inputExportReportNum long" data-index="Main_UniOBnum" maxlength="30">
+                                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid_fluid type1" name="UniPass_Export_Box" style="display:none;">
+                                    <div class="grid_col wd100">
+                                        <div class="int_box">
+                                            <input type="text" id="input_UniOBbl" value="" placeholder="B/L 번호를 입력하세요." class="inputBLNum long" data-index="Main_UniOBbl">
+                                            <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //grid_fluid -->
+                            </div>
+                            <div class="col w2">
+                                <div class="grid_col">
+                                    <button type="submit" class="btn_type1 search" id="btn_Outbound_Search" onclick="fnMovePage('tab_area')"><span>조회</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 수출이행내역 조회 결과 -->
+                        <div class="unipass_output" id="div_UniOB_NumArea">
+                            <div class="unipass_table type1" id="div_UniOB_NumFirst">
+                                <div class="grid_col">
+                                    <table>
+                                        <colgroup>
+                                            <col class="w1">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>수출화주/대행자</th>
+                                                <td>티지에스파이프(주)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>적재의무기한</th>
+                                                <td>2010-01-28</td>
+                                            </tr>
+                                            <tr>
+                                                <th>통관포장개수</th>
+                                                <td>61 BE</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선기적완료여부</th>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선기적포장개수</th>
+                                                <td>61 GT</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="grid_col">
+                                    <table>
+                                        <colgroup>
+                                            <col class="w1">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>제조자</th>
+                                                <td>티지에스파이프(주)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>수리일자</th>
+                                                <td>2009-12-29</td>
+                                            </tr>
+                                            <tr>
+                                                <th>통관중량(KG)</th>
+                                                <td>60,678</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선박/편명</th>
+                                                <td>OCEAN HOPE</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선기적중량(KG)</th>
+                                                <td>60,678</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="cnt_box">
+                                <span class="cnt" id="span_UniOB_NumCount">전체 <em>1</em>건</span>
+                            </div>
+                            <div class="unipass_table type3 no_head center" id="div_UniOB_NumSecond">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>B/L 번호</th>
+                                            <th>선적일자</th>
+                                            <th>선기적포장개수</th>
+                                            <th>선기적중량(KG)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="data">HDMUPGOHS9311600</span></td>
+                                            <td><span class="data">2010-01-07</span></td>
+                                            <td><span class="data">61GT</span></td>
+                                            <td><span class="data">60,678</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 수출이행내역 조회 결과 -->
+                        <div class="unipass_output" id="div_UniOB_BLArea">
+                            <div class="cnt_box" style="display: none;">
+                                <span class="cnt" id="span_UniOB_BlCount">전체 <em>1</em>건</span>
+                            </div>
+                            <div class="unipass_table type1 center" id="div_UniOB_BlFirst">
+                                <div class="grid_col">
+                                    <table>
+                                        <colgroup>
+                                            <col>
+                                            <col>
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">통관사항</th>
+                                            </tr>
+                                            <tr>
+                                                <th>수출자</th>
+                                                <th>수리일자</th>
+                                                <th>통관포장개수</th>
+                                            </tr>
+                                            <tr>
+                                                <th>수출신고번호</th>
+                                                <th>적재의무기한</th>
+                                                <th>통관중량(KG)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>티지에스파이프(주)</td>
+                                                <td>2009-12-29</td>
+                                                <td>61 BE</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12210-09-00340033</td>
+                                                <td>2010-01-28</td>
+                                                <td>60,678</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="grid_col">
+                                    <table>
+                                        <colgroup>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="4">선적사항</th>
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2">적하목록관리번호</th>
+                                                <th>선기적지</th>
+                                                <th>선기적포장개수</th>
+                                                <th>분할회수</th>
+                                            </tr>
+                                            <tr>
+                                                <th>출항일자</th>
+                                                <th>선기적중량(KG)</th>
+                                                <th>선기적완료여부</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td rowspan="2">10HDMUGG018</td>
+                                                <td>포항항</td>
+                                                <td class="a_right">61 GT	</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2010-01-07</td>
+                                                <td class="a_right">60,678</td>
+                                                <td>Y</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="no_data" id="UniOB_no_data"><span>원하시는 <strong>정보를 검색해보세요.</strong></span></div>*@
+                    </div>
+                </div>
+            </div>
+            <!-- //panel -->
+            <div class="client" id="no_data" style="display:none">
+                <div class="no_data">
+                    <div class="no_sorry">
+                        <h3>
+                            Sorry<br />
+                            <span>검색 결과가 없습니다.</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="client" id="no_search">
+                <div class="no_data">
+                    <div class="no_sorry no_search">
+                        <h3>
+                            Search<br />
+                            <span>원하시는 정보를 검색해보세요.</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/Sub/Unipass.js")
+    @Scripts.Render("~/Scripts/js/swiper.js")
+    @Scripts.Render("~/Scripts/js/jquery.slimscroll.min.js")
+}

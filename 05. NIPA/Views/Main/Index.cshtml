@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section Container {
+
+    @{
+        if (Session["USR_ID"] == null)
+        {
+            <input type="hidden" id="Session_USR_ID" value="" />
+        }
+        else
+        {
+            <input type="hidden" id="Session_USR_ID" value="@Session["USR_ID"]" />
+        }
+    }
+
+    <section class="container" id="main_container">
+        <div id="fullpage">
+            <div class="section part1 fp-section fp-table">
+                <div class="fp-tableCell">
+                    <img src="~/Images/main_ship.png" class="img ship pc" />
+                    <div class="inner">
+                        <img src="~/Images/main_map.png" class="img map pc" />
+                        <div class="login_area">
+                            <div class="slogan">
+                                <p>리드타임 최소화를 위한 포워더 전문 물류 플랫폼</p>
+                                <img src="~/Images/elvis_big.png" />
+                            </div>
+                            <div class="login_box">
+                                <p class="title01 pc">
+                                    Welcome To
+                                    <span>ELVIS-BIG</span>
+                                    @*<img src="~/Images/elvis_big.png" />*@
+                                </p>
+                                <div class="search_type1 focus">
+                                    <input type="text" placeholder="ID" id="email" />
+                                    <span class="red" id="Email_Warning" style="display:none">* Please enter your account.</span>
+                                </div>
+                                <div class="search_type1 focus">
+                                    <input type="password" placeholder="Password" id="password" />
+                                    <span class="red" id="Password_Warning" style="display:none">* Please enter your password.</span>
+                                </div>
+                                <div class="chk">
+                                    <span class="check">
+                                        <input type="checkbox" id="login_keep" name="login_keep" />
+                                        <label for="login_keep">Remember me</label>
+                                    </span>
+                                    @*<span class="forgot"><a href="javascript:void(0)" id="FindPwd" onclick="layerPopup('#Find_IDPW_Pop')">Forgot ID or Password?</a></span>*@
+                                </div>
+                                <div class="security_char" style="display:none">
+                                    <strong class="tit">보안문자</strong>
+                                    <div class="inner">
+                                        <p class="txt1">5회 이상 로그인 실패했습니다. 보안문자를 그려주세요.</p>
+                                        <div class="box">
+                                            <button type="button" class="btns type3 silver"><span class="refresh">새로고침</span></button>
+                                            <!-- character -->
+                                            <div class="character" id="Captcha_Area"></div>
+                                            <!-- //character -->
+                                        </div>
+                                        <p class="txt2">[ ● ]을 시작으로 그림을 따라 그려주세요.</p>
+                                    </div>
+                                </div>
+                                <button type="button" class="login_btn" id="Login_btn" @*onclick="location.href='@Url.Action("Main","Sub")'"*@>Login</button>
+                                <p class="join_comment"><span>엘비스빅이 처음이세요?</span></p>
+                                <button type="button" class="join_btn" onclick="location.href='@Url.Action("Join","Main")'">회원가입</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section part2 fp-section fp-table">
+                <div class="fp-tableCell">
+                    <div class="inner ">
+                        <img src="~/Images/main_plane.png" class="img plane pc" />
+                        <div class="slide_area">
+                            <div class="slide_box">
+                                <div class="title01">
+                                    <p>리드타임 최소화를 위한</p>
+                                    <p class="thick">포워더 전문 물류 플랫폼</p>
+                                </div>
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="slide_img second"></div>
+                                            <p class="title02">화물 관제 서비스</p>
+                                            <p class="desc">해운/항공사 스케줄 제공은 물론 출발지부터 최종 목적지까지,<br />End-to-End의 Tracking 서비스를 통해<br />실시간 화물 위치추적 서비스를 제공합니다. </p>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="slide_img first"></div>
+                                            <p class="title02">물류빅데이터 서비스</p>
+                                            <p class="desc">빅데이터 기반으로 지역별, 품목별, 서비스 분석을 통해<br />리드타임 최소화를 위한 맞춤형 물류데이터를 제공합니다.</p>
+                                        </div>
+                                        <div class="swiper-slide third">
+                                            <div class="slide_img"></div>
+                                            <p class="title02">소개문구03</p>
+                                            <p class="desc">리드타임 최소화를 위한 포워더 전문 물류 플랫폼</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="~/Images/main_bottom.png" class="img bottom pc" />
+                </div>
+            </div>
+            <div class="section part3 fp-section fp-table">
+                <div class="fp-tableCell">
+                    <div class="inner">
+                        <div class="left_area">
+                        </div>
+                        <div class="right_area">
+                            <div class="main_content">
+                                <p class="number">01</p>
+                                <p class="title03">도입효과</p>
+                                <p class="desc">생산성 증대 효과 및 비용절감 효과를 제공하는 최적화된 3PL 창고관리 솔루션을 제공하여 매출 증대를 지원합니다. 최신 IT 기술을 적용한 솔루션으로서 운송비용 절감 효과를 제공하는 최고의 수배송 관리 솔루션도 제공합니다.</p>
+                                <button class="btn_elvis" onclick="location.href='@Url.Action("Join","Main")'">ELVIS-BIG 이용신청 바로가기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section part4 fp-section fp-table">
+                <div class="fp-tableCell">
+                    <div class="inner">
+                        <div class="left_area">
+                        </div>
+                        <div class="right_area">
+                            <div class="main_content">
+                                <p class="number">02</p>
+                                <p class="title03">도입효과</p>
+                                <p class="desc">수출입 업무(포워딩)에 대한 모든 업무 프로세스를 지원하는 최적의 수출입물류 자동화 솔루션을 제공합니다.</p>
+                                <button class="btn_elvis" onclick="location.href='@Url.Action("Join","Main")'">ELVIS-BIG 이용신청 바로가기</button>
+                            </div>
+                        </div>
+                        <footer id="footer">
+                            <div class="inner">
+                                @*<img src="~/Images/footer_logo_w.png" />*@
+                                @*<p class="link"><button>개인정보처리방침</button> | <button>이용약관</button>*@ @*| <button>문의하기</button>*@</p>
+                                @*<p class="addr">Addr. 서울특별시 금천구 가산디지털2로 123, 313호 (가산동, 월드메르디앙 2차)<br />Tel.1522-7422 | fax. 02-2025-2778</p>*@
+                                <p class="copy">ⓒ Copyright Yangjae Information Technology Co., Ltd. All Rights Reserved.</p>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/Common/Unipass.js")
+    @Scripts.Render("~/Scripts/Main/Index.js")
+    @Scripts.Render("~/Scripts/js/jquery.fullPage.js")
+    @Scripts.Render("~/Scripts/js/swiper.js")
+}

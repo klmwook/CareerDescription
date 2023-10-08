@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Terminal";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+
+    <section class="container" id="container">
+        @*<h1 class="sub_title">ELVIS-BIG<img src="~/Images/title02.png" /></h1>*@
+        <div class="search_type2 between">
+            <div class="search_cover">
+                <div class="type_value">
+                    <select class="select" id="PORT_LOC_CD">
+                        @*<option>지역 선택</option>
+                <option>부산</option>
+                <option>인천</option>
+                <option>평택</option>*@
+                    </select>
+                </div>
+                <div class="type_value">
+                    <select class="select" id="PORT_TRMN_CD">
+                        <option value="">터미널 선택</option>
+                    </select>
+                </div>
+                <div class="type_value">
+                    <select class="select" id="S_END_YN">
+                        <option value="">완료 여부</option>
+                        <option value="N">진행중</option>
+                        <option value="Y">완료</option>
+                    </select>
+                </div>
+                <div class="type_value">
+                    <select class="select" id="TRMN_CONGEST_STAT">
+                        <option value=''>혼잡도</option>
+                        <option value='양호'>양호</option>
+                        <option value="보통">보통</option>
+                        <option value="혼잡">혼잡</option>
+                    </select>
+                </div>
+                <div class="type_value">
+                    <div class="int_box">
+                        <input type="text" class="" placeholder="선박명 입력" id="VSL_NM" data-index="1">
+                        <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                    </div>
+                </div>
+                <div class="type_value no_flex">
+                    <button type="button" id="btn_search" class="btn_search">조회</button>
+                </div>
+                <div class="type_value last no_flex btn_small">
+                    <button type="button" class="btn_search icn_talk"><span class="hidden">톡</span></button>
+                    <button type="button" class="btn_search icn_mail"><span class="hidden">메일</span></button>
+                </div>
+            </div>
+            @*<div class="search_cover">
+                </div>*@
+        </div>
+        <div class="list_type1" id="Cntr_list">
+
+            <div class="client" id="no_search">
+                <div class="no_data">
+                    <div class="no_sorry no_search">
+                        <h3>
+                            Search<br />
+                            <span>원하시는 정보를 검색해보세요.</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="base_paging">
+            <div class="paging_in" id="Paging_List_Area">
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/Sub/Terminal.js")
+    @Scripts.Render("~/Scripts/js/swiper.js")
+}

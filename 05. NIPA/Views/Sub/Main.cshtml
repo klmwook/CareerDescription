@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Container {
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArAl46_PcCIoHmQqxmZ9Qa89YuCk5nlok" async defer></script>
+
+    <section class="container" id="container">
+        @*<h1 class="sub_title">ELVIS-BIG<img src="~/Images/title02.png" /></h1>*@
+        <div class="greeting">
+            <div class="greeting_comment">
+                <h2 class="welcome">Welcome Back, User<span>!</span></h2>
+                <p>A forwarder logistics platform <br class="mo" />to minimize lead time</p>
+            </div>
+        </div>
+        <div class="one_look">
+            <div class="select_area">
+                <div class="left_area">
+                    <select class="select" id="select_BOUND">
+                        <option value="E">Export</option>
+                        <option value="I">Import</option>
+                    </select>
+                    <button type="button" class="btn_refresh">DashBoard</button>
+                </div>
+                <img src="~/Images/status02.png" class="main_status" />
+                <div class="cal_ym">
+                    <button type="button" class="arr left" id="btn_cal_left"></button>
+                    <span id="cal_date"></span>
+                    <button type="button" class="arr right" id="btn_cal_right"></button>
+                </div>
+            </div>
+            <div class="map_area">
+                <div class="sheet_cover">
+                    <h2 class="sheet_title" id="LOC_TIT"></h2>
+                    <div class="sheet">
+                        <div class="sheet_info">
+                            <p class="title">해운 B/L</p>
+                            <p id="SEA_BL_CNT">@*<span>10,572 /</span> <br class="mo" />16,520 건*@</p>
+                        </div>
+                        @*<div class="sheet_graph" id="sheet_graph"></div>*@
+                        <div id="sheet_graph1"></div>
+                    </div>
+                    <div class="sheet">
+                        <div class="sheet_info">
+                            <p class="title">해운 물동량(Rton)</p>
+                            <p id="SEA_CON_CNT">@*<span>9,003 /</span> <br class="mo" />16,520 Rton*@</p>
+                        </div>
+                        @*<div class="sheet_graph" id="sheet_graph"></div>*@
+                        <div id="sheet_graph2"></div>
+                    </div>
+                    <div class="sheet">
+                        <div class="sheet_info">
+                            <p class="title">항공 AWB</p>
+                            <p id="AIR_AWB_CNT">@*<span>1,710 /</span> <br class="mo" />3,000 건*@</p>
+                        </div>
+                        @*<div class="sheet_graph" id="sheet_graph"></div>*@
+                        <div id="sheet_graph3"></div>
+                    </div>
+                    <div class="sheet">
+                        <div class="sheet_info">
+                            <p class="title">항공 물동량(CBM)</p>
+                            <p id="AIR_CON_CNT">@*<span>26,538 /</span> <br class="mo" />32,364 CBM*@</p>
+                        </div>
+                        @*<div class="sheet_graph" id="sheet_graph"></div>*@
+                        <div id="sheet_graph4"></div>
+                    </div>
+                </div>
+                <div class="map" id="main_map"></div>
+            </div>
+        </div>
+</section>
+    @Scripts.Render("~/Scripts/Sub/Main.js")
+    @Scripts.Render("~/Scripts/js/swiper.js")
+}
