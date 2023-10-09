@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "TariffPremium";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="st-header__menu">
+                        <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col text-ellipsis">
+                    <div class="st-header__title"><span>안전운임제 할증관리</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="st-panel">
+                            <div class="st-panel__cont">
+                                <div class="st-panel__content ">
+                                    <!-- 검색   -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered tb_style01 not_fixed">
+                                                <colgroup>
+                                                    <col class="w1" />
+                                                    <col class="w2" />
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="hidden-xs">적용기간</th>
+                                                        <td>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="input-group">
+                                                                    <select class="form-control select" id="select_YearQuarter" name="select_YearQuarter">
+                                                                        <option value="">2021년 1분기</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-1 col-sm-1">
+                                                                <span class="input-group-btn ">
+                                                                    <a href="javascript:void(0);" type="button" id="Tariff_PR_Search" class="btn  btn-primary _search_btn"><i class="fa fa-search"></i></a>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- /. 검색   -->
+                                    <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12">
+                                            <table width="100%" class="table table-bordered table-hover tb_style no_head" id="data_table">
+                                                <colgroup>
+                                                    <col width="20%">
+                                                    <col width="45%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="15%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>적용기간</th>
+                                                        <th>할증명칭</th>
+                                                        <th>계산식</th>
+                                                        <th>예외처리</th>
+                                                        <th>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" id="btn_Insert_TariffPR" class="btn btn-primary pull-right _btn_write_premium"><i class="fa fa-pencil-square-o"></i>&nbsp;신규</a>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="TariffPR_Result">
+                                                    <tr>
+                                                        <td colspan="5">원하시는 정보를 검색해보세요.</td>
+                                                    </tr>
+                                                    @*<tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>플래시백 컨테이너</td>
+                                                        <td>20%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>*@
+                                                    @*<tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>탱크 컨테이너(비위험물)</td>
+                                                        <td>30%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>냉동냉장 컨테이너(편도미적용)</td>
+                                                        <td>30%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>험로 및 오지</td>
+                                                        <td>20%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>덤프 컨테이너</td>
+                                                        <td>25%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>심야(22:00~06:00)</td>
+                                                        <td>20%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>검색대(X-ray) 통과 할증</td>
+                                                        <td>96000원</td>
+                                                        <td>Y</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>밥테일 1회 왕복</td>
+                                                        <td>100%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>밥테일 2회 왕복</td>
+                                                        <td>200%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>위험물, 유독물, 유해화학물질</td>
+                                                        <td>30%</td>
+                                                        <td>N</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>*@
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                    </div>
+                                    <!-- /.리스트 데이타 -->
+                                    <!-- 페이징 -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-5">
+                                            <nav aria-label="Page navigation" class="paging">
+                                                <ul class="pagination" id="paging_Area">
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-left"></i><span class="sr-only">처음페이지로 가기</span></a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-left"></i><span class="sr-only">이전페이지로 가기</span></a></li>
+                                                    <li class="active"><a href="javascript:void(0);">1</a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-right"></i><span class="sr-only">다음페이지로 가기</span></a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-right"></i><span class="sr-only">마지막페이지로 가기</span></a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <!-- /.페이징 -->
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-footer">
+            <div class="copyright">
+                Copyrightⓒ 관리자 모드. All right reserved.
+            </div>
+        </div>
+
+        <div class="layer_zone alert_type" id="TariffPR_Confirm">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="alert_cont">
+                            <div class="inner">
+                                데이터가 삭제 되었습니다.
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr2" id="Layer_Confirm_Cencel">취소</button>
+                            <button type="button" class="btns radius cr1" id="Layer_Confirm">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/Scripts/js/Admin/_tariff_PR.js")
+}

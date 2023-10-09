@@ -1,0 +1,456 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "TariffAdmin";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="st-header__menu">
+                        <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col text-ellipsis">
+                    <div class="st-header__title"><span>안전운임제 관리</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="st-panel">
+                            <div class="st-panel__cont">
+                                <div class="st-panel__content ">
+                                    <!-- 검색   -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered tb_style01 not_fixed">
+                                                <colgroup>
+                                                    <col class="w1" />
+                                                    <col class="w2" />
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th rowspan="2" class="hidden-xs">검색</th>
+                                                        <td>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <select class="form-control select" id="select_YearQuarter" name="select_YearQuarter"></select>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4">
+                                                                <select class="form-control select" id="select_Type" name="select_Type">
+                                                                    <option value="TF" selected>안전운송운임(화주->운송사)</option>
+                                                                    <option value="CF">안전위탁운임(운송사->차주)</option>
+                                                                    <option value="IF">=> 운수사업자간운임</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4">
+                                                                <select class="form-control select" id="select_Section" name="select_Section">
+                                                                    @*<option value="BSO_왕복">부산북항기점(왕복)</option>
+                                                                    <option value="BSN_왕복">부산신항기점(왕복)</option>
+                                                                    <option value="INO_왕복">인천항기점(왕복)</option>
+                                                                    <option value="INN_왕복">인천신항기점(왕복)</option>
+                                                                    <option value="IT_왕복">인천항국제여객터미널기점(왕복)</option>
+                                                                    <option value="GY_왕복">광양항기점(왕복)</option>
+                                                                    <option value="PT_왕복">평택항기점(왕복)</option>
+                                                                    <option value="USO_왕복">울산구항기점(왕복)</option>
+                                                                    <option value="USN_왕복">울산신항기점(왕복)</option>
+                                                                    <option value="PO_왕복">포항항기점(왕복)</option>
+                                                                    <option value="GS_왕복">군산항기점(왕복)</option>
+                                                                    <option value="MS_왕복">마산항기점(왕복)</option>
+                                                                    <option value="DS_왕복">대산항기점(왕복)</option>
+                                                                    <option value="UW_왕복">의왕ICD기점(왕복)</option>
+                                                                    <option value="BSO_편도">부산북항기점(편도)</option>
+                                                                    <option value="BSN_편도">부산신항기점(편도)</option>
+                                                                    <option value="GY_편도">광양항기점(편도)</option>*@
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-1 col-sm-1">
+                                                                <span class="input-group-btn ">
+                                                                    <a href="javascript:void(0);" type="button" id="Tariff_Search_btn" class="btn  btn-primary _search_btn"><i class="fa fa-search"></i></a>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="input-group">
+                                                                    <select class="form-control select" id="select_AddrState" name="select_AddrState">
+                                                                        <option value="">전체(시,도)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="input-group">
+                                                                    <select class="form-control select" id="select_AddrCity" name="select_AddrCity">
+                                                                        <option value="">전체(시, 군, 구)</option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="input-group">
+                                                                    <select class="form-control select" id="select_AddrTownship" name="select_AddrTownship">
+                                                                        <option value="">전체(읍,면,동 - 행정동)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="input-group">
+                                                                    <select class="form-control select" id="select_AddrTownship2" name="select_AddrTownship2">
+                                                                        <option value="">전체(읍,면,동 - 법정동)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /. 검색   -->
+                                    <!-- 버튼 -->
+                                    <div class="row pull-right">
+                                        <div class="col-md-12 mb10">
+                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                <input type="file" id="tariff_excel_register" />
+                                                <label for="tariff_excel_register" class="btn btn-primary pull-right _btn_excel"><i class="fa fa-file-excel-o"></i>&nbsp;Excel Upload</label>
+                                            </div>
+                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" id="ExcelForm_Download" class="btn btn-primary pull-right _btn_download"><i class="fa fa-file-excel-o"></i>&nbsp;양식 Download</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.버튼 -->
+                                    <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12">
+                                            <table width="100%" class="table table-bordered table-hover tb_style no_head tariff" id="data_table">
+                                                <colgroup>
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="5%">
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="*">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>적용기간</th>
+                                                        <th>행선지 (시,도)</th>
+                                                        <th>행선지 (시,군,구)</th>
+                                                        <th>행선지 (읍,면,동)</th>
+                                                        <th>거리</th>
+                                                        <th>20ft(원)</th>
+                                                        <th>40ft(원)</th>
+                                                        <th>
+                                                            <!--<div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button"--> @*id="btn_Insert_Tariff"*@ <!--class="btn btn-primary pull-right _btn_write" onclick="layerPopup('#alert03')"><i class="fa fa-pencil-square-o"></i>&nbsp;신규</a>
+                                                            </div>-->
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="Tarrff_Result">
+                                                    <tr>
+                                                        <td colspan="8">원하시는 정보를 검색해보세요.</td>
+                                                    </tr>
+                                                    @*<tr>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전운송운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>종로구</td>
+                                                        <td>종로1234가동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>*@
+                                                    @*<tr>
+                                                        <td>9</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전운송운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>중구</td>
+                                                        <td>을지로동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전운송운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>용산구</td>
+                                                        <td>용산2가동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전운송운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>성동구</td>
+                                                        <td>왕십리도선동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전위탁운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>광진구</td>
+                                                        <td>구의2동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전위탁운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>동대문구</td>
+                                                        <td>청량리2동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>안전위탁운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>중랑구</td>
+                                                        <td>면목2동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>운수사업자간운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>성북구</td>
+                                                        <td>정릉2동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>운수사업자간운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>강북구</td>
+                                                        <td>미아동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>2021년 1분기</td>
+                                                        <td>운수사업자간운임</td>
+                                                        <td>부산북항</td>
+                                                        <td>서울</td>
+                                                        <td>도봉구</td>
+                                                        <td>쌍문1동</td>
+                                                        <td>
+                                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                            </div>
+                                                            <div class="btn-group" role="group" aria-label="버튼">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>*@
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                    </div>
+                                    <!-- /.리스트 데이타 -->
+                                    <!-- 페이징 -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-5">
+                                            <nav aria-label="Page navigation" class="paging">
+                                                <ul class="pagination" id="paging_Area">
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-left"></i><span class="sr-only">처음페이지로 가기</span></a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-left"></i><span class="sr-only">이전페이지로 가기</span></a></li>
+                                                    <li class="active"><a href="javascript:void(0);">1</a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-right"></i><span class="sr-only">다음페이지로 가기</span></a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-right"></i><span class="sr-only">마지막페이지로 가기</span></a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <!-- /.페이징 -->
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layer_zone alert_type" id="Tariff_Confirm">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="alert_cont">
+                            <div class="inner">
+                                데이터가 삭제 되었습니다.
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr2" id="Layer_Confirm_Cencel">취소</button>
+                            <button type="button" class="btns radius cr1" id="Layer_Confirm">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="layer_zone alert_type" id="layer_ExcelUpload">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="alert_cont2">
+                            <div class="inner">
+                                <select class="select" id="layer_select_YearQuarter">
+                                    <option value="2022_04">2022년 4분기</option>
+                                    <option value="2022_03">2022년 3분기</option>
+                                    <option value="2022_02">2022년 2분기</option>
+                                    <option value="2022_21">2022년 1분기 (2/19 ~ 3/31)</option>
+                                    <option value="2022_11">2022년 1분기 (1/1 ~ 2/18)</option>
+                                    <option value="2022_01">2022년 1분기</option>
+                                    <option value="2021_04">2021년 4분기</option>
+                                    <option value="2021_03">2021년 3분기</option>
+                                    <option value="2021_01">2021년 1분기</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr2" id="layer_excel_cancel">취소</button>
+                            <button type="button" class="btns radius cr1" id="layer_btn_ExcelUpload">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="layer_zone alert_type" id="Excel_Tariff_Confirm">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="alert_cont">
+                            <div class="inner">
+                                이미 데이터가 있습니다. <br /> 업로드 하시겠습니까?
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr2" id="Excel_Confirm_Cencel">취소</button>
+                            <button type="button" class="btns radius cr1" id="Excel_Confirm_Upload">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-footer">
+            <div class="copyright">
+                Copyrightⓒ 관리자 모드. All right reserved.
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/Scripts/js/Admin/_tariff.js")
+}

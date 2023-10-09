@@ -1,0 +1,546 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Container {
+    <div class="container">
+        <div class="sub_visual" id="Schedule">
+            <div class="inner fixed_in type2">
+                <h4 class="subtitle" id="Booking_Title">Tracking</h4>
+            </div>
+        </div>
+        <div class="sub_cover" id="SubCover">
+            <div class="search_zone layout2 tracking_page" id="tracking_page">
+                <div class="inner">
+                    <div class="col">
+                        <em class="label cr1">B/L No :</em>
+                        <div class="int_box cr1">
+                            <input type="text" name="" value="" placeholder="" id="input_TrkHBL" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <em class="label cr2">CNTR No :</em>
+                        <div class="int_box cr2">
+                            <input type="text" name="" value="" placeholder="" id="input_TrkCntr" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btns type7 icn_search" id="btn_SearchTrk"><span class="icn_search"></span></button>
+                </div>
+            </div>
+            <!-- //search_zone -->
+            <!-- tracking_area -->
+            <div class="fixed_in type2">
+                <div class="tracking_area tracking_page">
+                    <!-- delivery_status -->
+                    <div class="delivery_status ds delivery_mo">
+                        <ul class="delivery_step export" id="MileStronArea">
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">Container in Gate</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">BUSAN, KOREA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210225100907085382_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">Container in Gate</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">BUSAN, KOREA</strong>
+                                        </div>
+                                        <p class="date">2021.07.02 <span>08:56</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">Loaded on Vessel</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">BUSAN, KOREA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210225100940017028_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">Loaded on Vessel</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">BUSAN, KOREA</strong>
+                                        </div>
+                                        <p class="date">2021.07.04 <span>19:41</span></p>
+                                        <div class="pc">
+                                            <strong class="location blue">BUSAN, KOREA</strong>
+                                        </div>
+                                        <p class="date blue">2021.07.04 <span>19:41</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">POL Departure</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">BUSAN, KOREA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210311172133553645_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">POL Departure</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">BUSAN, KOREA</strong>
+                                        </div>
+                                        <p class="date">2021.07.05 <span>17:00</span></p>
+                                        <div class="pc">
+                                            <strong class="location blue">BUSAN, KOREA</strong>
+                                        </div>
+                                        <p class="date blue">2021.07.04 <span>19:41</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">TS Departure</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210225101029780686_EST.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">TS Departure</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location"></strong>
+                                        </div>
+                                        <p class="date"> <span></span></p>
+                                        <div class="pc">
+                                            <strong class="location blue"></strong>
+                                        </div>
+                                        <p class="date blue"> <span></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">TS Arrival</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210225101016071891_EST.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">TS Arrival</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location"></strong>
+                                        </div>
+                                        <p class="date"> <span></span></p>
+                                        <div class="pc">
+                                            <strong class="location blue"></strong>
+                                        </div>
+                                        <p class="date blue"> <span></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">POD Arrival</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210225101221751127_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">POD Arrival</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date">2021.07.21 <span>11:30</span></p>
+                                        <div class="pc">
+                                            <strong class="location blue">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date blue">2021.07.04 <span>19:41</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">CY Arrival</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210311172056730765_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">CY Arrival</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date">2021.07.23 <span>03:08</span></p>
+                                        <div class="pc">
+                                            <strong class="location blue">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date blue">2021.07.04 <span>19:41</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">CY Departure</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding02.png"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210311172117967944_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">CY Departure</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date">2021.07.24 <span>07:28</span></p>
+                                        <div class="pc">
+                                            <strong class="location blue">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date blue">2021.07.04 <span>19:41</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on now" id="now_track1">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step long_name">Empty Cntr Return</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn">
+                                            <div class="center_img"><img src="/Images/rounding_blue02.png" class="blinkcss"></div>
+                                            <div class="center_img"><img src="http://image.elvisprime.com/ORIGINAL/20210225101120952235_ACT.PNG"></div>
+                                        </span>
+                                        <div class="mo">
+                                            <em class="step long_name">Empty Cntr Return</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date">2021.07.24 <span>11:02</span></p>
+                                        <div class="pc">
+                                            <strong class="location blue">JAKARTA, INDONESIA</strong>
+                                        </div>
+                                        <p class="date blue">2021.07.04 <span>19:41</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //delivery_status -->
+                    <!-- list_type1 -->
+                    <div class="layer_list" id="tracking_List">
+                        <table class="list_type1 mb0 small_head2">
+                            <colgroup class="pc">
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col class="w8">
+                            </colgroup>
+                            <thead class="head">
+                                <tr class="row">
+                                    <th><button type="button">House B/L</button></th>
+                                    <th><button type="button">Container No</button></th>
+                                    <th><button type="button">Master B/L</button></th>
+                                    <th>Status</th>
+                                    <th><button type="button">Location</button></th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="tracking_scrollbar">
+                            <table class="list_type1 mb0">
+                                <colgroup class="pc">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col class="w8">
+                                </colgroup>
+                                <tbody id="delivery_list">
+                                    <tr class="row" data-row="row_1" style="background-color:#f5f5f5">
+                                        <td>CELXMN20090120</td>
+                                        <td>SEGU3276118</td>
+                                        <td>KMTCXMN138300</td>
+                                        <td>컨테이너 선적</td>
+                                        <td>2020.12.01 03:00</td>
+                                        <!-- mobile_layout -->
+                                        <td class="mobile_layout" colspan="6">
+                                            <div class="layout_type5">
+                                                <div class="row s1">
+                                                    <div class="col w1">House B/L :</div>
+                                                    <div class="col">CELXMN20090120</div>
+                                                </div>
+                                                <div class="row s2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Container No :</th>
+                                                                <td>SEGU3276118</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Master No :</th>
+                                                                <td>HDMUSELA64710201</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Status :</th>
+                                                                <td>KMTCXMN138300</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Location :</th>
+                                                                <td>
+                                                                    2020.12.01 03:00
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- //mobile_layout -->
+                                        <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276118">
+                                        <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                    </tr>
+                                    <tr class="row" data-row="row_1">
+                                        <td>CELXMN20090120</td>
+                                        <td>SEGU3276199</td>
+                                        <td>KMTCXMN138300</td>
+                                        <td>도착</td>
+                                        <td>2020.12.01 03:0000</td>
+                                        <!-- mobile_layout -->
+                                        <td class="mobile_layout" colspan="6">
+                                            <div class="layout_type5">
+                                                <div class="row s1">
+                                                    <div class="col w1">House B/L :</div>
+                                                    <div class="col">CELXMN20090120</div>
+                                                </div>
+                                                <div class="row s2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Container No :</th>
+                                                                <td>SEGU3276199</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Master No :</th>
+                                                                <td>HDMUSELA64710201</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Status :</th>
+                                                                <td>KMTCXMN138300</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Location :</th>
+                                                                <td>2020.12.01 03:0000</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- //mobile_layout -->
+                                        <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276199">
+                                        <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                    </tr>
+                                    <tr class="row" data-row="row_1">
+                                        <td>CELXMN20090120</td>
+                                        <td>SEGU3276145</td>
+                                        <td>KMTCXMN138300</td>
+                                        <td>컨테이너 반출</td>
+                                        <td>2020.12.01 03:0000</td>
+                                        <!-- mobile_layout -->
+                                        <td class="mobile_layout" colspan="6">
+                                            <div class="layout_type5">
+                                                <div class="row s1">
+                                                    <div class="col w1">House B/L :</div>
+                                                    <div class="col">CELXMN20090120</div>
+                                                </div>
+                                                <div class="row s2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Container No :</th>
+                                                                <td>SEGU3276145</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Master No :</th>
+                                                                <td>HDMUSELA64710201</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Status :</th>
+                                                                <td>KMTCXMN138300</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Location :</th>
+                                                                <td>    								2020.12.01 03:0000    							</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- //mobile_layout -->
+                                        <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276145">
+                                        <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                    </tr>
+                                    <tr class="row" data-row="row_1">
+                                        <td>CELXMN20090120</td>
+                                        <td>SEGU3276167</td>
+                                        <td>KMTCXMN138300</td>
+                                        <td>컨테이너 반출</td>
+                                        <td>2020.12.01 03:0000</td>
+                                        <!-- mobile_layout -->
+                                        <td class="mobile_layout" colspan="6">
+                                            <div class="layout_type5">
+                                                <div class="row s1">
+                                                    <div class="col w1">House B/L :</div>
+                                                    <div class="col">CELXMN20090120</div>
+                                                </div>
+                                                <div class="row s2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Container No :</th>
+                                                                <td>SEGU3276167</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Master No :</th>
+                                                                <td>HDMUSELA64710201</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Status :</th>
+                                                                <td>KMTCXMN138300</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Location :</th>
+                                                                <td>    								2020.12.01 03:0000    							</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- //mobile_layout -->
+                                        <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276167">
+                                        <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                    </tr>
+                                    <tr class="row" data-row="row_1">
+                                        <td>CELXMN20090120</td>
+                                        <td>SEGU3276123</td>
+                                        <td>KMTCXMN138300</td>
+                                        <td>입항</td>
+                                        <td>2020.12.01 03:0000</td>
+                                        <!-- mobile_layout -->
+                                        <td class="mobile_layout" colspan="6">
+                                            <div class="layout_type5">
+                                                <div class="row s1">
+                                                    <div class="col w1">House B/L :</div>
+                                                    <div class="col">CELXMN20090120</div>
+                                                </div>
+                                                <div class="row s2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Container No :</th>
+                                                                <td>SEGU3276123</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Master No :</th>
+                                                                <td>HDMUSELA64710201</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Status :</th>
+                                                                <td>KMTCXMN138300</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Location :</th>
+                                                                <td>    								2020.12.01 03:0000    							</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- //mobile_layout -->
+                                        <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276123" />
+                                        <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120" />
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //delivery_status -->
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/Tracking/Tracking.js")
+}

@@ -1,0 +1,319 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "VehicleAdmin";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+<div class="st-main">
+    <div class="st-header">
+        <div class="fluid_cols">
+            <div class="min_col">
+                <div class="st-header__menu">
+                    <button class="btn"><i class="fa fa-bars"></i></button>
+                </div>
+            </div>
+            <div class="expand-col">
+                <div class="st-header__title">
+                    <span>차량제원 관리</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="st-content mb50 max_width">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="st-panel">
+                        <div class="st-panel__cont">
+                            <div class="st-panel__content ">
+                                <!-- 검색   -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-bordered tb_style01 not_fixed">
+                                            <colgroup>
+                                                <col class="w1" />
+                                                <col class="w2" />
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th class="hidden-xs">검색</th>
+                                                    <td>
+                                                        <div class="col-md-3 col-sm-3">
+                                                            <div class="input-group">
+                                                                <select class="form-control select" id="select_vehicle_div" name="select_vehicle_div">
+                                                                    <option value="">전체</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-1 col-sm-1">
+                                                            <span class="input-group-btn ">
+                                                                <a href="javascript:void(0);" type="button" id="Search_vehicle" class="btn  btn-primary _search_btn"><i class="fa fa-search"></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- /. 검색   -->
+                                <!-- 버튼 -->
+                                <!--<div class="row">
+                                <div class="col-md-12 mb10">
+                                    <div class="btn-group pull-right btn_padding" role="group" aria-label="버튼">-->
+                                <!-- <a href="javascript:void(0);" type="button" class="btn  btn-primary _ajax_write">등록</a> -->
+                                <!--<a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>신규</a>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <!-- /.버튼 -->
+                                <!-- 리스트 데이타 -->
+                                <div class="row">
+                                    <div id="dataTbl" class="col-lg-12">
+                                        <table width="100%" class="table table-bordered table-hover tb_style vehicle" id="data_table">
+                                            <colgroup>
+                                                <col width="*">
+                                                <col width="*">
+                                                <col width="*">
+                                                <col width="*">
+                                                <col width="*">
+                                                <col width="15%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>구분</th>
+                                                    <th>명칭</th>
+                                                    <th>약칭</th>
+                                                    <th>적재함 길이</th>
+                                                    <th>이미지</th>
+                                                    <th>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>&nbsp;신규</a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="Vehicle_Result">
+                                                @*
+                                                <tr>
+                                                    <td colspan="6">데이터가 없습니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤카고</td>
+                                                    <td>용달차</td>
+                                                    <td>2.8m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1001"><input type="hidden" id="pics1001" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>*@
+                                                @*
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤초장축</td>
+                                                    <td>용달차</td>
+                                                    <td>3m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1002"><input type="hidden" id="pics1002" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤리프트</td>
+                                                    <td>용달리프트</td>
+                                                    <td>2.8m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1003"><input type="hidden" id="pics1003" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤탑차</td>
+                                                    <td>용달탑차</td>
+                                                    <td>2.8m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1004"><input type="hidden" id="pics1004" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤윙바디</td>
+                                                    <td>용달윙바디</td>
+                                                    <td>2.8m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1005"><input type="hidden" id="pics1005" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤호루차</td>
+                                                    <td>용달호루차</td>
+                                                    <td>2.8m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1006"><input type="hidden" id="pics1006" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1톤</td>
+                                                    <td>1톤냉동탑차</td>
+                                                    <td>용달냉탑</td>
+                                                    <td>2.8m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1007"><input type="hidden" id="pics1007" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.4톤</td>
+                                                    <td>1.4톤카고</td>
+                                                    <td>쩜사</td>
+                                                    <td>3.1m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1008"><input type="hidden" id="pics1008" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.4톤</td>
+                                                    <td>1.4톤초장축</td>
+                                                    <td>쩜사</td>
+                                                    <td>3.4m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1009"><input type="hidden" id="pics1009" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.4톤</td>
+                                                    <td>1.4톤리프트</td>
+                                                    <td>쩜사</td>
+                                                    <td>3.1m</td>
+                                                    <td><a href="~/Images/1t_cargo.jpg" download class="preview" id="1010"><input type="hidden" id="pics1010" value="1t_cargo.jpg" /> image.png</a></td>
+                                                    <td>
+                                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                        </div>
+                                                        <div class="btn-group" role="group" aria-label="버튼">
+                                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>*@
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.col-lg-12 -->
+                                </div>
+                                <!-- /.리스트 데이타 -->
+                                <!-- 페이징 -->
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-5">
+                                        <nav aria-label="Page navigation" class="paging">
+                                            <ul class="pagination" id="paging_Area">
+                                                <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-left"></i><span class="sr-only">처음페이지로 가기</span></a></li>
+                                                <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-left"></i><span class="sr-only">이전페이지로 가기</span></a></li>
+                                                <li class="active"><a href="javascript:void(0);">1</a></li>
+                                                <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-right"></i><span class="sr-only">다음페이지로 가기</span></a></li>
+                                                <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-right"></i><span class="sr-only">마지막페이지로 가기</span></a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <!-- /.페이징 -->
+                                <div class="mb20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="st-footer">
+        <div class="copyright">
+            Copyrightⓒ 관리자 모드. All right reserved.
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="Vehicle_Confirm">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr2" id="Layer_Confirm_Cencel">취소</button>
+                        <button type="button" class="btns radius cr1" id="Layer_Confirm">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+
+</div>
+    @Scripts.Render("~/Scripts/js/Admin/_vehicle.js")
+}
