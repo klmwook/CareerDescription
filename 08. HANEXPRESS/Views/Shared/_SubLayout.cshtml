@@ -1,0 +1,1106 @@
+﻿<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>ILSIM Logistar</title>
+    @Styles.Render("~/Content/fonts.css")
+    @Styles.Render("~/Content/media.css")
+    @Styles.Render("~/Content/API/font-awesome/css/font-awesome.min.css")
+
+    @Scripts.Render("~/Scripts/Pub/jquery-2.2.3.min.js")
+    @Scripts.Render("~/Scripts/Pub/jquery.autocomplete.js")
+    @Scripts.Render("~/Scripts/Pub/ion.rangeSlider.min.js")
+    @Scripts.Render("~/Scripts/Pub/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/Pub/jquery.datetimepicker.full.js")
+    @Scripts.Render("~/Scripts/Pub/common.js")
+    @Scripts.Render("~/Scripts/js/common/Comm.js")
+    @Scripts.Render("~/Scripts/js/common/_layout.js")
+    @Scripts.Render("~/Scripts/js/Main/Main.js")
+    @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+    @Scripts.Render("~/Scripts/API/scrolloverflow.js")
+    @Scripts.Render("~/Scripts/API/bluebird.min.js")
+    @Scripts.Render("~/Scripts/API/smtp.js")
+
+    @Scripts.Render("~/Scripts/js/common/KeyEvent.js")
+
+    <script type="text/javascript">
+        var _Domain = ''; //Domain
+        var _HomeUrl = window.location.origin;
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/themes/base/jquery-ui.css">
+</head>
+<body>
+    <!-- wrap -->
+    <div id="wrap">
+        <!-- header -->
+        <header id="header" style="display: block;" class="">
+            <div class="fixed_in type1">
+                <div class="top_row">
+                    <h1 class="logo"><a href="/"></a></h1>
+                    <div class="search_top border-animation">
+                        <input type="text" id="search_Top_Tarcking" class="border-animation__inner" name="" value="" placeholder="#B/L #CON #M B/L #P/O">
+                        <button type="button" class="btn_search"><span class="blind">검색</span></button>
+                    </div>
+                    <div class="user_box" id="user_login">
+                        <button type="button" class="name">Guest</button>
+                        @*<div class="user_link">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="~/Images/icn_login.png" /><br />로그인<br />　</a></li>
+                                <li><a href="javascript:void(0)"><img src="~/Images/icn_Regist.png" /><br />회원가입<br />　</a></li>
+                            </ul>
+                        </div>*@
+                    </div>
+                    <button type="button" id="hamberger"><span class="btn_total"></span></button>
+                    <button type="button" id="checkerboard" class=""></button>
+                </div>
+                <!-- total_menu -->
+                <nav class="total_menu">
+                    <ul class="lnb">
+                        <li>
+                            <a href="javascript:void(0)">물류 도구</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("CBM","LogisticsTools")">CBM 계산</a></li>
+                                    <li><a href="@Url.Action("Tariff","LogisticsTools")">안전운임</a></li>
+                                    <li><a href="@Url.Action("AEOInfo","LogisticsTools")">법령정보</a></li>
+                                    <li><a href="@Url.Action("Incoterms","LogisticsTools")">Incoterms</a></li>
+                                    <li><a href="@Url.Action("PortLocation","LogisticsTools")">항구위치</a></li>
+                                    <li><a href="@Url.Action("Surcharge","LogisticsTools")">부대비용</a></li>
+                                    <li><a href="@Url.Action("Vehicle","LogisticsTools")">차량제원</a></li>
+                                    <li><a href="https://unipass.customs.go.kr/clip/index.do?opnurl=/hsinfosrch/openULS0201001Q.do">HS코드</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">스케줄 관리</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("Sea","Schedule")">선사 스케줄</a></li>
+                                    <li><a href="@Url.Action("Ferry","Schedule")">훼리 스케줄</a></li>
+                                    <li><a href="@Url.Action("Air","Schedule")">항공 스케줄</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">부킹 관리</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("Regist","Booking")">부킹 등록</a></li>
+                                    <li><a href="@Url.Action("Inquiry","Booking")">부킹 조회</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">문서 관리</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("BL","Document")">B/L 조회</a></li>
+                                    <li><a href="@Url.Action("Invoice","Document")">Invoice 조회</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">창고 관리</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("Inout","Warehouse")">입/출고 조회</a></li>
+                                    <li><a href="@Url.Action("Status","Warehouse")">작업현황 등록</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+        <script>
+            var sub_id = $("#sub_id").val();
+            //alert(sub_id);
+            switch (sub_id) {
+                case "logistics":
+                    lock(0, 0);
+                    break;
+                case "schedule":
+                    lock(1, 0);
+                    break;
+                case "booking":
+                    lock(2, 0);
+                    break;
+                case "document":
+                    lock(3, 0);
+                    break;
+                case "warehouse":
+                    lock(4, 0);
+                    break;
+            }
+        </script>
+
+        <!-- sub_visual -->
+        <div class="sub_visual" id="@ViewBag.Title">
+            <div class="inner">
+                <p class="pc"><img src="/Images/sub_title.png" alt="1LSIM LOGISTAR SUBTITLE" class="sub_img_title"></p>
+                <p class="mo"><img src="/Images/sub_title.png" alt="1LSIM LOGISTAR SUBTITLE"></p>
+            </div>
+        </div>
+        <!-- //sub_visual -->
+        <!-- location -->
+        <div class="sub_location">
+            <div class="inner">
+                <a href="/" class="home"><span class="blind">홈</span></a>
+                <div class="depth">
+                    @{ string Title = ViewBag.Title;
+                        switch (Title)
+                        {
+                            case "LogisticsTools":
+                                <a href="javascript:void(0)"><span>물류 도구</span></a>
+                                break;
+                            case "Schedule":
+                                <a href="javascript:void(0)"><span>스케줄 관리</span></a>
+                                break;
+                            case "Booking":
+                                <a href="javascript:void(0)"><span>부킹 관리</span></a>
+                                break;
+                            case "Document":
+                                <a href="javascript:void(0)"><span>문서 관리</span></a>
+                                break;
+                            case "Warehouse":
+                                <a href="javascript:void(0)"><span>창고 관리</span></a>
+                                break;
+                        }
+                    }
+
+                    <div class="sub_list">
+                        <ul>
+                            @{ if (ViewBag.Title != "LogisticsTools")
+                                {
+                                    <li><a href="@Url.Action("CBM", "LogisticsTools" )"><span>물류 도구</span></a></li>
+                                }
+                            }
+                            @{ if (ViewBag.Title != "Schedule")
+                                {
+                                    <li><a href="@Url.Action("Sea", "Schedule")"><span>스케줄 관리</span></a></li>
+                                }
+                            }
+                            @{ if (ViewBag.Title != "Booking")
+                                {
+                                    <li><a href="@Url.Action("Regist", "Booking")"><span>부킹 관리</span></a></li>
+                                }
+                            }
+                            @{ if (ViewBag.Title != "Document")
+                                {
+                                    <li><a href="@Url.Action("BL","Document")"><span>문서 관리</span></a></li>
+                                }
+                            }
+                            @{ if (ViewBag.Title != "Warehouse")
+                                {
+                                    <li><a href="@Url.Action("Inout","Warehouse")"><span>창고 관리</span></a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="depth now">
+                    @{
+                        string subTitle = ViewBag.Sub;
+                        switch (Title)
+                        {
+                            case "LogisticsTools":
+                                switch (subTitle)
+                                {
+                                    case "Tariff":<a href="javascript:void(0)"><span>안전운임제</span></a>break;
+                                    case "Surcharge":<a href="javascript:void(0)"><span>부대비용</span></a>break;
+                                    case "HSCode":<a href="https://unipass.customs.go.kr/clip/index.do?opnurl=/hsinfosrch/openULS0201001Q.do" target="_blank"><span>HS코드</span></a>break;
+                                    case "AEOInfo":<a href="javascript:void(0)"><span>법령정보</span></a>break;
+                                    case "Incoterms":<a href="javascript:void(0)"><span>인코텀즈</span></a>break;
+                                    case "Vehicle":<a href="javascript:void(0)"><span>차량제원</span></a>break;
+                                    case "PortLocation":<a href="javascript:void(0)"><span>Port 정보</span></a>break;
+                                    case "CBM":<a href="javascript:void(0)"><span>CBM 계산기</span></a>break;
+                                }
+                                <div class="sub_list">
+                                    <ul>
+                                        @{ if (ViewBag.Sub != "Tariff")
+                                            {
+                                                <li><a href="@Url.Action("Tariff", "LogisticsTools")"><span>안전운임제</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Surcharge")
+                                            {
+                                                <li><a href="@Url.Action("Surcharge", "LogisticsTools")"><span>부대비용</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "HSCode")
+                                            {
+                                                <li><a href="https://unipass.customs.go.kr/clip/index.do?opnurl=/hsinfosrch/openULS0201001Q.do" target="_blank"><span>HS코드</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "AEOInfo")
+                                            {
+                                                <li><a href="@Url.Action("AEOInfo", "LogisticsTools")"><span>법령정보</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Incoterms")
+                                            {
+                                                <li><a href="@Url.Action("Incoterms", "LogisticsTools")"><span>인코텀즈</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Vehicle")
+                                            {
+                                                <li><a href="@Url.Action("Vehicle", "LogisticsTools")"><span>차량제원</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "PortLocation")
+                                            {
+                                                <li><a href="@Url.Action("PortLocation", "LogisticsTools")"><span>Port 정보</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "CBM")
+                                            {
+                                                <li><a href="@Url.Action("CBM", "LogisticsTools")"><span>CBM 계산</span></a></li>
+                                            }}
+                                    </ul>
+                                </div>
+                                break;
+                            case "Schedule":
+                                switch (subTitle)
+                                {
+                                    case "Sea":<a href="@Url.Action("Sea","Schedule")"><span>선사 스케줄</span></a>break;
+                                    case "Ferry":<a href="@Url.Action("Ferry","Schedule")"><span>훼리 스케줄</span></a>break;
+                                    case "Air":<a href="@Url.Action("Air","Schedule")"><span>항공 스케줄</span></a>break;
+                                }
+                                <div class="sub_list">
+                                    <ul>
+                                        @{ if (ViewBag.Sub != "Sea")
+                                            {
+                                                <li><a href="@Url.Action("Sea", "Schedule")"><span>선사 스케줄</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Ferry")
+                                            {
+                                                <li><a href="@Url.Action("Ferry", "Schedule")"><span>훼리 스케줄</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Air")
+                                            {
+                                                <li><a href="@Url.Action("Air", "Schedule")"><span>항공 스케줄</span></a></li>
+                                            }}
+                                    </ul>
+                                </div>
+                                break;
+                            case "Booking":
+                                switch (subTitle)
+                                {
+                                    case "Support":<a href="@Url.Action("Regist","Booking")"><span>부킹 등록</span></a>break;
+                                    case "Search":<a href="@Url.Action("Inquiry","Booking")"><span>부킹 조회</span></a>break;
+                                }
+                                <div class="sub_list">
+                                    <ul>
+                                        @{ if (ViewBag.Sub != "Regist")
+                                            {
+                                                <li><a href="@Url.Action("Regist", "Booking")"><span>부킹 등록</span></a></li>
+                                            }}
+                                    </ul>
+                                    <ul>
+                                        @{ if (ViewBag.Sub != "Inquiry")
+                                            {
+                                                <li><a href="@Url.Action("Inquiry", "Booking")"><span>부킹 조회</span></a></li>
+                                            }}
+                                    </ul>
+                                </div>
+                                break;
+                            case "Document":
+                                switch (subTitle)
+                                {
+                                    case "BL":<a href="@Url.Action("BL","Document")"><span>B/L 조회</span></a>break;
+                                    case "Invoice":<a href="@Url.Action("Invoice","Document")"><span>Invoice 조회</span></a>break;
+                                }
+                                <div class="sub_list">
+                                    <ul>
+                                        @{ if (ViewBag.Sub != "BL")
+                                            {
+                                                <li><a href="@Url.Action("BL", "Document")"><span>B/L 조회</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Invoice")
+                                            {
+                                                <li><a href="@Url.Action("Invoice", "Document")"><span>Invoice 조회</span></a></li>
+                                            }}
+                                    </ul>
+                                </div>
+                                break;
+                            case "Warehouse":
+                                switch (subTitle)
+                                {
+                                    case "Inout":<a href="@Url.Action("Inout","Warehouse")"><span>입/출고 조회</span></a>break;
+                                    case "Insert":<a href="@Url.Action("Status","Warehouse")"><span>작업현황 등록</span></a>break;
+                                }
+                                <div class="sub_list">
+                                    <ul>
+                                        @{ if (ViewBag.Sub != "Inout")
+                                            {
+                                                <li><a href="@Url.Action("Inout", "Warehouse")"><span>입/출고 조회</span></a></li>
+                                            }}
+                                        @{ if (ViewBag.Sub != "Status")
+                                            {
+                                                <li><a href="@Url.Action("Status", "Warehouse")"><span>작업현황 등록</span></a></li>
+                                            }}
+                                    </ul>
+                                </div>
+                                break;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- //location -->
+        <!-- container -->
+        @RenderSection("container", required: false)
+        <!-- //container -->
+
+        <div class="navigation">
+            <button type="button" class="btn_top">TOP</button>
+        </div>
+        <footer id="footer">
+            <div class="inner fixed_in type1">
+                <strong class="logo"></strong>
+                <!-- etc_link -->
+                <ul class="etc_link">
+                    <li><a href="javascript:void(0)" onclick="layerPopup('#layer_Policy_Terms')">서비스 이용약관</a></li>
+                    <li><a href="javascript:void(0)" onclick="layerPopup('#layer_Policy_Policy')">개인정보처리방침</a></li>
+                    <li><a href="javascript:void(0)">Contact US</a></li>
+                </ul>
+                <!-- //etc_link -->
+                <address>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>주소</th>
+                                <td>㈜일심로지스타<br />서울시 마포구 마포대로 4다길 18, 911호(강변한신코아빌딩)</td>
+                            </tr>
+                            <tr>
+                                <th>대표번호</th>
+                                <td>02-718-2008</td>
+                            </tr>
+                            <tr>
+                                <th>대표메일</th>
+                                <td>allusers@ilsimls.co.kr</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </address>
+                <p class="copy">Copyright ⓒ ILSIMLS Co., Ltd. All rights Reserved.</p>
+            </div>
+        </footer>
+        <!-- layer_zone 화물 추적  -->
+        <div class="layer_zone delivery_pop" id="delivery_pop">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="search_top">
+                            <input type="text" id="Input_layer_Tracking" name="" value="" placeholder="Container No를 입력하세요." autocomplete="off">
+                            <button type="button" id="btn_layer_Tracking" class="btn_search"><span class="blind">검색</span></button>
+                        </div>
+                        <!-- delivery_status -->
+                        <div class="delivery_status ds" id="layer_delivery_mo">
+                            <ul class="delivery_step export">
+                                <li class="on layer">
+                                    <div class="step_box">
+                                        <div class="col">
+                                            <em class="step">공 컨테이너 반출</em>
+                                        </div>
+                                        <div class="col">
+                                            <span class="icn blue"><i class="img01"><i class="rounding"></i></i></span>
+                                            <strong class="location"></strong>
+                                            <p class="date">2020.12.01 <span>03:0000</span></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="on layer">
+                                    <div class="step_box">
+                                        <div class="col">
+                                            <em class="step">터미널 반입</em>
+                                        </div>
+                                        <div class="col">
+                                            <span class="icn blue"><i class="img02"><i class="rounding"></i></i></span>
+                                            <strong class="location"></strong>
+                                            <p class="date">2020.12.01 <span>03:0000</span></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="on now layer">
+                                    <div class="step_box">
+                                        <div class="col">
+                                            <em class="step">컨테이너 선적</em>
+                                        </div>
+                                        <div class="col">
+                                            <span class="icn"><i class="img03"><i class="rounding rounding_blue blinkcss"></i></i></span>
+                                            <strong class="location"></strong>
+                                            <p class="date">2020.12.01 <span>03:0000</span></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="layer">
+                                    <div class="step_box">
+                                        <div class="col">
+                                            <em class="step">출항</em>
+                                        </div>
+                                        <div class="col">
+                                            <span class="icn"><i class="img04"><i class="rounding"></i></i></span>
+                                            <strong class="location"></strong>
+                                            <p class="date"><span></span></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="layer">
+                                    <div class="step_box">
+                                        <div class="col">
+                                            <em class="step">도착</em>
+                                        </div>
+                                        <div class="col">
+                                            <span class="icn"><i class="img05"><i class="rounding"></i></i></span>
+                                            <strong class="location"></strong>
+                                            <p class="date"><span></span></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //delivery_status -->
+                        <!-- list_type1 -->
+
+                        <div class="layer_list">
+                            <table class="list_type1 mb0">
+                                <colgroup class="pc">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col class="w8">
+                                    <col class="w1">
+                                </colgroup>
+                                <thead class="head">
+                                    <tr class="row">
+                                        <th><button type="button">House B/L</button></th>
+                                        <th><button type="button">Container No</button></th>
+                                        <th><button type="button">Master B/L</button></th>
+                                        <th>Status</th>
+                                        <th><button type="button">Last Location</button></th>
+                                        <th><button type="button">Doc</button></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div id="layer_tracking_scrollbar">
+                                <table class="list_type1 mb0">
+                                    <colgroup class="pc">
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col class="w8">
+                                        <col class="w1">
+                                    </colgroup>
+                                    <tbody id="layer_delivery_list">
+                                        <tr class="row" data-row="row_1" style="background-color:#f5f5f5">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276118</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>컨테이너 선적</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276118</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>
+                                                                        2020.12.01 03:0000
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276118">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276199</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>도착</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276199</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276199">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276145</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>컨테이너 반출</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276145</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276145">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276167</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>컨테이너 반출</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276167</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276167">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276123</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>입항</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276123</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276123">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btns icon type3" onclick="layerClose('#delivery_pop');"><span class="blind">닫기</span></button>
+                        <button type="button" class="btns icon close type1 mo" onclick="layerClose('#delivery_pop');"><span>검색 닫기</span></button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- //layer_zone 화물 추적-->
+        <!-- 개인정보취급방침 layer_zone -->
+        <div class="layer_zone alert_type" id="layer_Policy_Policy">
+            <div class="layer_wrap" style="max-width:1000px;">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="scrollbar">
+                            <div class="alert_cont layer_policy_margintop">
+                                <h2 class="subtitle02"><span>개인정보처리방침</span></h2>
+                                <!-- terms_area -->
+                                <div class="terms_area">
+                                    <p>
+                                        <span class="cr_burg">&lt;양재아이티㈜&gt;</span>('http://yjit.co.kr/'이하 '양재아이티 홈페이지')은(는) 개인정보보호법에 따라 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다.
+                                    </p>
+                                    <p>
+                                        <span class="cr_burg">&lt;양재아이티㈜&gt;</span>('양재아이티 홈페이지') 은(는) 회사는 개인정보처리방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
+                                    </p>
+                                    <p>○ 본 방침은부터 2021년 3월 1일부터 시행됩니다.</p>
+                                    <div class="grp">
+                                        <h3>1. 개인정보의 처리 목적</h3>
+                                        <p>
+                                            &lt;양재아이티㈜&gt;('http://yjit.co.kr/'이하 '양재아이티 홈페이지')은(는) 개인정보를 다음의 목적을 위해 처리합니다. 처리한 개인정보는 다음의 목적이외의 용도로는 사용되지 않으며 이용 목적이 변경될 시에는 사전동의를 구할 예정입니다.
+                                        </p>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">가. 홈페이지 회원가입 및 관리</strong>
+                                                <p>회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별·인증, 회원자격 유지·관리, 제한적 본인확인제 시행에 따른 본인확인 등을 목적으로 개인정보를 처리합니다.</p>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">나. 재화 또는 서비스 제공</strong>
+                                                <p>서비스 제공, 콘텐츠 제공, 맞춤 서비스 제공, 본인인증 등을 목적으로 개인정보를 처리합니다.</p>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>2. 개인정보 파일 현황</h3>
+                                        <ol class="list02">
+                                            <li>
+                                                1. 개인정보 파일명 : 회원관리
+                                                <ul class="list03">
+                                                    <li>- 개인정보 항목 : 이메일, 휴대전화번호, 비밀번호, 로그인ID, 회사명</li>
+                                                    <li>- 수집방법 : 홈페이지</li>
+                                                    <li>- 보유근거 : 회원관리의 목적</li>
+                                                    <li>- 보유기간 : 5년</li>
+                                                    <li>- 관련법령 : 신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년, 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년, 계약 또는 청약철회 등에 관한 기록 : 5년</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>3. 개인정보의 처리 및 보유 기간</h3>
+                                        <ol class="list02">
+                                            <li>
+                                                ① &lt;양재아이티㈜&gt;('양재아이티 홈페이지')은(는) 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유,이용기간 내에서 개인정보를 처리,보유합니다.
+                                            </li>
+                                            <li>
+                                                ② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
+                                                <ol class="list03">
+                                                    <li>
+                                                        1.&lt;홈페이지 회원가입 및 관리&gt; <br>
+                                                        &lt;홈페이지 회원가입 및 관리&gt;와 관련한 개인정보는 수집.이용에 관한 동의일로부터&lt;&gt;준영구&gt;까지 위 이용목적을 위하여 보유.이용됩니다. <br>
+                                                        -보유근거 : 회원관리의 목적 <br>
+                                                        -관련법령 : <br>
+                                                        &nbsp;&nbsp;1)신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년<br>
+                                                        &nbsp;&nbsp;2) 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>4. 정보주체와 법정대리인의 권리·의무 및 그 행사방법</h3>
+                                        <p>이용자는 개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.</p>
+                                        <ol class="list02">
+                                            <li>① 정보주체는 양재아이티㈜에 대해 언제든지 개인정보 열람,정정,삭제,처리정지 요구 등의 권리를 행사할 수 있습니다.</li>
+                                            <li>② 제1항에 따른 권리 행사는 양재아이티㈜에 대해 개인정보 보호법 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 양재아이티㈜은(는) 이에 대해 지체 없이 조치하겠습니다.</li>
+                                            <li>③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다. 이 경우 개인정보 보호법 시행규칙 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</li>
+                                            <li>④ 개인정보 열람 및 처리정지 요구는 개인정보보호법 제35조 제5항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.</li>
+                                            <li>⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.</li>
+                                            <li>⑥ 양재아이티㈜은(는) 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>5. 처리하는 개인정보의 항목 작성</h3>
+                                        <ol class="list02">
+                                            <li>
+                                                ① &lt;양재아이티㈜&gt;('http://yjit.co.kr/'이하 '양재아이티 홈페이지')은(는) 다음의 개인정보 항목을 처리하고 있습니다.<br>
+                                                1&lt;홈페이지 회원가입 및 관리&gt;<br>
+                                                - 필수항목 : 이메일, 휴대전화번호, 비밀번호, 로그인ID, 회사명
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>6. 개인정보의 파기</h3>
+                                        <p>
+                                            &lt;양재아이티㈜&gt;('양재아이티 홈페이지')은(는) 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
+                                        </p>
+                                        <ol class="list01">
+                                            <li>
+                                                - 파기절차<br>
+                                                이용자가 입력한 정보는 목적 달성 후 별도의 DB에 옮겨져(종이의 경우 별도의 서류) 내부 방침 및 기타 관련 법령에 따라 일정기간 저장된 후 혹은 즉시 파기됩니다. 이 때, DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 다른 목적으로 이용되지 않습니다.
+                                            </li>
+                                            <li>
+                                                - 파기기한<br>
+                                                이용자의 개인정보는 개인정보의 보유기간이 경과된 경우에는 보유기간의 종료일로부터 5일 이내에, 개인정보의 처리 목적 달성, 해당 서비스의 폐지, 사업의 종료 등 그 개인정보가 불필요하게 되었을 때에는 개인정보의 처리가 불필요한 것으로 인정되는 날로부터 5일 이내에 그 개인정보를 파기합니다.
+                                            </li>
+                                            <li>
+                                                - 파기방법<br>
+                                                전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다.
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>7. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항</h3>
+                                        <ol class="list02">
+                                            <li>
+                                                ① 양재아이티㈜ 은(는) 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠기(cookie)’를 사용합니다.
+                                            </li>
+                                            <li>
+                                                ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다.
+                                                <ul class="list03">
+                                                    <li>가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다.</li>
+                                                    <li>나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다.</li>
+                                                    <li>다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>8. 개인정보 처리방침 변경</h3>
+                                        <ol class="list02">
+                                            <li>①이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>9. 개인정보의 안전성 확보 조치</h3>
+                                        <p>&lt;양재아이티㈜&gt;('양재아이티 홈페이지')은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.</p>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">1. 내부관리계획의 수립 및 시행</strong>
+                                                <p>개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.</p>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">2. 개인정보에 대한 접근 제한</strong>
+                                                <p>개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</p>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <!-- //terms_area -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr1 loginChk" id="alert_layer01" onclick="layerClose('#layer_Policy_Policy');">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                        <button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#layer_Policy_Policy');"><span class="blind">닫기</span></button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- //개인정보처리방침 layer_zone -->
+        <!-- 이용약관 layer_zone -->
+        <div class="layer_zone alert_type" id="layer_Policy_Terms">
+            <div class="layer_wrap" style="max-width:1000px;">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="scrollbar">
+                            <div class="alert_cont layer_policy_margintop">
+                                <h2 class="subtitle02"><span>이용약관</span></h2>
+                                <!-- terms_area -->
+                                <div class="terms_area">
+                                    <div class="grp">
+                                        <h3>제 1 장 총 칙</h3>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">제 1 조 (목적)</strong>
+                                                <p>이 약관은 양재아이티㈜(이하 "사이트"라 합니다)에서 제공하는 홈페이지서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.</p>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 2 조 (약관의 효력 및 변경)</strong>
+                                                <ul class="list02">
+                                                    <li>① 이 약관은 서비스 화면이나 기타의 방법으로 이용고객에게 공지함으로써 효력을 발생합니다.</li>
+                                                    <li>② 사이트는 이 약관의 내용을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 3 조 (용어의 정의)</strong>
+                                                <p>이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+                                                <ul class="list02">
+                                                    <li>① 회원 : 사이트와 서비스 이용계약을 체결하거나 이용자 아이디(ID)를 부여받은 개인 또는 단체를 말합니다.</li>
+                                                    <li>② 신청자 : 회원가입을 신청하는 개인 또는 단체를 말합니다.</li>
+                                                    <li>③ 아이디(ID) : 회원의 식별과 서비스 이용을 위하여 회원이 정하고 사이트가 승인하는 문자와 숫자의 조합을 말합니다.</li>
+                                                    <li>④ 비밀번호 : 회원이 부여 받은 아이디(ID)와 일치된 회원임을 확인하고, 회원 자신의 비밀을 보호하기 위하여 회원이 정한 문자와 숫자의 조합을 말합니다.</li>
+                                                    <li>⑤ 해지 : 사이트 또는 회원이 서비스 이용계약을 취소하는 것을 말합니다.</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>제 2 장 서비스 이용계약</h3>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">제 4 조 (이용계약의 성립)</strong>
+                                                <ul class="list02">
+                                                    <li>① 이용약관 하단의 동의 버튼을 누르면 이 약관에 동의하는 것으로 간주됩니다.</li>
+                                                    <li>② 이용계약은 서비스 이용희망자의 이용약관 동의 후 이용 신청에 대하여 사이트가 승낙함으로써 성립합니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 5 조 (이용신청)</strong>
+                                                <ul class="list02">
+                                                    <li>① 신청자가 본 서비스를 이용하기 위해서는 사이트 소정의 가입신청 양식에서 요구하는 이용자 정보를 기록하여 제출해야 합니다.</li>
+                                                    <li>② 가입신청 양식에 기재하는 모든 이용자 정보는 모두 실제 데이터인 것으로 간주됩니다. 실명이나 실제 정보를 입력하지 않은 사용자는 법적인 보호를 받을 수 없으며, 서비스의 제한을 받을 수 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 6 조 (이용신청의 승낙)</strong>
+                                                <ul class="list02">
+                                                    <li>① 사이트는 신청자에 대하여 제2항, 제3항의 경우를 예외로 하여 서비스 이용신청을 승낙합니다.</li>
+                                                    <li>
+                                                        ② 사이트는 다음에 해당하는 경우에 그 신청에 대한 승낙 제한사유가 해소될 때까지 승낙을 유보할 수 있습니다.
+                                                        <ul class="list03">
+                                                            <li>가. 서비스 관련 설비에 여유가 없는 경우</li>
+                                                            <li>나. 기술상 지장이 있는 경우</li>
+                                                            <li>다. 기타 사이트가 필요하다고 인정되는 경우</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        ③ 사이트는 신청자가 다음에 해당하는 경우에는 승낙을 거부할 수 있습니다.
+                                                        <ul class="list03">
+                                                            <li>가. 다른 개인(사이트)의 명의를 사용하여 신청한 경우</li>
+                                                            <li>나. 이용자 정보를 허위로 기재하여 신청한 경우</li>
+                                                            <li>다. 사회의 안녕질서 또는 미풍양속을 저해할 목적으로 신청한 경우</li>
+                                                            <li>라. 기타 사이트 소정의 이용신청요건을 충족하지 못하는 경우</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 7 조 (이용자정보의 변경)</strong>
+                                                <p>
+                                                    회원은 이용 신청시에 기재했던 회원정보가 변경되었을 경우에는, 온라인으로 수정하여야 하며 변경하지 않음으로 인하여 발생되는 모든 문제의 책임은 회원에게 있습니다.
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>제 3 장 계약 당사자의 의무</h3>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">제 8 조 (사이트의 의무)</strong>
+                                                <ul class="list02">
+                                                    <li>
+                                                        ① 사이트는 회원에게 각 호의 서비스를 제공합니다.
+                                                        <ul class="list03">
+                                                            <li>가. 신규서비스와 도메인 정보에 대한 뉴스레터 발송</li>
+                                                            <li>나. 추가 도메인 등록시 개인정보 자동 입력</li>
+                                                            <li>다. 도메인 등록, 관리를 위한 각종 부가서비스</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        ② 사이트는 서비스 제공과 관련하여 취득한 회원의 개인정보를 회원의 동의없이 타인에게 누설, 공개 또는 배포할 수 없으며, 서비스관련 업무 이외의 상업적 목적으로 사용할 수 없습니다. 단, 다음 각 호의 1에 해당하는 경우는 예외입니다.
+                                                        <ul class="list03">
+                                                            <li>가. 전기통신기본법 등 법률의 규정에 의해 국가기관의 요구가 있는 경우</li>
+                                                            <li>나. 범죄에 대한 수사상의 목적이 있거나 정보통신윤리 위원회의 요청이 있는 경우</li>
+                                                            <li>다. 기타 관계법령에서 정한 절차에 따른 요청이 있는 경우</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>③ 사이트는 이 약관에서 정한 바에 따라 지속적, 안정적으로 서비스를 제공할 의무가 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 9 조 (회원의 의무)</strong>
+                                                <ul class="list02">
+                                                    <li>
+                                                        ① 회원은 서비스 이용 시 다음 각 호의 행위를 하지 않아야 합니다.
+                                                        <ul class="list03">
+                                                            <li>가. 다른 회원의 ID를 부정하게 사용하는 행위</li>
+                                                            <li>나. 서비스에서 얻은 정보를 사이트의 사전승낙 없이 회원의 이용 이외의 목적으로 복제하거나 이를 변경, 출판 및 방송 등에 사용하거나 타인에게 제공하는 행위</li>
+                                                            <li>다. 사이트의 저작권, 타인의 저작권 등 기타 권리를 침해하는 행위</li>
+                                                            <li>라. 공공질서 및 미풍양속에 위반되는 내용의 정보, 문장, 도형 등을 타인에게 유포하는 행위</li>
+                                                            <li>마. 범죄와 결부된다고 객관적으로 판단되는 행위</li>
+                                                            <li>바. 기타 관계법령에 위배되는 행위</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>② 회원은 관계법령, 이 약관에서 규정하는 사항, 서비스 이용 안내 및 주의 사항을 준수하여야 합니다.</li>
+                                                    <li>③ 회원은 내용별로 사이트가 서비스 공지사항에 게시하거나 별도로 공지한 이용 제한 사항을 준수하여야 합니다.</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>제 4 장 서비스 제공 및 이용</h3>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">제 10 조 (회원 아이디(ID)와 비밀번호 관리에 대한 회원의 의무)</strong>
+                                                <ul class="list02">
+                                                    <li>① 아이디(ID)와 비밀번호에 대한 모든 관리는 회원에게 책임이 있습니다. 회원에게 부여된 아이디(ID)와 비밀번호의 관리소홀, 부정사용에 의하여 발생하는 모든 결과에 대한 전적인 책임은 회원에게 있습니다.</li>
+                                                    <li>② 자신의 아이디(ID)가 부정하게 사용된 경우 또는 기타 보안 위반에 대하여, 회원은 반드시 사이트에 그 사실을 통보해야 합니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 11 조 (서비스 제한 및 정지)</strong>
+                                                <ul class="list02">
+                                                    <li>① 사이트는 전시, 사변, 천재지변 또는 이에 준하는 국가비상사태가 발생하거나 발생할 우려가 있는 경우와 전기통신사업법에 의한 기간통신 사업자가 전기통신서비스를 중지하는 등 기타 불가항력적 사유가 있는 경우에는 서비스의 전부 또는 일부를 제한하거나 정지할 수 있습니다.</li>
+                                                    <li>② 사이트는 제1항의 규정에 의하여 서비스의 이용을 제한하거나 정지할 때에는 그 사유 및 제한기간 등을 지체없이 회원에게 알려야 합니다.</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>제5장 계약사항의 변경, 해지</h3>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">제 12 조 (정보의 변경)</strong>
+                                                <p>회원이 주소, 비밀번호 등 고객정보를 변경하고자 하는 경우에는 홈페이지의 회원정보 변경 서비스를 이용하여 변경할 수 있습니다.</p>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 13 조 (계약사항의 해지)</strong>
+                                                <p>
+                                                    회원은 서비스 이용계약을 해지할 수 있으며, 해지할 경우에는 본인이 직접 서비스를 통하거나 전화 또는 온라인 등으로 사이트에 해지신청을 하여야 합니다. 사이트는 해지신청이 접수된 당일부터 해당 회원의 서비스 이용을 제한합니다. 사이트는 회원이 다음 각 항의 1에 해당하여 이용계약을 해지하고자 할 경우에는 해지조치 7일전까지 그 뜻을 이용고객에게 통지하여 소명할 기회를 주어야 합니다.
+                                                </p>
+                                                <ul class="list02">
+                                                    <li>① 이용고객이 이용제한 규정을 위반하거나 그 이용제한 기간 내에 제한 사유를 해소하지 않는 경우</li>
+                                                    <li>② 정보통신윤리위원회가 이용해지를 요구한 경우</li>
+                                                    <li>③ 이용고객이 정당한 사유 없이 의견진술에 응하지 아니한 경우</li>
+                                                    <li>
+                                                        ④ 타인 명의로 신청을 하였거나 신청서 내용의 허위 기재 또는 허위서류를 첨부하여 이용계약을 체결한 경우
+                                                        사이트는 상기 규정에 의하여 해지된 이용고객에 대해서는 별도로 정한 기간동안 가입을 제한할 수 있습니다.
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="grp">
+                                        <h3>제6장 손해배상</h3>
+                                        <ol class="list01">
+                                            <li>
+                                                <strong class="tit">제 14 조 (면책조항)</strong>
+                                                <ul class="list02">
+                                                    <li>① 사이트는 회원이 서비스 제공으로부터 기대되는 이익을 얻지 못하였거나 서비스 자료에 대한 취사선택 또는 이용으로 발생하는 손해 등에 대해서는 책임이 면제됩니다.</li>
+                                                    <li>② 사이트는 회원의 귀책사유나 제3자의 고의로 인하여 서비스에 장애가 발생하거나 회원의 데이터가 훼손된 경우에 책임이 면제됩니다.</li>
+                                                    <li>③ 사이트는 회원이 게시 또는 전송한 자료의 내용에 대해서는 책임이 면제됩니다.</li>
+                                                    <li>④ 상표권이 있는 도메인의 경우, 이로 인해 발생할 수도 있는 손해나 배상에 대한 책임은 구매한 회원 당사자에게 있으며, 사이트는 이에 대한 일체의 책임을 지지 않습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제 15 조 (관할법원)</strong>
+                                                <p>
+                                                    서비스와 관련하여 사이트와 회원간에 분쟁이 발생할 경우 사이트의 본사 소재지를 관할하는 법원을 관할법원으로 합니다.
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    [부칙]
+                                    <br>
+                                    (시행일) 이 약관은 2021년 03월부터 시행합니다.
+                                </div>
+                                <!-- //terms_area -->
+                            </div>
+                            <!-- //alert_cont -->
+                        </div>
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr1 loginChk" id="alert_layer01" onclick="layerClose('#layer_Policy_Terms');">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                        <button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#layer_Policy_Terms');"><span class="blind">닫기</span></button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- //layer_zone -->
+    </div>
+</body>
+</html>
