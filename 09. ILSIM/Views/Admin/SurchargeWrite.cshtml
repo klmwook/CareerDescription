@@ -1,0 +1,342 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "SurchargeWrite";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+
+    @if (@ViewBag.SHIPPING != null)
+    {
+        <input type="hidden" id="global_Shipping" value="@ViewBag.SHIPPING" />
+        <input type="hidden" id="global_Bound" value="@ViewBag.BOUND" />
+        <input type="hidden" id="global_Port" value="@ViewBag.PORT" />
+        <input type="hidden" id="global_CntrType" value="@ViewBag.CNTRTYPE" />
+        <input type="hidden" id="global_CntrSize" value="@ViewBag.CNTRSIZE" />
+        <input type="hidden" id="global_Country" value="@ViewBag.COUNTRY" />
+    }
+
+<div class="st-main">
+    <div class="st-header">
+        <div class="fluid_cols">
+            <div class="min_col">
+                <div class="st-header__menu">
+                    <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                </div>
+            </div>
+            <div class="expand-col text-ellipsis">
+                <div class="st-header__title"><span>부대비용 관리</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="st-content mb50 max_width">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="st-panel">
+                        <div class="st-panel__cont">
+                            <div class="st-panel__content ">
+
+                                <!-- 리스트 데이타 -->
+                                <div class="row">
+                                    <div id="dataTbl" class="col-lg-12">
+                                        <table width="100%" class="table table-bordered table-hover tb_style no_head" id="data_table">
+                                            <colgroup>
+                                                <col width="30%">
+                                                <col width="70%">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>구분</th>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <select class="form-control select" id="select_shipping" name="select_shipping">
+                                                                <option value="S">선사</option>
+                                                                <option value="F">훼리</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>BOUND</th>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <select class="form-control select" id="select_Surcharge_Bound" name="select_Surcharge_Bound">
+                                                                <option value="O">수출</option>
+                                                                <option value="I">수입</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PORT</th>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <select class="form-control select" id="select_surcharge_port" name="select_surcharge_port">
+                                                                <option value="">PORT</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>컨테이너 타입</th>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <select class="form-control select" id="select_Surcharge_CntrType" name="select_Surcharge_CntrType">
+                                                                <option value="DRY">DRY</option>
+                                                                <option value="DANGEROUS CARGO">DANGEROUS CARGO</option>
+                                                                <option value="REEFER">REEFER</option>
+                                                                <option value="OPEN TOP">OPEN TOP</option>
+                                                                <option value="FLAT RACK">FLAT RACK</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>컨테이너 사이즈</th>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <select class="form-control select" id="select_Surcharge_CntrSize" name="select_Surcharge_CntrSize">
+                                                                <option value="20FT">20FT</option>
+                                                                <option value="40HC">40HC</option>
+                                                                <option value="40FT">40FT</option>
+                                                                <option value="45FT">45FT</option>
+                                                                <option value="40HQ">40HQ</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @*
+                                                    <tr id="Country_Option_Area">
+                                                        <th>국가옵션</th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_Surcharge_Country_Option" name="select_Surcharge_Country_Option">
+                                                                    <option value="">Select</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>*@
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="dataTbl2" class="col-lg-12">
+                                        <table width="100%" class="table table-bordered table-hover tb_style no_head" id="data_table">
+                                            <colgroup>
+                                                <col width="30%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="10%">
+                                                <col width="15%">
+                                                <col width="15%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>내역</th>
+                                                    <th>코드</th>
+                                                    <th>단위</th>
+                                                    <th>화폐 단위</th>
+                                                    <th>단가</th>
+                                                    <th>국가 옵션</th>
+                                                    <th>
+                                                        @*<div class="btn-group btn_padding" role="group" aria-label="버튼" style="padding-right:0">
+                                                            <a href="javascript:void(0);" type="button" id="surcharge_AddRowbtn" class="btn btn-primary pull-right _btn_plus"><i class="fa fa-pencil-square-o"></i>&nbsp;행추가</a>
+                                                        </div>*@
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <div class="scrollbar_list">
+                                            <table width="100%" class="table table-bordered table-hover tb_style no_head" id="data_table">
+                                                <colgroup>
+                                                    <col width="30%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                </colgroup>
+                                                <tbody id="tbody_surchargeWrite_Result">
+                                                    @*
+                                                        <tr name="Sur_AddRow">
+                                                            <td>
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <input type="text" class="form-control" id="stx" name="input_Sur_AddRow" value="" data-index="0">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <input type="text" class="form-control" id="stx" name="input_Sur_AddRow" value="" data-index="1">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <input type="text" class="form-control" id="stx" name="input_Sur_AddRow" value="" data-index="2">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <input type="text" class="form-control" id="stx" name="input_Sur_AddRow" value="" data-index="3">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <input type="text" class="form-control" id="stx" name="input_Sur_AddRow" value="" data-index="4">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <input type="text" class="form-control" id="stx" name="input_Sur_AddRow" value="" data-index="5">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" name="surcharge_DelRowbtn" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;행삭제</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>*@
+                                                    @*
+                                                        <tr>
+                                                            <td>터미널 작업비 (Terminal Handling Charge)</td>
+                                                            <td>THC</td>
+                                                            <td>BOX</td>
+                                                            <td>KRW</td>
+                                                            <td>130,000</td>
+                                                            <td>130,000</td>
+                                                            <td>
+                                                                <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                                </div>
+                                                                <div class="btn-group" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>화물입출항료 (Wharfage)</td>
+                                                            <td>WFG</td>
+                                                            <td>BOX</td>
+                                                            <td>KRW</td>
+                                                            <td>4,420</td>
+                                                            <td>4,420</td>
+                                                            <td>
+                                                                <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                                </div>
+                                                                <div class="btn-group" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>컨테이너봉인료 (Container Seal Fee)</td>
+                                                            <td>CSF</td>
+                                                            <td>BOX</td>
+                                                            <td>KRW</td>
+                                                            <td>8,000</td>
+                                                            <td>8,000</td>
+                                                            <td>
+                                                                <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                                </div>
+                                                                <div class="btn-group" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>항만시설보안료 (Port Facility Security Charge)</td>
+                                                            <td>PFS</td>
+                                                            <td>BOX</td>
+                                                            <td>KRW</td>
+                                                            <td>86</td>
+                                                            <td>86</td>
+                                                            <td>
+                                                                <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                                </div>
+                                                                <div class="btn-group" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>저유황유(LSS)할증료 (Low Sulfur Surcharge)</td>
+                                                            <td>LSS</td>
+                                                            <td>BOX</td>
+                                                            <td>USD</td>
+                                                            <td>0</td>
+                                                            <td>0</td>
+                                                            <td>
+                                                                <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_modify"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                                </div>
+                                                                <div class="btn-group" role="group" aria-label="버튼">
+                                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_delete"><i class="fa fa-th-list"></i>&nbsp;삭제</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>*@
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.col-lg-12 -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 col-md-offset-5">
+                                        @*<div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                            <a href="javascript:void(0);" type="button" id="Surchage_Save_btn" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>&nbsp;저장</a>
+                                        </div>*@
+                                        <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                            <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_list"><i class="fa fa-th-list"></i>&nbsp;목록</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.리스트 데이타 -->
+                                <div class="mb20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="st-footer">
+        <div class="copyright">
+            Copyrightⓒ 관리자 모드. All right reserved.
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="layer_complete_alert">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="btn_save_complete" onclick="layerClose('#alert01');">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+
+</div>
+    @Scripts.Render("~/Scripts/js/Admin/_surchargewrite.js")
+
+}

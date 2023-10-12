@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "TariffPremiumWrite";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+
+    @{
+        if (ViewBag.MNGT_NO != null)
+        {
+            <input type="hidden" id="View_MNGT_NO" value="@ViewBag.MNGT_NO" />
+            <input type="hidden" id="View_SEQ" value="@ViewBag.SEQ" />
+            <input type="hidden" id="View_PERIOD_YEAR" value="@ViewBag.PERIOD_YEAR" />
+            <input type="hidden" id="View_PERIOD_QUARTER" value="@ViewBag.PERIOD_QUARTER" />
+            <input type="hidden" id="View_P_RATE_NAME" value="@ViewBag.P_RATE_NAME" />
+            <input type="hidden" id="View_P_RATE_PRICE" value="@ViewBag.P_RATE_PRICE" />
+            <input type="hidden" id="View_P_RATE_WON" value="@ViewBag.P_RATE_WON" />
+            <input type="hidden" id="View_EXCEPTION" value="@ViewBag.EXCEPTION" />
+        }
+        else
+        {
+            <input type="hidden" id="View_MNGT_NO" value="" />
+            <input type="hidden" id="View_SEQ" value="" />
+        }
+    }
+
+
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="st-header__menu">
+                        <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col text-ellipsis">
+                    <div class="st-header__title"><span>안전운임제 할증관리</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="st-panel">
+                            <div class="st-panel__cont">
+                                <div class="st-panel__content ">
+                                    <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12">
+                                            <table width="100%" class="table table-bordered table-hover tb_style no_head" id="data_table">
+                                                <colgroup>
+                                                    <col width="30%">
+                                                    <col width="70%">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>적용기간</th>
+                                                        <td>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <select class="form-control select" id="select_YearQuarter" name="select_YearQuarter">
+                                                                    <option value="2022_40">2022년 4분기</option>
+                                                                    <option value="2022_30">2022년 3분기</option>
+                                                                    <option value="2022_20">2022년 2분기</option>
+                                                                    <option value="2022_12">2022년 1분기 (2/19 ~ 3/31)</option>
+                                                                    <option value="2022_11">2022년 1분기 (1/1 ~ 2/18)</option>
+                                                                    <option value="2022_01">2022년 1분기</option>
+                                                                    <option value="2021_04">2021년 4분기</option>
+                                                                    <option value="2021_03">2021년 3분기</option>
+                                                                    <option value="2021_01">2021년 1분기</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">할증명칭</span></th>
+                                                        <td>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                @{
+                                                                    if (ViewBag.P_RATE_NAME != null)
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_Name" name="stx" value="@ViewBag.P_RATE_NAME">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_Name" name="stx" value="">
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">계산식</span></th>
+                                                        <td>
+                                                            <div class="col-md-4 col-sm-4">
+
+                                                                @{
+                                                                    if (ViewBag.P_RATE_PRICE != "0")
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_PRICE" name="stx" value="@ViewBag.P_RATE_PRICE">
+                                                                    }
+                                                                    else if (ViewBag.P_RATE_WON != "0")
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_PRICE" name="stx" value="@ViewBag.P_RATE_WON">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_PRICE" name="stx v"alue="">
+                                                                    }
+                                                                }
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <select class="form-control select" id="select_RATE">
+                                                                    <option value="P_RATE_PRICE">%</option>
+                                                                    <option value="P_RATE_WON">원</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">예외처리</span></th>
+                                                        <td>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <select class="form-control select" id="select_EXCEPTION">
+                                                                    <option value="Y">Y</option>
+                                                                    <option value="N">N</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-5">
+
+                                            @{
+                                                if (ViewBag.MNGT_NO != null)
+                                                {
+                                                    <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                        <a href="javascript:void(0);" type="button" id="Update_btn_TariffPR" class="btn btn-primary pull-right _btn_save_premium"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                        <a href="javascript:void(0);" type="button" id="Insert_btn_TariffPR" class="btn btn-primary pull-right _btn_save_premium"><i class="fa fa-pencil-square-o"></i>&nbsp;저장</a>
+                                                    </div>
+                                                }
+                                            }
+                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" id="List_btn_TariffPR" class="btn btn-primary pull-right _btn_list_premium"><i class="fa fa-th-list"></i>&nbsp;목록</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.리스트 데이타 -->
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-footer">
+            <div class="copyright">
+                Copyrightⓒ 관리자 모드. All right reserved.
+            </div>
+        </div>
+
+        <div class="layer_zone alert_type" id="layer_complete_alert">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <article class="layer_cont">
+                        <div class="layer_tit">
+                            <h1 class="tit"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="alert_cont">
+                            <div class="inner">
+                                데이터가 삭제 되었습니다.
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <div class="btn_w">
+                            <button type="button" class="btns radius cr1 loginChk" id="btn_save_complete">확인</button>
+                        </div>
+                        <!-- //btn_w -->
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/Scripts/js/Admin/_tariff_PR_write.js")
+}

@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "test";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+    <div class="admin_main">
+        <div class="admin_main_header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="admin_main_menu">
+                        <button class="btn"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand_col">
+                    <div class="admin_main_title">
+                        <span>테스트 페이지</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin_content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="admin_panel">
+                            <div class="admin_panel_cont">
+                                <div class="admin_panel_content ">
+                                    <!-- 버튼 -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group pull-right" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i>테스트버튼1</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //버튼 -->
+                                    <!-- 버튼 -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group pull-right" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i>테스트버튼2</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //버튼 -->
+                                    <!-- 버튼 -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group pull-right" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i>테스트버튼3</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //버튼 -->
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin_footer">
+            <div class="copyright">
+                Copyrightⓒ 관리자 모드. All right reserved.
+            </div>
+        </div>
+
+    </div>
+}

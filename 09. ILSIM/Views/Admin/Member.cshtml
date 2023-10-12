@@ -1,0 +1,233 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "member";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="st-header__menu">
+                        <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col text-ellipsis">
+                    <div class="st-header__title"><span>관리자 관리</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="st-panel">
+                            <div class="st-panel__cont">
+                                <div class="st-panel__content ">
+                                    <!-- 검색   -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered tb_style01">
+                                                <colgroup>
+                                                    <col class="px100" />
+                                                    <col width="auto" />
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="hidden-xs">검색</th>
+                                                        <td>
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <select class="form-control select" id="select_Member" name="select_Member">
+                                                                    <option value="ALL">전체</option>
+                                                                    <option value="ID">아이디</option>
+                                                                    <option value="NAME">성명</option>
+                                                                    <option value="PHONE">핸드폰</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-5 col-sm-5">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" id="input_Member" name="input_Member" value="" placeholder="Search for..." />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-1 col-sm-1">
+                                                                <span class="input-group-btn ">
+                                                                    <a href="javascript:void(0);" type="button" id="Member_Search" class="btn  btn-primary _search_btn"><i class="fa fa-search"></i></a>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /. 검색   -->
+                                    <!-- 버튼 -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group pull-right btn_padding" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" id="btn_MemberWrite" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>관리자등록</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.버튼 -->
+                                    <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12">
+                                            <table width="100%" class="table table-bordered table-hover tb_style" id="data_table">
+                                                <colgroup>
+                                                    <col width="10%">
+                                                    <col width="*">
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>번호</th>
+                                                        <th>아이디</th>
+                                                        <th>성명</th>
+                                                        <th>핸드폰</th>
+                                                        <th>등록일</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="Member_Result">
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td><a href="javascript:void(0);" onclick="goView(1)" class="_btn_edit">admin</a></td>
+                                                        <td>홍성인</td>
+                                                        <td>010-4674-9060</td>
+                                                        <td>2021-06-07</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                    </div>
+                                    <!-- /.리스트 데이타 -->
+                                    <!-- 페이징 -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-5">
+                                            <nav aria-label="Page navigation" class="paging">
+                                                <ul class="pagination" id="paging_Area">
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-left"></i><span class="sr-only">처음페이지로 가기</span></a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-left"></i><span class="sr-only">이전페이지로 가기</span></a></li>
+                                                    <li class="active"><a href="javascript:void(0);">1</a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-right"></i><span class="sr-only">다음페이지로 가기</span></a></li>
+                                                    <li><a href="javascript:void(0);" onclick="goPage(1)"><i class="fa fa-angle-double-right"></i><span class="sr-only">마지막페이지로 가기</span></a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <!-- /.페이징 -->
+
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-footer">
+            <div class="copyright">
+                Copyrightⓒ 관리자 모드. All right reserved.
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone alert_type" id="Member_Confirm">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="layer_tit">
+                        <h1 class="tit"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr2" id="Layer_Confirm_Cencel">취소</button>
+                        <button type="button" class="btns radius cr1" id="Layer_Confirm">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                </article>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/js/Admin/_member.js")
+}

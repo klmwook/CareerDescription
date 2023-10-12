@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "AEOAdmin";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="st-header__menu">
+                        <button class="btn"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col">
+                    <div class="st-header__title">
+                        <span>법령정보</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="st-panel">
+                            <div class="st-panel__cont">
+                                <div class="st-panel__content ">
+                                    <!-- 검색   -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered tb_style01 not_fixed">
+                                                <colgroup>
+                                                    <col class="w1" />
+                                                    <col class="w2" />
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="hidden-xs">검색</th>
+                                                        <td>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" id="stx" name="stx" value="" placeholder="Search for..." />
+                                                                    <span class="input-group-btn ">
+                                                                        <a href="javascript:void(0);" type="button" class="btn  btn-primary _search_btn"><i class="fa fa-search"></i></a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- /. 검색   -->
+                                    <!-- 버튼 -->
+                                    <div class="row">
+                                        <div class="col-md-12 mb10">
+                                            <div class="btn-group pull-right" role="group" aria-label="버튼">
+                                                <!-- <a href="javascript:void(0);" type="button" class="btn  btn-primary _ajax_write">등록</a> -->
+                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>등록</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.버튼 -->
+                                    <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12">
+                                            <table width="100%" class="table table-bordered table-hover tb_style" id="data_table">
+                                                <colgroup>
+                                                    <col width="10%">
+                                                    <col width="*">
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>번호</th>
+                                                        <th>법규명</th>
+                                                        <th>제·개정일</th>
+                                                        <th>비고</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>관세법</td>
+                                                        <td>2014년 12월 23일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>관세법 시행령</td>
+                                                        <td>2015년 2월 6일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>관세법 시행규칙</td>
+                                                        <td>2015년 3월 6일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>대외무역법</td>
+                                                        <td>2014년 1월 21일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>대외무역법 시행령</td>
+                                                        <td>2014년 12월 9일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>대외무역관리규정</td>
+                                                        <td>2015년 5월 18일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>외국환거래법</td>
+                                                        <td>2012년 3월 21일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>외국환거래법 시행령</td>
+                                                        <td>2014년 12월 9일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9</td>
+                                                        <td>외국환거래규정</td>
+                                                        <td>2015년 3월 31일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <td>물류정책기본법</td>
+                                                        <td>2014년 11월 19일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11</td>
+                                                        <td>물류정책기본법 시행령</td>
+                                                        <td>2014년 2월 5일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12</td>
+                                                        <td>물류정책기본법 시행규칙</td>
+                                                        <td>2014년 8월 7일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td>보세운송에 관한 고시</td>
+                                                        <td>2014년 9월 1일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>14</td>
+                                                        <td>보세화물관리에 관한 고시</td>
+                                                        <td>2014년 12월 15일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15</td>
+                                                        <td>보세화물 입출항 하선 하기 및 적재에 관한 고시</td>
+                                                        <td>2014년 9월 1일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>16</td>
+                                                        <td>수입통관 사무처리에 관한 고시</td>
+                                                        <td>2015년 3월 12일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>17</td>
+                                                        <td>원산지제도 운영에 관한 고시</td>
+                                                        <td>2015년 1월 30일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>18</td>
+                                                        <td>전략물자 수출입 통관에 관한 고시</td>
+                                                        <td>2014년 12월 19일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>19</td>
+                                                        <td>종합인증 우수업체공인 및 관리업무에 관한 고시</td>
+                                                        <td>2015년 5월 26일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20</td>
+                                                        <td>화물운송주선업자의 등록 및 관리에 관한 고시</td>
+                                                        <td>2014년 12월 19일</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                    </div>
+                                    <!-- /.리스트 데이타 -->
+                                    <!-- 페이징 -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <nav aria-label="Page navigation" class="paging"></nav>
+                                        </div>
+                                    </div>
+                                    <!-- /.페이징 -->
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-footer">
+            <div class="copyright">
+                Copyrightⓒ 관리자 모드. All right reserved.
+            </div>
+        </div>
+
+    </div>
+}
