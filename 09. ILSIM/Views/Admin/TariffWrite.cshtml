@@ -1,0 +1,291 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "TariffWrite";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+
+    @{
+        if (ViewBag.MNGT_NO != null)
+        {
+            <input type="hidden" id="View_MNGT_NO" value="@ViewBag.MNGT_NO" />
+            <input type="hidden" id="View_SEQ" value="@ViewBag.SEQ" />
+            <input type="hidden" id="View_TYPE" value="@ViewBag.TYPE" />
+            <input type="hidden" id="View_PERIOD_YEAR" value="@ViewBag.PERIOD_YEAR" />
+            <input type="hidden" id="View_PERIOD_QUARTER" value="@ViewBag.PERIOD_QUARTER" />
+            <input type="hidden" id="View_SECTION" value="@ViewBag.SECTION" />
+            <input type="hidden" id="View_ADDR_STATE" value="@ViewBag.ADDR_STATE" />
+            <input type="hidden" id="View_ADDR_CITY" value="@ViewBag.ADDR_CITY" />
+            <input type="hidden" id="View_ADDR_TOWNSHIP" value="@ViewBag.ADDR_TOWNSHIP" />
+            <input type="hidden" id="View_PORT" value="@ViewBag.PORT" />
+            <input type="hidden" id="View_DISTANCE" value="@ViewBag.DISTANCE" />
+            <input type="hidden" id="View_CNTR_20FT" value="@ViewBag.CNTR_20FT" />
+            <input type="hidden" id="View_CNTR_40FT" value="@ViewBag.CNTR_40FT" />
+        }
+        else
+        {
+            <input type="hidden" id="View_MNGT_NO" value="" />
+            <input type="hidden" id="View_SEQ" value="" />
+            <input type="hidden" id="View_TYPE" value="" />
+        }
+    }
+
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid_cols">
+                <div class="min_col">
+                    <div class="st-header__menu">
+                        <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col text-ellipsis">
+                    <div class="st-header__title"><span>안전운임제 관리</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="st-panel">
+                            <div class="st-panel__cont">
+                                <div class="st-panel__content ">
+                                    <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12">
+                                            <table width="100%" class="table table-bordered table-hover tb_style no_head" id="data_table">
+                                                <colgroup>
+                                                    <col width="30%">
+                                                    <col width="70%">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th><span class="data">적용기간</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_YearQuarter" name="select_YearQuarter" readonly disabled>
+                                                                    <option value="2022_40">2022년 4분기</option>
+                                                                    <option value="2022_30">2022년 3분기</option>
+                                                                    <option value="2022_20">2022년 2분기</option>
+                                                                    <option value="2022_12">2022년 1분기 (2/19 ~ 3/31)</option>
+                                                                    <option value="2022_11">2022년 1분기 (1/1 ~ 2/18)</option>
+                                                                    <option value="2022_01">2022년 1분기</option>
+                                                                    <option value="2021_04">2021년 4분기</option>
+                                                                    <option value="2021_03">2021년 3분기</option>
+                                                                    <option value="2021_01">2021년 1분기</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">기점</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_Section" name="select_Section" readonly disabled>
+                                                                    <option value="BSO_왕복">부산북항기점(왕복)</option>
+                                                                    <option value="BSN_왕복">부산신항기점(왕복)</option>
+                                                                    <option value="INO_왕복">인천항기점(왕복)</option>
+                                                                    <option value="INN_왕복">인천신항기점(왕복)</option>
+                                                                    <option value="IT_왕복">인천항국제여객터미널기점(왕복)</option>
+                                                                    <option value="GY_왕복">광양항기점(왕복)</option>
+                                                                    <option value="PT_왕복">평택항기점(왕복)</option>
+                                                                    <option value="USO_왕복">울산구항기점(왕복)</option>
+                                                                    <option value="USN_왕복">울산신항기점(왕복)</option>
+                                                                    <option value="PO_왕복">포항항기점(왕복)</option>
+                                                                    <option value="GS_왕복">군산항기점(왕복)</option>
+                                                                    <option value="MS_왕복">마산항기점(왕복)</option>
+                                                                    <option value="DS_왕복">대산항기점(왕복)</option>
+                                                                    <option value="UW_왕복">의왕ICD기점(왕복)</option>
+                                                                    <option value="BSO_편도">부산북항기점(편도)</option>
+                                                                    <option value="BSN_편도">부산신항기점(편도)</option>
+                                                                    <option value="GY_편도">광양항기점(편도)</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">구분</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_Type" name="select_Type">
+                                                                    <option value="TF" selected>안전운송운임(화주->운송사)</option>
+                                                                    <option value="CF">안전위탁운임(운송사->화주)</option>
+                                                                    <option value="IF">=> 운수사업자간운임</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">행선지 (시,도)</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_AddrState" name="select_AddrState">
+                                                                    @{
+                                                                        if (ViewBag.ADDR_STATE != null)
+                                                                        {
+                                                                            <option>@ViewBag.ADDR_STATE</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option></option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">행선지 (시,군,구)</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_AddrCity" name="select_AddrCity">
+                                                                    @{
+                                                                        if (ViewBag.ADDR_CITY != null)
+                                                                        {
+                                                                            <option>@ViewBag.ADDR_CITY</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option></option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">행선지 (읍,면,동)</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <select class="form-control select" id="select_AddrTownship" name="select_AddrTownship">
+                                                                    @{
+                                                                        if (ViewBag.ADDR_TOWNSHIP != null)
+                                                                        {
+                                                                            <option>@ViewBag.ADDR_TOWNSHIP</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option></option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th><span class="data">거리</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+
+                                                                @{
+                                                                    if (ViewBag.DISTANCE != null)
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_DISTANCE" name="input_DISTANCE" value="@ViewBag.DISTANCE">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_DISTANCE" name="input_DISTANCE" value="">
+                                                                    }
+                                                                }
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">20FT</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+
+                                                                @{
+                                                                    if (ViewBag.CNTR_20FT != null)
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_CNTR_20FT" name="input_CNTR_20FT" value="@ViewBag.CNTR_20FT">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_CNTR_20FT" name="input_CNTR_20FT" value="">
+                                                                    }
+                                                                }
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="data">40FT</span></th>
+                                                        <td>
+                                                            <div class="col-md-12 col-sm-12">
+                                                                @{
+                                                                    if (ViewBag.CNTR_40FT != null)
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_CNTR_40FT" name="input_CNTR_40FT" value="@ViewBag.CNTR_40FT">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="text" class="form-control" id="input_CNTR_40FT" name="input_CNTR_40FT" value="">
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                        <!-- /.리스트 데이타 -->
+                                        <div class="mb20"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6 mb10">
+                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" id="btn_Tariff_Modify" class="btn btn-primary pull-right _btn_save"><i class="fa fa-pencil-square-o"></i>&nbsp;수정</a>
+                                            </div>
+                                            <div class="btn-group btn_padding" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" id="btn_Tariff_List" class="btn btn-primary pull-right _btn_list"><i class="fa fa-th-list"></i>&nbsp;목록</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="st-footer">
+                <div class="copyright">
+                    Copyrightⓒ 관리자 모드. All right reserved.
+                </div>
+            </div>
+
+            <div class="layer_zone alert_type" id="layer_complete_alert">
+                <div class="layer_wrap">
+                    <div class="layer_inwrap">
+                        <article class="layer_cont">
+                            <div class="layer_tit">
+                                <h1 class="tit"></h1>
+                            </div>
+                            <!-- alert_cont -->
+                            <div class="alert_cont">
+                                <div class="inner">
+                                    데이터가 삭제 되었습니다.
+                                </div>
+                            </div>
+                            <!-- //alert_cont -->
+                            <!-- btn_w -->
+                            <div class="btn_w">
+                                <button type="button" class="btns radius cr1 loginChk" id="btn_save_complete">확인</button>
+                            </div>
+                            <!-- //btn_w -->
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/Admin/_tariffwrite.js")
+}
