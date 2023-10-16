@@ -1,0 +1,423 @@
+﻿@{
+    ViewBag.Title = "company";
+    ViewBag.Sub = "location";
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "US";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "US";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- container -->
+        <div class="container">
+            <!-- contents -->
+            <div class="contents">
+                <h3 class="subtitle"><span>Location</span></h3>
+                <!-- tab -->
+                <div class="tab01">
+                    <ul id="tab" class="tab">
+                        <li class="on"><a href="javascript:void(0)">Address Seoul Company</a></li>
+                        <li><a href="javascript:void(0)">Address Busan Company</a></li>
+                    </ul>
+                </div>
+                <!-- //tab -->
+            </div>
+            <!-- //contents -->
+            <!--
+            2. 설치 스크립트
+            * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+        -->
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+            <style>
+                .root_daum_roughmap { padding: 0; border: 0; margin: 0 auto }
+                .root_daum_roughmap .wrap_controllers { display: none }
+            </style>
+            <!-- map_w -->
+            <div class="map_w">
+                <!-- tab_panel -->
+                <div class="tab_panel">
+                    <!-- panel -->
+                    <div class="panel" style="display:block">
+                        <!-- * 카카오맵 - 지도퍼가기 -->
+                        <!-- 1. 지도 노드 -->
+                        <div class="map_box">
+                            <div id="daumRoughmapContainer1597134571269" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>
+                        </div>
+
+                        <div class="fix_inner">
+                            <!-- tbl_type01 모바일 -->
+                            <div class="tbl_type01 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 30%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td class="tit02">Hansaeng Building, 42 Gangnam-daero 37-gil, Seocho-gu, Seoul</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td class="tit02">(02) 3474-6451</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fax</th>
+                                            <td class="tit02">(02) 3474-2674</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 모바일 -->
+                            <!-- tbl_type01 PC -->
+                            <div class="tbl_type01 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col />
+                                        <col style="width: 12%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">Hansaeng Building, 42 Gangnam-daero 37-gil, Seocho-gu, Seoul</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td colspan="3">(02) 3474-6451</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fax</th>
+                                            <td colspan="3">(02) 3474-2674</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 PC -->
+                        </div>
+                    </div>
+                    <!-- //panel -->
+                    <!-- panel -->
+                    <div class="panel">
+                        <div class="map_box">
+                            <!-- * 카카오맵 - 지도퍼가기 -->
+                            <!-- 1. 지도 노드 -->
+                            @*<div id="daumRoughmapContainer1592356109887" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>*@
+                        </div>
+
+                        <div class="fix_inner">
+                            <!-- tbl_type01 모바일 -->
+                            <div class="tbl_type01 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 30%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td class="tit02">No. 608 Yu Chang Building 72 Jungang-daero, Jung-gu, Busan</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td class="tit02">(051) 462-1968-9</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fax</th>
+                                            <td class="tit02">(051) 462-6537
+                                            <td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 모바일 -->
+                            <!-- tbl_type01 PC -->
+                            <div class="tbl_type01 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col />
+                                        <col style="width: 12%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">No. 608 Yu Chang Building 72 Jungang-daero, Jung-gu, Busan</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td colspan="3">(051) 462-1968-9</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fax</th>
+                                            <td colspan="3">(051) 462-6537
+                                            <td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 PC -->
+                        </div>
+                    </div>
+                    <!-- //panel -->
+                </div>
+                <!-- //tab_panel -->
+            </div>
+            <!-- //map_w -->
+            <!-- 3. 실행 스크립트 -->
+            <script charset="UTF-8">
+                var mh = 510;
+
+                var position = "1597134571269";
+                var key = "2zmqc";
+
+                new daum.roughmap.Lander({
+                    "timestamp": position,
+                    "key": key,
+                    "mapHeight": mh
+                }).render();
+
+                $(window).resize(function () {
+                    $(".btn_zoom_reset").trigger("click");
+                });
+
+                $('#tab > li').on("click", function () {
+                    var inx = $(this).index();
+                    var mapBox = $(".tab_panel .panel:eq(" + inx + ")").find(".map_box");
+
+                    if (inx == 0) {
+                        position = "1597134571269";
+                        key = "2zmqc";
+                    } else if (inx == 1) {
+                        position = "1597134684877";
+                        key = "2zmqg";
+                    }
+                    mapBox.empty();
+
+                    mapBox.html('<div id="daumRoughmapContainer' + position + '" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>');
+                    new daum.roughmap.Lander({
+                        "timestamp": position,
+                        "key": key,
+                        "mapHeight": mh
+                    }).render();
+                });
+            </script>
+        </div>
+        <!-- //container -->
+    }
+    else
+    {
+        <!-- container -->
+        <div class="container">
+            <!-- contents -->
+            <div class="contents">
+                <h3 class="subtitle"><span>오시는 길</span></h3>
+                <!-- tab -->
+                <div class="tab01">
+                    <ul id="tab" class="tab">
+                        <li class="on"><a href="javascript:void(0)">서울본사</a></li>
+                        <li><a href="javascript:void(0)">부산지사</a></li>
+                    </ul>
+                </div>
+                <!-- //tab -->
+            </div>
+            <!-- //contents -->
+            <!--
+                2. 설치 스크립트
+                * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+            -->
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+            <style>
+                .root_daum_roughmap { padding: 0; border: 0; margin: 0 auto }
+                .root_daum_roughmap .wrap_controllers { display: none }
+            </style>
+            <!-- map_w -->
+            <div class="map_w">
+                <!-- tab_panel -->
+                <div class="tab_panel">
+                    <!-- panel -->
+                    <div class="panel" style="display:block">
+                        <!-- * 카카오맵 - 지도퍼가기 -->
+                        <!-- 1. 지도 노드 -->
+                        <div class="map_box">
+                            <div id="daumRoughmapContainer1597134571269" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>
+                        </div>
+
+                        <div class="fix_inner">
+                            <!-- tbl_type01 모바일 -->
+                            <div class="tbl_type01 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 30%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>주소</th>
+                                            <td class="tit02">서울시 서초구 강남대로 37길 42 (서초동) 한생 B/D</td>
+                                        </tr>
+                                        <tr>
+                                            <th>대표전화</th>
+                                            <td class="tit02">(02) 3474-6451</td>
+                                        </tr>
+                                        <tr>
+                                            <th>팩스번호</th>
+                                            <td class="tit02">(02) 3474-2674</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 모바일 -->
+                            <!-- tbl_type01 PC -->
+                            <div class="tbl_type01 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col />
+                                        <col style="width: 12%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>주소</th>
+                                            <td colspan="3">서울시 서초구 강남대로 37길 42 (서초동) 한생 B/D</td>
+                                        </tr>
+                                        <tr>
+                                            <th>대표전화</th>
+                                            <td colspan="3">(02) 3474-6451</td>
+                                        </tr>
+                                        <tr>
+                                            <th>팩스번호</th>
+                                            <td colspan="3">(02) 3474-2674</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 PC -->
+                        </div>
+                    </div>
+                    <!-- //panel -->
+                    <!-- panel -->
+                    <div class="panel">
+                        <div class="map_box">
+                            <!-- * 카카오맵 - 지도퍼가기 -->
+                            <!-- 1. 지도 노드 -->
+                            @*<div id="daumRoughmapContainer1592356109887" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>*@
+                        </div>
+
+                        <div class="fix_inner">
+                            <!-- tbl_type01 모바일 -->
+                            <div class="tbl_type01 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 30%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>주소</th>
+                                            <td class="tit02">부산시 중구 중앙대로 72 유창빌딩 608호 (중앙동 4가)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>대표전화</th>
+                                            <td class="tit02">(051) 462-1968-9</td>
+                                        </tr>
+                                        <tr>
+                                            <th>팩스번호</th>
+                                            <td class="tit02">(051) 462-6537<td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 모바일 -->
+                            <!-- tbl_type01 PC -->
+                            <div class="tbl_type01 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col />
+                                        <col style="width: 12%">
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>주소</th>
+                                            <td colspan="3">부산시 중구 중앙대로 72 유창빌딩 608호 (중앙동 4가)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>대표전화</th>
+                                            <td colspan="3">(051) 462-1968-9</td>
+                                        </tr>
+                                        <tr>
+                                            <th>팩스번호</th>
+                                            <td colspan="3">(051) 462-6537<td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //tbl_type01 PC -->
+                        </div>
+                    </div>
+                    <!-- //panel -->
+                </div>
+                <!-- //tab_panel -->
+            </div>
+            <!-- //map_w -->
+            <!-- 3. 실행 스크립트 -->
+            <script charset="UTF-8">
+                var mh = 510;
+
+                var position = "1597134571269";
+                var key = "2zmqc";
+
+				new daum.roughmap.Lander({
+						"timestamp" : position,
+						"key" : key,
+						"mapHeight" : mh
+				}).render();
+
+				$(window).resize(function () {
+					$(".btn_zoom_reset").trigger("click");
+				});
+
+				$('#tab > li').on("click", function () {
+                    var inx = $(this).index();
+                    var mapBox = $(".tab_panel .panel:eq(" + inx + ")").find(".map_box");
+
+					if (inx == 0) {
+                        position = "1597134571269";
+                        key = "2zmqc";
+                    } else if (inx == 1) {
+                        position = "1597134684877";
+                        key = "2zmqg";
+                    }
+                    mapBox.empty();
+
+					mapBox.html('<div id="daumRoughmapContainer'+position+'" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%"></div>');
+						new daum.roughmap.Lander({
+							"timestamp" : position,
+							"key" : key,
+							"mapHeight" : mh
+					}).render();
+				});
+            </script>
+        </div>
+        <!-- //container -->
+    }
+}

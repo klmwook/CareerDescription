@@ -1,0 +1,491 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- swiper 색깔 커스텀 -->
+        <style>
+            .swiper-pagination-bullet { /*width: 100px;
+              height: 20px;
+              text-align: center;
+              line-height: 20px;
+              font-size: 12px;
+              color:#000;*/ opacity: 1; background: #fff; }
+            .swiper-pagination-bullet-active { color: #fff; background: #009954; }
+        </style>
+
+        <section class="section visual">
+            <div class="visual_slide">
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01 animate delay-0">
+                                <span class="mo"><img src="/Images/visual02_txt_en_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt_en.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 en_sub_text animate">Hansaeng, A Leading Freight Transportation Solutions<br /> Leading customers' business innovation based on leading technology and expertise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_en_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt_en.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 en_sub_text">Hansaeng, A Leading Freight Transportation Solutions<br /> Leading customers' business innovation based on leading technology and expertise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_en_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt_en.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 en_sub_text">Hansaeng, A Leading Freight Transportation Solutions<br /> Leading customers' business innovation based on leading technology and expertise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_en_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt_en.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 en_sub_text">Hansaeng, A Leading Freight Transportation Solutions<br /> Leading customers' business innovation based on leading technology and expertise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_en_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt_en.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 en_sub_text">Hansaeng, A Leading Freight Transportation Solutions<br /> Leading customers' business innovation based on leading technology and expertise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_en_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt_en.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 en_sub_text">Hansaeng, A Leading Freight Transportation Solutions<br /> Leading customers' business innovation based on leading technology and expertise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- //visual -->
+
+        <!-- 흥아 -->
+        <section class="section mn_info" id="mn_info">
+            <div class="inner">
+                <div class="OurBusiness_item01">
+                    <div class="OurBusiness_ImageArea"></div>
+                    <div class="OurBusiness_TextArea">
+                        <div class="OurBusiness_TableCell">
+                            <h3 class="title">Ocean Cargo Service</h3>
+                            <p class="content">
+                                The most competitive rate with fast and accurate door to door service
+                                <br />
+                            </p>
+                            <div class="OurBusiness_Btn_Area">
+                                <a href="@Url.Action("Index", "business" , new {@index = 1})" class="OurBusiness_Btn">MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="OurBusiness_item02">
+                    <div class="OurBusiness_ImageArea"></div>
+                    <div class="OurBusiness_TextArea">
+                        <div class="OurBusiness_TableCell">
+                            <h3 class="title">Air Cargo Service</h3>
+                            <p class="content">
+                                Regular air cargo service, Sea & Air and other air cargo combined transport service with accumulated Know-how and with lowest rate in market
+                                <br />
+                            </p>
+                            <div class="OurBusiness_Btn_Area">
+                                <a href="@Url.Action("Index", "business" , new {@index = 2})" class="OurBusiness_Btn">MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="OurBusiness_item03">
+                    <div class="OurBusiness_ImageArea"></div>
+                    <div class="OurBusiness_TextArea">
+                        <div class="OurBusiness_TableCell">
+                            <h3 class="title">3PL</h3>
+                            <p class="content">
+                                With innovative IT technology, Real-time cargo tracking, massive storage area, import and export customs clearance service.
+                                <br />
+                            </p>
+                            <div class="OurBusiness_Btn_Area">
+                                <a href="@Url.Action("Index", "business" , new {@index = 3})" class="OurBusiness_Btn">MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- mn_info -->
+        @*<section class="section mn_info" id="mn_info">
+                <div class="inner">
+                    <div class="box_w">
+                        <!-- box -->
+                        <div class="box animate delay-1 type1">
+                            <div class="box_in">
+                                <a href="@Url.Action("service", "Service" , new {@index = 1}) ">
+                                    <h3 class="tit main_content_left">수출입 서비스</h3>
+                                    <p class="main_content_left">
+                                        풍부한 경험과 전문성을 바탕으로 <br />
+                                        해상 및 항공 수출입 업무에 대해 <br />
+                                        양질의 서비스를 제공
+                                    </p>
+                                    <div class="btn">
+                                        <span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+                                        <span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- //box -->
+                        <!-- box -->
+                        <div class="box animate type2 delay-1">
+                            <div class="box_in">
+                                <a href="@Url.Action("service", "Service" , new {@index = 2}) ">
+                                    <h3 class="tit">운송 서비스</h3>
+                                    <p>
+                                        수출입 화물의 <br />
+                                        신속하고 정확한 운송을 위해 <br />
+                                        전국적인 내륙운송망을 구축, <br />
+                                        고객에게 최상의 물류 서비스를 제공
+                                    </p>
+                                    <div class="btn">
+                                        <span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+                                        <span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- //box -->
+                        <!-- box -->
+                        <div class="box animate delay-1 type1">
+                            <div class="box_in">
+                                <a href="@Url.Action("service", "Service" , new {@index = 3}) ">
+                                    <h3 class="tit main_content_right">창고 서비스</h3>
+                                    <p class="main_content_right">
+                                        물류 창고를 활용한 <br />
+                                        물류관리시스템을 바탕으로 <br />
+                                        종합화물보관 서비스를 제공
+                                    </p>
+                                    <div class="btn">
+                                        <span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+                                        <span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- //box -->
+                    </div>
+                    <div class="pc pc_txt animate delay-4">
+                        <h2 class="title"><br /><br /><br /></h2>
+                        <p class="txt"><img src="images/business.png" alt="BUSINESS" /></p>
+                    </div>
+                </div>
+            </section>
+            <!-- //mn_info -->
+        *@
+    }
+    else //KOREAN
+    {
+
+        <!-- swiper 색깔 커스텀 -->
+        <style>
+            .swiper-pagination-bullet { /*width: 100px;
+              height: 20px;
+              text-align: center;
+              line-height: 20px;
+              font-size: 12px;
+              color:#000;*/ opacity: 1; background: #fff; }
+            .swiper-pagination-bullet-active { color: #fff; background: #009954; }
+        </style>
+
+        <section class="section visual">
+            <div class="visual_slide">
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01 animate delay-0">
+                                <span class="mo"><img src="/Images/visual02_txt_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02 animate">앞서가는 기술력과 전문성을 기반으로<br /> 고객의 비즈니스 혁신을 선도합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02">앞서가는 기술력과 전문성을 기반으로<br /> 고객의 비즈니스 혁신을 선도합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02">앞서가는 기술력과 전문성을 기반으로<br /> 고객의 비즈니스 혁신을 선도합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02">앞서가는 기술력과 전문성을 기반으로<br /> 고객의 비즈니스 혁신을 선도합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02">앞서가는 기술력과 전문성을 기반으로<br /> 고객의 비즈니스 혁신을 선도합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="inner">
+                        <div class="mask"><div class="bg"></div></div>
+                        <div class="txt_w">
+                            <p class="txt01">
+                                <span class="mo"><img src="/Images/visual02_txt_mo.png" alt="HANSAENG EXPRESS" /></span>
+                                <span class="pc"><img src="/Images/visual02_txt.png" alt="HANSAENG EXPRESS" /></span>
+                            </p>
+                            <p class="txt02">앞서가는 기술력과 전문성을 기반으로<br /> 고객의 비즈니스 혁신을 선도합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- //visual -->
+
+        <!-- 흥아 -->
+        <section class="section mn_info" id="mn_info">
+            <div class="inner">
+
+                @*  *@
+                @*<div class="OurBusiness_Title_Area">
+                        <div class="OurBusiness_Title">
+                            <strong>Our Business</strong>
+                        </div>
+                    </div>*@
+
+                <!-- 슬라이드 영역 -->
+                @*<div class="slide_area">
+                        <div class="swiper-container" id="swiper-container-inbox">
+                            <div class="swiper-wrapper main_silde_item">
+                                <div class="swiper-slide">
+                                    <div>
+                                        <h3 class="slide_title">해운 수출입 사업</h3>
+                                        <div class="slide_Btn_Area">
+                                            <a href="@Url.Action("SeaInout", "business")" class="slide_Btn">MORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <h3 class="slide_title">해운 대리점 사업</h3>
+                                        <div class="slide_Btn_Area">
+                                            <a href="@Url.Action("SeaAgency", "business")" class="slide_Btn">MORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <h3 class="slide_title">항공 수출입 사업</h3>
+                                        <div class="slide_Btn_Area">
+                                            <a href="@Url.Action("AirInout", "business")" class="slide_Btn">MORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>*@
+
+                <div class="OurBusiness_item01">
+                    <div class="OurBusiness_ImageArea"></div>
+                    <div class="OurBusiness_TextArea">
+                        <div class="OurBusiness_TableCell">
+                            <h3 class="title">해운 사업</h3>
+                            <p class="content">
+                                가장 합리적인 운임, 신속하고 정확한 Door to Door 서비스
+                                <br />
+                            </p>
+                            <div class="OurBusiness_Btn_Area">
+                                <a href="@Url.Action("Index", "business" , new {@index = 1})" class="OurBusiness_Btn">MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="OurBusiness_item02">
+                    <div class="OurBusiness_ImageArea"></div>
+                    <div class="OurBusiness_TextArea">
+                        <div class="OurBusiness_TableCell">
+                            <h3 class="title">항공 사업</h3>
+                            <p class="content">
+                                축적된 노하우와 앞서가는 기술력으로 경쟁력있는 복합운송 서비스
+                                <br />
+                            </p>
+                            <div class="OurBusiness_Btn_Area">
+                                <a href="@Url.Action("Index", "business" , new {@index = 2})" class="OurBusiness_Btn">MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="OurBusiness_item03">
+                    <div class="OurBusiness_ImageArea"></div>
+                    <div class="OurBusiness_TextArea">
+                        <div class="OurBusiness_TableCell">
+                            <h3 class="title">3PL</h3>
+                            <p class="content">
+                                앞서가는 기술력으로 실시간 화물 추적, 수출입 통관 대행 서비스
+                                <br />
+                            </p>
+                            <div class="OurBusiness_Btn_Area">
+                                <a href="@Url.Action("Index", "business" , new {@index = 3})" class="OurBusiness_Btn">MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- mn_info -->
+        @*<section class="section mn_info" id="mn_info">
+                <div class="inner">
+                    <div class="box_w">
+                        <!-- box -->
+                        <div class="box animate delay-1 type1">
+                            <div class="box_in">
+                                <a href="@Url.Action("service", "Service" , new {@index = 1}) ">
+                                    <h3 class="tit main_content_left">수출입 서비스</h3>
+                                    <p class="main_content_left">
+                                        풍부한 경험과 전문성을 바탕으로 <br />
+                                        해상 및 항공 수출입 업무에 대해 <br />
+                                        양질의 서비스를 제공
+                                    </p>
+                                    <div class="btn">
+                                        <span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+                                        <span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- //box -->
+                        <!-- box -->
+                        <div class="box animate type2 delay-1">
+                            <div class="box_in">
+                                <a href="@Url.Action("service", "Service" , new {@index = 2}) ">
+                                    <h3 class="tit">운송 서비스</h3>
+                                    <p>
+                                        수출입 화물의 <br />
+                                        신속하고 정확한 운송을 위해 <br />
+                                        전국적인 내륙운송망을 구축, <br />
+                                        고객에게 최상의 물류 서비스를 제공
+                                    </p>
+                                    <div class="btn">
+                                        <span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+                                        <span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- //box -->
+                        <!-- box -->
+                        <div class="box animate delay-1 type1">
+                            <div class="box_in">
+                                <a href="@Url.Action("service", "Service" , new {@index = 3}) ">
+                                    <h3 class="tit main_content_right">창고 서비스</h3>
+                                    <p class="main_content_right">
+                                        물류 창고를 활용한 <br />
+                                        물류관리시스템을 바탕으로 <br />
+                                        종합화물보관 서비스를 제공
+                                    </p>
+                                    <div class="btn">
+                                        <span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+                                        <span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- //box -->
+                    </div>
+                    <div class="pc pc_txt animate delay-4">
+                        <h2 class="title"><br /><br /><br /></h2>
+                        <p class="txt"><img src="images/business.png" alt="BUSINESS" /></p>
+                    </div>
+                </div>
+            </section>
+            <!-- //mn_info -->
+        *@
+    }
+    <script src="~/Scripts/API/swiper.min.js"></script>
+    <script src="~/Scripts/js/Home/Index.js"></script>
+}

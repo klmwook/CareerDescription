@@ -1,0 +1,377 @@
+﻿@{
+    ViewBag.Title = "company";
+    ViewBag.Sub = "contact";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>Contact</span></h3>
+                @*<div class="contact_Area">
+                    <div class="pc">
+                        <strong class="tit_ceo">
+                            <img src="~/Images/cont/organ_logo.png" style="width:100%">
+                        </strong>
+                        <div class="contact_sub_title_Area">
+                            <strong class="contact_title">
+                                이사회
+                            </strong>
+                        </div>
+                        <ul class="contact_division02">
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">경영지원부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9589</span><br />
+                                            <span class="contact_content_fax">Fax : 02-730-8864</span><br />
+                                            <span class="contact_content_Email">E-Mail : adm@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">해운사업부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9546</span><br />
+                                            <span class="contact_content_fax">Fax : 02-738-5066</span><br />
+                                            <span class="contact_content_Email">E-Mail : goocean@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">항공사업부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9521</span><br />
+                                            <span class="contact_content_fax">Fax : 02-730-5380</span><br />
+                                            <span class="contact_content_Email">E-Mail : airexport@halogistics.co.kr <br /> airexport@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">영업소(부산사무소)</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 051-463-6441</span><br />
+                                            <span class="contact_content_fax">Fax : 051-464-3850</span><br />
+                                            <span class="contact_content_Email">E-Mail : pus@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="/Images/contact.png" class="mo" style="width: 100%;" />
+                </div>*@
+
+                <div class="contact_Area">
+                    <div class="pc" style="height:465px;overflow:hidden">
+                        <!-- 자식 height를 위해서 element로 주었음.-->
+                        <div class="contact_Content_Area">
+                            <ul class="contact_division01">
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">Management Dept</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3474-6451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3474-2674</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">Ocean Dept</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3487-0451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3474-2672</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">Air Dept</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3474-6451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3472-6948</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="contact_Table_Area">
+                            <div class="contact_TableCell_Area">
+                                <img src="~/Images/cont/organ_logo_en.png">
+                            </div>
+                        </div>
+                        <div class="contact_Content_Area">
+                            <ul class="contact_division02">
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">Project Dept</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3498-6062</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3472-6948</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">Marketing Dept</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3487-0451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3474-2671</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">Busan Branch</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 051-462-1968</span><br />
+                                                <span class="contact_content_fax">Fax : 051-462-6537</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="~/Images/contact_en.png" class="mo" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>조직도 및 연락처</span></h3>
+                @*<div class="contact_Area">
+                    <div class="pc">
+                        <strong class="tit_ceo">
+                            <img src="~/Images/cont/organ_logo.png" style="width:100%">
+                        </strong>
+                        <div class="contact_sub_title_Area">
+                            <strong class="contact_title">
+                                이사회
+                            </strong>
+                        </div>
+                        <ul class="contact_division02">
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">경영지원부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9589</span><br />
+                                            <span class="contact_content_fax">Fax : 02-730-8864</span><br />
+                                            <span class="contact_content_Email">E-Mail : adm@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">해운사업부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9546</span><br />
+                                            <span class="contact_content_fax">Fax : 02-738-5066</span><br />
+                                            <span class="contact_content_Email">E-Mail : goocean@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">항공사업부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9521</span><br />
+                                            <span class="contact_content_fax">Fax : 02-730-5380</span><br />
+                                            <span class="contact_content_Email">E-Mail : airexport@halogistics.co.kr <br /> airexport@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">영업소(부산사무소)</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 051-463-6441</span><br />
+                                            <span class="contact_content_fax">Fax : 051-464-3850</span><br />
+                                            <span class="contact_content_Email">E-Mail : pus@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="/Images/contact.png" class="mo" style="width: 100%;" />
+                </div>*@
+
+                <div class="contact_Area">
+                    <div class="pc" style="height:465px;overflow:hidden"> <!-- 자식 height를 위해서 element로 주었음.-->
+                        <div class="contact_Content_Area">
+                            <ul class="contact_division01">
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">관리부</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3474-6451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3474-2674</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">해운부</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3487-0451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3474-2672</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">항공부</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3474-6451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3472-6948</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="contact_Table_Area">
+                            <div class="contact_TableCell_Area">
+                                <img src="/Images/cont/organ_logo.png">
+                            </div>                            
+                        </div>
+                        <div class="contact_Content_Area">
+                            <ul class="contact_division02">
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">프로젝트부</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3498-6062</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3472-6948</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">마케팅부</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 02-3487-0451</span><br />
+                                                <span class="contact_content_fax">Fax : 02-3474-2671</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact_title_Area">
+                                        <strong class="contact_title">부산지사</strong>
+                                    </div>
+                                    <div class="contact_content_Area">
+                                        <div class="contact_content_table">
+                                            <div class="contact_content_tablecell">
+                                                <span class="contact_content_tel">Tel : 051-462-1968</span><br />
+                                                <span class="contact_content_fax">Fax : 051-462-6537</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="~/Images/contact.png" class="mo" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    }
+}

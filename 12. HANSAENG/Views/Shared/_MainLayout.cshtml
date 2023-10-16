@@ -1,0 +1,568 @@
+﻿@{ // Main 언어 설정
+	string setLang = "";
+	if (HttpContext.Current.Session["Language"] == null)
+	{
+		setLang = "KO";
+	}
+	else
+	{
+		setLang = HttpContext.Current.Session["Language"].ToString();
+	}
+
+	if (string.IsNullOrEmpty(setLang))
+	{
+		setLang = "KO";
+	}
+}
+
+<!DOCTYPE html>
+@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+{
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>HANSAENG EXPRESS</title>
+    <link href="~/Content/css/media.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/API/swiper.min.css">
+    <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <script src="~/Scripts/js/waypoints.min.js"></script>
+    <script src="~/Scripts/js/common.js"></script>
+    <script src="~/Scripts/js/Common/Comm.js"></script>
+</head>
+<body>
+    <!-- wrap -->
+    <div id="wrap">
+        <!-- header -->
+        <header id="header">
+            <div id="navi_bg"></div>
+            <div class="inner">
+                <h1 class="logo2"><a href="/"><span class="hidden">HANSAENG EXPRESS</span></a></h1>
+                <ul class="lnb">
+                    <li>
+                        <a href="@Url.Action("greeting", "Company")"><span>Company</span></a>
+                        <div class="depth">
+                            <div class="sub_in">
+                                <ul>
+                                    <li><a href="@Url.Action("greeting", "Company")"><span>Greeting</span></a></li>
+                                    <li><a href="@Url.Action("contact", "Company")"><span>Contact</span></a></li>
+                                    <li><a href="@Url.Action("location", "Company")"><span>Location</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "business")"><span>Business</span></a>
+                        <div class="depth">
+                            <div class="sub_in">
+                                <ul>
+                                    <li><a href="@Url.Action("Index", "business")"><span>Business</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+                        <div class="depth">
+                            <div class="sub_in">
+                                <ul>
+                                    <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#total_nav" id="hamberger"><span class="btn_total"></span></a>
+                <a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })" id="hamberger2">
+                    <span>KOR</span>
+                </a>
+                <!-- total_menu -->
+                <nav class="total_menu">
+                    <div class="dim"></div>
+                    <div class="total_nav" id="total_nav">
+                        <div class="nav_tit">
+                            <a href="/" class="nav_logo2"><span class="hidden">HHANSAENG EXPRESS</span></a>
+                            <button type="button" class="close"><span class="blind">Close</span></button>
+                        </div>
+                        <ul class="menu">
+                            <li>
+                                <a href="@Url.Action("greeting", "Company")"><span>Company</span></a>
+                                <div class="sub_depth">
+                                    <div class="sub_in">
+                                        <ul>
+                                            <li><a href="@Url.Action("greeting", "Company")"><span>Greeting</span></a></li>
+                                            <li><a href="@Url.Action("contact", "Company")"><span>Contact</span></a></li>
+                                            <li><a href="@Url.Action("location", "Company")"><span>Location</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "business")"><span>Business</span></a>
+                                <div class="sub_depth">
+                                    <div class="sub_in">
+                                        <ul>
+                                            <li><a href="@Url.Action("Index", "business")"><span>Business</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+                                <div class="sub_depth">
+                                    <div class="sub_in">
+                                        <ul>
+                                            <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href=@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })><span>KOR</span></a>
+                            </li>
+                            <!--<li><a href="javascript:void(0)"><span>E-service</span></a></li>-->
+                        </ul>
+                    </div>
+                </nav>
+                <!-- //total_menu -->
+            </div>
+        </header>
+        <!-- //header -->
+        <!-- container -->
+        @RenderSection("container", required: false)
+        <!-- //container -->
+
+        <footer id="footer_en">
+            <!-- fnb_w -->
+            <div class="fnb_w">
+                <div class="inner">
+                    <ul class="fnb">
+
+                        @*<li><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span>AEO</span></a></li>*@
+                        <li>
+                            <div class="fnb_image_area">
+                                <img src="~/Images/aeo.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                            <div class="fnb_image_area">
+                                <img src="~/Images/FIATA.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                            <div class="fnb_image_area">
+                                <img src="~/Images/IATA.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                            <div class="fnb_image_area">
+                                <img src="~/Images/GFG.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        @*<li><a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a></li>
+                            <li><a href="@Url.Action("map", "community")"><span>오시는 길</span></a></li>*@
+                    </ul>
+                </div>
+            </div>
+            <!-- //fnb_w -->
+            <!-- f_info -->
+            <div class="f_info">
+                <div class="inner">
+                    <div class="col pc">
+                        <div class="footer_logo_area">
+                            <!-- 로고 영역 -->
+                            <div class="footer_img_en"><a><span class="hidden">HANSAENG EXPRESS</span></a></div>
+                        </div>
+                        <div class="footer_content_area">
+                            <span style="line-height: 27px;">
+                                Hansaeng Express Co.,Ltd. <br />
+                                42, Gangnam-daero 37-gil, Seocho-gu, Seoul<br />
+                                Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674 <br />
+                                Copyright 2020 Hansaeng Express Co., Ltd.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col addr mo">
+                        <div class="footer_logo_area_mo">
+                            <!-- 로고 영역 -->
+                            <div class="footer_img_en"><a><span> </span></a></div>
+                            @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+                        </div>
+                        <address>
+                            <span class="item01">Hansaeng Express Co.,Ltd.</span> <br class="mo" />
+                            <span class="item03">42, Gangnam-daero 37-gil, Seocho-gu, Seoul</span><br class="mo" />
+                            <span class="item04">Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674</span><br class="mo" />
+                            <span class="item05">Copyright 2020 Hansaeng Express Co., Ltd.</span>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- //f_info -->
+            <!-- copy -->
+            <div class="copy">
+                <div class="inner">
+                    ⓒ 2020 HANSAENG EXPRESS Corporation
+                    <button type="button" class="top"><span class="blind">TOP</span></button>
+                </div>
+            </div>
+            <!-- //copy -->
+        </footer>
+
+        <!-- management_policy -->
+        <div class="layer_zone_edemo" id="Management_Policy">
+            <div class="layer_wrap_edemo layer_wrap_policy">
+                <div class="layer_inwrap_edemo">
+                    <article class="layer_cont_edemo">
+                        <div class="layer_tit_edemo">
+                            <h1 class="tit_edemo"></h1>
+                        </div>
+                        <!-- alert_cont -->
+                        <div class="alert_cont_edemo">
+                            <div class="terminner layer_wrap_Content_Height" style="text-align:left">
+                                <!-- container -->
+                                <div class="container" style="padding-bottom:0">
+                                    <!-- contents -->
+                                    <div class="contents">
+                                        <!-- terms_box -->
+                                        <div class="terms_box Management_Policy_area">
+                                            <div class="Management_Policy_Logo">
+                                                <img src="~/Images/cont/Management_Policy_Logo.png" />
+                                            </div>
+                                            <h1 class="Managemnet_Policy_title">법규준수 및 <br class="mo" />수출입안전관리 경영방침</h1>
+                                            <p>
+                                                (주)흥아로지스틱스는 법규준수 및 안전관리을 최우선으로 하며, 지속적으로 업무개선활동을 하고, 관련업체와의 상호협력을 증진시킨다.
+                                            </p>
+                                            <p>
+                                                또한 발생이 예상되는 문제점을 예방하고, 안전하고 쾌적한 경영환경을 조성함으로써, 구성 임직운의 삶의 질 향상을 추구하며 , 고객의 요구를 만족시키는 고품질의 서비스를 제공한다.
+                                            </p>
+                                            <p>
+                                                빠르게 변화 하는 국제경쟁시대에 신속하게 대처하기 위하여, 수출입업무와 관련한 풍부한 실무경험과 검증된 전문성을 갖춘 인력을 확보하며, 수출입과 관련된 국내외의 각종 법령 및 기준을 준수하고, 국내외 위험 요소로부터 보호하여 고객만족실현에 최선을 다한다.
+                                            </p>
+                                            <br />
+                                            <div class="grp">
+                                                <h2>이에 (주)흥아로지스틱스는 다음 경영방침을 준수한다.</h2>
+                                            </div>
+                                            <br />
+                                            <div class="grp">
+                                                <h2>1. 수출입과 관련하여 국내외의 법령, 기준 및 각종 내외부 규정 준수</h2>
+                                            </div>
+                                            <div class="grp">
+                                                <h2>2. 법규준수 및 안전관리 수준의 유지 및 향상을 위한 전임직원에게 일정한 교육훈련 실시</h2>
+                                            </div>
+                                            <div class="grp">
+                                                <h2>3. 수출입업무 활동으로 부터 파생되는 위험요소를 식별하고, 당해 위험요소를 적극적으로 관리, 개선하여 고객만족 실현</h2>
+                                            </div>
+                                            <div class="grp">
+                                                <h2>4. 상기 경영방침의 실현을 위하여, (주)흥아로지스틱스의 각 산하 조직은 안전경영 목표를 설정하고, 지속적인 개선활동 및 주기적인 검토 실시</h2>
+                                            </div>
+                                            <br />
+                                            <div class="grp" style="text-align:right">
+                                                <h2>(주)흥아로지스틱스</h2>
+                                            </div>
+
+                                            <div class="layer_btnarea">
+                                                <a href="javascript:void(0)" class="layer_Btn" onclick="layerClose('#Management_Policy');">확인</a>
+                                            </div>
+                                        </div>
+                                        <!-- //terms_box -->
+                                    </div>
+                                    <!-- //contents -->
+                                </div>
+                                <!-- //container -->
+                                <button type="button" class="btn_close close_edemo" onclick="layerClose('#Management_Policy');"><span class="blind">닫기</span></button>
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                        <!-- btn_w -->
+                        <!-- //btn_w -->
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+}
+else
+{
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+    <title>HANSAENG EXPRESS</title>
+	<link href="~/Content/css/media.css" rel="stylesheet">
+	<link rel="stylesheet" href="~/Content/API/swiper.min.css">
+	<script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+	<script src="~/Scripts/js/slick.min.js"></script>
+	<script src="~/Scripts/js/waypoints.min.js"></script>
+	<script src="~/Scripts/js/common.js"></script>
+	<script src="~/Scripts/js/Common/Comm.js"></script>	
+</head>
+<body>
+	<!-- wrap -->
+	<div id="wrap">
+		<!-- header -->
+		<header id="header">
+			<div id="navi_bg"></div>
+			<div class="inner">
+				<h1 class="logo"><a href="/"><span class="hidden">HANSAENG EXPRESS</span></a></h1>
+				<ul class="lnb">
+					<li>
+						<a href="@Url.Action("greeting", "Company")"><span>회사소개</span></a>
+						<div class="depth">
+							<div class="sub_in">
+								<ul>
+									<li><a href="@Url.Action("greeting", "Company")"><span>소개 및 연혁</span></a></li>
+									<li><a href="@Url.Action("contact", "Company")"><span>조직도 및 연락처</span></a></li>
+									<li><a href="@Url.Action("location", "Company")"><span>오시는 길</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="@Url.Action("Index", "business")"><span>사업영역</span></a>
+						<div class="depth">
+							<div class="sub_in">
+								<ul>
+									<li><a href="@Url.Action("Index", "business")"><span>사업영역</span></a></li>									
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+                        <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+						<div class="depth">
+							<div class="sub_in">
+								<ul>
+									<li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>									
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<a href="#total_nav" id="hamberger"><span class="btn_total"></span></a>
+				<a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })" id="hamberger2">
+					<span>ENG</span>
+				</a>
+				<!-- total_menu -->
+				<nav class="total_menu">
+					<div class="dim"></div>
+					<div class="total_nav" id="total_nav">
+						<div class="nav_tit">
+							<a href="/" class="nav_logo"><span class="hidden">HANSAENG EXPRESS</span></a>
+							<button type="button" class="close"><span class="blind">닫기</span></button>
+						</div>
+						<ul class="menu">
+							<li>
+								<a href="@Url.Action("greeting", "Company")"><span>회사소개</span></a>
+								<div class="sub_depth">
+									<div class="sub_in">
+                                        <ul>
+                                            <li><a href="@Url.Action("greeting", "Company")"><span>소개 및 연혁</span></a></li>
+                                            <li><a href="@Url.Action("contact", "Company")"><span>조직도 및 연락처</span></a></li>
+                                            <li><a href="@Url.Action("location", "Company")"><span>오시는 길</span></a></li>
+                                        </ul>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="@Url.Action("Index", "business")"><span>사업영역</span></a>
+								<div class="sub_depth">
+									<div class="sub_in">
+										<ul>
+											<li><a href="@Url.Action("Index", "business")"><span>사업영역</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li>
+                                <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+								<div class="sub_depth">
+									<div class="sub_in">
+                                        <ul>
+                                            <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                        </ul>
+									</div>
+								</div>
+							</li>							
+							<li>
+								<a href=@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })><span>ENG</span></a>
+							</li>
+							<!--<li><a href="javascript:void(0)"><span>E-service</span></a></li>-->
+						</ul>
+					</div>
+				</nav>
+				<!-- //total_menu -->
+			</div>
+		</header>
+		<!-- //header -->
+		<!-- container -->
+		@RenderSection("container", required: false)
+		<!-- //container -->
+
+		<footer id="footer">
+			<!-- fnb_w -->
+			<div class="fnb_w">
+				<div class="inner">
+                    <ul class="fnb">
+
+                        @*<li><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span>AEO</span></a></li>*@
+                        <li>
+                            <div class="fnb_image_area">
+                                <img src="~/Images/aeo.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                            <div class="fnb_image_area">
+                                <img src="~/Images/FIATA.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                            <div class="fnb_image_area">
+                                <img src="~/Images/IATA.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                            <div class="fnb_image_area">
+                                <img src="~/Images/GFG.png" class="fnb_image" />
+                            </div>
+                        </li>
+                        @*<li><a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a></li>
+                        <li><a href="@Url.Action("map", "community")"><span>오시는 길</span></a></li>*@
+                    </ul>
+				</div>
+			</div>
+			<!-- //fnb_w -->
+			<!-- f_info -->
+			<div class="f_info">
+				<div class="inner">
+					<div class="col pc">
+						<div class="footer_logo_area">
+							<!-- 로고 영역 -->
+                            <div class="footer_img"><a><span class="hidden">HANSAENG EXPRESS</span></a></div>
+                            @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+						</div>
+						<div class="footer_content_area">
+                            <span style="line-height: 27px;">
+                                한생해운항공(주) <br />
+                                본사 : 서울특별시 서초구 강남대로 37길 42 (서초동)<br />
+                                Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674 <br />
+                                Copyright 2020 Hansaeng Express Co., Ltd.
+                            </span>
+						</div>
+					</div>
+
+                    <div class="col addr mo">
+                        <div class="footer_logo_area_mo">
+                            <!-- 로고 영역 -->
+                            <div class="footer_img"><a><span> </span></a></div>
+                            @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+                        </div>
+                        <address>
+                            <span class="item01">한생해운항공(주)</span> <br class="mo" />
+                            <span class="item03">본사 : 서울특별시 서초구 강남대로 37길 42 (서초동)</span><br class="mo" />
+                            <span class="item04">Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674</span><br class="mo" />
+                            <span class="item05">Copyright 2020 Hansaeng Express Co., Ltd.</span>
+                        </address>
+                    </div>
+				</div>
+			</div>
+			<!-- //f_info -->
+			<!-- copy -->
+			<div class="copy">
+				<div class="inner">
+					ⓒ 2020 HANSAENG EXPRESS Corporation
+					<button type="button" class="top"><span class="blind">TOP</span></button>
+				</div>
+			</div>
+			<!-- //copy -->
+		</footer>		
+	</div>
+	<!-- management_policy -->
+	<div class="layer_zone_edemo" id="Management_Policy">
+		<div class="layer_wrap_edemo layer_wrap_policy">
+			<div class="layer_inwrap_edemo">
+				<article class="layer_cont_edemo">
+					<div class="layer_tit_edemo">
+						<h1 class="tit_edemo"></h1>
+					</div>
+					<!-- alert_cont -->
+					<div class="alert_cont_edemo">
+						<div class="terminner layer_wrap_Content_Height" style="text-align:left">
+							<!-- container -->
+							<div class="container" style="padding-bottom:0">
+								<!-- contents -->
+								<div class="contents">									
+									<!-- terms_box -->
+									<div class="terms_box Management_Policy_area">
+										<div class="Management_Policy_Logo">
+											<img src="~/Images/cont/Management_Policy_Logo.png" />
+										</div>
+										<h1 class="Managemnet_Policy_title">법규준수 및 <br class="mo" />수출입안전관리 경영방침</h1>
+										<p>
+											(주)흥아로지스틱스는 법규준수 및 안전관리을 최우선으로 하며, 지속적으로 업무개선활동을 하고, 관련업체와의 상호협력을 증진시킨다.
+										</p>
+										<p>
+											또한 발생이 예상되는 문제점을 예방하고, 안전하고 쾌적한 경영환경을 조성함으로써, 구성 임직운의 삶의 질 향상을 추구하며 , 고객의 요구를 만족시키는 고품질의 서비스를 제공한다.
+										</p>
+										<p>
+											빠르게 변화 하는 국제경쟁시대에 신속하게 대처하기 위하여, 수출입업무와 관련한 풍부한 실무경험과 검증된 전문성을 갖춘 인력을 확보하며, 수출입과 관련된 국내외의 각종 법령 및 기준을 준수하고, 국내외 위험 요소로부터 보호하여 고객만족실현에 최선을 다한다.
+										</p>
+										<br />
+										<div class="grp">
+											<h2>이에 (주)흥아로지스틱스는 다음 경영방침을 준수한다.</h2>
+										</div>
+										<br />
+										<div class="grp">
+											<h2>1. 수출입과 관련하여 국내외의 법령, 기준 및 각종 내외부 규정 준수</h2>
+										</div>
+										<div class="grp">
+											<h2>2. 법규준수 및 안전관리 수준의 유지 및 향상을 위한 전임직원에게 일정한 교육훈련 실시</h2>
+										</div>
+										<div class="grp">
+											<h2>3. 수출입업무 활동으로 부터 파생되는 위험요소를 식별하고, 당해 위험요소를 적극적으로 관리, 개선하여 고객만족 실현</h2>
+										</div>
+										<div class="grp">
+											<h2>4. 상기 경영방침의 실현을 위하여, (주)흥아로지스틱스의 각 산하 조직은 안전경영 목표를 설정하고, 지속적인 개선활동 및 주기적인 검토 실시</h2>
+										</div>
+										<br />
+										<div class="grp" style="text-align:right">
+											<h2>(주)흥아로지스틱스</h2>
+										</div>
+
+										<div class="layer_btnarea">
+											<a href="javascript:void(0)" class="layer_Btn" onclick="layerClose('#Management_Policy');">확인</a>
+										</div>
+									</div>
+									<!-- //terms_box -->
+								</div>
+								<!-- //contents -->
+							</div>
+							<!-- //container -->
+							<button type="button" class="btn_close close_edemo" onclick="layerClose('#Management_Policy');"><span class="blind">닫기</span></button>
+						</div>
+					</div>
+					<!-- //alert_cont -->
+					<!-- btn_w -->
+					
+					<!-- //btn_w -->
+				</article>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+}
+

@@ -1,0 +1,689 @@
+﻿@{ // Main 언어 설정
+	string setLang = "";
+	if (HttpContext.Current.Session["Language"] == null)
+	{
+		setLang = "KO";
+	}
+	else
+	{
+		setLang = HttpContext.Current.Session["Language"].ToString();
+	}
+
+	if (string.IsNullOrEmpty(setLang))
+	{
+		setLang = "KO";
+	}
+}
+
+<!DOCTYPE html>
+@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+{
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>HANSAENG EXPRESS</title>
+        <link href="~/Content/css/media.css" rel="stylesheet">
+        <link href="~/Content/PagedList.css" rel="stylesheet">
+        <link href="~/Content/loading.css" rel="stylesheet">
+        <link rel="stylesheet" href="~/Content/API/c3.css">
+        <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+        <script src="~/Scripts/js/slick.min.js"></script>
+        <script src="~/Scripts/js/waypoints.min.js"></script>
+        <script src="~/Scripts/js/common.js"></script>
+        <script src="~/Scripts/js/Common/Comm.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        @*<script src="~/Scripts/API/c3.min.js"></script>*@
+    </head>
+    <body>
+        <!-- wrap -->
+        <div id="wrap">
+            <!-- header -->
+            <header id="header" class="sub">
+                <div id="navi_bg"></div>
+                <input type="hidden" id="sub_id" value="@ViewBag.Title" />
+                <input type="hidden" id="sub_title_id" value="@ViewBag.Sub" />
+
+                <div class="inner sub_inner">
+                    <div class="header_logo_area">
+                        <h1 class="logo2"><a href="/"><span class="hidden">HANSAENG EXPRESS</span></a></h1>
+                        @*<h1 class="logo2"><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span class="hidden">HEUNG-A LOGISTICS</span></a></h1>*@
+                    </div>
+                    <ul class="lnb">
+                        <li>
+                            <a href="@Url.Action("greeting", "Company")"><span>COMPANY</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("greeting", "Company")"><span>Greeting</span></a></li>
+                                        <li><a href="@Url.Action("contact", "Company")"><span>Contact</span></a></li>
+                                        <li><a href="@Url.Action("location", "Company")"><span>Location</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "business")"><span>Business</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("Index", "business")"><span>Business</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" id="hamberger"><span class="btn_total"></span></a>
+                    <a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })" id="hamberger2">
+                        <span>KOR</span>
+                    </a>
+                    <!-- total_menu -->
+                    <nav class="total_menu">
+                        <div class="dim"></div>
+                        <div class="total_nav" id="total_nav">
+                            <div class="nav_tit">
+                                <a href="/" class="nav_logo2"><span class="hidden">SAMYOUNG EXPRESS</span></a>
+                                <button type="button" class="close"><span class="blind">Close</span></button>
+                            </div>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("greeting", "Company")"><span>Company</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="@Url.Action("greeting", "Company")"><span>Greeting</span></a></li>
+                                                <li><a href="@Url.Action("contact", "Company")"><span>Contact</span></a></li>
+                                                <li><a href="@Url.Action("location", "Company")"><span>Location</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "business")"><span>Business</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="@Url.Action("Index", "business")"><span>Business</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })><span>KOR</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- //total_menu -->
+                </div>
+            </header>
+            <!-- //header -->
+            <script>
+                var sub_id = $("#sub_id").val();
+                //alert(sub_id);
+                switch (sub_id) {
+                    case "company":
+                        lock(0, 0);
+                        break;
+                    case "business":
+                        lock(1, 0);
+                        break;
+                    case "Eservice":
+                        lock(2, 0);
+                        break;
+                }
+            </script>
+
+            <!-- sub_visual -->
+            @{
+                string Title = ViewBag.Title;
+                string subTitle = ViewBag.Sub;
+
+                switch (Title)
+                {
+                    case "company":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                <p class="pc"><img src="/Images/cont/sub_title_en.png" alt="sub_title_area" class="sub_img_title"></p>
+                                <p class="mo"><img src="/Images/cont/sub_title_en_m.png" alt="sub_title_area"></p>
+                            </div>
+                        </div>
+                        break;
+                    case "business":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                <p class="pc"><img src="/Images/cont/sub_title_en.png" alt="sub_title_area" class="sub_img_title"></p>
+                                <p class="mo"><img src="/Images/cont/sub_title_en_m.png" alt="sub_title_area"></p>
+                            </div>
+                        </div>
+                        break;
+                    case "Eservice":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                <p class="pc"><img src="/Images/cont/sub_title_en.png" alt="sub_title_area" class="sub_img_title"></p>
+                                <p class="mo"><img src="/Images/cont/sub_title_en_m.png" alt="sub_title_area"></p>
+                            </div>
+                        </div>
+                        break;
+                }
+            }
+
+            <!-- //sub_visual -->
+            <!-- location -->
+            <div class="location">
+                <div class="inner">
+                    <a href="/" class="home"><span class="blind">Home</span></a>
+                    <div class="depth">
+                        @{ Title = ViewBag.Title;
+                            switch (Title)
+                            {
+                                case "company":
+                                    <a href="javascript:void(0)"><span>Company</span></a>
+                                    break;
+                                case "business":
+                                    <a href="javascript:void(0)"><span>Business</span></a>
+                                    break;
+                                case "community":
+                                    <a href="javascript:void(0)"><span>E-SERVICE</span></a>
+                                    break;
+                            }
+                        }
+                        <div class="sub_list">
+                            <ul>
+                                @{ if (ViewBag.Title != "company")
+                                    {
+                                        <li><a href="@Url.Action("greeting", "company")"><span>Company</span></a></li>
+                                    }
+                                }
+                                @{ if (ViewBag.Title != "business")
+                                    {
+                                        <li><a href="@Url.Action("Index", "business" )"><span>Business</span></a></li>
+                                    }
+                                }
+                                @{ if (ViewBag.Title != "Eservice")
+                                    {
+                                        <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="depth now">
+                        @{
+                            subTitle = ViewBag.Sub;
+                            switch (Title)
+                            {
+                                case "company":
+                                    switch (subTitle)
+                                    {
+                                        case "greeting":<a href="javascript:void(0)"><span>Greeting</span></a>break;
+                                        case "contact":<a href="javascript:void(0)"><span>Contact</span></a>break;
+                                        case "location":<a href="javascript:void(0)"><span>Location</span></a>break;
+                                    }
+                                    <div class="sub_list">
+                                        <ul>
+                                            @{ if (ViewBag.Sub != "greeting")
+                                                {
+                                                    <li><a href="@Url.Action("greeting", "company")"><span>Greeting</span></a></li>
+                                                }}
+                                            @{ if (ViewBag.Sub != "contact")
+                                                {
+                                                    <li><a href="@Url.Action("contact", "company")"><span>Contact</span></a></li>
+                                                }}
+                                            @{ if (ViewBag.Sub != "location")
+                                                {
+                                                    <li><a href="@Url.Action("location", "company")"><span>Location</span></a></li>
+                                                }}
+                                        </ul>
+                                    </div>
+                                    break;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- //location -->
+            <!-- container -->
+            @RenderSection("container", required: false)
+            <!-- //container -->
+
+            <footer id="footer_en">
+                <!-- fnb_w -->
+                <div class="fnb_w">
+                    <div class="inner">
+                        <ul class="fnb">
+                            @*<li><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span>AEO</span></a></li>*@
+                            <li>
+                                @*<div class="fnb_image_area" onclick="layerPopup('#Management_Policy');">*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/aeo.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/FIATA.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/IATA.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/GFG.png" class="fnb_image" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //fnb_w -->
+                <!-- f_info -->
+                <div class="f_info">
+                    <div class="inner">
+                        <div class="col pc">
+                            <div class="footer_logo_area">
+                                <!-- 로고 영역 -->
+                                <div class="footer_img_en"><a><span> </span></a></div>
+                            </div>
+                            <div class="footer_content_area">
+                                <span style="line-height: 27px;">
+                                    Hansaeng Express Co.,Ltd. <br />
+                                    42, Gangnam-daero 37-gil, Seocho-gu, Seoul<br />
+                                    Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674 <br />
+                                    Copyright 2020 Hansaeng Express Co., Ltd.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col addr mo">
+                            <div class="footer_logo_area_mo">
+                                <!-- 로고 영역 -->
+                                <div class="footer_img_en"><a><span> </span></a></div>
+                                @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+                            </div>
+                            <address>
+                                <span class="item01">Hansaeng Express Co.,Ltd.</span> <br class="mo" />
+                                <span class="item03">42, Gangnam-daero 37-gil, Seocho-gu, Seoul</span><br class="mo" />
+                                <span class="item04">Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674</span><br class="mo" />
+                                <span class="item05">Copyright 2020 Hansaeng Express Co., Ltd.</span>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <!-- //f_info -->
+                <!-- copy -->
+                <div class="copy">
+                    <div class="inner">
+                        ⓒ 2020 HANSAENG EXPRESS Corporation
+                        <button type="button" class="top"><span class="blind">TOP</span></button>
+                    </div>
+                </div>
+                <!-- //copy -->
+            </footer>
+        </div>
+    </body>
+</html>
+}
+else
+{
+<html lang="ko">
+    <head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+        <title>HANSAENG EXPRESS</title>
+	    <link href="~/Content/css/media.css" rel="stylesheet">
+	    <link href="~/Content/PagedList.css" rel="stylesheet">
+	    <link href="~/Content/loading.css" rel="stylesheet">
+	    <link rel="stylesheet" href="~/Content/API/c3.css">
+	    <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+	    <script src="~/Scripts/js/slick.min.js"></script>
+	    <script src="~/Scripts/js/waypoints.min.js"></script>
+	    <script src="~/Scripts/js/common.js"></script>
+	    <script src="~/Scripts/js/Common/Comm.js"></script>
+	    <script src="https://d3js.org/d3.v5.min.js"></script>
+	    @*<script src="~/Scripts/API/c3.min.js"></script>*@
+</head>
+    <body>
+	    <!-- wrap -->
+	    <div id="wrap">
+		    <!-- header -->
+		    <header id="header" class="sub">
+			    <div id="navi_bg"></div>
+			    <input type="hidden" id="sub_id" value="@ViewBag.Title" />
+			    <input type="hidden" id="sub_title_id" value="@ViewBag.Sub" />
+
+			    <div class="inner sub_inner">
+				    <div class="header_logo_area">
+					    <h1 class="logo"><a href="/"><span class="hidden">HANSAENG EXPRESS</span></a></h1>
+					    @*<h1 class="logo2"><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span class="hidden">HEUNG-A LOGISTICS</span></a></h1>*@
+				    </div>
+				    <ul class="lnb">
+					    <li>
+						    <a href="@Url.Action("greeting", "Company")"><span>회사소개</span></a>
+						    <div class="depth">
+							    <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("greeting", "Company")"><span>소개 및 연혁</span></a></li>
+                                        <li><a href="@Url.Action("contact", "Company")"><span>조직도 및 연락처</span></a></li>
+                                        <li><a href="@Url.Action("location", "Company")"><span>오시는 길</span></a></li>
+                                    </ul>
+							    </div>
+						    </div>
+					    </li>
+					    <li>
+                            <a href="@Url.Action("Index", "business")"><span>사업영역</span></a>
+						    <div class="depth">
+							    <div class="sub_in">
+								    <ul>
+                                        <li><a href="@Url.Action("Index", "business")"><span>사업영역</span></a></li>
+								    </ul>
+							    </div>
+						    </div>
+					    </li>
+					    <li>
+                            <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+						    <div class="depth">
+							    <div class="sub_in">
+								    <ul>
+                                        <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+								    </ul>
+							    </div>
+						    </div>
+					    </li>					
+				    </ul>
+				    <a href="javascript:void(0)" id="hamberger"><span class="btn_total"></span></a>
+				    <a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })" id="hamberger2">
+					    <span>ENG</span>
+				    </a>
+				    <!-- total_menu -->
+				    <nav class="total_menu">
+					    <div class="dim"></div>
+					    <div class="total_nav" id="total_nav">
+						    <div class="nav_tit">
+							    <a href="/" class="nav_logo"><span class="hidden">HANSAENG EXPRESS</span></a>
+							    <button type="button" class="close"><span class="blind">닫기</span></button>
+						    </div>
+						    <ul class="menu">
+							    <li>
+								    <a href="@Url.Action("greeting", "Company")"><span>회사소개</span></a>
+								    <div class="sub_depth">
+									    <div class="sub_in">
+                                            <ul>
+                                                <li><a href="@Url.Action("greeting", "Company")"><span>소개 및 연혁</span></a></li>
+                                                <li><a href="@Url.Action("contact", "Company")"><span>조직도 및 연락처</span></a></li>
+                                                <li><a href="@Url.Action("location", "Company")"><span>오시는 길</span></a></li>
+                                            </ul>
+									    </div>
+								    </div>
+							    </li>
+							    <li>
+                                    <a href="@Url.Action("Index", "business")"><span>사업영역</span></a>
+								    <div class="sub_depth">
+									    <div class="sub_in">
+										    <ul>
+                                                <li><a href="@Url.Action("Index", "business")"><span>사업영역</span></a></li>
+										    </ul>
+									    </div>
+								    </div>
+							    </li>							
+							    <li>
+                                    <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+								    <div class="sub_depth">
+									    <div class="sub_in">
+										    <ul>
+                                                <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+										    </ul>
+									    </div>
+								    </div>
+							    </li>
+							    <li>
+								    <a href=@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })><span>ENG</span></a>
+							    </li>
+						    </ul>
+					    </div>
+				    </nav>
+				    <!-- //total_menu -->
+			    </div>
+		    </header>
+		    <!-- //header -->
+		    <script>
+			    var sub_id = $("#sub_id").val();
+			    //alert(sub_id);
+			    switch (sub_id) {
+				    case "company":
+					    lock(0, 0);
+					    break;
+				    case "business":
+					    lock(1, 0);
+					    break;
+				    case "Eservice":
+					    lock(2, 0);
+					    break;
+			    }
+		    </script>
+
+		    <!-- sub_visual -->
+		    @{
+			    string Title = ViewBag.Title;
+			    string subTitle = ViewBag.Sub;
+
+			    switch (Title)
+			    {
+				    case "company":
+					    <div class="sub_visual" id="@ViewBag.Title">
+						    <div class="inner">
+							    <p class="pc"><img src="/Images/cont/sub_title.png" alt="sub_title_area" class="sub_img_title"></p>
+							    <p class="mo"><img src="/Images/cont/sub_title_m.png" alt="sub_title_area"></p>
+						    </div>
+					    </div>
+					    break;
+				    case "business":
+					    <div class="sub_visual" id="@ViewBag.Title">
+						    <div class="inner">
+							    <p class="pc"><img src="/Images/cont/sub_title.png" alt="sub_title_area" class="sub_img_title"></p>
+							    <p class="mo"><img src="/Images/cont/sub_title_m.png" alt="sub_title_area"></p>
+						    </div>
+					    </div>
+					    break;
+				    case "Eservice":
+					    <div class="sub_visual" id="@ViewBag.Title">
+						    <div class="inner">
+							    <p class="pc"><img src="/Images/cont/sub_title.png" alt="sub_title_area" class="sub_img_title"></p>
+							    <p class="mo"><img src="/Images/cont/sub_title_m.png" alt="sub_title_area"></p>
+						    </div>
+					    </div>
+					    break;
+			    }
+		    }
+
+		    <!-- //sub_visual -->
+		    <!-- location -->
+		    <div class="location">
+			    <div class="inner">
+				    <a href="/" class="home"><span class="blind">홈</span></a>
+				    <div class="depth">
+					    @{ Title = ViewBag.Title;
+						    switch (Title)
+						    {
+							    case "company":
+								    <a href="javascript:void(0)"><span>회사소개</span></a>
+								    break;
+							    case "business":
+								    <a href="javascript:void(0)"><span>사업영역</span></a>
+								    break;
+							    case "community":
+								    <a href="javascript:void(0)"><span>E-SERVICE</span></a>
+								    break;
+						    }
+					    }
+					    <div class="sub_list">
+						    <ul>
+							    @{ if (ViewBag.Title != "company")
+								    {
+									    <li><a href="@Url.Action("greeting", "company")"><span>회사소개</span></a></li>
+								    }
+							    }
+							    @{ if (ViewBag.Title != "business")
+								    {
+									    <li><a href="@Url.Action("Index", "business" )"><span>사업영역</span></a></li>
+								    }
+							    }							
+							    @{ if (ViewBag.Title != "Eservice")
+								    {
+                                        <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+								    }
+							    }
+						    </ul>
+					    </div>
+				    </div>
+
+				    <div class="depth now">
+					    @{
+						    subTitle = ViewBag.Sub;
+						    switch (Title)
+						    {
+							    case "company":
+								    switch (subTitle)
+								    {
+									    case "greeting":<a href="javascript:void(0)"><span>소개 및 연혁</span></a>break;
+									    case "contact":<a href="javascript:void(0)"><span>조직도 및 연락처</span></a>break;
+									    case "location":<a href="javascript:void(0)"><span>오시는 길</span></a>break;
+								    }
+								    <div class="sub_list">
+									    <ul>
+										    @{ if (ViewBag.Sub != "greeting")
+											    {
+												    <li><a href="@Url.Action("greeting", "company")"><span>소개 및 연혁</span></a></li>
+											    }}
+										    @{ if (ViewBag.Sub != "contact")
+											    {
+												    <li><a href="@Url.Action("contact", "company")"><span>조직도 및 연락처</span></a></li>
+											    }}
+										    @{ if (ViewBag.Sub != "location")
+											    {
+												    <li><a href="@Url.Action("location", "company")"><span>오시는 길</span></a></li>
+											    }}
+									    </ul>
+								    </div>
+								    break;							
+						    }
+					    }
+				    </div>
+			    </div>
+		    </div>
+		    <!-- //location -->
+		    <!-- container -->
+		    @RenderSection("container", required: false)
+		    <!-- //container -->
+
+		    <footer id="footer">
+			    <!-- fnb_w -->
+			    <div class="fnb_w">
+				    <div class="inner">
+                        <ul class="fnb">
+                            @*<li><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span>AEO</span></a></li>*@
+                            <li>
+                                @*<div class="fnb_image_area" onclick="layerPopup('#Management_Policy');">*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/aeo.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/FIATA.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/IATA.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/GFG.png" class="fnb_image" />
+                                </div>
+                            </li>
+                        </ul>
+				    </div>
+			    </div>
+			    <!-- //fnb_w -->
+			    <!-- f_info -->
+			    <div class="f_info">
+				<div class="inner">
+					<div class="col pc">
+						<div class="footer_logo_area">
+							<!-- 로고 영역 -->
+                            <div class="footer_img"><a><span> </span></a></div>
+                            @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+						</div>
+						<div class="footer_content_area">
+                            <span style="line-height: 27px;">
+                                한생해운항공(주) <br />
+                                본사 : 서울특별시 서초구 강남대로 37길 42 (서초동)<br />
+                                Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674 <br />
+                                Copyright 2020 Hansaeng Express Co., Ltd.
+                            </span>
+						</div>
+					</div>
+
+                    <div class="col addr mo">
+                        <div class="footer_logo_area_mo">
+                            <!-- 로고 영역 -->
+                            <div class="footer_img"><a><span> </span></a></div>
+                            @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+                        </div>
+                        <address>
+                            <span class="item01">한생해운항공(주)</span> <br class="mo" />
+                            <span class="item03">본사 : 서울특별시 서초구 강남대로 37길 42 (서초동)</span><br class="mo" />
+                            <span class="item04">Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674</span><br class="mo" />
+                            <span class="item05">Copyright 2020 Hansaeng Express Co., Ltd.</span>
+                        </address>
+                    </div>
+				</div>
+			</div>
+			    <!-- //f_info -->
+			    <!-- copy -->
+			    <div class="copy">
+                    <div class="inner">
+                        ⓒ 2020 HANSAENG EXPRESS Corporation
+                        <button type="button" class="top"><span class="blind">TOP</span></button>
+                    </div>
+			    </div>
+			    <!-- //copy -->
+		    </footer>
+        </div>
+    </body>
+</html>
+}
+
+

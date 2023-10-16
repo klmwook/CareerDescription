@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "company";
+    ViewBag.Sub = "greeting";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>Greeting</span></h3>
+            </div>
+
+            <!-- 워터마크 안쪽에는 내용 ~-->
+            @*<div class="greeting_watermark">
+                </div>*@
+
+            <!-- contents -->
+            <div class="contents">
+                <!-- greeting_w -->
+                <div class="greeting_w">
+                    @*<strong class="point">
+                            홈페이지를 방문하여 주셔서 진심으로 감사 드립니다.<br /><br />
+                            <br class="mo" />
+                        </strong>*@
+                    @*<div class="greeting_image_area">
+                            <img src="~/Images/CEO.jpg" class="greeting_image"/> <br />
+                            <span>(주)흥아로지스틱스 <br />대표이사 오 영 훈</span>
+                        </div>*@
+                    <div class="greeting_content_area">
+                        <p>
+                            The enviroment of logistics is getting competitive everyday. <br />
+                            As one of the Korea's leading logistics company, HANSAENG Express provides competitive and reliable logistics service worldwide. <br />
+                            Founded in 1978, with accumulated know-how and the best staffs who have massive experience, we have provided services that meets the satisfaction of customers and clients.
+                            <br /><br />
+                            In addition, with various worldwide partner network, we promise to provide the best quiality of service at competitive rate.<br />
+                            Hansaeng Express appreciate all your supports and opportunities for last four decades.
+                        </p>
+                    </div>
+
+                </div>
+                <!-- //greeting_w -->
+            </div>
+
+            <!-- company_w -->
+            <div class="company_w part2">
+                <div class="fix_inner">
+                    <h4 class="title01 white">Company History</h4>
+                    <ul class="history_list">
+                        <li>
+                            <em class="year">2018.11</em>
+                            <p>40th anniversary of company establishment</p>
+                        </li>
+                        <li>
+                            <em class="year">2013.01</em>
+                            <p>Certified as an excellent company with comprehensive AEO certification</p>
+                        </li>
+                        <li>
+                            <em class="year">1997.01</em>
+                            <p>
+                                Changed Company name to Hansaeng Sea and Air Co., LTD.
+                                (English name stays same as Hansaeng Express Co., LTD)
+                            </p>
+                        </li>
+                        <li>
+                            <em class="year">1993.07</em>
+                            <p>FMC registration and BOND</p>
+                        </li>
+                        <li>
+                            <em class="year">1988. 08</em>
+                            <p>IATA member registration</p>
+                        </li>
+                        <li>
+                            <em class="year">1978. 11</em>
+                            <p>Established Hansaeng Express Co., LTD.</p>
+                        </li>
+                    </ul>
+                    <div class="history_line">
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- //company_w -->
+
+        </div>
+
+        <!-- //contents -->
+        <!-- greeting_w -->
+        @*<div class="greeting_w part2">
+                <div class="fix_inner">
+                </div>
+            </div>*@
+        <!-- //greeting_w -->
+    }
+    else
+    {
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>소개 및 연혁</span></h3>
+            </div>
+
+            <!-- 워터마크 안쪽에는 내용 ~-->
+            @*<div class="greeting_watermark">
+                </div>*@
+
+            <!-- contents -->
+            <div class="contents">
+                <!-- greeting_w -->
+                <div class="greeting_w">
+                    @*<strong class="point">
+                            홈페이지를 방문하여 주셔서 진심으로 감사 드립니다.<br /><br />
+                            <br class="mo" />
+                        </strong>*@
+                    @*<div class="greeting_image_area">
+                            <img src="~/Images/CEO.jpg" class="greeting_image"/> <br />
+                            <span>(주)흥아로지스틱스 <br />대표이사 오 영 훈</span>
+                        </div>*@
+                    <div class="greeting_content_area">
+                        <p>
+                            해가 갈수록 치열해지는 환경 속에서 보다 앞서고 경쟁력 있는 복합운송 서비스를 제공하는 한생해운항공 입니다.<br />
+                            78년 창립부터 얻어온 풍부한 경험으로 업계 최고의 노하우와 다방면으로 우수한 임직원을 바탕으로
+                            고객들의 기대에 부흥하는 서비스 제공을 약속 드립니다.
+                            <br /><br />
+                            전 세계 파트너망을 통하여 가장 합리적인 요율과 질 높은 서비스를 제공하는 한국의 선도적 물류기업의 하나로서
+                            지난 40여년간의 긴 시간동안 변함없는 성원을 보내주신 고객 여러분들께 감사드립니다.
+                        </p>
+                    </div>
+
+                </div>
+                <!-- //greeting_w -->
+            </div>
+
+            <!-- company_w -->
+            <div class="company_w part2">
+                <div class="fix_inner">
+                    <h4 class="title01 white">회사연혁</h4>
+                    <ul class="history_list">
+                        <li>
+                            <em class="year">2018.11</em>
+                            <p>창립 40주년</p>
+                        </li>
+                        <li>
+                            <em class="year">2013.01</em>
+                            <p>AEO 종합인증 우수업체 공인</p>
+                        </li>
+                        <li>
+                            <em class="year">1997.01</em>
+                            <p>한생해운항공(주) 상호 변경</p>
+                        </li>
+                        <li>
+                            <em class="year">1993.07</em>
+                            <p>FMC가입 및 BOND</p>
+                        </li>
+                        <li>
+                            <em class="year">1988. 08</em>
+                            <p>IATA 회원가입</p>
+                        </li>
+                        <li>
+                            <em class="year">1978. 11</em>
+                            <p>한생익스프레스(주) 창립</p>
+                        </li>
+                    </ul>
+                    <div class="history_line">
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- //company_w -->
+
+        </div>
+
+        <!-- //contents -->
+        <!-- greeting_w -->
+        @*<div class="greeting_w part2">
+                <div class="fix_inner">
+                </div>
+            </div>*@
+        <!-- //greeting_w -->
+    }
+}

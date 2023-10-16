@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "business";
+    ViewBag.Sub = "Index";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string strIndex = "";
+
+    if (Request.QueryString["index"] != null)
+    {
+        strIndex = Request.QueryString["index"].ToString();
+    }
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <div class="container">
+            <!-- 여기 안에서 작업-->
+            <div class="business_wrap">
+                <div class="contents">
+                    <h3 class="subtitle"><span>Business</span></h3>
+                    <div class="business_wrap">
+                        <!-- grp -->
+                        <div class="grp item01">
+                            <div class="tbl_area">
+                                @*<img src="~/Images/cont/service1.png" class="pc" />
+                                    <img src="~/Images/cont/service1_mo.png" class="mo" />*@
+                            </div>
+                            <div class="text_area">
+                                <div class="text_tableCell">
+                                    <h3 class="title">Ocean Cargo Service</h3>
+                                    <p class="text">
+                                        From small LCL cargoes to oversized bulk cargoes, we provide exceptional service with vast knowledge. <br />
+                                        Since 1978 founding year we provide LCL, FCL, RORO, bulk cargo service including feeder chartering and inland transportation. <br />
+                                        Also we are specialized in industrial plant re-location.
+                                        @*<strong class="point">최적의 수출입 물류 자동화 솔루션</strong>*@
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //grp -->
+                        <!-- grp -->
+                        <div class="grp item02">
+                            <div class="tbl_area">
+                                @*<img src="~/Images/cont/service2.png" class="pc" />
+                                    <img src="~/Images/cont/service2_mo.png" class="mo" />*@
+                            </div>
+                            <div class="text_area">
+                                <div class="text_tableCell">
+                                    <h3 class="title">Air Cargo Service</h3>
+                                    <p class="text">
+                                        With support of partners around globe, we orchestrate export and import air cargoes. <br />
+                                        Also experienced in dangerous, refrigerated, over-dimensional cargoes that are time critical. <br />
+                                        From small parcel to full chartering, we can take care customers' needs!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //grp -->
+                        <!-- grp -->
+                        <div class="grp item03">
+                            <div class="tbl_area">
+                                @*<img src="~/Images/cont/service3.png" class="pc" />
+                                    <img src="~/Images/cont/service3_mo.png" class="mo" />*@
+                            </div>
+                            <div class="text_area">
+                                <div class="text_tableCell">
+                                    <h3 class="title">3PL</h3>
+                                    <p class="text">
+                                        We offer one stop logistic solution to our clients. <br />
+                                        Arrange international export & import transportation services, 
+                                        custom clearance service, storage and distribution service.<br />
+                                        With cutting edge logistic platform, we provide real-time cargo tracking and stock management service.<br />
+                                        With 40+ years of logistic experience, we can provide cost effective logistic consulting.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //grp -->
+                    </div>
+                </div>
+                <!-- //contents -->
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <!-- 여기 안에서 작업-->
+            <div class="business_wrap">
+                <div class="contents">
+                    <h3 class="subtitle"><span>사업영역</span></h3>
+                    <div class="business_wrap">
+                        <!-- grp -->
+                        <div class="grp item01">
+                            <div class="tbl_area">
+                                @*<img src="~/Images/cont/service1.png" class="pc" />
+                                    <img src="~/Images/cont/service1_mo.png" class="mo" />*@
+                            </div>
+                            <div class="text_area">
+                                <div class="text_tableCell">
+                                    <h3 class="title">해운사업</h3>
+                                    <p class="text">
+                                        78년 창립부터 얻어온 풍부한 노하우로 LCL 부터 Oversize 화물까지 <br />
+                                        산업플랜트, Over dimensional 서비스 <br />
+                                        Container, Ro/Ro, Bulk 화물 운송 능력
+                                        @*<strong class="point">최적의 수출입 물류 자동화 솔루션</strong>*@
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //grp -->
+                        <!-- grp -->
+                        <div class="grp item02">
+                            <div class="tbl_area">
+                                @*<img src="~/Images/cont/service2.png" class="pc" />
+                                    <img src="~/Images/cont/service2_mo.png" class="mo" />*@
+                            </div>
+                            <div class="text_area">
+                                <div class="text_tableCell">
+                                    <h3 class="title">항공사업</h3>
+                                    <p class="text">
+                                        전 세계 파트너사와 협력하여 긴급화물 수출입 <br />
+                                        위험물, 냉장/냉동, 특수규격 등 특수 화물 운송<br />
+                                        콘솔 화물부터 Charter 까지 전 세계 운송 능력
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //grp -->
+                        <!-- grp -->
+                        <div class="grp item03">
+                            <div class="tbl_area">
+                                @*<img src="~/Images/cont/service3.png" class="pc" />
+                                    <img src="~/Images/cont/service3_mo.png" class="mo" />*@
+                            </div>
+                            <div class="text_area">
+                                <div class="text_tableCell">
+                                    <h3 class="title">3PL</h3>
+                                    <p class="text">
+                                        앞서가는 기술력으로 실시간 화물 추적 서비스<br />
+                                        수출입 통관 대행 서비스 ,물류 컨설팅 서비스<br />
+                                        포장, 보험, 통관대행, 내륙운송 등 종합서비스제공
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //grp -->
+                    </div>
+                </div>
+                <!-- //contents -->
+            </div>
+        </div>
+    }
+    @if (strIndex != "")
+    {
+        <input type="hidden" name="Business_index" value="@strIndex" />
+    }
+    @Scripts.Render("~/Scripts/js/Business/Business.js")
+
+}
