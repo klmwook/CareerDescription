@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "business";
+    ViewBag.Sub = "AirInout";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+    <h2>영문 항공 수출입</h2>
+    }
+    else
+    {        
+        <div class="container">
+            
+            <!-- contents -->
+            <div class="contents">
+                <h3 class="subtitle"><span>항공 수출입</span></h3>
+            </div>
+            <!-- //contents -->
+
+            <!-- greeting_w -->
+            <div class="AirInout_w">
+                <div class="contents">
+                    <div class="AirInout_Area">
+                        <strong class="point AirInout_title">
+                            AIR CARGO EXPORT & IMPORT
+                            <br />
+                        </strong>
+                        <ul class="AirInout_Content">
+                            <li>의약품 관련 냉장/냉동 특수 화물 취급</li>
+                            <li>DG화물 (위험물) 취급 전문가 보유</li>
+                            <li>SWP / MUW 등의 전략물자 관련 특수 화물 전문</li>
+                            <li>Global NetWork을 가진 파트너 및 Global Alliance의 멤버</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- //greeting_w -->
+        </div>
+
+        
+    }
+}

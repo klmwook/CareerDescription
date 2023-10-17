@@ -1,0 +1,338 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "notice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    
+}
+
+@section stMain {
+        <div class="st-main">
+            <div class="st-header">
+                <div class="fluid-cols">
+                    <div class="min-col">
+						<div class="st-header__menu">
+							<button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+						</div>
+					</div>
+					<div class="expand-col text-ellipsis">
+						<div class="st-header__title"><span>공지사항</span>
+						</div>
+					</div>						
+				</div>
+
+			</div>
+						
+            <div class="st-content mb50 max_width">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">                            
+                            <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+                            <script type="text/javascript" src="/Content/assets/ad_js/ajaxfileupload.js"></script>
+                            <script type="text/javascript" src="/Scripts/admin/_noticewrite.js"></script>
+                            @{
+                                if (Model == null)
+                                {
+                                        <form action="/Admin/NoticeModify" name="ajax_form" id="ajax_form" enctype="multipart/form-data" method="post" accept-charset="utf-8">                                            
+                                            <input type="hidden" id="notice_id" name="notice_id" value="">
+
+                                            <div class="st-panel">
+	                                            <div class="st-panel__cont">
+		                                            <div class="st-panel__content ">			
+			                                            <div class="row form-horizontal">
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">제목</label>
+	                                                            <div class="col-md-10 col-sm-10">
+		                                                            <input class="form-control" type="text" id="title" name="title" value="" >
+	                                                            </div>
+                                                            </div>
+															<div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">구분</label>
+																<div class="col-md-2 col-sm-2">
+																	<select class="form-control" id="s_type" name="s_type">
+																		<option value="">--선택하세요--</option>
+																		<option value="0">공지사항</option>
+																		<option value="1">물류뉴스</option>
+																	</select>
+																</div>
+                                                            </div>
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">공지여부</label>
+	                                                            <div class="col-md-10 col-sm-10">
+		                                                            <div class="mb5"></div>                                                                        
+                                                                    <div class="radio radio-inline radio-primary">
+			                                                            <input type="radio" name="notice_yn" id="notice_yn_0" value="y"  checked="checked"  >
+			                                                            <label for="notice_yn_0">사용</label>
+		                                                            </div>
+			                                                        <div class="radio radio-inline radio-primary">
+			                                                            <input type="radio" name="notice_yn" id="notice_yn_1" value="n"  >
+			                                                            <label for="notice_yn_1">사용안함</label>
+		                                                            </div>		                                                    
+		                                                        </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">내용</label>
+	                                                            <div class="col-md-10 col-sm-10">
+		                                                            <textarea class="form-control" rows="4"  id="content" name="content">                                                                        
+                                                                    </textarea>
+		                                                            <script type="text/javascript">
+		                                                                CKEDITOR.replace('content', {
+		                                                                    height: '400px',
+		                                                                    filebrowserUploadUrl: '/admin/NoticeEditor/'
+		                                                                });
+		                                                            </script>
+	                                                            </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">첨부파일</label>
+	                                                            <div class="col-md-10 col-sm-10">
+	                                                                <input type="file" name="infile" id="infile">
+
+		                                                        </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">추가파일1</label>
+	                                                            <div class="col-md-10 col-sm-10">
+	                                                                <input type="file" name="infile1" id="infile1">
+		                                                        </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">추가파일2</label>
+	                                                            <div class="col-md-10 col-sm-10">
+	                                                                <input type="file" name="infile2" id="infile2">
+		                                                        </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+	                                                            <label class="control-label col-md-2 col-sm-2">사용여부</label>
+	                                                            <div class="col-md-10 col-sm-10">
+		                                                            <div class="mb5"></div>                                                                    
+			                                                        <div class="radio radio-inline radio-primary">
+			                                                            <input type="radio" name="use_yn" id="use_yn_0" value="y"  checked="checked"  >
+			                                                            <label for="use_yn_0">사용</label>
+		                                                            </div>
+			                                                        <div class="radio radio-inline radio-primary">
+			                                                            <input type="radio" name="use_yn" id="use_yn_1" value="n"  >
+			                                                            <label for="use_yn_1">사용안함</label>
+		                                                            </div>
+		                                                        </div>
+                                                            </div>
+
+                                                            <hr/>
+
+                                                            <div class="col-md-6 col-md-offset-3 paging">
+                                                                <a href="javascript:void(0);" type="button" class="btn btn-primary _btn_reg"><i class="fa fa-pencil-square-o"></i> 등록</a>
+                                                                    @Html.Raw("&nbsp;")
+                                                                    @Html.Raw("&nbsp;")
+                                                                
+                                                                <a href="@Url.Action("Notice", "Admin")" type="button" class="btn btn-primary _btn_list "><i class="fa fa-th-list"></i> 목록</a>
+                                                                    @Html.Raw("&nbsp;")
+                                                                    @Html.Raw("&nbsp;")	                                                                                                                   
+                                                            </div>                            			
+			                                            </div>
+		                                            </div>
+	                                            </div>
+                                            </div>
+                                        </form>                                    
+                                }
+                                else
+                                {
+                                    foreach (var rowItem in Model)
+                                    {
+                                        <form action="/Admin/NoticeModify" name="ajax_form" id="ajax_form" enctype="multipart/form-data" method="post" accept-charset="utf-8">                                            
+                                            <input type="hidden" id="notice_id" name="notice_id" value="@rowItem.NOTICE_ID">
+
+                                            <div class="st-panel">
+	                                            <div class="st-panel__cont">
+		                                            <div class="st-panel__content ">			
+														<div class="row form-horizontal">
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">제목</label>
+																<div class="col-md-10 col-sm-10">
+																	<input class="form-control" type="text" id="title" name="title" value="@rowItem.TITLE">
+																</div>
+															</div>
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">구분</label>
+																<div class="col-md-2 col-sm-2">
+																	<select class="form-control" id="s_type" name="s_type">
+																		<option value="">--선택하세요--</option>
+																		@{
+																			if (@rowItem.TYPE == "0")
+																			{
+																				<option value="0" selected>공지사항</option>
+																			}
+																			else
+																			{
+																				<option value="0">공지사항</option>
+																			}
+																			if (@rowItem.TYPE == "1")
+																			{
+																				<option value="1" selected>물류뉴스</option>
+																			}
+																			else
+																			{
+																				<option value="1">물류뉴스</option>
+																			}
+																		}
+																	</select>
+																</div>
+															</div>
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">공지여부</label>
+																<div class="col-md-10 col-sm-10">
+																	<div class="mb5"></div>
+																	@{
+																		if (@rowItem.NOTICE_YN == "y")
+																		{
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="notice_yn" id="notice_yn_0" value="y" checked="checked">
+																				<label for="notice_yn_0">사용</label>
+																			</div>
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="notice_yn" id="notice_yn_1" value="n">
+																				<label for="notice_yn_1">사용안함</label>
+																			</div>
+																		}
+																		else
+																		{
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="notice_yn" id="notice_yn_0" value="y">
+																				<label for="notice_yn_0">사용</label>
+																			</div>
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="notice_yn" id="notice_yn_1" value="n" checked="checked">
+																				<label for="notice_yn_1">사용안함</label>
+																			</div>
+																		}
+																	}
+																</div>
+															</div>
+
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">내용</label>
+																<div class="col-md-10 col-sm-10">
+																	<textarea class="form-control" rows="4" id="content" name="content">
+                                                                        @Html.Raw(@rowItem.CONTENT)
+                                                                    </textarea>
+																	<script type="text/javascript">
+																		CKEDITOR.replace('content', {
+																			height: '400px',
+																			filebrowserUploadUrl: '/Admin/NoticeEditor/'
+																		});
+																	</script>
+																</div>
+															</div>
+
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">첨부파일</label>
+																<div class="col-md-10 col-sm-10">
+																	<input type="file" name="infile" id="infile">
+																	@{
+																		if (!string.IsNullOrEmpty(@rowItem.FILE))
+																		{
+																			<a href="@Url.Action("Download", "File", new { filename = @rowItem.FILE_NAME, rFilename = @rowItem.FILE })" type="button" class="btn btn-default" name="file_1">@rowItem.FILE_NAME</a>
+																		}
+																	}
+																	<p style="margin:5px 0"><label><input type="checkbox" id="file_del" name="file_del" value="y" />파일삭제</label></p>
+																</div>
+															</div>
+
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">추가파일1</label>
+																<div class="col-md-10 col-sm-10">
+																	<input type="file" name="infile1" id="infile1">
+																	@{
+																		if (!string.IsNullOrEmpty(@rowItem.FILE1))
+																		{
+																			<a href="@Url.Action("Download", "File", new { filename = @rowItem.FILE_NAME1, rFilename = @rowItem.FILE1 })" type="button" class="btn btn-defaul" name="file_2">@rowItem.FILE_NAME1</a>
+																		}
+																	}
+																	<p style="margin:5px 0"><label><input type="checkbox" id="file1_del" name="file1_del" value="y" />파일삭제</label></p>
+																</div>
+															</div>
+
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">추가파일2</label>
+																<div class="col-md-10 col-sm-10">
+																	<input type="file" name="infile2" id="infile2">
+																	@{
+																		if (!string.IsNullOrEmpty(@rowItem.FILE2))
+																		{
+																			<a href="@Url.Action("Download", "File", new { filename = @rowItem.FILE_NAME2, rFilename = @rowItem.FILE2 })" type="button" class="btn btn-default" name="file_3">@rowItem.FILE_NAME2</a>
+																		}
+																	}
+																	<p style="margin:5px 0"><label><input type="checkbox" id="file2_del" name="file2_del" value="y" />파일삭제</label></p>
+																</div>
+															</div>
+
+															<div class="row form-group">
+																<label class="control-label col-md-2 col-sm-2">사용여부</label>
+																<div class="col-md-10 col-sm-10">
+																	<div class="mb5"></div>
+																	@{
+																		if (@rowItem.USE_YN == "y")
+																		{
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="use_yn" id="use_yn_0" value="y" checked="checked">
+																				<label for="use_yn_0">사용</label>
+																			</div>
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="use_yn" id="use_yn_1" value="n">
+																				<label for="use_yn_1">사용안함</label>
+																			</div>
+																		}
+																		else
+																		{
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="use_yn" id="use_yn_0" value="y">
+																				<label for="use_yn_0">사용</label>
+																			</div>
+																			<div class="radio radio-inline radio-primary">
+																				<input type="radio" name="use_yn" id="use_yn_1" value="n" checked="checked">
+																				<label for="use_yn_1">사용안함</label>
+																			</div>
+
+																		}
+																	}
+
+																</div>
+															</div>
+
+															<hr />
+
+															<div class="col-md-6 col-md-offset-3 paging">
+																<a href="javascript:void(0);" type="button" class="btn btn-primary _btn_reg"><i class="fa fa-pencil-square-o"></i> 수정</a>
+																@Html.Raw("&nbsp;")
+																@Html.Raw("&nbsp;")
+																<a href="@Url.Action("Notice", "Admin")" type="button" class="btn btn-primary _btn_list "><i class="fa fa-th-list"></i> 목록</a>
+																@Html.Raw("&nbsp;")
+																@Html.Raw("&nbsp;")
+																<a href="javascript:void(0);" type="button" class="btn btn-primary _btn_del" data-val="1"><i class="fa fa-th-list"></i> 삭제</a>
+																@Html.Raw("&nbsp;")
+																@Html.Raw("&nbsp;")
+															</div>
+														</div>
+		                                            </div>
+	                                            </div>
+                                            </div>
+                                        </form>
+                                    }
+                                }                  
+                            }
+          	                                                            
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="st-footer">
+				<div class="copyright">
+					Copyright(c) 관리자 모드. All right reserved. 
+				</div>
+			</div>	
+		</div>
+}

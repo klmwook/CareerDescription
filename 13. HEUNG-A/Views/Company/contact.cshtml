@@ -1,0 +1,482 @@
+﻿@{
+    ViewBag.Title = "company";
+    ViewBag.Sub = "contact";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <h2>영문 조직도 및 연락처</h2>
+    }
+    else
+    {
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>조직도 및 연락처</span></h3>
+                @*<div class="fix_area">
+                    <ul class="contact_logistics_list">
+                        <li>
+                            <ul class="contact_division" style="text-align:center">
+                                <li style="float: none;margin: 0 auto;"><strong class="contact_depth contact_depth01"><span class="contact_inner">대표이사</span></strong></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="contact_division">
+                                <li><strong class="contact_depth contact_depth02"><span class="contact_inner">Overseas office</span></strong></li>
+        <li><strong class="contact_depth contact_depth02"><span class="contact_inner">Operation</span></strong></li>
+        <li><strong class="contact_depth contact_depth02"><span class="contact_inner">Overseas Partners management</span></strong></li>
+                                <li></li>
+                            </ul>
+                        </li>
+                        <li></li>
+                        <li></li>
+                    </ul>                    <img src="~/Content/images/division.png" class="mo" />
+                </div>*@
+
+                <div class="contact_Area">
+                    <div class="pc">
+                        <strong class="tit_ceo">
+                            <img src="~/Images/cont/organ_logo.png" / style="width:100%">
+                        </strong>
+                        <div class="contact_sub_title_Area">
+                            <strong class="contact_title">
+                                이사회
+                            </strong>
+                        </div>
+                        <ul class="contact_division02">
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">경영지원부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9553</span><br />
+                                            <span class="contact_content_fax">Fax : 02-730-8864</span><br />
+                                            <span class="contact_content_Email">E-Mail : adm@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">해운사업부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9473</span><br />
+                                            <span class="contact_content_fax">Fax : 02-738-5066</span><br />
+                                            <span class="contact_content_Email">E-Mail : goocean@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">항공사업부</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 02-3702-9521</span><br />
+                                            <span class="contact_content_fax">Fax : 02-730-5380</span><br />
+                                            <span class="contact_content_Email">E-Mail : airexport@halogistics.co.kr <br /> airimport@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">영업소(부산사무소)</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 051-463-6441</span><br />
+                                            <span class="contact_content_fax">Fax : 051-464-3850</span><br />
+                                            <span class="contact_content_Email">E-Mail : pus@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact_title_Area">
+                                    <strong class="contact_title">영업소(인천공항사무소)</strong>
+                                </div>
+                                <div class="contact_content_Area">
+                                    <div class="contact_content_table">
+                                        <div class="contact_content_tablecell">
+                                            <span class="contact_content_tel">Tel : 032-744-4660</span><br />
+                                            <span class="contact_content_fax">Fax : 032-744-4665</span><br />
+                                            <span class="contact_content_Email">E-Mail : hjkang@halogistics.co.kr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="~/Images/contact.png" class="mo" style="width: 100%;" />
+                </div>
+
+                <!-- 연락처 -->
+                <div class="contact_phone_Area">
+                    <!-- 연락처 wrap -->
+                    <h4 class="title01">해운 수출입<span class="tel">Tel No : 02 - 3702 - 9XXX</span></h4>
+                    <!-- 해운 수출입 -->
+                    <div class="contact_table_Area">
+                        <table class="contact_table_pc pc">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:10%" />
+                                <col style="width:40%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:10%">연락처</th>
+                                    <th style="width:40%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>한국-일본 SERVICE</td>
+                                    <td>이정연 차장</td>
+                                    <td>454</td>
+                                    <td>leejy84@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>DAIN FERRY SERVICE</td>
+                                    <td>양유정 부장</td>
+                                    <td>415</td>
+                                    <td>yjyang@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>러시아 사할린 지역 SERVICE</td>
+                                    <td>김영규 차장</td>
+                                    <td>486</td>
+                                    <td>ykkim@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">해운 수출/수입 영업</td>
+                                    <td>박현서 부장</td>
+                                    <td>472</td>
+                                    <td>hspark@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>박신용 부장</td>
+                                    <td>414</td>
+                                    <td>sypark@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>조덕현 차장</td>
+                                    <td>437</td>
+                                    <td>joshua@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>OPERATOR</td>
+                                    <td>김지애 차장</td>
+                                    <td>434</td>
+                                    <td>lucia@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="contact_table_mo mo">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:10%" />
+                                <col style="width:40%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:10%">연락처</th>
+                                    <th style="width:40%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>한국-일본 SERVICE</td>
+                                    <td>이정연 차장</td>
+                                    <td>454</td>
+                                    <td>leejy84@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>DAIN FERRY SERVICE</td>
+                                    <td>양유정 부장</td>
+                                    <td>415</td>
+                                    <td>yjyang@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>러시아 사할린 지역 SERVICE</td>
+                                    <td>김영규 차장</td>
+                                    <td>486</td>
+                                    <td>ykkim@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">해운 수출/수입 영업</td>
+                                    <td>박현서 부장</td>
+                                    <td>472</td>
+                                    <td>hspark@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>박신용 부장</td>
+                                    <td>414</td>
+                                    <td>sypark@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>조덕현 차장</td>
+                                    <td>437</td>
+                                    <td>joshua@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>OPERATOR</td>
+                                    <td>김지애 차장</td>
+                                    <td>434</td>
+                                    <td>lucia@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 항공 수출입 -->
+                    <h4 class="title01">항공 수출입<span class="tel">Tel No : 02 - 3702 - 9XXX</span></h4>
+                    <div class="contact_table_Area">
+                        <table class="contact_table_pc pc">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:10%" />
+                                <col style="width:40%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:10%">연락처</th>
+                                    <th style="width:40%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">AIR CARGO EXPORT</td>
+                                    <td>윤용칠 부장</td>
+                                    <td>541</td>
+                                    <td>dragonseven@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>이효진 차장</td>
+                                    <td>544</td>
+                                    <td>catherine@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">AIR CARGO IMPORT</td>
+                                    <td>문종필 부장</td>
+                                    <td>559</td>
+                                    <td>jpmun@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>홍미진 과장</td>
+                                    <td>545</td>
+                                    <td>elma@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="contact_table_mo mo">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:10%" />
+                                <col style="width:40%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:10%">연락처</th>
+                                    <th style="width:40%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">AIR CARGO EXPORT</td>
+                                    <td>윤용칠 부장</td>
+                                    <td>541</td>
+                                    <td>dragonseven@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>이효진 차장</td>
+                                    <td>544</td>
+                                    <td>catherine@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">AIR CARGO IMPORT</td>
+                                    <td>문종필 부장</td>
+                                    <td>559</td>
+                                    <td>jpmun@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>홍미진 과장</td>
+                                    <td>545</td>
+                                    <td>elma@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 부산 사무소 -->
+                    <h4 class="title01">부산 사무소</h4>
+                    <div class="contact_table_Area">
+                        <table class="contact_table_pc pc">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:15%" />
+                                <col style="width:35%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:15%">연락처</th>
+                                    <th style="width:35%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>해운대리점</td>
+                                    <td>오필석 과장</td>
+                                    <td>051-469-1565</td>
+                                    <td>psoh@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>해운 수출/수입 영업</td>
+                                    <td>구원호 부장</td>
+                                    <td>051-463-6442</td>
+                                    <td>whkoo@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="contact_table_mo mo">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:15%" />
+                                <col style="width:35%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:15%">연락처</th>
+                                    <th style="width:35%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>해운대리점</td>
+                                    <td>오필석 과장</td>
+                                    <td>051-469-1565</td>
+                                    <td>psoh@halogistics.co.kr</td>
+                                </tr>
+                                <tr>
+                                    <td>해운 수출/수입 영업</td>
+                                    <td>구원호 부장</td>
+                                    <td>051-463-6442</td>
+                                    <td>whkoo@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 인천공항사무소 -->
+                    <h4 class="title01">인천공항사무소</h4>
+                    <div class="contact_table_Area">
+                        <table class="contact_table_pc pc">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:15%" />
+                                <col style="width:35%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:15%">연락처</th>
+                                    <th style="width:35%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>인천공항창고</td>
+                                    <td>강현재 부장</td>
+                                    <td>032-744-4660</td>
+                                    <td>hjkang@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="contact_table_mo mo">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:15%" />
+                                <col style="width:15%" />
+                                <col style="width:35%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">구분</th>
+                                    <th style="width:15%">담당자</th>
+                                    <th style="width:15%">연락처</th>
+                                    <th style="width:35%">이메일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>인천공항창고</td>
+                                    <td>강현재 부장</td>
+                                    <td>032-744-4660</td>
+                                    <td>hjkang@halogistics.co.kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+    
+
+
+
+
+    }
+}

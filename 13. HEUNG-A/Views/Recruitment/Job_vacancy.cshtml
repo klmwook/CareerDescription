@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Recruitment";
+    ViewBag.Sub = "Job_vacancy";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>준비 중 입니다</span></h3>
+            </div>
+        </div>
+        <!-- //container -->
+    }
+    else
+    {
+        <script type="text/javascript" src="/Scripts/Recruitment.js"></script>
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>채용공고</span></h3>
+                <!-- search_form -->
+                <div class="search_form">
+                    @*<select id="type" name="type" class="sel">
+                        <option value="">전체</option>
+                        <option value="0">공지사항</option>
+                        <option value="1">물류뉴스</option>
+                    </select>*@
+                    <select id="sf1" name="sf1" class="sel">
+                        <option value="TITLE">제목</option>
+                        <option value="CONTENT">내용</option>
+                    </select>
+                    <input type="text" id="stx" name="stx" class="int notice_serach_input" placeholder="검색어를 입력하세요." />
+                    <button type="button" class="btn_search" id="btn_search"><span>검색</span></button>
+                </div>
+                <!-- //search_form -->
+                <!-- board_list -->
+                <div class="board_list">
+
+                </div>
+                <!-- //board_list -->
+                <div class="base_paging">
+
+                </div>
+                <!-- //base_paging -->
+            </div>
+        </div>
+        <!-- //container -->
+        <input type="hidden" id="board_lang" value="@setLang" />
+    }
+}
+

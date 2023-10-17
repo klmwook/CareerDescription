@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "company";
+    ViewBag.Sub = "finance";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>영문 재무정보</span></h3>                
+            </div>
+            <!-- //company_w -->
+        </div>
+        <!-- //container -->
+    }
+    else
+    {
+        <style>
+            /* 마지막 막대의 색깔만 변경 */
+            .c3-shapes path { fill: #8cc4ff !important; stroke: #8cc4ff !important }
+            .c3-shapes path:first-child { fill: #84e1e6 !important; stroke: #84e1e6 !important }
+            .c3-shapes path:last-child { fill: #009954 !important; stroke: #009954 !important }
+            .c3-tooltip .c3-tooltip th {background-color:#009954 !important;}
+        </style>
+
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>최근 3개년도 재무정보</span></h3>                
+                <!-- 재무정보 -->
+                <div class="finance_w">
+                    <div class="finance_unit_Area">
+                        <span>(단위 : 백만원)</span>
+                    </div>
+                    <div class="finance_table_Area">
+                        <table class="finance_table_mo mo">
+                            <colgroup>
+                                <col style="width:25%" />
+                                <col style="width:25%" />
+                                <col style="width:25%" />
+                                <col style="width:25%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:25%">구분</th>
+                                    <th style="width:25%">2017년</th>
+                                    <th style="width:25%">2018년</th>
+                                    <th style="width:25%">2019년</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>매출액</td>
+                                    <td>31,707</td>
+                                    <td>31,416</td>
+                                    <td>27,247</td>
+                                </tr>
+                                <tr>
+                                    <td>영업이익</td>
+                                    <td>271</td>
+                                    <td>112</td>
+                                    <td>605</td>
+                                </tr>
+                                <tr>
+                                    <td>당기순이익</td>
+                                    <td>1,689</td>
+                                    <td>791</td>
+                                    <td>1,699</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="finance_table_pc pc">
+                            <colgroup>
+                                <col style="width:25%" />
+                                <col style="width:25%" />
+                                <col style="width:25%" />
+                                <col style="width:25%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:25%">구분</th>
+                                    <th style="width:25%">2017년</th>
+                                    <th style="width:25%">2018년</th>
+                                    <th style="width:25%">2019년</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>매출액</td>
+                                    <td>31,707</td>
+                                    <td>31,416</td>
+                                    <td>27,247</td>
+                                </tr>
+                                <tr>
+                                    <td>영업이익</td>
+                                    <td>271</td>
+                                    <td>112</td>
+                                    <td>605</td>
+                                </tr>
+                                <tr>
+                                    <td>당기순이익</td>
+                                    <td>1,689</td>
+                                    <td>791</td>
+                                    <td>1,699</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                    <!---              C3 사용한 HTML                 -->
+                    <!--
+    <div class="finance_area mo">
+        <h2 class="item_title">매출액</h2>
+        <span>단위(억원)</span>
+        @*<div class="item_content_area">
+            <span>2019년 기준</span>
+            <strong>272억 4,722만원</strong>
+        </div>*@
+        <div class="finance_c3_area">
+            <div id="finance_c3_item01"></div>
+        </div>
+    </div>
+
+    <div class="finance_area mo">
+        <h2 class="item_title">당기순이익</h2>
+        <span>단위(억원)</span>
+        @*<div class="item_content_area">
+            <div class="item_separation">
+                <span>2019년 기준</span>
+                <strong>16억 9,997만원</strong>
+            </div>
+            <div class="item_separation">
+                <span>당기순이익 성장률</span>
+                <strong>114.9% <span class="font_red item_increase">▲</span></strong>
+            </div>
+            <div class="item_separation">
+                <span>당기순이익률</span>
+                <strong>6.2%</strong>
+            </div>
+        </div>*@
+        <div class="finance_c3_area">
+            <div id="finance_c3_item02"></div>
+        </div>
+    </div>
+
+    <div class="finance_area pc">
+        <h2 class="item_title">매출액</h2>
+        <span>단위(억원)</span>
+        @*<div class="item_content_area">
+            <span>2019년 기준</span>
+            <strong>272억 4,722만원</strong>
+        </div>*@
+        <div class="finance_c3_area">
+            <div id="finance_c3_item01_pc"></div>
+        </div>
+    </div>
+
+    <div class="finance_area pc">
+        <h2 class="item_title">당기순이익</h2>
+        <span>단위(억원)</span>
+        @*<div class="item_content_area">
+            <div class="item_separation">
+                <span>2019년 기준</span>
+                <strong>16억 9,997만원</strong>
+            </div>
+            <div class="item_separation">
+                <span>당기순이익 성장률</span>
+                <strong>114.9% <span class="font_red item_increase">▲</span></strong>
+            </div>
+            <div class="item_separation">
+                <span>당기순이익률</span>
+                <strong>6.2%</strong>
+            </div>
+        </div>*@
+        <div class="finance_c3_area">
+            <div id="finance_c3_item02_pc"></div>
+        </div>
+    </div>
+        -->
+                </div>
+            </div>            
+        </div>
+        <!-- //container -->
+    }
+
+    @*@Scripts.Render("~/Scripts/js/Company/finance.js")*@
+}

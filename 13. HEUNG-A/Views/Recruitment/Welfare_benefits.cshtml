@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "Recruitment";
+    ViewBag.Sub = "Welfare_benefits";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>준비 중 입니다</span></h3>
+            </div>
+        </div>
+        <!-- //container -->
+    }
+    else
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>복리후생</span></h3>
+                <!-- Content-->
+
+                @*<span class="Welfare_title">
+                    (주)흥아로지스틱스는 보상의 공정성을 실현하고, 개인역량과 조직의 능력을 극대화 할 수 있는 성과주의형 보상제를 지향합니다.
+                    임직원들의 일과 삶의 균형 유지를 위하여 제도를 개선하고 있으며 다양한 복리후생 제도를 제공하고 있습니다.
+                </span>*@
+
+
+                <div class="Welfare_Wrap_pc pc">
+                    <div class="Welfare_Area">
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare01.png" />
+                                <strong>학자금 지원</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_Beach_Icon.png" alt="Icons8_Beach_Icon.png"/>
+                        </div>
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare02.png" />
+                                <strong>중식대 지급</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_Graduation_Icon.png" alt="Icons8_Graduation_Icon.png"/>
+                        </div>
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare03.png" />
+                                <strong>경조사 및 경조휴가</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_Restaurant_Icon.png" alt="Icons8_Restaurant_Icon.png"/>
+                        </div>
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare04.png" />
+                                <strong>4대보험 가입</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_Gift_Icon.png" alt="Icons8_Gift_Icon.png"/>
+                        </div>
+                    </div>
+                    <div class="Welfare_Area">
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare05.png" />
+                                <strong>포상제도<br />(근속상,모범사원)</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_Touchscreen_Icon.png" alt="Icons8_Touchscreen_Icon.png" />
+                        </div>
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare06.png" />
+                                <strong>동호회 활동</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_CyclingMountainBike_Icon.png" alt="Icons8_CyclingMountainBike_Icon.png"/>
+                        </div>
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare07.png" />
+                                <strong>휴양시설 이용</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_BirthdayCake_Icon.png" alt="Icons8_BirthdayCake_Icon.png"/>
+                        </div>
+                        <div class="Welfare_box_Area">
+                            @*<div class="Welfare_box">
+                                <img src="~/Images/cont/Welfare08.png" />
+                                <strong>온라인어학교육</strong>
+                            </div>*@
+                            <img src="~/Images/cont/Icons8_Law_Icon.png" alt="Icons8_Law_Icon.png"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Welfare_Wrap_mo mo">
+                    <div class="Welfare_Area">
+                        <div class="Welfare_Separate">
+                            <div class="Welfare_box01">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare01.png" />
+                                    <strong>학자금 지원</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_Beach_Icon_mo.png" alt="Icons8_Beach_Icon.png"/>
+                            </div>
+                            <div class="Welfare_box02">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare02.png" />
+                                    <strong>중식대 지급</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_Graduation_Icon_mo.png" alt="Icons8_Graduation_Icon.png"/>
+                            </div>
+                        </div>
+                        <div class="Welfare_Separate">
+                            <div class="Welfare_box01">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare03.png" />
+                                    <strong>경조사 및 경조휴가</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_Restaurant_Icon_mo.png" alt="Icons8_Restaurant_Icon.png"/>
+                            </div>
+                            <div class="Welfare_box02">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare04.png" />
+                                    <strong>4대보험 가입</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_Gift_Icon_mo.png" alt="Icons8_Gift_Icon.png"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Welfare_Area">
+                        <div class="Welfare_Separate">
+                            <div class="Welfare_box01">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare05.png" />
+                                    <strong>포상제도<br />(근속상,모범사원)</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_Touchscreen_Icon_mo.png" alt="Icons8_Touchscreen_Icon.png"/>
+                            </div>
+                            <div class="Welfare_box02">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare06.png" />
+                                    <strong>동호회 활동</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_CyclingMountainBike_Icon_mo.png" alt="Icons8_CyclingMountainBike_Icon.png"/>
+                            </div>
+                        </div>
+                        <div class="Welfare_Separate">
+                            <div class="Welfare_box01">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare07.png" />
+                                    <strong>휴양시설 이용</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_BirthdayCake_Icon_mo.png" alt="Icons8_BirthdayCake_Icon.png"/>
+                            </div>
+                            <div class="Welfare_box02">
+                                @*<div class="Welfare_box">
+                                    <img src="~/Images/cont/Welfare08.png" />
+                                    <strong>온라인어학교육</strong>
+                                </div>*@
+                                <img src="~/Images/cont/Icons8_Law_Icon_mo.png" alt="Icons8_Law_Icon.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //container -->
+    }
+}

@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Recruitment";
+    ViewBag.Sub = "Recruitment_procedure";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>준비 중 입니다</span></h3>
+            </div>
+        </div>
+        <!-- //container -->
+    }
+    else
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>채용절차</span></h3>
+                <h3 class="title01">(주)흥아로지스틱스는 도전과 패기가 넘치는 글로벌 물류전문가를 기다립니다.</h3>
+
+                <div class="procedure_Wrap">
+                    <div class="procedure_Area">
+                        <div class="procedure_Box_Area">
+                            <h3>모집시기</h3>
+                            <ul class="procedure_Content">
+                                <li>수시모집</li>
+                            </ul>
+                        </div>
+                        <div class="procedure_Box_Area">
+                            <h3>모집부분</h3>
+                            <ul class="procedure_Content">
+                                <li>수출입 업무직 / 영업직</li>
+                                <li>경영지원 (회계, 총무)</li>
+                            </ul>
+                        </div>
+                        <div class="procedure_Box_Area">
+                            <h3>채용우대</h3>
+                            <ul class="procedure_Content">
+                                <li>외국어 능통자</li>
+                                <li>물류 관련 자격증 소지자</li>
+                            </ul>
+                        </div>
+                        <div class="procedure_Box_Area">
+                            <h3>제출서류</h3>
+                            <ul class="procedure_Content">
+                                <li>입사지원서(온라인)</li>
+                                <li>자기소개서</li>
+                                <li>졸업증명서</li>
+                                <li>자격증 사본</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="procedure_Area02">                        
+                        <div class="procedure_Box_Area">
+                            <h3>선발절차</h3>
+                            <div class="procedure_line">
+                                <strong>STEP 01</strong>
+                                <span>온라인입사지원</span>
+                            </div>
+                            <div class="procedure_line">
+                                <strong>STEP 02</strong>
+                                <span>서류전형</span>
+                            </div>
+                            <div class="procedure_line">
+                                <strong>STEP 03</strong>
+                                <span>면접전형</span>
+                            </div>
+                            <div class="procedure_line">
+                                <strong>STEP 04</strong>
+                                <span>채용</span>
+                            </div>
+                        </div>
+                        <div class="procedure_Box_Area">
+                            <h3>채용문의</h3>
+                            <ul class="procedure_Content">
+                                <li>연락처 : 02-3702-9582 , 9587</li>
+                                <li>이메일 : nskim@halogistics.co.kr , gyjung@halogistics.co.kr</li>                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //container -->
+    }
+}

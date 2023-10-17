@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "business";
+    ViewBag.Sub = "SeaAgency";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <h2>영문 해운 대리점</h2>
+    }
+    else
+    {   
+        <div class="container">
+            <!-- contents -->
+            <div class="contents">
+                <h3 class="subtitle"><span>해운 대리점</span></h3>
+            </div>
+            <!-- //contents -->
+            <!-- 여기 안에서 작업-->
+            <div class="SeaAgency_Wrap">
+                <div class="contents">
+                    <div class="SeaAgency_item01">
+                        <div class="SeaAgency_ContentArea">
+                            <h3 class="SeaAgency_tit">
+                                FCC                                
+                            </h3>
+                            <p class="SeaAgency_Content">
+                                냉장과일 수송 전문 LINE.<br /> 뉴질랜드-부산 간 노선 운항
+                            </p>
+                            <div class="SeaAgency_ImageArea">
+                                <img src="/Images/SeaAgency_01.png" class="pc" />
+                                <img src="/Images/SeaAgency_01_m.png" class="mo" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SeaAgency_item02">
+                        <div class="SeaAgency_ContentArea">
+                            <h3 class="SeaAgency_tit">CWL</h3>
+                            <p class="SeaAgency_Content">
+                                특수 냉동 컨테이너(초저온;-60도) 보유 LINE.<br /> 횟감용 참치 수송. 부산-일본 간 운항
+                            </p>
+                            <div class="SeaAgency_ImageArea">
+                                <img src="/Images/SeaAgency_02.png" class="pc" />
+                                <img src="/Images/SeaAgency_02_m.png" class="mo" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SeaAgency_item03">
+                        <div class="SeaAgency_ContentArea">
+                            <h3 class="SeaAgency_tit">SASCO</h3>
+                            <p class="SeaAgency_Content">
+                                부산-사할린 및 극동러시아 운항 LINE.<br /> 건설중장비, BULK, PROJECT CARGO SERVICE
+                            </p>
+                            <div class="SeaAgency_ImageArea">
+                                <img src="/Images/SeaAgency_03.png" class="pc" />
+                                <img src="/Images/SeaAgency_03_m.png" class="mo" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}

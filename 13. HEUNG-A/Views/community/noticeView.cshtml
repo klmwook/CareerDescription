@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "community";
+    ViewBag.Sub = "noticeView";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";       
+}
+
+@section Container {
+		<!-- container -->
+		<div class="container">
+			<div class="contents">
+				<h3 class="subtitle"><span>공지사항</span></h3>
+				<!-- board_view -->
+                @{
+                    foreach(var rowItem in Model)
+                    {
+                        if (@rowItem.FLAG == "VIEW")
+                        {                                                        
+				            <div class="board_view">
+					            <div class="title_row">
+						            <div class="col">
+							            <h4 class="title">@Html.Raw(@rowItem.TITLE)</h4>
+						            </div>
+						            <div class="col etc">
+							            <span>@Html.Raw(@rowItem.WRITER)</span>
+							            <span>@Html.Raw(@rowItem.REGDT.Substring(0, 10))</span>
+							            <span>조회수 : @Html.Raw(@rowItem.CNT)</span>
+						            </div>
+					            </div>					            
+					            <div class="cont_row">
+						            @Html.Raw(@rowItem.CONTENT)
+					            </div>
+                                @{
+                                        if (!string.IsNullOrEmpty(@rowItem.FILE) || !string.IsNullOrEmpty(@rowItem.FILE1) || !string.IsNullOrEmpty(@rowItem.FILE2))
+                                        {                                            
+                                            <div class="cont_row">
+						                        첨부파일 :                                                                                              
+                                                <a href="@Url.Action("Download", "File", new { filename = @rowItem.FILE_NAME, rFilename = @rowItem.FILE })">@rowItem.FILE_NAME</a> &nbsp;&nbsp;
+                                                <a href="@Url.Action("Download", "File", new { filename = @rowItem.FILE_NAME1, rFilename = @rowItem.FILE1 })">@rowItem.FILE_NAME1</a> &nbsp;&nbsp;
+                                                <a href="@Url.Action("Download", "File", new { filename = @rowItem.FILE_NAME2, rFilename = @rowItem.FILE2 })">@rowItem.FILE_NAME2</a> &nbsp;&nbsp;
+					                        </div>
+                                        }                                        
+                                    }
+				            </div>                            
+                        }
+                    }
+                }				
+				<!-- //board_view -->
+				
+				<div class="btn_center">					
+                    <a href="@Url.Action("notice", "community")" class="btns cobalt">목록</a>
+				</div>
+				
+				<!-- basic_tb -->
+				<table class="basic_tb">
+					<caption>이전글/다음글 안내</caption>
+					<colgroup>
+						<col class="w1">
+						<col />
+					</colgroup>
+					<tbody>
+                        @{                            
+                            string strPrev = "";
+                            string idPrev = "#";
+                            string strNext = "";
+                            string idNext = "#";
+                            foreach (var rowItem in Model)
+                            {
+                                if (@rowItem.FLAG == "PREV")
+                                {
+                                    strPrev = @rowItem.TITLE;
+                                    if (!string.IsNullOrEmpty(strPrev)) idPrev = "/community/noticeView?id=" + @rowItem.NOTICE_ID;
+                                }
+                                else if (@rowItem.FLAG == "NEXT")
+                                {
+                                    strNext = @rowItem.TITLE;
+                                    if (!string.IsNullOrEmpty(strNext)) idNext = "/community/noticeView?id=" + @rowItem.NOTICE_ID;
+                                }
+                            }
+
+                            if (string.IsNullOrEmpty(strPrev)) { strPrev = "이전글이 없습니다."; }
+                            if (string.IsNullOrEmpty(strNext)) { strNext = "다음글이 없습니다."; }
+                            
+						    <tr>
+							    <th scope="row"><span class="up_bul">이전</span></th>
+							    <td><a href="@Html.Raw(idPrev)">@Html.Raw(strPrev)</a></td>
+						    </tr>
+						    <tr>
+							    <th scope="row"><span class="down_bul">다음</span></th>
+							    <td><a href="@Html.Raw(idNext)">@Html.Raw(strNext)</a></td>
+						    </tr>                            
+                        }
+
+					</tbody>
+				</table>
+				<!-- //basic_tb -->
+			</div>
+		</div>
+		<!-- //container -->
+}

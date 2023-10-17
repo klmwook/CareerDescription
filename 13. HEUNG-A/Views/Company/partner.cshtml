@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "company";
+    ViewBag.Sub = "partner";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>영문 파트너</span></h3>
+            </div>
+            <!-- //company_w -->
+        </div>
+        <!-- //container -->
+    }
+    else
+    {
+        <style>
+            /* 마지막 막대의 색깔만 변경 */
+            .c3-shapes path:last-child { fill: black !important; stroke: black !important }
+        </style>
+
+        <!-- container -->
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>계열사 현황</span></h3>
+                <div class="partner_unit_area">
+                    @*<span class="partner_unit">
+                        단위 : 백만원
+                    </span>*@
+                </div>                
+                <!-- 재무정보 -->
+                <div class="partner_w">
+                    <div class="partner_table_Area">
+                        <table class="partner_table_pc pc">
+                            <colgroup>
+                                <col style="width:30%" />
+                                <col style="width:15% " />
+                                <col style="width:10%" />
+                                <col style="width:8%" />
+                                <col/>
+                                <col style="width:17% " />                                
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:30%">회사명</th>
+                                    <th style="width:15% ">업종</th>
+                                    <th style="width:10%">설립일</th>
+                                    <th style="width:8%">대표이사</th>
+                                    <th>본점</th>
+                                    <th style="width:17% ">대표전화</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @*<tr>
+                                    <td><span class="partner_impart_title">(주)메트로물류</span></td>
+                                    <td>(주)메트로물류</td>
+                                    <td>화물주선업</td>
+                                    <td>1995.09.14</td>
+                                    <td>인풍기</td>
+                                    <td>서울 서대문구 충정로 53</td>
+                                    <td>02-311-1522</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="partner_impart_title">(주)흥아지엘에스</span></td>
+                                    <td>(주)흥아지엘에스</td>
+                                    <td>창고보관업</td>
+                                    <td>2006.01.16</td>
+                                    <td>성낙운</td>
+                                    <td>인천 중구 공항동로 296번길 98-114</td>
+                                    <td>032-744-4660</td>
+                                </tr>*@
+                                <tr>
+                                    @*<td><span class="partner_impart_title">동보항공(주)</span></td>*@
+                                    <td>동보항공(주)</td>
+                                    <td>항공운송대리점업</td>
+                                    <td>1987.08.24</td>
+                                    <td>홍정희</td>
+                                    <td>서울 중구 서소문로 106</td>
+                                    <td>02-3788-0137</td>
+                                </tr>
+                                <tr>
+                                    @*<td><span class="partner_impart_title">보람항공(주)</span></td>*@
+                                    <td>보람항공(주)</td>
+                                    <td>항공화물운송대리점업</td>
+                                    <td>2000.04.21</td>
+                                    <td>홍정희</td>
+                                    <td>서울 중구 서소문로 106</td>
+                                    <td>02-3788-0191</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="partner_table_mo mo">
+                            <colgroup>
+                                <col style="width:40%" />
+                                <col style="width:20%" />
+                                <col style="width:40%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="width:40%">업종</th>
+                                    <th style="width:20%">설립일</th>
+                                    <th style="width:40%">대표이사</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">본점</th>
+                                    <th style="width:50%">대표전화</th>
+                                </tr>
+                            </thead>
+                            @*<tbody>
+                                <tr>
+                                    <td colspan="3"><span class="partner_impart_title">(주)메트로물류</span></td>
+                                    <td colspan="3">(주)메트로물류</td>
+                                </tr>
+                                <tr>                                
+                                    <td>화물주선업</td>
+                                    <td>1995.09.14</td>                                    
+                                    <td>인풍기</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">서울 서대문구 충정로 53</td>
+                                    <td>02-311-1522</td>
+                                </tr>
+                            </tbody>*@
+                            @*<tbody>
+                                <tr>
+                                    <td colspan="3"><span class="partner_impart_title">(주)흥아지엘에스</span></td>
+                                    <td colspan="3">(주)흥아지엘에스</td>
+                                </tr>
+                                <tr>
+                                    <td>창고보관업</td>
+                                    <td>2006.01.16</td>                                    
+                                    <td>오영훈</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">인천 중구 공항동로 296번길 98-114</td>
+                                    <td>032-744-4660</td>
+                                </tr>
+                            </tbody>*@
+                            <tbody>
+                                <tr>
+                                    <td colspan="3"><span class="partner_impart_title">동보항공(주)</span></td>
+                                    @*<td colspan="3">동보항공(주)</td>*@
+                                </tr>
+                                <tr>
+                                    <td>항공운송대리점업</td>
+                                    <td>1987.08.24</td>
+                                    <td>홍정희</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">서울 중구 서소문로 106</td>
+                                    <td>02-3788-0137</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3"><span class="partner_impart_title">보람항공(주)</span></td>
+                                    @*<td colspan="3">보람항공(주)</td>*@
+                                </tr>
+                                <tr>
+                                    <td>항공화물운송대리점업</td>
+                                    <td>2000.04.21</td>
+                                    <td>홍정희</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">서울 중구 서소문로 106</td>                                    
+                                    <td>02-3788-0191</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- //container -->
+    }
+
+    @Scripts.Render("~/Scripts/js/Company/finance.js")
+}
+

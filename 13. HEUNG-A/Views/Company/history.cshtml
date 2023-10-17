@@ -1,0 +1,337 @@
+﻿@{
+	ViewBag.Title = "company";
+	ViewBag.Sub = "history";
+
+	Layout = "~/Views/Shared/_subLayout.cshtml";
+
+	string setLang = "";
+	if (HttpContext.Current.Session["Language"] == null)
+	{
+		setLang = "KO";
+	}
+	else
+	{
+		setLang = HttpContext.Current.Session["Language"].ToString();
+	}
+
+	if (string.IsNullOrEmpty(setLang))
+	{
+		setLang = "KO";
+	}
+}
+
+@section Container {
+
+	@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+	{
+		<!-- container -->
+		<div class="container">
+			<div class="contents">
+				<h3 class="subtitle"><span>영문 회사개요 및 연혁</span></h3>
+				<!-- company_w -->
+				<div class="company_w">
+					<h4 class="title01">회사개요</h4>
+					<!-- div_type01 -->
+					<div class="div_type01">
+						<div class="row">
+							<div class="col">
+								<div class="inner">
+									<em class="tit">회사명</em>
+									<div class="cell">페어콘라인(주) <img src="../images/logo_b.png" alt="페어콘라인(주)" class="company_logo"></div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="inner">
+									<em class="tit">사업영역</em>
+									<div class="cell">해상LCL 콘솔(NVOCC)/컨테이너 리스/장비사업/LME/창고업</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="inner">
+									<em class="tit">사무소</em>
+									<div class="cell">서울본사/부산지사</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="inner">
+									<em class="tit">자본금</em>
+									<div class="cell">15억</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="inner">
+									<em class="tit">근무인원</em>
+									<div class="cell">108명</div>
+								</div>
+							</div>
+							<!-- <div class="col">
+								<div class="inner">
+									<em class="tit">글로벌 파트너</em>
+									<div class="cell"></div>
+								</div>
+							</div> -->
+						</div>
+					</div>
+					<!-- //div_type01 -->
+				</div>
+				<!-- //company_w -->
+			</div>
+			<!-- company_w -->
+			<div class="company_w part2">
+				<div class="fix_inner">
+					<h4 class="title01 white">회사 연혁</h4>
+					<ul class="history_list">
+						<li>
+							<em class="year">2016</em>
+							<p>페어허브물류㈜ 신항 웅동지구 보세창고(33,000 제곱미터) 11월 개장</p>
+						</li>
+						<li>
+							<em class="year">2015</em>
+							<p>페어콘라인㈜ 창립 20주년</p>
+						</li>
+						<li>
+							<em class="year">2007</em>
+							<p>LME(London Metal Exchange) 창고 관리 에이전트 협약</p>
+							<p>라이트하이트(장비사업) 에이전트 협약</p>
+						</li>
+						<li>
+							<em class="year">2005</em>
+							<p>글로브링크코리아 NEUTRAL NVOCC 설립</p>
+						</li>
+						<li>
+							<em class="year">1997</em>
+							<p>플로렌스 에이전시 계약 체결</p>
+						</li>
+						<li>
+							<em class="year">1995</em>
+							<p>페어콘라인㈜ 창립</p>
+						</li>
+					</ul>
+					<div class="history_line">
+						<span class="circle"></span>
+						<span class="circle"></span>
+					</div>
+				</div>
+			</div>
+			<!-- //company_w -->
+		</div>
+		<!-- //container -->
+	}
+	else
+	{
+		<style>
+			/* 마지막 막대의 색깔만 변경 */
+			.c3-shapes path:last-child { fill: black !important; stroke: black !important }
+		</style>
+
+		<!-- container -->
+		<div class="container">
+			<div class="contents">
+				<h3 class="subtitle"><span>개요 및 연혁</span></h3>
+				<!-- company_w -->
+				<div class="history_w">
+					<h4 class="title01">회사개요</h4>
+					<!-- div_type01 -->
+					<div class="div_type01">
+						<div class="row">
+							<div class="col">
+								<div class="inner">
+									<em class="tit">회사명</em>
+									<div class="cell">(주)흥아로지스틱스 @*<img src="../images/logo_b.png" alt="흥아로지스틱스" class="company_logo">*@</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="inner">
+									<em class="tit">직원수</em>
+									<div class="cell">43명</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="inner">
+									<em class="tit">주요 사업</em>
+									<div class="cell">복합운송, 해운대리점, E-COMMERCE, 서류송달, 창고보관</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="inner">
+									<em class="tit">지점 현황</em>
+									<div class="cell">부산사무소 , 인천공항사무소</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="inner">
+									<em class="tit">주소</em>
+                                    <div class="cell">본사 - 서울 특별시 중구 동호로 336, 14층 (쌍림동, 한림빌딩)<br />부산 - 부산광역시 중구 중앙대로 88, 13층 1306호(중앙동4가, 은산베이빌딩)<br />인천 - 인천광역시 중구 공항동로 296번길 98-114(운서동) 자유무역지역공항물류단지 B1블럭 C-204호</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //div_type01 -->
+				</div>
+				<!-- //company_w -->				
+
+				<!-- company_w pc-->
+				<div class="history_w pc">
+					<h4 class="title01">회사연혁</h4>
+					<div class="tbl_type04 center">
+						<table>
+							<colgroup class="pc">
+								<col style="width: 20%" />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>									
+									<th>2022.09.</th>
+									<td>(주)흥아지엘에스 흡수합병</td>
+								</tr>
+								<tr>									
+									<th>2022.03.</th>
+									<td>(주)메트로물류 흡수합병</td>
+								</tr>
+								<tr>									
+									<th>2020.03.</th>
+									<td>본점 이전</td>
+								</tr>
+								<tr>
+									<th>2013.01.</th>
+									<td>AEO (종합인증우수업체) 공인인증  (2018년 재공인)</td>
+								</tr>
+								<tr>
+									<th>2008.12.</th>
+									<td>ISO9001 품질경영시스템 인증 획득</td>
+								</tr>
+								<tr>
+									<th>2008.01.</th>
+									<td>IATA(International Air Transport Association) 가입</td>
+								</tr>
+								<tr>
+									<th>2007.06.</th>
+									<td>ALA (Asia-World Logistics Alliance) 가입</td>
+								</tr>
+								<tr>
+									<th>2007.06.</th>
+									<td>해운 대리점업 등록</td>
+								</tr>
+								<tr>
+									<th>2007.05.</th>
+									<td>동보해운항공, 동보상선 M&A</td>
+								</tr>
+								<tr>
+									<th>2007.04.</th>
+									<td>한국국제물류협회 가입</td>
+								</tr>
+								<tr>
+									<th>2007.03.</th>
+									<td>(주)흥아로지스틱스 설립</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //company_w pc-->
+				<!-- company_w mo-->
+				<div class="contact_w mo">
+					<h4 class="title01">회사연혁</h4>
+					<div class="tbl_type04 center">
+						<table>
+							<colgroup class="mo">
+								<col style="width: 25%" />
+								<col />
+							</colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>2022.09.</th>
+                                    <td>(주)흥아지엘에스 흡수합병</td>
+                                </tr>
+                                <tr>
+                                    <th>2022.03.</th>
+                                    <td>(주)메트로물류 흡수합병</td>
+                                </tr>
+                                <tr>
+                                    <th>2020.03.</th>
+                                    <td>본점 이전</td>
+                                </tr>
+                                <tr>
+                                    <th>2013.01.</th>
+                                    <td>AEO (종합인증우수업체) 공인인증  (2018년 재공인)</td>
+                                </tr>
+                                <tr>
+                                    <th>2008.12.</th>
+                                    <td>ISO9001 품질경영시스템 인증 획득</td>
+                                </tr>
+                                <tr>
+                                    <th>2008.01.</th>
+                                    <td>IATA(International Air Transport Association) 가입</td>
+                                </tr>
+                                <tr>
+                                    <th>2007.06.</th>
+                                    <td>ALA (Asia-World Logistics Alliance) 가입</td>
+                                </tr>
+                                <tr>
+                                    <th>2007.06.</th>
+                                    <td>해운 대리점업 등록</td>
+                                </tr>
+                                <tr>
+                                    <th>2007.05.</th>
+                                    <td>동보해운항공, 동보상선 M&A</td>
+                                </tr>
+                                <tr>
+                                    <th>2007.04.</th>
+                                    <td>한국국제물류협회 가입</td>
+                                </tr>
+                                <tr>
+                                    <th>2007.03.</th>
+                                    <td>(주)흥아로지스틱스 설립</td>
+                                </tr>
+                            </tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //company_w mo-->
+			</div>
+			<!-- company_w -->
+			@*<div class="company_w part2">
+					<div class="fix_inner">
+						<h4 class="title01 white">회사연혁</h4>
+						<ul class="history_list">
+							<li>
+								<em class="year">2020년 3월</em>
+								<p>본점 이전</p>
+							</li>
+							<li>
+								<em class="year">2013년 1월</em>
+								<p>AEO (종합인증우수업체) 공인인증 (2018년 재공인)</p>
+							</li>
+							<li>
+								<em class="year">2008년 12월</em>
+								<p>ISO9001 품질경영시스템 인증 획득</p>
+							</li>
+							<li>
+								<em class="year">2007년 5월</em>
+								<p>동보해운항공, 동보상선 M&A</p>
+							</li>
+							<li>
+								<em class="year">2007년 3월</em>
+								<p>(주)흥아로지스틱스 설립</p>
+							</li>
+						</ul>
+						<div class="history_line">
+							<span class="circle"></span>
+							<span class="circle"></span>
+						</div>
+					</div>
+				</div>*@
+			<!-- //company_w -->
+		</div>
+		<!-- //container -->
+	}
+}

@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "business";
+    ViewBag.Sub = "SeaInout";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <h2>영문 해운 수출입</h2>
+    }
+    else
+    {
+        <div class="container">
+            <!-- contents -->    
+            <div class="contents">
+                <h3 class="subtitle"><span>해운 수출입</span></h3>
+            </div>
+
+            <!-- 여기 안에서 작업-->         
+            <div class="SeaInout_wrap">
+                <div class="contents">
+                    @*<div class="SeaInout_Separate_Area SeaInout_item01">
+                        <div class="SeaInout_Box">
+                            <div class="SeaInout_Box_in">
+                                <h3 class="SeaInout_Box_tit">일본 SERVICE</h3>
+                                <ul class="SeaInout_Box_Content">
+                                    <li>일본 전지역 수출/수입</li>
+                                    <li>한/일간 서비스 강화를 위한 일본 전담팀 구축</li>
+                                    <li>LCL CONSOL : 일본 32개 PORT DIRECT CONSOL</li>
+                                    <li>FCL/BULK SERVICE 등</li>
+                                    <li>수입 위험물 콘솔 가능 (CLASS NO.3,6-1,8,9)</li>
+                                    <li>DAP,DDP,EXW / 내륙 운송 및 통관, 보험 대행 등</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="SeaInout_Box">
+                            <div class="SeaInout_Box_in">
+                                <h3 class="SeaInout_Box_tit">DAIN FERRY SERVICE</h3>
+                                <ul class="SeaInout_Box_Content">
+                                    <li>대련,심양,장춘,하얼빈,길림,연길 등 전 지역 동북 3성 화물 운송 (주 3항차)</li>
+                                    <li>대련 수출/수입 LCL CONSOL</li>
+                                    <li>FCL : DRY,HQ,REEFER,HANGER CONTAINER,BULK,SOC</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="SeaInout_Separate_Area SeaInout_item02">
+                        <div class="SeaInout_Box">
+                            <div class="SeaInout_Box_in">
+                                <h3 class="SeaInout_Box_tit">러시아 SERVICE</h3>
+                                <ul class="SeaInout_Box_Content">
+                                    <li>사할린 지역 KORSAKOV PORT</li>
+                                    <li>LCL CONSOL,FCL,BULK SERVICE</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="SeaInout_Box">
+                            <div class="SeaInout_Box_in">
+                                <h3 class="SeaInout_Box_tit">삼국간 운송 SERVICE</h3>
+                                <ul class="SeaInout_Box_Content">
+                                    <li>중국발 전세계 제삼국향의 화물운송</li>
+                                    <li>중국현지 공장 및 임가공 업체의 특성에 맞춘 업무서비스</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="SeaInout_Box">
+                            <div class="SeaInout_Box_in">
+                                <h3 class="SeaInout_Box_tit">전지역 SERVICE</h3>
+                                <ul class="SeaInout_Box_Content">
+                                    <li>미주/구주/중동/아시아/아프리카 등</li>
+                                    <li>각 지역별 굴지의 PARTER 및 NETWORK</li>
+                                    <li>PROJECT CARGO , BULK CARGO</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="SeaInout_Wrap">
+                        <div class="SeaInout_Area">                            
+                            <h3 class="SeaInout_title">한국 - 일본 SERVICE</h3>
+                            <ul class="SeaInout_content">
+                                <li>일본 32개 PORT 수출/수입 DIRECT CONSOL</li>
+                                <li>위험물 수입 CONSOL</li>
+                                <li>DDU , EXW외 운송, 통관, 보험대행</li>
+                                <li class="keep_in">* 통관은 관세사 또는 관세법인을 통한 통관 진행</li>
+                            </ul>
+                        </div>
+                        <div class="SeaInout_Area">
+                            <h3 class="SeaInout_title">DAIN FERRY SERVICE</h3>
+                            <ul class="SeaInout_content">
+                                <li>대련 수출/수입 LCL DIRECT CONSOL</li>
+                                <li>중국 전지역 동북 3성 화물 운송 SERVICE</li>
+                            </ul>
+                        </div>
+                        <div class="SeaInout_Area">
+                            <h3 class="SeaInout_title">러시아 SERVICE</h3>
+                        </div>
+                        <div class="SeaInout_Area">
+                            <h3 class="SeaInout_title">삼국간 운송 SERVICE</h3>
+                        </div>
+                        <div class="SeaInout_Area">
+                            <h3 class="SeaInout_title">세계 전지역 PARTNER / NETWORK 보유</h3>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- //contents -->
+            </div>
+        </div>
+
+    }
+}

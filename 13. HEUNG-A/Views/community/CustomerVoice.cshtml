@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "community";
+    ViewBag.Sub = "customerVoice";
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <div class="container">
+            <!-- contents -->
+            <div class="contents">
+                <h3 class="subtitle"><span>CEO GREETINGS</span></h3>
+                <!-- greeting_w -->
+                <div class="greeting_w">
+                    <strong class="point">
+                        Dear Customers,<br />
+                        <br class="mo" />
+                    </strong>
+                    <p>
+                        Since acquiring Korea’s first international freight forwarding license from the Maritime <br class="pc" /> and Port Administration in October 1976,
+                        Samyoung Express has grown to the leading logistics service provider, <br class="pc" />
+                        providing the best logistics service anywhere in the world with 20 domestic <br class="pc" />
+                        and overseas group offices staffed by over 220 highly qualified staff members in partnership <br class="pc" />
+                        with some 300 well-known overseas forwarding companies. <br class="pc" />
+                        On October 5, 2016, <br class="pc" />
+                        we received a certificate of 'Excellent-Logistics Company' from the Ministry of Land, Infrastructure and Transport. <br class="pc" />
+                        We appreciate this as a result of our customer's continued support and dedication from our employees.<br class="pc" />
+                    </p>
+                    <p>
+                        The company name "Samyoung", literally translated into 'three prosperities', <br class="pc" />
+                        means to honor God, the Creator who presides over human history through multimodal transport, <br class="pc" />
+                        to help clients prosper with fast, cheap, and safe service, <br class="pc" />
+                        and to develop the company so that employees and the company can prosper and be happy together.<br class="pc" />
+                    </p>
+                </div>
+                <!-- //greeting_w -->
+            </div>
+            <!-- //contents -->
+            <!-- greeting_w -->
+            <div class="greeting_w part2">
+                <div class="fix_inner">
+                    <p>
+                        Recently global economy is so hard to predict. <br class="pc" />
+                        Samyoung will take this crisis as an opportunity to leap forward to realize its vision <br class="pc" />
+                        by joining forces with "Samyoung Values" declared in March 2012. <br class="pc" />
+                        In addition, we would like to thank our customers for their consistent support until today's Samyoung Express, <br class="pc" />
+                        and we promise to continue to support their successful business activities and become a trusted logistics company. <br class="pc" /> <br class="pc" />
+                    </p>
+                    <p>
+                        May God's care and blessing be with you and Samyoung family.<br class="pc" />
+                    </p>
+
+                    <span class="author">SAMYOUNG EXPRESS CEO <img src="~/Images/sign.png" /></span>
+                </div>
+            </div>
+            <!-- //greeting_w -->
+        </div>
+    }
+    else
+    {
+        @**@
+        <link rel="stylesheet" href="~/Content/API/swiper.min.css">
+
+        <style>
+        </style>
+
+
+        <div class="container">
+            <div class="contents">
+                <h3 class="subtitle"><span>고객의 소리</span></h3>
+            </div>
+
+            <!-- contents -->
+            <div class="contents">
+
+                <div class="customer_w">
+                    <div class="div_type02">
+                        <div class="row">
+                            <div class="col">
+                                <div class="inner">
+                                    <em class="tit">이메일</em>
+                                    <div class="cell">
+                                        <input class="customer_input customer_three_input" id="input_email01" data-index="0" />
+                                        <span class="customer_span">@Html.Raw("@")</span>
+                                        <input class="customer_input customer_three_input" id="input_email02" data-index="1" />
+                                        <select class="customer_select customer_three_input" id="select_EmailName">
+                                            <option value="" selected="">직접입력</option>
+                                            <option value="daum.net">daum.net</option>
+                                            <option value="empal.com">empal.com</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                            <option value="hanmail.net">hanmail.net</option>
+                                            <option value="msn.com">msn.com</option>
+                                            <option value="naver.com">naver.com</option>
+                                            <option value="nate.com">nate.com</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="inner">
+                                    <em class="tit">제목</em>
+                                    <div class="cell">
+                                        <input class="customer_input customer_one_input" id="input_title" data-index="2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="inner">
+                                    <em class="tit">내용</em>
+                                    <div class="cell">
+                                        <textarea class="customer_textarea customer_one_textarea" id="textarea_content" data-index="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 버튼 area -->
+                    <div class="customer_btn_area">
+                        <button type="submit" class="customer_btn" id="btn_EmailSend">문의하기</button>
+                    </div>
+
+                </div>
+
+                <!-- 이메일 전송 form  -->                
+                @*<div style="margin: 30px auto;max-width:700px">
+                    <table style="width: 100%;border: 1px solid #d9d9d9;overflow: hidden;" data-mce-style="margin: 20px auto; width: 100%; max-width: 700px;">
+                        <tbody style="">
+                            <tr style="width: 700px;height: 100%;border-bottom: 1px solid #d9d9d9;">
+                                <th style="width: 15%;background-color: #eafff4;text-align: center;color: #009e51;font-weight: 700;display: table-cell;vertical-align: middle;padding: 20px 0;">
+                                    이메일
+                                </th>
+                                <td style="width:85%;padding: 20px 28px;text-align: left;color: #2c2929;">
+                                </td>
+                            </tr>
+                            <tr style="width: 700px;height: 100%;">
+                                <th style="width: 15%;background-color: #eafff4;text-align: center;color: #009e51;font-weight: 700;display: table-cell;vertical-align: middle;padding: 20px 0;">
+                                    제목
+                                </th>
+                                <td style="width:85%;padding: 20px 28px;text-align: left;color: #2c2929;">
+                                </td>
+                            </tr>
+                            <tr style="width: 700px;height: 100%;">
+                                <th style="width: 15%;background-color: #eafff4;text-align: center;color: #009e51;font-weight: 700;display: table-cell;vertical-align: middle;padding: 20px 0;">
+                                    내용
+                                </th>
+                                <td style="width:85%;padding: 20px 28px;text-align: left;color: #2c2929;">
+                                    <textarea style="width: 100%;min-height: 500px;cursor: context-menu;resize: none;border: none;" readonly>
+                                </textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>*@
+
+            </div>
+            <!-- //contents -->
+
+        </div>
+    }
+
+    @Scripts.Render("~/Scripts/API/smtp.js")
+    @Scripts.Render("~/Scripts/js/Community/customerVoice.js")
+}
