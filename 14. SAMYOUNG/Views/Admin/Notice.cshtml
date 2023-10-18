@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "notice";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+    <script type="text/javascript" src="/Scripts/admin/_notice.js"></script>        
+
+            <div class="st-main">
+                <div class="st-header">
+                    <div class="fluid-cols">
+	                    <div class="min-col">
+		                    <div class="st-header__menu">
+			                    <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+		                    </div>
+	                    </div>
+	                    <div class="expand-col text-ellipsis">
+		                    <div class="st-header__title">
+                                <span>공지사항</span>
+		                    </div>
+	                    </div>	                    
+                    </div>
+				</div>
+	
+                <div class="st-content mb50 max_width">
+                    <div class="container-fluid">
+	                    <div class="row">
+		                    <div class="col-md-12">
+                                <div class="st-panel">
+                                    <div class="st-panel__cont">       
+                                        <div class="st-panel__content ">
+                                            <!-- 검색   -->
+                                            
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <table class="table table-bordered tb_style01">
+                                                            <colgroup>
+                                                                <col class="px100" />
+                                                                <col width="auto" />
+                                                            </colgroup>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th class="hidden-xs">검색</th>
+                                                                    <td>
+                                                                        <div class="col-md-2 col-sm-2">
+                                                                            <select class="form-control" id="sf" name="sf">
+                                                                                <option value="">전체</option>
+                                                                                <option value="0">공지사항</option>
+                                                                                <option value="1">물류뉴스</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-2 col-sm-2">
+                                                                            <select class="form-control" id="sfl" name="sfl">
+                                                                                <option value="ALL">전체</option>
+                                                                                <option value="TITLE">제목</option>
+                                                                                <option value="CONTENT">내용</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-5 col-sm-5">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control" id="stx" name="stx" value="" placeholder="Search for..." />
+                                                                                <span class="input-group-btn ">
+                                                                                    <a href="javascript:void(0);" type="button" class="btn  btn-primary _search_btn"><i class="fa fa-search"></i></a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            
+                                            <!-- /. 검색   -->
+
+                                            <!-- 버튼 -->
+                                            <div class="row">
+                                                <div class="col-md-12 mb10">		
+                                                    <div class="btn-group pull-right" role="group" aria-label="버튼">
+                                                        <!-- <a href="javascript:void(0);" type="button" class="btn  btn-primary _ajax_write">등록</a> -->
+                                                        <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>등록</a>
+                                                    </div>		
+                                                </div>
+                                            </div>
+                                            <!-- /.버튼 -->
+
+                                            <!-- 리스트 데이타 -->
+                                            
+                                                <div class="row">
+                                                    <div id="dataTbl" class="col-md-12">
+                                                        			
+                                                    </div>
+                                                    <!-- /.col-lg-12 -->
+                                                </div>                                                
+
+                                            <!-- /.리스트 데이타 -->
+
+                                            <!-- 페이징 -->
+                                            <div class="row">
+                                                <div class="col-md-6 col-md-offset-3">		
+                                                    <nav aria-label="Page navigation" class="paging">
+                                                        
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                            <!-- /.페이징 -->
+                                        </div>
+                                    </div>
+                                </div>                            
+                                                               
+	                        </div>
+                        </div>
+                    </div>
+                </div>
+			
+			    <div class="st-footer">
+				    <div class="copyright">
+                        Copyright(c) 관리자 모드. All right reserved. 
+				    </div>
+			    </div>	
+
+		    </div>
+
+	    <script language="javascript">
+	    <!--
+	        $(function () {
+	            if ($(window).width() < 768) {
+
+	                $('#data_table').DataTable({
+	                    paging: false,
+	                    searching: false,
+	                    ordering: false,
+	                    info: false,
+	                    responsive: {
+	                        details: {
+	                            type: 'column',
+	                            target: 1
+	                        }
+	                    }
+	                });
+
+	            }
+	        });
+	    -->
+	    </script>
+}

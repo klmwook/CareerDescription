@@ -1,0 +1,301 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+	Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+	string setLang = "";
+	if (HttpContext.Current.Session["Language"] == null)
+	{
+		setLang = "KO";
+	}
+	else
+	{
+		setLang = HttpContext.Current.Session["Language"].ToString();
+	}
+
+	if (string.IsNullOrEmpty(setLang))
+	{
+		setLang = "KO";
+	}
+}
+
+@section Container {
+
+	@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+	{
+		<section class="section visual">
+			<div class="visual_slide">
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01 animate delay-0">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02 animate">Korean Global Forwarder Leading Logistics Industry</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">Korean Global Forwarder Leading Logistics Industry</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">Korean Global Forwarder Leading Logistics Industry</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">Korean Global Forwarder Leading Logistics Industry</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">Korean Global Forwarder Leading Logistics Industry</p>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</section>
+		<!-- //visual -->
+		<!-- mn_info -->
+		<section class="section mn_info" id="mn_info">
+			<div class="inner">
+				<div class="box_w">
+					<!-- box -->
+					<div class="box animate delay-1 type1">
+						<div class="box_in">
+							<a href="@Url.Action("service", "Service" , new {@index = 1})">
+								<h3 class="tit main_content_left">Import & Export Service</h3>
+								<p class="main_content_left">
+									Samyoung Exrpess provides quality services <br />
+									for sea and air operations <br />
+									with rich experience and expertise
+								</p>
+								<div class="btn">
+									<span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+									<span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="box animate type2 delay-1">
+						<div class="box_in">
+							<a href="@Url.Action("service", "Service" , new {@index = 2}) ">
+							@*<a href="@Url.Action("service", "Service") ">*@
+								<h3 class="tit">Inland Transport Service</h3>
+								<p>
+									With nationwide inland transport network <br />
+									we offers the best logistics service, <br />
+									ensuring the fast and timely <br />
+									transport of export and import cargo
+								</p>
+								<div class="btn">
+									<span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+									<span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="box animate delay-1 type1">
+						<div class="box_in">
+							<a href="@Url.Action("service", "Service" , new {@index = 3})">
+								<h3 class="tit main_content_right">Storage Service</h3>
+								<p class="main_content_right">
+									Samyoung Express supplies <br /> 
+									a comprehensive cargo storage service <br />
+									based on a logistics management system <br />
+									using a logistics warehouse
+								</p>
+								<div class="btn">
+									<span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+									<span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- //box -->
+				</div>
+				<div class="pc pc_txt animate delay-4">
+					<h2 class="title"><br /><br /><br /></h2>
+					<p class="txt"><img src="images/business.png" alt="BUSINESS" /></p>
+				</div>
+			</div>
+		</section>
+		<!-- //mn_info -->
+	}
+	else //KOREAN
+	{
+		<section class="section visual">
+			<div class="visual_slide">
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01 animate delay-0">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02 animate">물류산업을 선도하는 한국적 글로벌 포워더</p>
+						</div>
+					</div>
+				</div>
+				<!-- start -->
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">물류산업을 선도하는 한국적 글로벌 포워더</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">물류산업을 선도하는 한국적 글로벌 포워더</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">물류산업을 선도하는 한국적 글로벌 포워더</p>
+						</div>
+					</div>
+				</div>
+				<!-- end -->
+				<div class="item">
+					<div class="inner">
+						<div class="mask"><div class="bg"></div></div>
+						<div class="txt_w">
+							<p class="txt01">
+								<span class="mo"><img src="/Images/visual02_txt_mo.png" alt="Start Your Business with Fairconline" /></span>
+								<span class="pc"><img src="/Images/visual02_txt.png" alt="Start Your Business with Fairconline" /></span>
+							</p>
+							<p class="txt02">물류산업을 선도하는 한국적 글로벌 포워더</p>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</section>
+		<!-- //visual -->
+		<!-- mn_info -->
+		<section class="section mn_info" id="mn_info">
+			<div class="inner">
+				<div class="box_w">
+					<!-- box -->
+					<div class="box animate delay-1 type1">
+						<div class="box_in">
+							<a href="@Url.Action("service", "Service" , new {@index = 1}) ">
+								<h3 class="tit main_content_left">수출입 서비스</h3>
+								<p class="main_content_left">
+									풍부한 경험과 전문성을 바탕으로 <br />
+									해상 및 항공 수출입 업무에 대해 <br />
+									양질의 서비스를 제공
+								</p>
+								<div class="btn">
+									<span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+									<span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="box animate type2 delay-1">
+						<div class="box_in">
+							<a href="@Url.Action("service", "Service" , new {@index = 2}) ">
+								<h3 class="tit">운송 서비스</h3>
+								<p>
+									수출입 화물의 <br />
+									신속하고 정확한 운송을 위해 <br />
+									전국적인 내륙운송망을 구축, <br />
+									고객에게 최상의 물류 서비스를 제공
+								</p>
+								<div class="btn">
+									<span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+									<span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="box animate delay-1 type1">
+						<div class="box_in">
+							<a href="@Url.Action("service", "Service" , new {@index = 3}) ">
+								<h3 class="tit main_content_right">창고 서비스</h3>
+								<p class="main_content_right">
+									물류 창고를 활용한 <br />
+									물류관리시스템을 바탕으로 <br />
+									종합화물보관 서비스를 제공
+								</p>
+								<div class="btn">
+									<span class="type01"><img src="/Images/btn_more.png" alt="Read more" class="more" /></span>
+									<span class="type02"><img src="/Images/icn_arrow2.png" alt="Read more" /></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- //box -->
+				</div>
+				<div class="pc pc_txt animate delay-4">
+					<h2 class="title"><br /><br /><br /></h2>
+					<p class="txt"><img src="images/business.png" alt="BUSINESS" /></p>
+				</div>
+			</div>
+		</section>
+		<!-- //mn_info -->
+	}
+
+
+	<script src="~/Scripts/js/Home/Index.js"></script>
+
+}

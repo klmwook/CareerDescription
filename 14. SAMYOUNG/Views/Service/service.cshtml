@@ -1,0 +1,330 @@
+﻿@{
+    ViewBag.Title = "service";
+    ViewBag.Sub = "service";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string strIndex = "";
+
+    //if (string.IsNullOrEmpty(Request.Params["index"].ToString()))
+    if (Request.QueryString["index"]!=null)
+    {
+        strIndex = Request.QueryString["index"].ToString();
+    }
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container
+{
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <div class="container" style="padding-bottom:0">
+            <div class="contents">
+                <h3 class="subtitle"><span>SERVICE</span></h3>
+                <div class="service_wrap">
+                    <!-- grp -->
+                    <div class="grp item01">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service1.png" class="pc" />
+                            <img src="~/Images/cont/service1_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="eng_title">Ocean Import & Export</h3>
+                                <p class="text">
+                                    Based on our extensive experience and expertise,
+                                    we provide quality services to ensure timely transportation of all kinds of export and import cargo,
+                                    such as general and special containers, heavy cargo, overseas exhibitions, bulk and project cargo.
+                                    We also contribute to reducing logistics costs by securing competitive freight rates through signing service contract with major shipping companies,
+                                    and we provide regular LCL services to major ports around the world to ensure accurate and safe transportation of customer's small-size cargo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item02">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service2.png" class="pc" />
+                            <img src="~/Images/cont/service2_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="eng_title">Air Transportation</h3>
+                                <p class="text">
+                                    Since starting the air transport business in 1988,
+                                    the company has grown into a professional aviation forwarder who provides sea & air service,
+                                    LCL service, and real-time cargo tracking service as well as export and import documents,
+                                    customs agency, inland transport and storage service through continuous expansion of the business area.
+                                    In addition, employees with more than 10 years of experience have been put into practice to implement
+                                    "one touch service" from freight booking to final destination for prompt and accurate delivery of freight.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item03">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service3.png" class="pc" />
+                            <img src="~/Images/cont/service3_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="eng_title">International Freight Forwarding</h3>
+                                <p class="text">
+                                    In line with the rapidly changing global logistics trend,
+                                    we provide customers with the most efficient logistics alternatives,
+                                    including door to door service, sea & air service, and trilateral transport,
+                                    quickly and safely across all regions of the world. 
+                                    We also secure regional expertise through team operations organized by each continent,
+                                    and constantly strive to improve our customer's logistics competitiveness
+                                    through strategic alliances with major domestic and foreign logistics companies.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item04">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service4.png" class="pc" />
+                            <img src="~/Images/cont/service4_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="eng_title">Marine Cargo Insurance</h3>
+                                <p class="text">
+                                    To compensate customers for damage or loss of cargo that may occur during transportation,
+                                    we provides a package of marine cargo insurance coverage at a low cost. 
+                                    Marine cargo insurance prevents any contingencies and uncertainties that
+                                    exist during the transportation process and minimizes customer physical losses through prompt and
+                                    fair insurance payments in the event of an accident so that the customer can concentrate on international trade with confidence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <div class="grp item05">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service5.png" class="pc" />
+                            <img src="~/Images/cont/service5_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="eng_title">Customs Clearance and Inland Transport</h3>
+                                <p class="text">
+                                    In order to support accurate and rapid customs clearance of cargo,
+                                    we manages systematic customs clearance procedures to meet customer's customs needs.
+                                    We are closely working with customs clearance offices to
+                                    manage systematic working procedures for accurate and rapid customs clearance.
+                                    In addition, we are in close business partnership with specialized land carriers
+                                    to ensure stable domestic transport of export-import cargo, and based on this,
+                                    we have established a nationwide inland transport network to provide the best logistics service to our customers.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item06">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service6.png" class="pc" />
+                            <img src="~/Images/cont/service6_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="eng_title">Storage and 3PL</h3>
+                                <p class="text">
+                                    We are operating a safe and efficient logistics management system using our logistics warehouse in Incheon International Airport and
+                                    provide comprehensive cargo storage services including bonded storage and general storage. 
+                                    By utilizing the logistics management system developed based on our own IT technology,
+                                    we also contribute to expanding our customer's business by reducing logistics costs as well as stable inventory management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                </div>
+            </div>
+
+           @if (strIndex != "")
+            {
+                <input type="hidden" name="Service_index" value="@strIndex" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="container" style="padding-bottom:0">
+            <div class="contents">
+                <h3 class="subtitle"><span>서비스 소개</span></h3>
+                <div class="service_wrap">
+                    <!-- grp -->
+                    <div class="grp item01">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service1.png" class="pc" />
+                                <img src="~/Images/cont/service1_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="title">해상 수출입 업무</h3>
+                                <p class="text">
+                                    풍부한 경험과 전문성을 바탕으로
+                                    일반·특수컨테이너, 중량화물, 해외전시·공연화물,
+                                    벌크 및 프로젝트 화물과 같은 모든 종류의 수출입 화물이
+                                    적시에 운송될 수 있도록 양질의 서비스를 제공하고 있습니다.
+                                    또한 주요 선사와의 SERVICE CONTRACT 체결을 통한
+                                    경쟁력 있는 운임확보로 고객의 물류비 절감에 기여하고 있으며,
+                                    전세계 주요 POINT들에 대해
+                                    매주 정기적으로 혼재화물 서비스를 제공함으로써
+                                    고객의 소량 화물 역시 정확하고 안전하게 운송해 드리고 있습니다.
+                                    @*<strong class="point">최적의 수출입 물류 자동화 솔루션</strong>*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item02">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service2.png" class="pc" />
+                                <img src="~/Images/cont/service2_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="title">항공 운송</h3>
+                                <p class="text">
+                                    1988년 항공운송업무를 시작한 이래
+                                    업무영역의 지속적 확장을 통하여
+                                    현재 수출입 서류작성, 통관대행, 내륙운송 및 보관 서비스뿐만 아니라 혼재 서비스, 
+                                    해상-항공 연계 서비스, 실시간 화물추적 서비스를 제공하는
+                                    전문 항공포워더로 성장하였습니다.
+                                    또한 화물의 신속하고 정확한 운송을 위하여
+                                    경력 10년 이상의 직원들이 실무에 투입되어
+                                    화물의 예약에서부터 최종 목적지 도착까지
+                                    ONE TOUCH 서비스를 실천하고 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item03">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service3.png" class="pc" />
+                                <img src="~/Images/cont/service3_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="title">국제복합운송</h3>
+                                <p class="text">
+                                    급변하는 세계 물류 경향에 맞추어
+                                    DOOR to DOOR 서비스, SEA&AIR 서비스, 삼국간 운송 등
+                                    고객에게 가장 효율적인 물류 대안을
+                                    전세계 모든 지역에 걸쳐 신속하고 안전하게 제공하고 있습니다. 
+                                    또한 각 대륙별로 편성된 팀 운영을 통하여
+                                    지역별 전문성을 확보하고 있으며,
+                                    국내외 주요 물류업체와의 전략적 제휴를 통하여
+                                    고객의 물류경쟁력 향상을 위해 끊임없이 노력하고 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item04">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service4.png" class="pc" />
+                                <img src="~/Images/cont/service4_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="title">해상적하보험</h3>
+                                <p class="text">
+                                    운송 중 발생될 수 있는 화물의 파손 또는 멸실로 인한
+                                    고객의 피해를 보상해주기 위하여
+                                    해상 적하보험의 가입을 저렴한 비용으로
+                                    일괄 대행해 드리고 있습니다.
+                                    해상적하보험은 운송과정 중 존재하는 우발성 및 불확실성을 사전에 방지하며
+                                    사고 발생시 신속하고 공정한 보험금 지급을 통하여
+                                    고객의 물적손실을 최소화 하여
+                                    고객이 안심하고 국제무역에 전념할 수 있도록
+                                    지원해드립니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <div class="grp item05">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service5.png" class="pc" />
+                                <img src="~/Images/cont/service5_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="title">통관대행 및 내륙 운송</h3>
+                                <p class="text">
+                                    화물의 정확하고 신속한 통관을 지원하기 위하여
+                                    세관의 수속에서 화물의 출고까지
+                                    관세사등을 통하여 통관업무를 관리하고 있습니다.
+                                    또한 수출입 화물의 안정적인 국내 운송을 위하여
+                                    전문 육상 운송사와의 긴밀한 업무 제휴를 하고 있으며,
+                                    이를 바탕으로 전국적인 내륙 운송망을 구축하여 고객에게 
+                                    최상의 물류 서비스를 제공하고 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                    <!-- grp -->
+                    <div class="grp item06">
+                        <div class="tbl_area">
+                            @*<img src="~/Images/cont/service6.png" class="pc" />
+                                <img src="~/Images/cont/service6_mo.png" class="mo" />*@
+                        </div>
+                        <div class="text_area">
+                            <div class="text_tableCell">
+                                <h3 class="title">창고보관 및 3자 물류</h3>
+                                <p class="text">
+                                    인천국제공항내에 보유한 물류창고를 활용하여
+                                    안전하고 효율적인 물류관리시스템을 가동 중에 있으며,
+                                    보세보관 및 일반보관을 포함하는
+                                    종합화물보관 서비스를 제공하고 있습니다. 
+                                    또한 자체 보유하고 있는
+                                    IT기술력을 기반으로 개발한 물류관리시스템을 활용하여
+                                    물류비 절감 뿐만 아니라 안정적인 재고 및 입출고 관리를 통해
+                                    고객의 사업확장에 기여하고 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //grp -->
+                </div>
+            </div>
+            @if (strIndex != "")
+            {
+                <input type="hidden" name="Service_index" value="@strIndex" />
+            }
+        </div>
+    }
+
+    @Scripts.Render("~/Scripts/js/Service/Service.js")
+
+}
+

@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>SAMYOUNG EXPRESS</title>
+	<link href="~/Content/css/media.css" rel="stylesheet">
+	<script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+	<script src="~/Scripts/js/slick.min.js"></script>
+	<script src="~/Scripts/js/waypoints.min.js"></script>
+	<script src="~/Scripts/js/common.js"></script>
+	<script src="~/Scripts/js/Common/Comm.js"></script>
+</head>
+    <body>
+        <!-- wrap -->
+	    <div id="wrap">
+		    <!-- header -->
+		    <header id="header" class="sub">
+			    <div id="navi_bg"></div>
+			    <div class="inner">
+				    <h1 class="logo"><a href="/"><span class="hidden">FC FAIRCONLINE</span></a></h1>
+                    <ul class="lnb">
+                        <li>
+                            <a href="@Url.Action("greeting", "Company")"><span>회사소개</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("greeting", "Company")"><span>대표 인사말</span></a></li>
+                                        <li><a href="@Url.Action("history", "Company")"><span>가치 및 연혁</span></a></li>
+                                        <li><a href="@Url.Action("map", "Company")"><span>오시는길</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("service", "Service")"><span>서비스소개</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("service", "Service")"><span>서비스소개</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("partner", "Partner")"><span>파트너</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("partner", "Partner")"><span>파트너</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("terms", "Terms")"><span>약관</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("terms", "Terms")"><span>약관</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("notice", "community")"><span>게시판</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("notice", "community")"><span>게시판</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+				    <a href="#total_nav" id="hamberger"><span class="btn_total"></span></a>
+				    <!-- total_menu -->
+				    <nav class="total_menu">
+					    <div class="dim"></div>
+					    <div class="total_nav" id="total_nav">
+						    <div class="nav_tit">
+							    <a href="/" class="nav_logo"><span class="hidden">SAMYOUNG EXPRESS</span></a>
+							    <button type="button" class="close"><span class="blind">닫기</span></button>
+						    </div>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("greeting", "Company")"><span>회사소개</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="@Url.Action("greeting", "Company")"><span>대표 인사말</span></a></li>
+                                                <li><a href="@Url.Action("history", "Company")"><span>가치 및 연혁</span></a></li>
+                                                <li><a href="@Url.Action("map", "Company")"><span>오시는길</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action(" service", "Service" )"><span>서비스소개</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("partner", "Partner")"><span>파트너</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("terms", "Terms")"><span>약관</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("notice", "community")"><span>게시판</span></a>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })><span>ENG</span></a>
+                                </li>
+                            </ul>
+					    </div>
+				    </nav>
+				    <!-- //total_menu -->
+			    </div>
+		    </header>
+		    <!-- //header -->
+		    <script>
+		        lock(0, 0);
+		    </script>
+
+		<!-- sub_visual -->
+		<div class="sub_visual" id="@ViewBag.Title">
+		</div>
+		<!-- //sub_visual -->
+		
+		<!-- location -->
+		<div class="location" style="margin-top:10px">
+			<div class="inner">
+				<a href="/" class="home"><span class="blind">홈</span></a>
+				<div class="depth">
+                    <a href="#none"><span>이용안내</span></a>                    
+					<div class="sub_list">
+						<ul>
+                            <li><a href="@Url.Action("greeting", "company")"><span>회사소개</span></a></li>
+                            <li><a href="@Url.Action(" service", "Service" )"><span>서비스소개</span></a></li>
+							<li><a href="@Url.Action(" partner", "Partner" )"><span>파트너</span></a></li>
+							<li><a href="@Url.Action("notice", "community")"><span>게시판</span></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="depth now">
+                    @{  
+                        string subTitle = ViewBag.Sub;
+                        switch (subTitle)
+                        {
+                            case "policy":<a href="#none"><span>개인정보처리방침</span></a>break;
+                            case "terms":<a href="#none"><span>이용약관</span></a>break;
+                        }                        
+					    <div class="sub_list">
+						    <ul>  
+                                @{ if (ViewBag.Sub != "policy"){<li><a href="@Url.Action("policy", "page")"><span>개인정보처리방침</span></a></li>}}
+                                @{ if (ViewBag.Sub != "terms"){<li><a href="@Url.Action("terms", "page")"><span>이용약관</span></a></li>}}                                        
+						    </ul>
+					    </div>
+                    }
+				</div>
+			</div>
+		</div>
+		<!-- //location -->
+
+		<!-- container -->
+		@RenderSection("container", required: false)
+		<!-- //container -->
+
+		<footer id="footer">
+			<!-- fnb_w -->
+			<div class="fnb_w">
+				<div class="inner">
+					<ul class="fnb">
+						<li><a href="@Url.Action("terms", "page")"><span>이용약관</span></a></li>
+						<li><a href="@Url.Action("policy", "page")"><span>개인정보처리방침</span></a></li>
+						<li><a href="@Url.Action("map", "Company")"><span>오시는길</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- //fnb_w -->
+			<!-- f_info -->
+			<div class="f_info">
+				<div class="inner">
+					<div class="col pc">
+						<div class="footer_logo_area">
+							<!-- 로고 영역 -->
+							<img src="~/Images/logo_ft.png" alt="삼영 footer 로고" />
+						</div>
+						<div class="footer_content_area">
+							<span style="line-height: 27px;">
+								(주)삼영익스프레스 <br />
+								사업자등록번호 : 105-81-48948 <br />
+								서울특별시 마포구 신수로 44 (신수동, 삼영익스프레스 사옥) <br />
+								Tel : 02-710-6700  <span class="bar">|</span>  Fax : 02-710-6789 <br />
+								Mail : info@samyoungexp.co.kr
+							</span>
+						</div>
+					</div>
+
+					<div class="col addr mo">
+						<address>
+							<span class="item01">(주)삼영익스프레스</span>       <span class="item02">사업자등록번호 : 105-81-48948</span><br class="mo" />
+							<span class="item03">서울특별시 마포구 신수로 44 (신수동, 삼영익스프레스 사옥)</span><br class="mo" />
+							<span class="item04">Tel : 02-710-6700  <span class="bar">|</span>  Fax : 02-710-6789</span><br class="mo" />
+							<span class="item05">Mail : info@samyoungexp.co.kr</span>
+						</address>
+					</div>
+				</div>
+			</div>
+			<!-- //f_info -->
+			<!-- copy -->
+			<div class="copy">
+				<div class="inner">
+					ⓒ 2020 SAMYOUNG EXPRESS Corporation
+					<button type="button" class="top"><span class="blind">TOP</span></button>
+				</div>
+			</div>
+			<!-- //copy -->
+		</footer>
+		    <!-- sched_wrap -->
+            <!--
+		    <div class="sched_wrap">
+			    <a href="@Url.Action("schedule", "community")"><img src="/Images/btn_schedule.png" alt="스케줄 조회"></a>
+		    </div>
+            -->
+		    <!-- //sched_wrap -->
+        </div>
+    </body>
+</html>
+

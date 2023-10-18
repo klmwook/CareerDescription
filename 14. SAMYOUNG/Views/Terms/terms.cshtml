@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "terms";
+    ViewBag.Sub = "terms";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string strIndex = "";
+
+    //if (string.IsNullOrEmpty(Request.Params["index"].ToString()))
+    if (Request.QueryString["index"]!=null)
+    {
+        strIndex = Request.QueryString["index"].ToString();
+    }
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container
+{
+    @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+    {
+        <div class="container" style="padding-bottom:0">
+            <div class="contents">
+                <h3 class="subtitle"><span>TERMS AND CONDITIONS</span></h3>
+                <div class="terms">
+                    <div class="terms_flex">
+                        <div class="terms_item">
+                            <div class="terms_bg">
+                                <p>SY_BL</p>
+                            </div>
+                            <div class="terms_download">
+                                <p><a href="~/data/SY_BL.pdf" download>Samyoung Express CO., LTD</a></p>
+                            </div>
+                        </div>
+                        <div class="terms_item">
+                            <div class="terms_bg">
+                                <p>AWB</p>
+                            </div>
+                            <div class="terms_download">
+                                <p></p>
+                                <p><a href="~/data/AWB.pdf" download>Air Waybill</a></p>
+                            </div>
+                        </div>
+                        <div class="terms_item">
+                            <div class="terms_bg">
+                                <p>YK_BL</p>
+                            </div>
+                            <div class="terms_download">
+                                <p><a href="~/data/YK_BL.pdf" download>Young-Ko Trans CO., LTD<br />(Relevant Company)</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container" style="padding-bottom:0">
+            <div class="contents">
+                <h3 class="subtitle"><span>약관</span></h3>
+                <div class="terms">
+                    <div class="terms_flex">
+                        <div class="terms_item">
+                            <div class="terms_bg">
+                                <p>SY_BL</p>
+                            </div>
+                            <div class="terms_download">
+                                <p><a href="~/data/SY_BL.pdf" download>Samyoung Express CO., LTD</a></p>
+                            </div>
+                        </div>
+                        <div class="terms_item">
+                            <div class="terms_bg">
+                                <p>AWB</p>
+                            </div>
+                            <div class="terms_download">
+                                <p></p>
+                                <p><a href="~/data/AWB.pdf" download>Air Waybill</a></p>
+                            </div>
+                        </div>
+                        <div class="terms_item">
+                            <div class="terms_bg">
+                                <p>YK_BL</p>
+                            </div>
+                            <div class="terms_download">
+                                <p><a href="~/data/YK_BL.pdf" download>Young-Ko Trans CO., LTD<br />(Relevant Company)</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @Scripts.Render("~/Scripts/js/Service/Service.js")
+
+}
+

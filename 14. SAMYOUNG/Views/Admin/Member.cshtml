@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "admin";
+    ViewBag.Sub = "member";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section stMain {
+    <script type="text/javascript" src="/Scripts/admin/_Member.js"></script>    
+
+    <div class="st-main">
+        <div class="st-header">
+            <div class="fluid-cols">
+                <div class="min-col">
+                    <div class="st-header__menu">
+                        <button class="btn st-sidebar__toggle"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="expand-col text-ellipsis">
+                    <div class="st-header__title"><span>관리자 정보</span></div>
+                </div>        
+            </div>
+        </div>
+						
+        <div class="st-content mb50 max_width">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <div class="st-panel">
+                            <div class="st-panel__cont">       
+                                <div class="st-panel__content ">
+                                <!-- 리스트 데이타 -->
+                                    <div class="row">
+                                        <div id="dataTbl" class="col-lg-12"></div>
+                                    <!-- /.col-lg-12 -->
+                                    </div>
+                                <!-- /.리스트 데이타 -->
+
+                                <!-- 페이징 -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">		
+                                            <nav aria-label="Page navigation" class="paging"></nav>
+                                        </div>
+                                    </div>
+                                <!-- /.페이징 -->
+
+                                <!-- 버튼 -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group pull-right" role="group" aria-label="버튼">
+                                                <a href="javascript:void(0);" type="button" class="btn btn-primary pull-right _btn_write"><i class="fa fa-pencil-square-o"></i>관리자등록</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- /.버튼 -->
+                                    <div class="mb20"></div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+			
+        <div class="st-footer">
+            <div class="copyright">
+                Copyright(c) 관리자 모드. All right reserved. 
+            </div>
+        </div>	
+    </div>
+
+}

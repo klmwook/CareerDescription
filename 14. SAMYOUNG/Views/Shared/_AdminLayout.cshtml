@@ -1,0 +1,128 @@
+﻿
+@{
+    if (Session["admin_idx"] == null) 
+    {
+        Response.Redirect("/Admin/Login");
+    }
+    else
+    {
+        ViewBag.Title = "_AdminLayout.cshtml";    
+    }
+
+    var cls_notice = "";
+    var cls_member = "";
+    
+    if(ViewBag.Sub == "notice")
+    {
+        cls_notice = "active";
+        cls_member = "";
+    }
+    else
+    {
+        cls_notice = "";
+        cls_member = "active";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>관리자 모드 </title>
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" type="text/css"> -->
+	<link href="/Content/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/Content/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet"><!-- Common Libs CSS -->
+	<link href="/Content/assets/css/libs.common.min.css" rel="stylesheet"><!-- Page Libs CSS --><!-- Just Bootstrap Theme -->
+
+
+	<link href="/Content/assets/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+	<link href="/Content/assets/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+	<link href="/Content/assets/libs/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link href="/Content/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+
+	<link href="/Content/assets/css/just.css?44" rel="stylesheet">
+	<!-- <link href="/assets/css/boot_add.css?4" rel="stylesheet"> -->
+
+	<link href="/Content/assets/ad_css/layout.css" rel="stylesheet">
+	<link href="/Content/assets/ad_css/common.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<script src="/Content/assets/js/libs.common.js"></script><!-- Common App Modules -->
+	<script src="/Content/assets/js/modules/app.js"></script>
+
+	<script src="/Content/assets/libs/bootstrap-datetimepicker/ko.js"></script>
+	<script src="/Content/assets/libs/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script src="/Content/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="/Content/assets/libs/bootstrap-datepicker/bootstrap-datepicker.kr.js"></script>
+
+	<script type="text/javascript" src="/Content/assets/ad_js/common.js"></script>
+	<script type="text/javascript" src="/Content/assets/ad_js/base_btn.js"></script>
+	<script type="text/javascript" src="/Content/assets/ad_js/ajaxfileupload.js"></script>
+
+	<script src="/Content/assets/js/modules/layout/sidebar.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+
+</head>
+
+	<body class="sidebar-collapsible  sidebar-open" data-spy="scroll" data-target="#myScrollspy">
+	<!-- <body class="sidebar-offcanvas" data-spy="scroll" data-target="#myScrollspy"> -->
+		<div class="st-wrapper" >
+            <!-- SIDE BAR -->
+			<div class="st-sidebar">
+				<div class="st-sidebar__header">
+                    <a class="st-sidebar__logo" href="/">Menu</a>
+                    <div class="st-sidebar__mico st-sidebar__toggle"><i class="fa fa-bars"></i></div>
+				</div>
+				<div class="st-sidebar__cont">
+                    <div class="st-sidebar__scroll scrollbar">
+	                    <div class="st-sidebar__nav">
+		                    <ul>                               
+                                <li class="@cls_notice" >
+                                    <a href="/Admin/Notice">
+	                                    <div class="fluid-cols">
+		                                    <div class="min-col"><i class="glyphicon glyphicon-list-alt st-sidebar__ico"></i>&nbsp;</div>
+		                                    <div class="expand-col text-ellipsis"><span class="st-sidebar__title">공지사항</span></div>
+	                                    </div>
+                                    </a>
+				                </li>			
+				                <li class="@cls_member" >
+                                    <a href="/Admin/Member">
+	                                    <div class="fluid-cols">
+		                                    <div class="min-col"><i class="fa fa-cog st-sidebar__ico"></i>&nbsp;</div>
+		                                    <div class="expand-col text-ellipsis"><span class="st-sidebar__title">관리자관리</span></div>
+	                                    </div>
+                                    </a>
+				                </li>				
+				                <li>
+                                    <a href="/Admin/Logout">
+	                                    <div class="fluid-cols">
+		                                    <div class="min-col"><i class="fa fa-sign-out st-sidebar__ico"></i>&nbsp;</div>
+		                                    <div class="expand-col text-ellipsis"><span class="st-sidebar__title">로그아웃</span></div>
+	                                    </div>
+                                    </a>
+				                </li>		
+		                    </ul>
+	                    </div>
+                    </div>
+                    <div class="st-sidebar__popup"></div>
+				</div>
+			</div>
+            <!-- SIDE BAR -->
+
+			@RenderSection("stMain", required: false)
+
+        </div>
+    </body>
+</html>
+

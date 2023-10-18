@@ -1,0 +1,1316 @@
+﻿@{
+    ViewBag.Title = "partner";
+    ViewBag.Sub = "partner";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container{
+
+   
+
+<div class="container">
+    <!-- contents -->
+    <div class="contents">
+
+        @if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+        {
+            <h3 class="subtitle"><span>PARTNER</span></h3>
+        }
+        else
+        {
+            <h3 class="subtitle"><span>파트너</span></h3>
+        }
+        <div id="content" class="content">
+            <div class="sub-sec">
+                <div class="main-tab">
+                    <ul class="main-tab-index">
+                        <li class="on"><a href="#tab1"><span style="height:100%">SHANGHAI</span></a></li>
+                        <li><a href="#tab2"><span>QINGDAO</span></a></li>
+                        <li><a href="#tab3"><span>TIANJIN</span></a></li>
+                        <li><a href="#tab4"><span>DALIAN</span></a></li>
+                    </ul>
+                    <ul class="main-tab-index">
+                        <li><a href="#tab5"><div style="display: table-cell;vertical-align: middle;">NINGBO</div></a></li>
+                        <li><a href="#tab6"><span>SHENZHEN</span></a></li>
+                        <li><a href="#tab7"><span>XIAMEN</span></a></li>
+                        <li><a href="#tab8"><span>HONG KONG</span></a></li>
+                    </ul>
+                    <ul class="main-tab-index">
+                        <li><a href="#tab9"><span>NEW YORK</span></a></li>
+                        <li><a href="#tab10"><span>LOS ANGELES</span></a></li>
+                        <li><a href="#tab11"><span>SAN FRANCISCO</span></a></li>
+                        <li><a href="#tab12"><span>SEATTLE</span></a></li>
+                    </ul>
+                    <ul class="main-tab-index">
+                        <li><a href="#tab13" style=""><span>HO CHI MINH CITY</span></a></li>
+                        <li><a href="#tab14"><span>HANOI</span></a></li>
+                        <li><a href="#tab15"><span>DHAKA</span></a></li>
+                        <li><a href="#tab16"><span>CHITTAGONG</span></a></li>
+                    </ul>
+
+                    <div id="tab1" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - SHANGHAI</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.9237686049564!2d121.48330731547097!3d31.250533567542718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b271aca0c92d97%3A0x3a8c9af0107da58b!2s358%20Hai%20Ning%20Lu%2C%20Si%20Chuan%20Bei%20Lu%2C%20Hongkou%20Qu%2C%20Shanghai%20Shi%2C%20%EC%A4%91%EA%B5%AD%20200010!5e0!3m2!1sko!2skr!4v1585787433355!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHANGHAI YOUNG-KO LOGISTICS CO., LTD. <br />
+                                                ROOM 701, SUB INTERNATIONAL BUILDING, NO.358,
+                                                HAINING ROAD, SHANGHAI, CHINA 200081
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 21-6393-2759</td>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>sha@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : MR.LIN JIE <br /> MANAGER OPERATION : MR. HENRY XU</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td>
+                                                SHANGHAI YOUNG-KO TRANS CO., LTD. <br />
+                                                ROOM 701, SUB INTERNATIONAL BUILDING, NO.358,
+                                                HAINING ROAD, SHANGHAI, CHINA 200081
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 21-6393-2139</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+86 21-6309-9900/ 9986</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>sha@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : MR.LIN JIE <br /> MANAGER OPERATION : MR. HENRY XU</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab2" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - QINGDAO</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1611.9084315729406!2d120.4701452764197!3d36.09795208626816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35961428a22fe303%3A0xbb10bafaf9425499!2s15%20Qin%20Ling%20Lu%2C%20Lao%20Shan%20Shang%20Quan%2C%20Laoshan%20Qu%2C%20Qingdao%20Shi%2C%20Shandong%20Sheng%2C%20%EC%A4%91%EA%B5%AD%20266101!5e0!3m2!1sko!2skr!4v1585787828179!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHANGHAI YOUNG-KO TRANS CO., LTD. 
+                                                / QINGDAO BRANCH <br />
+                                                ROOM 512, HAIYUNDONGFANG BUILDING,
+                                                NO.15 QINLING ROAD, LAOSHAN DISTRINCT
+                                                QINGDAO, CHINA 266071
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 532-8082-1905</td>
+                                            <th>FAX</th>
+                                            <td>+86 532-8082-1901</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>tao@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td> OFFICE MANAGER : MS. SANDY LEE</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHANGHAI YOUNG-KO TRANS CO., LTD.
+                                                / QINGDAO BRANCH <br />
+                                                ROOM 512, HAIYUNDONGFANG BUILDING,
+                                                NO.15 QINLING ROAD, LAOSHAN DISTRINCT
+                                                QINGDAO, CHINA 266071
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 532-8082-1905</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+86 532-8082-1901</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>tao@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td> OFFICE MANAGER : MS. SANDY LEE</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab3" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - TIANJIN</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d773.8436536736941!2d117.224230829247!3d39.12070603917487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35edfc4c488c7053%3A0xf48a802b6cc1f61e!2s99%20Liu%20Wei%20Lu%2C%20Hedong%20Qu%2C%20Tianjin%20Shi%2C%20%EC%A4%91%EA%B5%AD%20300090!5e0!3m2!1sko!2skr!4v1585789530776!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHANGHAI YOUNG-KO TRANS CO., LTD.
+                                                / TIANJIN BRANCH <br />
+                                                RM202. A BLOCK JINDONG BUILDING NO. 99 LIUWEI ROAD,
+                                                HEDONG DISTRICT, TIANJIN, CHINA 300171
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 22-2416-0998</td>
+                                            <th>FAX</th>
+                                            <td>+86 22-2416-0735</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>tsn@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : MR. J.Y.LEE</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHANGHAI YOUNG-KO TRANS CO., LTD.
+                                                / TIANJIN BRANCH <br />
+                                                RM202. A BLOCK JINDONG BUILDING NO. 99 LIUWEI ROAD,
+                                                HEDONG DISTRICT, TIANJIN, CHINA 300171
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 22-2416-0998</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+86 22-2416-0735</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>tsn@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>tsn@young-ko.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab4" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - DALIAN</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">                            
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.9034280600695!2d121.64393740462233!3d38.91792612554307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3585f54cafc5004f%3A0xf712fec6b3afe31e!2z7KSR6rWtIOuLpOuhhOyLnCDspJHsgrDqtawg6YKu5pS_57yW56CBOiAxMTYwMDE!5e0!3m2!1sko!2skr!4v1586165043014!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                DALIAN MINGYANG INTERNATIONAL FREIGHT &
+                                                FORWARDING CO., LTD. <br />
+                                                16-3-3-2, GANGJING GARDEN, ZHONGSHAN DISTRICT,
+                                                DALIAN, CHINA 116001
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 411-8283-7830</td>
+                                            <th>FAX</th>
+                                            <td>+86 411-8283-7310</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>dlc@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>OFFICE MGR : MRS. L. S. PEI(T. +86 138-0495-8183)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                DALIAN MINGYANG INTERNATIONAL FREIGHT &
+                                                FORWARDING CO., LTD. <br />
+                                                16-3-3-2, GANGJING GARDEN, ZHONGSHAN DISTRICT,
+                                                DALIAN, CHINA 116001
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 411-8283-7830</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+86 411-8283-7310</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>dlc@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>OFFICE MGR : MRS. L. S. PEI(T. +86 138-0495-8183)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab5" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - NINGBO</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d727.2816935422583!2d121.53420707369163!3d29.877126255008587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x344d64a98534b2f5%3A0xd14c51639e5f1c9a!2z7KSR6rWtIOuLneuztOyLnCDtlZjsnbTsiJjqtawg6YKu5pS_57yW56CBOiAzMTUwMTA!5e0!3m2!1sko!2skr!4v1585788146741!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                NINGBO YOUNG-KO TRANS CO., LTD. <br />
+                                                RM 921, ASIAN BUSINESS CENTER SQUARE,
+                                                B BLOCK NO.47, DALAI ROAD, NINGBO, CHINA 315010
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 574-5612-6068</td>
+                                            <th>FAX</th>
+                                            <td>+86 574-5612-6070/ 71/ 74</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>ningbo@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>G/ MGR : MR. ALLAN KIM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                NINGBO YOUNG-KO TRANS CO., LTD. <br />
+                                                RM 921, ASIAN BUSINESS CENTER SQUARE,
+                                                B BLOCK NO.47, DALAI ROAD, NINGBO, CHINA 315010
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 574-5612-6068</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+86 574-5612-6070/ 71/ 74</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>ningbo@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>G/ MGR : MR. ALLAN KIM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab6" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - SHENZHEN</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1842.5073648536613!2d114.04178015816592!3d22.541120973601704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f3fa0071cf49%3A0x2629795c37993233!2sShenmao%20Mansion%20Parking%20Lot!5e0!3m2!1sko!2skr!4v1585789818734!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHENZHEN YOUNG-KO TRANS CO., LTD. <br />
+                                                ROOM 616, SHENMAO COMMERCE CENTER,
+                                                XINWEN ROAD,FUTIAN DIST.SHENZHEN,CHINA 518034
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 755-8314-6036</td>
+                                            <th>FAX</th>
+                                            <td>+86 755-8294-5523</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>szx@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : MR. TONY QUAN</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SHENZHEN YOUNG-KO TRANS CO., LTD. <br />
+                                                ROOM 616, SHENMAO COMMERCE CENTER,
+                                                XINWEN ROAD,FUTIAN DIST.SHENZHEN,CHINA 518034
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 755-8314-6036</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+86 755-8294-5523</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>szx@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : MR. TONY QUAN</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab7" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - XIAMEN</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">                            
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d641.7769443744011!2d118.09448220489917!3d24.50490006952245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3414852354fab3e3%3A0xf031cfecb775268a!2s15L%2C%209%20Hai%20Tian%20Lu%2C%20Huli%20Qu%2C%20Xiamen%20Shi%2C%20Fujian%20Sheng%2C%20%EC%A4%91%EA%B5%AD%20361106!5e0!3m2!1sko!2skr!4v1586165175996!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col style="width: 38%">
+                                        <col style="width: 12%">
+                                        <col style="width: 38%">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                XIAMEN YOUNGKO TRANS CO., LTD. <br />
+                                                15L YINDU PLAZA NO.9,HAITIAN RD,
+                                                XIAMEN,FUJIAN, CHINA
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 592-3720305</td>
+                                            <th>FAX</th>
+                                            <td>+86 592-3720300</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>xmn@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : Mr. M.S.Kim</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                XIAMEN YOUNGKO TRANS CO., LTD. <br />
+                                                15L YINDU PLAZA NO.9,HAITIAN RD,
+                                                XIAMEN,FUJIAN, CHINA
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 592-3720305</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+86 592-3720305</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>xmn@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>OFFICE MANAGER : Mr. M.S.Kim</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab8" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">CHINA - HONG KONG</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1465.1705764589722!2d114.17308701192883!3d22.278048513174618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404005b86e3a1d9%3A0x9c00e5a2cfa024fc!2sYuexiu%20REIT%20Asset%20Management%20Limited!5e0!3m2!1sko!2skr!4v1585789856895!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                U. S. INTERMODAL CONTAINER LINE LTD. <br />
+                                                ROOM 2001, 20/F, YUE XIU BUILDING,
+                                                168 LOCKHART ROAD, WANCHAI, HONG KONG
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+852 2511-0819</td>
+                                            <th>FAX</th>
+                                            <td>+852 2511-0072</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>gerald@usimhk.com</td>
+                                            <th>MGR</th>
+                                            <td>MANAGING DIR : MR. GERALD WONG</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                U. S. INTERMODAL CONTAINER LINE LTD. <br />
+                                                ROOM 2001, 20/F, YUE XIU BUILDING,
+                                                168 LOCKHART ROAD, WANCHAI, HONG KONG
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+852 2511-0819</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+852 2511-0072</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>gerald@usimhk.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>MANAGING DIR : MR. GERALD WONG</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab9" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">USA - NEW YORK</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d627.1369092134566!2d-72.71848765109267!3d41.60856080357132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7b4b6de0f03ff%3A0x51d747c8e1458bb2!2s1224%20Mill%20St%20BLDG%20B%2C%20East%20Berlin%2C%20CT%2006023%20%EB%AF%B8%EA%B5%AD!5e0!3m2!1sko!2skr!4v1585789138018!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                YOUNG-KO TRANS CO., LTD. <br />
+                                                1224 MILL ST. BLDG B
+                                                EAST BERLIN, CT 06023
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 800-918-3680</td>
+                                            <th>FAX</th>
+                                            <td>+1 646-924-3450</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>ny@youngkotransus.com</td>
+                                            <th>MGR</th>
+                                            <td>CTC : MRS. SORA CHOI/ DIRECTOR(CELL: +1 646-824-6414)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                YOUNG-KO TRANS CO., LTD. <br />
+                                                1224 MILL ST. BLDG B
+                                                EAST BERLIN, CT 06023
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 800-918-3680</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+1 646-924-3450</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>sora@youngkotrans.net</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>CTC : MRS. SORA CHOI/ DIRECTOR(CELL: +1 860-348-8831)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab10" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">USA - LOS ANGELES</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.372821128855!2d-117.90028968434783!3d33.90580303287936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd5a08cc1c331%3A0xba91c921fda340af!2s1642%20Lark%20Ellen%20Dr%2C%20Fullerton%2C%20CA%2092835%20%EB%AF%B8%EA%B5%AD!5e0!3m2!1sko!2skr!4v1592889087475!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                YOUNG-KO TRANS CO., LTD. <br />
+                                                1642 LARK ELLEN DR.
+                                                FULLERTON, CA 92835
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 714-504-1703</td>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>la@young-ko.com</td>
+                                            <th>MGR</th>
+                                            <td>G/ MGR : MR. SCOTT KIM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                YOUNG-KO TRANS CO., LTD. <br />
+                                                1642 LARK ELLEN DR.
+                                                FULLERTON, CA 92835
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 714-504-1703</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>la@young-ko.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>G/ MGR : MR. SCOTT KIM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab11" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">USA - SAN FRANCISCO</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.3179763478865!2d-122.20060528440808!3d37.73568382218012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f85bd4406e7e3%3A0xa848fef9af082e23!2zMzMzIEhlZ2VuYmVyZ2VyIFJkICMzMTksIE9ha2xhbmQsIENBIDk0NjIxIOuvuOq1rQ!5e0!3m2!1sko!2skr!4v1585789914178!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                U. S. INTERMODAL MARITIME INC. <br />
+                                                333 HEGENBERGER RD. STE 319
+                                                OAKLAND, CA 94612, USA
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 510-777-9000</td>
+                                            <th>FAX</th>
+                                            <td>+1 510-777-9070</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>slee@usim-oak.com</td>
+                                            <th>MGR</th>
+                                            <td>PRESIDENT : MR. JOHN LEE</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                U. S. INTERMODAL MARITIME INC. <br />
+                                                333 HEGENBERGER RD. STE 319
+                                                OAKLAND, CA 94612, USA
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 510-777-9000</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+1 510-777-9070</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>slee@usim-oak.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>PRESIDENT : MR. JOHN LEE</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab12" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">USA - SEATTLE</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2699.5771499916714!2d-122.32660168407415!3d47.4201884088293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54905b3dec2d4967%3A0x17a530e649fac1d5!2zMjAyMzMgOHRoIEF2ZSBTLCBEZXMgTW9pbmVzLCBXQSA5ODE5OCDrr7jqta0!5e0!3m2!1sko!2skr!4v1585902074790!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                U.S INTERMODAL MARITIME INC. <br />
+                                                20233-B 8TH AVE. S.
+                                                KENT, WA 98032 USA
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 425-251-8238</td>
+                                            <th>FAX</th>
+                                            <td>+1 425-251-8248</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>info@usintermodal.com</td>
+                                            <th>MGR</th>
+                                            <td>MANAGING DIR : MR. WAYNE KIM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                U.S INTERMODAL MARITIME INC. <br />
+                                                20233-B 8TH AVE. S.
+                                                KENT, WA 98032 USA
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+1 425-251-8238</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+1 425-251-8248</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>info@usintermodal.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>MANAGING DIR : MR. WAYNE KIM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab13" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">VIETNAM - HO CHI MINH CITY</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1647.8525794634318!2d106.69898058067857!3d10.790158708444794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528cabcb55d3f%3A0xdc3d0ae9df2c35c2!2sHP%20Office%20Building!5e0!3m2!1sko!2skr!4v1585789265668!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SAM YOUNG EXPRESS C/O YOUNG-KO CO., LTD. <br />
+                                                HP BUILDING, 2ND FLOOR,
+                                                60 NGUYEN VAN THU STR., DA KAO WARD
+                                                DIST. 1, HO CHI MINH CITY, VIETNAM
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+84 8-39111-335~7</td>
+                                            <th>FAX</th>
+                                            <td>+84 8-39111-338</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>trang.dinh@young-ko.vn</td>
+                                            <th>MGR</th>
+                                            <td>OFFICE MGR : MS. TRANG</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SAM YOUNG EXPRESS C/O YOUNG-KO CO., LTD. <br />
+                                                HP BUILDING, 2ND FLOOR,
+                                                60 NGUYEN VAN THU STR., DA KAO WARD
+                                                DIST. 1, HO CHI MINH CITY, VIETNAM
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+84 8-39111-335~7</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+84 8-39111-338</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>trang.dinh@young-ko.vn</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>OFFICE MGR : MS. TRANG</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab14" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">VIETNAM - HANOI</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6485496205637!2d105.79332841533227!3d21.04674391872355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc00515f4c55e4675!2z7IaM66i47IWLIO2YuOyVhOu5iCDtlZjrhbjsnbQ!5e0!3m2!1sko!2skr!4v1585789999636!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SAM YOUNG EXPRESS C/O KONET EXPRESS CO., LTD. <br />
+                                                17TH FL., 106 HOANG QUOC VIET STR.,
+                                                NGHIA DO WARD, CAU GIAY DIST., HANOI
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+84 4-3787-6265/66</td>
+                                            <th>FAX</th>
+                                            <td>+84 4-3787-6184</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>airexport.han@konetexpress.com</td>
+                                            <th>MGR</th>
+                                            <td> MGR : MS. AN</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                SAM YOUNG EXPRESS C/O KONET EXPRESS CO., LTD. <br />
+                                                17TH FL., 106 HOANG QUOC VIET STR.,
+                                                NGHIA DO WARD, CAU GIAY DIST., HANOI
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+84 4-3787-6265/66</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td>+84 4-3787-6184</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>airexport.han@konetexpress.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td> MGR : MS. AN</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab15" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">BANGLADESH - DHAKA</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.6503997288479!2d90.40516032923095!3d23.797197326118667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70f740fa0f1%3A0x5386ec91a9ee8c2e!2zSE9VU0UjMzAsIENvbmNvcmQgRHJlYW0gQXBhcnRtZW50cywgQmxvY2sgQSBSZCBObyAxOCwgRGhha2EgMTIxMiDrsKnquIDrnbzrjbDsi5w!5e0!3m2!1sko!2skr!4v1585789441831!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                B-KO TRANS. <br />
+                                                ROAD #18, BLOCK-A, HOUSE #30 (3RD FLOOR)
+                                                BANANI, DHAKA-1213 BANGLADESH
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+88 02-55035437</td>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>bkotrans@yahoo.com <br /> info@bkotrans.com</td>
+                                            <th>MGR</th>
+                                            <td>G/ MGR : MR. HASSAN (CELL: +88 01819225359)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                B-KO TRANS. <br />
+                                                ROAD #18, BLOCK-A, HOUSE #30 (3RD FLOOR)
+                                                BANANI, DHAKA-1213 BANGLADESH
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+88 02-55035437</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>bkotrans@yahoo.com <br /> info@bkotrans.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>G/ MGR : MR. HASSAN (CELL: +88 01819225359)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab16" class="main-tab-ct">
+                        <div class="Partner_title_Area">
+                            <h2 class="Partner_title">BANGLADESH - CHITTAGONG</h2>
+                        </div>
+                        <div class="Partner_Iframe_Area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.687751891802!2d91.81061101534614!3d22.32764584754307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8b58e37f293%3A0x93978c78271723e7!2zTWFsZWsgQ2hhbWJlciwgQ2hpdHRhZ29uZywg67Cp6riA6528642w7Iuc!5e0!3m2!1sko!2skr!4v1585790036924!5m2!1sko!2skr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="Partner_Info">
+                            <div class="tbl_type03 pc">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                B-KO TRANS. <br />
+                                                MALAK CHAMBER(4TH FL) 5/5, AGRABAD C/A
+                                                CHITTAGONG, BANGLADESH
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+88 031-711-916</td>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>bkotransctg@gmail.com</td>
+                                            <th>MGR</th>
+                                            <td>CTC : MR. RIPON</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tbl_type03 mo">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 12%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td colspan="3">
+                                                B-KO TRANS. <br />
+                                                MALAK CHAMBER(4TH FL) 5/5, AGRABAD C/A
+                                                CHITTAGONG, BANGLADESH
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tel</th>
+                                            <td>+88 031-711-916</td>
+                                        </tr>
+                                        <tr>
+                                            <th>FAX</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-Mail</th>
+                                            <td>bkotransctg@gmail.com</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MGR</th>
+                                            <td>CTC : MR. RIPON</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- //.main-tab -->
+            </div>
+        </div>
+    </div>
+    <!-- //contents -->
+</div>
+
+    <script type="text/javascript" src="~/Scripts/js/Partner/Partner.js"></script>
+}

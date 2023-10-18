@@ -1,0 +1,899 @@
+﻿@{
+	ViewBag.Title = "company";
+	ViewBag.Sub = "history";
+
+	Layout = "~/Views/Shared/_subLayout.cshtml";
+
+	string setLang = "";
+	if (HttpContext.Current.Session["Language"] == null)
+	{
+		setLang = "KO";
+	}
+	else
+	{
+		setLang = HttpContext.Current.Session["Language"].ToString();
+	}
+
+	if (string.IsNullOrEmpty(setLang))
+	{
+		setLang = "KO";
+	}
+}
+
+@section Container {
+
+	@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+	{
+		<!-- container -->
+		<div class="container">
+			<div class="contents">
+				<h3 class="subtitle"><span>VALUE & HISTORY</span></h3>
+				<div class="valuable_wrap pc">
+					<div class="valuable_area">
+						<div class="text_area" style="top:45%">
+							<strong class="text1">SAMYOUNG</strong>
+							<span class="text2">VALUE</span><br />
+							@*<span class="text3">삼영 가치관</span>*@
+						</div>
+						<div class="table_area">
+							<strong>MISSON</strong>
+							<p>
+								To contribute to the affluent and happy human life <br class="pc"/>
+								and the prosperity of the nation and the company <br class="pc" />
+								through the best global green logistics services. <br class="pc" /> <br class="pc" />
+								To become a socially loved enterprise through sharing and ethical management. <br class="pc" />
+							</p>
+
+							<strong>CORE VALUE</strong>
+							<p>Honesty and Trust, Originality and Passion, Dedication and Unity</p>
+
+							<strong>VISION</strong>
+							<p>Korean global forwarder</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="valuable_wrap mo">
+					<div class="text_area">
+						<strong class="text1">SAMYOUNG</strong>
+						<span class="text2">VALUE</span><br />
+					</div>
+					<div class="table_area">
+						<strong>MISSON</strong>
+						<p>
+							To contribute to the affluent and happy human life <br class="pc" />
+							and the prosperity of the nation and the company <br class="pc" />
+							through the best global green logistics services. <br class="pc" /> <br class="pc" />
+							To become a socially loved enterprise through sharing and ethical management. <br class="pc" />
+						</p>
+
+						<strong>CORE VALUE</strong>
+						<p>Honesty and Trust, Originality and Passion, Dedication and Unity</p>
+
+						<strong>VISION</strong>
+						<p>Korean global forwarder</p>
+					</div>
+				</div>
+				@*<tr class="mo"> 예제
+						<th class="tit01" colspan="5">JAPAN</th>
+					</tr>
+					<tr>
+						<th class="tit01 pc" rowspan="2">JAPAN</th>
+						<td rowspan="2" class="txt01 tit02">Japan Main &amp; Local Port</td>
+						<td>515</td>
+						<td rowspan="2" class="txt01">japan@faircon.co.kr</td>
+						<td rowspan="2" class="txt02">779-5305</td>
+					</tr>
+					<tr>
+						<td>512</td>
+					</tr>*@
+
+				<div class="history_area">
+					<div class="text_area">
+						<strong class="text1">HISTORY</strong>
+					</div>
+				</div>
+
+				<!-- company_w pc-->
+				<div class="contact_w pc">
+					<div class="tbl_type01 center">
+						<table>
+							<colgroup class="pc">
+								<col style="width: 20%" />
+								<col style="width: 20%" />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+                                    <!-- 2020.05 박진호 추가내용 -->
+									<td class="pc_th" rowspan="10">NOW ~ 2010</td>
+									<td>2020.02.</td>
+									<td> Received 'President's Award' from Yeosu Gwangyang Port Authority </td>
+                                    <!-- 2020.05 박진호 추가내용 끝 -->
+								</tr>
+                                <tr>									
+									<td>2018.05.</td>
+									<td>Selected by Korea Chamber of Commerce and Industry for "Mexico Joint Investment Program" with WOORI CORP.</td>
+								</tr>
+								<tr>
+									<td>2017.04.</td>
+									<td>Selected by Korea Chamber of Commerce and Industry for "Poland Joint Investment Program" with SEUNGSAN IND.CO. LTD.</td>
+								</tr>
+								<tr>
+									<td>2016.10.</td>
+									<td>Acquired "Certified Excellent Logistics Company (CELC)" by Minister of Land, Infrastructure and Transport </td>
+								</tr>
+								<tr>
+									<td>2014.10.</td>
+									<td>Certification of "Excellent International Freight Forwarder" by Minister of Land, Infrastructure and Transport</td>
+								</tr>
+								<tr>
+									<td>2013.12.</td>
+									<td>Selected by Ministry of Oceans and Fisheries for supporting overseas expansion</td>
+								</tr>
+								<tr>
+									<td>2012.03.</td>
+									<td>Declaration of Vision 2020, a Value Management</td>
+								</tr>
+								<tr>
+									<td>2012.01.</td>
+									<td>Acquired AEO Certificate from Korea Customs Service</td>
+								</tr>
+								<tr>
+									<td>2011.06.</td>
+									<td>Selected by Korea Customs Service and AEO Promotion Association as a forwarder for supporting AEO certification</td>
+								</tr>
+								<tr>
+									<td>2010.02.</td>
+									<td>Registered with United Nations Procurement Division (UNPD) in New York</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="8">2008 ~ 2000</td>
+									<td>2008.08.</td>
+									<td>Completion of a new head office building</td>
+								</tr>
+								<tr>
+									<td>2008.05.</td>
+									<td>Hosted 2008’ WNA World Convention in Seoul</td>
+								</tr>
+								<tr>
+									<td>2007.06.</td>
+									<td>
+										Certification of "Innovational management-friendly small and medium	enterprise" by Seoul Small and Medium Business Administration
+									</td>
+								</tr>
+								<tr>
+									<td>2005.05.</td>
+									<td>Acquired an insurance agency license from Financial Supervisory Service</td>
+								</tr>
+								<tr>
+									<td>2005.03.</td>
+									<td>Joined World Cargo Alliance (APLN)</td>
+								</tr>
+								<tr>
+									<td>2002.06.</td>
+									<td>ISO 9001-2000 certified</td>
+								</tr>
+								<tr>
+									<td>2002.01.</td>
+									<td>Opened Hochiminh City office</td>
+								</tr>
+								<tr>
+									<td>2000.04.</td>
+									<td>Joined World Net Associations (WNA)</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="8">1997 ~ 1990</td>
+									<td>1997.03.</td>
+									<td>Awarded “The finest taxpayer” by the Sogong tax office</td>
+								</tr>
+								<tr>
+									<td>1996.12.</td>
+									<td>Opened Dhaka and Chittagong offices</td>
+								</tr>
+								<tr>
+									<td>1996.07.</td>
+									<td>
+										Appointment of CEO U. K. Chung as arbitrator by the Korea Commercial Arbitration Board
+									</td>
+								</tr>
+								<tr>
+									<td>1996.05.</td>
+									<td>Awarded “The best forwarding company” by Samsung Engineering</td>
+								</tr>
+								<tr>
+									<td>1994.05.</td>
+									<td>Opened Shanghai and Qingdo offices</td>
+								</tr>
+								<tr>
+									<td>1993.11.</td>
+									<td>Registered as multimodal freight forwarder on Shipping and Port Administration</td>
+								</tr>
+								<tr>
+									<td>1991.09</td>
+									<td>Registered with International Air Transport Association (IATA)</td>
+								</tr>
+								<tr>
+									<td>1990.12.</td>
+									<td>Acquired a license for shipping agency, commencing agents for Laurizen line</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="6">1988 ~ 1980</td>
+									<td>1988.08.</td>
+									<td>Moved into a head office, located in Mapo, Seoul (Commencing courier services)</td>
+								</tr>
+								<tr>
+									<td>1988.07.</td>
+									<td>Acquired an air transport agency license</td>
+								</tr>
+								<tr>
+									<td>1988.01.</td>
+									<td>
+										Inauguration of CEO U. K. Chung as Korea International Freight 
+										Forwarders Association (KIFFA)'s new chairman , Opened Daejeon office
+									</td>
+								</tr>
+								<tr>
+									<td>1986.12.</td>
+									<td>Opened Gwangju office</td>
+								</tr>
+								<tr>
+									<td>1981.03.</td>
+									<td>Awarded "the Prime Minister's Citation" on Marine transport day, Opened Daegu office</td>
+								</tr>
+								<tr>
+									<td>1980.06.</td>
+									<td>Opened Los Angeles office</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="5">1979 ~ 1976</td>
+									<td>1979.10.</td>
+									<td>Registered as NVOCC on US FMC</td>
+								</tr>
+								<tr>
+									<td>1978.12.</td>
+									<td>Opened New York liaison office</td>
+								</tr>
+								<tr>
+									<td>1977.02.</td>
+									<td>Opened Busan office, commencing consolidation services</td>
+								</tr>
+								<tr>
+									<td>1976.10.</td>
+									<td>
+										Acquired an international freight forwarding license from Korea
+										Maritime & Port Administration as one of the first 26 firms in Korea
+									</td>
+								</tr>
+								<tr>
+									<td>1976.07.</td>
+									<td>Establishment of Samyoung Express Co., Ltd</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //company_w pc-->
+				<!-- company_w mo-->
+				<div class="contact_w mo">
+					<div class="tbl_type01 center">
+						<table>
+							<colgroup class="mo">
+								<col style="width: 25%" />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="mo_th" colspan="2">NOW ~ 2010</th>
+								</tr>
+                                <!-- 2020.05 박진호 추가내용 -->
+                                <tr>
+									<td>2020.02.</td>
+									<td> Received 'President's Award' from Yeosu Gwangyang Port Authority </td>
+								</tr>
+                                <!-- 2020.05 박진호 추가내용 끝 -->
+								<tr>
+									<td>2018.05.</td>
+									<td>Selected by Korea Chamber of Commerce and Industry for "Mexico Joint Investment Program" with WOORI CORP.</td>
+								</tr>
+								<tr>
+									<td>2017.04.</td>
+									<td>Selected by Korea Chamber of Commerce and Industry for "Poland Joint Investment Program" with SEUNGSAN IND.CO. LTD.</td>
+								</tr>
+								<tr>
+									<td>2016.10.</td>
+									<td>Acquired "Certified Excellent Logistics Company (CELC)" by Minister of Land, Infrastructure and Transport </td>
+								</tr>
+								<tr>
+									<td>2014.10.</td>
+									<td>Certification of "Excellent International Freight Forwarder" by Minister of Land, Infrastructure and Transport</td>
+								</tr>
+								<tr>
+									<td>2013.12.</td>
+									<td>Selected by Ministry of Oceans and Fisheries for supporting overseas expansion</td>
+								</tr>
+								<tr>
+									<td>2012.03.</td>
+									<td>Declaration of Vision 2020, a Value Management</td>
+								</tr>
+								<tr>
+									<td>2012.01.</td>
+									<td>Acquired AEO Certificate from Korea Customs Service</td>
+								</tr>
+								<tr>
+									<td>2011.06.</td>
+									<td>Selected by Korea Customs Service and AEO Promotion Association as a forwarder for supporting AEO certification</td>
+								</tr>
+								<tr>
+									<td>2010.02.</td>
+									<td>Registered with United Nations Procurement Division (UNPD) in New York</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">2008 ~ 2000</th>
+								</tr>
+								<tr>
+									<td>2008.08.</td>
+									<td>Completion of a new head office building</td>
+								</tr>
+								<tr>
+									<td>2008.05.</td>
+									<td>Hosted 2008’ WNA World Convention in Seoul</td>
+								</tr>
+								<tr>
+									<td>2007.06.</td>
+									<td>
+										Certification of "Innovational management-friendly small and medium	enterprise" by Seoul Small and Medium Business Administration
+									</td>
+								</tr>
+								<tr>
+									<td>2005.05.</td>
+									<td>Acquired an insurance agency license from Financial Supervisory Service</td>
+								</tr>
+								<tr>
+									<td>2005.03.</td>
+									<td>Joined World Cargo Alliance (APLN)</td>
+								</tr>
+								<tr>
+									<td>2002.06.</td>
+									<td>ISO 9001-2000 certified</td>
+								</tr>
+								<tr>
+									<td>2002.01.</td>
+									<td>Opened Hochiminh City office</td>
+								</tr>
+								<tr>
+									<td>2000.04.</td>
+									<td>Joined World Net Associations (WNA)</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">1997 ~ 1990</th>
+								</tr>
+								<tr>
+									<td>1997.03.</td>
+									<td>Awarded “The finest taxpayer” by the Sogong tax office</td>
+								</tr>
+								<tr>
+									<td>1996.12.</td>
+									<td>Opened Dhaka and Chittagong offices</td>
+								</tr>
+								<tr>
+									<td>1996.07.</td>
+									<td>
+										Appointment of CEO U. K. Chung as arbitrator by the Korea Commercial Arbitration Board
+									</td>
+								</tr>
+								<tr>
+									<td>1996.05.</td>
+									<td>Awarded “The best forwarding company” by Samsung Engineering</td>
+								</tr>
+								<tr>
+									<td>1994.05.</td>
+									<td>Opened Shanghai and Qingdo offices</td>
+								</tr>
+								<tr>
+									<td>1993.11.</td>
+									<td>Registered as multimodal freight forwarder on Shipping and Port Administration</td>
+								</tr>
+								<tr>
+									<td>1991.09</td>
+									<td>Registered with International Air Transport Association (IATA)</td>
+								</tr>
+								<tr>
+									<td>1990.12.</td>
+									<td>Acquired a license for shipping agency, commencing agents for Laurizen line</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">1988 ~ 1980</th>
+								</tr>
+								<tr>
+									<td>1988.08.</td>
+									<td>Moved into a head office, located in Mapo, Seoul (Commencing courier services)</td>
+								</tr>
+								<tr>
+									<td>1988.07.</td>
+									<td>Acquired an air transport agency license</td>
+								</tr>
+								<tr>
+									<td>1988.01.</td>
+									<td>
+										Inauguration of CEO U. K. Chung as Korea International Freight
+										Forwarders Association (KIFFA)'s new chairman , Opened Daejeon office
+									</td>
+								</tr>
+								<tr>
+									<td>1986.12.</td>
+									<td>Opened Gwangju office</td>
+								</tr>
+								<tr>
+									<td>1981.03.</td>
+									<td>Awarded "the Prime Minister's Citation" on Marine transport day, Opened Daegu office</td>
+								</tr>
+								<tr>
+									<td>1980.06.</td>
+									<td>Opened Los Angeles office</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">1979 ~ 1976</th>
+								</tr>
+								<tr>
+									<td>1979.10.</td>
+									<td>Registered as NVOCC on US FMC</td>
+								</tr>
+								<tr>
+									<td>1978.12.</td>
+									<td>Opened New York liaison office</td>
+								</tr>
+								<tr>
+									<td>1977.02.</td>
+									<td>Opened Busan office, commencing consolidation services</td>
+								</tr>
+								<tr>
+									<td>1976.10.</td>
+									<td>
+										Acquired an international freight forwarding license from Korea
+										Maritime & Port Administration as one of the first 26 firms in Korea
+									</td>
+								</tr>
+								<tr>
+									<td>1976.07.</td>
+									<td>Establishment of Samyoung Express Co., Ltd</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //company_w mo-->
+
+			</div>
+		</div>
+		<!-- //container -->
+	}
+	else
+	{
+		<!-- container -->
+		<div class="container">
+			<div class="contents">
+				<h3 class="subtitle"><span>가치 및 연혁</span></h3>
+				<div class="valuable_wrap pc">
+					<div class="valuable_area">
+						<div class="text_area">
+							<strong class="text1">SAMYOUNG</strong>
+							<span class="text2">VALUE</span><br />
+							<span class="text3">삼영 가치관</span>
+						</div>
+						<div class="table_area">
+							<strong>MISSON</strong>
+							<p>
+								우리는 최상의 글로벌 녹색 물류 서비스를 통해 기업과 국가의 번영과 <br class="pc" />인류의 풍요롭고 행복한 삶에 기여한다.<br class="pc" />
+								나눔과 윤리 경영을 통해 사회적으로 사랑받는 기업이 된다.
+							</p>
+
+							<strong>CORE VALUE</strong>
+							<p>정직과 믿음, 창의와 열정, 섬김과 화합</p>
+
+							<strong>VISION</strong>
+							<p>한국적 글로벌 포워더</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="valuable_wrap mo">
+					<div class="text_area">
+						<strong class="text1">SAMYOUNG</strong>
+						<span class="text2">VALUE</span><br />
+						<span class="text3">삼영 가치관</span>
+					</div>
+					<div class="table_area">
+						<strong>MISSON</strong>
+						<p>
+							우리는 최상의 글로벌 녹색 물류 서비스를 통해 기업과 국가의 번영과 <br class="pc" />인류의 풍요롭고 행복한 삶에 기여한다.<br class="pc" />
+							나눔과 윤리 경영을 통해 사회적으로 사랑받는 기업이 된다.
+						</p>
+
+						<strong>CORE VALUE</strong>
+						<p>정직과 믿음, 창의와 열정, 섬김과 화합</p>
+
+						<strong>VISION</strong>
+						<p>한국적 글로벌 포워더</p>
+					</div>
+				</div>
+
+				@*<tr class="mo"> 예제
+						<th class="tit01" colspan="5">JAPAN</th>
+					</tr>
+					<tr>
+						<th class="tit01 pc" rowspan="2">JAPAN</th>
+						<td rowspan="2" class="txt01 tit02">Japan Main &amp; Local Port</td>
+						<td>515</td>
+						<td rowspan="2" class="txt01">japan@faircon.co.kr</td>
+						<td rowspan="2" class="txt02">779-5305</td>
+					</tr>
+					<tr>
+						<td>512</td>
+					</tr>*@
+
+				<div class="history_area">
+					<div class="text_area">
+						<strong class="text1">HISTORY</strong>
+					</div>
+				</div>
+
+				<!-- company_w pc-->
+				<div class="contact_w pc">
+					<div class="tbl_type01 center">
+						<table>
+							<colgroup class="pc">
+								<col style="width: 20%" />
+								<col style="width: 20%" />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+                                    <!-- 2020.05 박진호 추가내용 -->
+									<td class="pc_th" rowspan="10">현재 ~ 2010</td>
+									<td>2020.02.</td>
+									<td>여수광양항만공사 사장상 (표창장) 수상</td>
+                                    <!-- 2020.05 박진호 추가내용 끝 -->
+								</tr>
+                                <tr>
+									<td>2018.05.</td>
+									<td>화주기업(우리산업) 멕시코 동반진출 지원사업체 선정 (대한상공회의소)</td>
+								</tr>
+								<tr>
+									<td>2017.04.</td>
+									<td>화주기업(승산산업) 폴란드 동반진출 지원사업체 선정 (대한상공회의소)</td>
+								</tr>
+								<tr>
+									<td>2016.10.</td>
+									<td>우수 물류기업 인증서 획득 (국토교통부)</td>
+								</tr>
+								<tr>
+									<td>2014.10.</td>
+									<td>우수 국제물류주선업체 인증서 획득 (국토교통부)</td>
+								</tr>
+								<tr>
+									<td>2013.12.</td>
+									<td>물류기업 해외진출 지원사업 업체 선정 (해양수산부)</td>
+								</tr>
+								<tr>
+									<td>2012.03.</td>
+									<td>‘비전 2020’ 가치관 경영 선포식 (삼영빌딩 7층 대회의실)</td>
+								</tr>
+								<tr>
+									<td>2012.01.</td>
+									<td>AEO 공인인증 획득 (관세청)</td>
+								</tr>
+								<tr>
+									<td>2011.06.</td>
+									<td>관세청과 한국 AEO진흥협회로부터 AEO 공인인증 지원 포워더 선정</td>
+								</tr>
+								<tr>
+									<td>2010.02.</td>
+									<td>UN조달본부(뉴욕)에 등록</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="8">2008 ~ 2000</td>
+									<td>2008.08.</td>
+									<td>신축사옥 준공 필증/입주</td>
+								</tr>
+								<tr>
+									<td>2008.05.</td>
+									<td>WNA 2008년차 세계대회 서울 개최</td>
+								</tr>
+								<tr>
+									<td>2007.06.</td>
+									<td>경영혁신형 중소기업 확인서 수령 – 서울지방중소기업청장</td>
+								</tr>
+								<tr>
+									<td>2005.05.</td>
+									<td>보험대리점 등록증 취득 – 금융감독원장</td>
+								</tr>
+								<tr>
+									<td>2005.03.</td>
+									<td>WORLD CARGO ALLIANCE (APLN) 가입</td>
+								</tr>
+								<tr>
+									<td>2002.06.</td>
+									<td>ISO 9001-2000 인증</td>
+								</tr>
+								<tr>
+									<td>2002.01.</td>
+									<td>베트남 HOCHIMINH 사무소 개설</td>
+								</tr>
+								<tr>
+									<td>2000.04.</td>
+									<td>WORLD NET ASSOCIATES (WNA) 가입</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="8">1997 ~ 1990</td>
+									<td>1997.03.</td>
+									<td>모범납세자로 소공세무서장 표창 수상</td>
+								</tr>
+								<tr>
+									<td>1996.12.</td>
+									<td>방글라데시 DHAKA 사무소, CHITTAGONG 사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1996.07.</td>
+									<td>대표이사 정은구 대한상사중재원 중재인 위촉 (1996. 07 ~ 2005. 06)</td>
+								</tr>
+								<tr>
+									<td>1996.05.</td>
+									<td>우수 포워딩 업체로 감사패 수상 – 삼성엔지니어링</td>
+								</tr>
+								<tr>
+									<td>1994.05.</td>
+									<td>중국 상해 사무소 / 청도 사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1993.11.</td>
+									<td>해운항만청 복합운송주선업체 등록</td>
+								</tr>
+								<tr>
+									<td>1991.09</td>
+									<td>INTERNATIONAL AIR TRANSPORT ASSOCIATION (IATA) 가입</td>
+								</tr>
+								<tr>
+									<td>1990.12.</td>
+									<td>선박대리점 면허취득, LAURIZEN LINE 대리점 개시</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="6">1988 ~ 1980</td>
+									<td>1988.08.</td>
+									<td>마포 본사 입주, 특송업무 개시</td>
+								</tr>
+								<tr>
+									<td>1988.07.</td>
+									<td>항공화물 운송대리점 면허취득</td>
+								</tr>
+								<tr>
+									<td>1988.01.</td>
+									<td>대표이사 정은구 한국국제복합운송업 협회장 취임, 대전사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1986.12.</td>
+									<td>광주사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1981.03.</td>
+									<td>해운의 날 국무총리 표창 수상, 대구사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1980.06.</td>
+									<td>미국 LOS ANGELES 사무소 개설</td>
+								</tr>
+								<tr class="pc_tr">
+									<td class="pc_th" rowspan="5">1979 ~ 1976</td>
+									<td>1979.10.</td>
+									<td>미국 FMC에 NVOCC 등록</td>
+								</tr>
+								<tr>
+									<td>1978.12.</td>
+									<td>미국 NEW YORK 연락사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1977.02.</td>
+									<td>부산사무소 설치 (CONSOLIDATION 업무 개시)</td>
+								</tr>
+								<tr>
+									<td>1976.10.</td>
+									<td>해운항만청 외항해상운송주선업 면허 획득 (한국 최초 26개사 중 하나)</td>
+								</tr>
+								<tr>
+									<td>1976.07.</td>
+									<td>주식회사 삼영익스프레스 창립</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //company_w pc-->
+				<!-- company_w mo-->
+				<div class="contact_w mo">
+					<div class="tbl_type01 center">
+						<table>
+							<colgroup class="mo">
+								<col style="width: 25%" />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="mo_th" colspan="2">현재 ~ 2010</th>
+								</tr>
+                                <!-- 2020.05 박진호 추가내용 -->
+                                <tr>
+									<td>2020.02.</td>
+									<td>여수광양항만공사 사장상 (표창장) 수상</td>
+								</tr>
+                                <!-- 2020.05 박진호 추가내용 끝 -->
+								<tr>
+									<td>2018.05.</td>
+									<td>화주기업(우리산업) 멕시코 동반진출 지원사업체 선정 (대한상공회의소)</td>
+								</tr>
+								<tr>
+									<td>2017.04.</td>
+									<td>화주기업(승산산업) 폴란드 동반진출 지원사업체 선정 (대한상공회의소)</td>
+								</tr>
+								<tr>
+									<td>2016.10.</td>
+									<td>우수 물류기업 인증서 획득 (국토교통부)</td>
+								</tr>
+								<tr>
+									<td>2014.10.</td>
+									<td>우수 국제물류주선업체 인증서 획득 (국토교통부)</td>
+								</tr>
+								<tr>
+									<td>2013.12.</td>
+									<td>물류기업 해외진출 지원사업 업체 선정 (해양수산부)</td>
+								</tr>
+								<tr>
+									<td>2012.03.</td>
+									<td>‘비전 2020’ 가치관 경영 선포식 (삼영빌딩 7층 대회의실)</td>
+								</tr>
+								<tr>
+									<td>2012.01.</td>
+									<td>AEO 공인인증 획득 (관세청)</td>
+								</tr>
+								<tr>
+									<td>2011.06.</td>
+									<td>관세청과 한국 AEO진흥협회로부터 AEO 공인인증 지원 포워더 선정</td>
+								</tr>
+								<tr>
+									<td>2010.02.</td>
+									<td>UN조달본부(뉴욕)에 등록</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">2008 ~ 2000</th>
+								</tr>
+								<tr>
+									<td>2008.08.</td>
+									<td>신축사옥 준공 필증/입주</td>
+								</tr>
+								<tr>
+									<td>2008.05.</td>
+									<td>WNA 2008년차 세계대회 서울 개최</td>
+								</tr>
+								<tr>
+									<td>2007.06.</td>
+									<td>경영혁신형 중소기업 확인서 수령 – 서울지방중소기업청장</td>
+								</tr>
+								<tr>
+									<td>2005.05.</td>
+									<td>보험대리점 등록증 취득 – 금융감독원장</td>
+								</tr>
+								<tr>
+									<td>2005.03.</td>
+									<td>WORLD CARGO ALLIANCE (APLN) 가입</td>
+								</tr>
+								<tr>
+									<td>2002.06.</td>
+									<td>ISO 9001-2000 인증</td>
+								</tr>
+								<tr>
+									<td>2002.01.</td>
+									<td>베트남 HOCHIMINH 사무소 개설</td>
+								</tr>
+								<tr>
+									<td>2000.04.</td>
+									<td>WORLD NET ASSOCIATES (WNA) 가입</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">1997 ~ 1990</th>
+								</tr>
+								<tr>
+									<td>1997.03.</td>
+									<td>모범납세자로 소공세무서장 표창 수상</td>
+								</tr>
+								<tr>
+									<td>1996.12.</td>
+									<td>방글라데시 DHAKA 사무소, CHITTAGONG 사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1996.07.</td>
+									<td>대표이사 정은구 대한상사중재원 중재인 위촉 (1996. 07 ~ 2005. 06)</td>
+								</tr>
+								<tr>
+									<td>1996.05.</td>
+									<td>우수 포워딩 업체로 감사패 수상 – 삼성엔지니어링</td>
+								</tr>
+								<tr>
+									<td>1994.05.</td>
+									<td>중국 상해 사무소 / 청도 사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1993.11.</td>
+									<td>해운항만청 복합운송주선업체 등록</td>
+								</tr>
+								<tr>
+									<td>1991.09</td>
+									<td>INTERNATIONAL AIR TRANSPORT ASSOCIATION (IATA) 가입</td>
+								</tr>
+								<tr>
+									<td>1990.12.</td>
+									<td>선박대리점 면허취득, LAURIZEN LINE 대리점 개시</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">1988 ~ 1980</th>
+								</tr>
+								<tr>
+									<td>1988.08.</td>
+									<td>마포 본사 입주, 특송업무 개시</td>
+								</tr>
+								<tr>
+									<td>1988.07.</td>
+									<td>항공화물 운송대리점 면허취득</td>
+								</tr>
+								<tr>
+									<td>1988.01.</td>
+									<td>대표이사 정은구 한국국제복합운송업 협회장 취임, 대전사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1986.12.</td>
+									<td>광주사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1981.03.</td>
+									<td>해운의 날 국무총리 표창 수상, 대구사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1980.06.</td>
+									<td>미국 LOS ANGELES 사무소 개설</td>
+								</tr>
+								<tr>
+									<th class="mo_th" colspan="2">1979 ~ 1976</th>
+								</tr>
+								<tr>
+									<td>1979.10.</td>
+									<td>미국 FMC에 NVOCC 등록</td>
+								</tr>
+								<tr>
+									<td>1978.12.</td>
+									<td>미국 NEW YORK 연락사무소 개설</td>
+								</tr>
+								<tr>
+									<td>1977.02.</td>
+									<td>부산사무소 설치 (CONSOLIDATION 업무 개시)</td>
+								</tr>
+								<tr>
+									<td>1976.10.</td>
+									<td>해운항만청 외항해상운송주선업 면허 획득 (한국 최초 26개사 중 하나)</td>
+								</tr>
+								<tr>
+									<td>1976.07.</td>
+									<td>주식회사 삼영익스프레스 창립</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //company_w mo-->
+
+			</div>
+		</div>
+		<!-- //container -->
+	}
+
+
+
+
+}
